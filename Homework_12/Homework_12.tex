@@ -1,0 +1,607 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_12
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}}
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\usepackage{mathrsfs}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 12}
+\begin{document}
+\begin{problem}{1}
+[C-T Exercise 6-2] Consider an arbitrary physical system whose four-dimensional state space is spanned by a basis of four eigenvectors $|jm_z\rangle$ common to $\hat{\vec{J}}^2$ and $\hat{J}_z$ ($j=0$ or $1$; $-j\leq m_z\leq+j$),of eigenvalues $j(j+1)\hbar^2$ and $m_z\hbar$, such that
+\begin{gather*}
+\hat{J}_{\pm}|jm_z\rangle=\hbar\sqrt{j(j+1)-m_z(m_z\pm1)}|j,m_z\pm1\rangle,\\
+\hat{J}_+|jj\rangle=\hat{J}_-|j,-j\rangle=0.
+\end{gather*}
+\begin{itemize}
+\item[(a)] Express, in terms of the kets $jm_z$, the eigenstates common to $\hat{\vec{J}}^2$ and $\hat{J}_x$, to be denoted by $|jm_x\rangle$.
+\item[(b)] Consider a system in the normalized state
+\[
+|\psi\rangle=\alpha|j=1,m_z=1\rangle+\beta|j=1,m_z=0\rangle+\gamma|j=1,m_z=-1\rangle+\delta|j=0,m_z=0\rangle.
+\]
+\begin{itemize}
+\item[i.] What is the probability of finding $2\hbar^2$ and $\hbar$ if $\hat{\vec{J}}^2$ and $\hat{J}_x$ are measured simultaneously?
+\item[ii.] Calculate the mean value of $\hat{J}_z$ when the system is in the state $|\psi\rangle$, and the probabilities of the various possible results of a measurement bearing only on this observable.
+\item[iii.] Same questions for the observable $\hat{\vec{J}}^2$ and $\hat{J}_x$.
+\item[iv.] $\hat{J}_z^2$ is now measured; what are the possible results, their probabilities, and their mean value?
+\end{itemize}
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] Since
+\begin{gather}
+\langle0,0|\hat{\vec{J}}^2|0,0\rangle=0,\quad\langle0,0|\hat{\vec{J}}^2|1,1\rangle=0,\quad\langle0,0|\hat{\vec{J}}^2|1,0\rangle=0,\quad\langle0,0|\hat{\vec{J}}^2|1,-1\rangle=0\\
+\langle1,1|\hat{\vec{J}}^2|0,0\rangle=0,\quad\langle1,1|\hat{\vec{J}}^2|1,1\rangle=2\hbar^2,\quad\langle1,1|\hat{\vec{J}}^2|1,0\rangle=0,\quad\langle1,1|\hat{\vec{J}}^2|1,-1\rangle=0\\
+\langle1,0|\hat{\vec{J}}^2|0,0\rangle=0,\quad\langle1,0|\hat{\vec{J}}^2|1,1\rangle=0,\quad\langle1,0|\hat{\vec{J}}^2|1,0\rangle=2\hbar^2,\quad\langle1,0|\hat{\vec{J}}^2|1,-1\rangle=0\\
+\langle1,-1|\hat{\vec{J}}^2|0,0\rangle=0,\quad\langle1,-1|\hat{\vec{J}}^2|1,1\rangle=0,\quad\langle1,-1|\hat{\vec{J}}^2|1,0\rangle=0,\quad\langle1,-1|\hat{\vec{J}}^2|1,-1\rangle=2\hbar^2
+\end{gather}
+the matrix representation of $\hat{\vec{J}}^2$ in the basis of $\{|0,0\rangle,|1,1\rangle,|1,0\rangle,|1,-1\rangle\}$ is
+\begin{equation}
+\hat{\vec{J}}^2=\left(\begin{array}{cccc}
+0&0&0&0\\
+0&2\hbar^2&0&0\\
+0&0&2\hbar^2&0\\
+0&0&0&2\hbar^2
+\end{array}\right)
+\end{equation}
+Since
+\begin{gather}
+\langle0,0|\hat{J}_+|0,0\rangle=0,\quad\langle0,0|\hat{J}_+|1,1\rangle=0,\quad\langle0,0|\hat{J}_+|1,0\rangle=0,\quad\langle0,0|\hat{J}_+|1,-1\rangle=0\\
+\langle1,1|\hat{J}_+|0,0\rangle=0,\quad\langle1,1|\hat{J}_+|1,1\rangle=0,\quad\langle1,1|\hat{J}_+|1,0\rangle=\sqrt{2}\hbar,\quad\langle1,1|\hat{J}_+|1,-1\rangle=0\\
+\langle1,0|\hat{J}_+|0,0\rangle=0,\quad\langle1,0|\hat{J}_+|1,1\rangle=0,\quad\langle1,0|\hat{J}_+|1,0\rangle=0,\quad\langle1,0|\hat{J}_+|1,-1\rangle=\sqrt{2}\hbar\\
+\langle1,-1|\hat{J}_+|0,0\rangle=0,\quad\langle1,-1|\hat{J}_+|1,1\rangle=0,\quad\langle1,-1|\hat{J}_+|1,0\rangle=0,\quad\langle1,-1|\hat{J}_+|1,-1\rangle=0
+\end{gather}
+the matrix representation of $\hat{J}_+$ in the basis of $\{|0,0\rangle,|1,1\rangle,|1,0\rangle,|1,-1\rangle\}$ is
+\begin{equation}
+\hat{J}_+=\left(\begin{array}{cccc}
+0&0&0&0\\
+0&0&\sqrt{2}\hbar&0\\
+0&0&0&\sqrt{2}\hbar\\
+0&0&0&0
+\end{array}\right)
+\end{equation}
+Since
+\begin{gather}
+\langle0,0|\hat{J}_-|0,0\rangle=0,\quad\langle0,0|\hat{J}_-|1,1\rangle=0\quad\langle0,0|\hat{J}_-|1,0\rangle=0,\quad\langle0,0|\hat{J}_-|1,-1\rangle=0\\
+\langle1,1|\hat{J}_-|0,0\rangle=0,\quad\langle1,1|\hat{J}_-|1,1\rangle=0,\quad\langle1,1|\hat{J}_-|1,0\rangle=0,\quad\langle1,1|\hat{J}_-|1,-1\rangle=0\\
+\langle1,0|\hat{J}_-|0,0\rangle=0,\quad\langle1,0|\hat{J}_-|1,1\rangle=\sqrt{2}\hbar\quad\langle1,0|\hat{J}_-|1,0\rangle=0,\quad\langle1,0|\hat{J}_-|1,-1\rangle=0\\
+\langle1,-1|\hat{J}_-|0,0\rangle=0,\quad\langle1,-1|\hat{J}_-|1,1\rangle=0,\quad\langle1,-1|\hat{J}_-|1,0\rangle=\sqrt{2}\hbar,\quad\langle1,-1|\hat{J}_-|1,-1\rangle=0
+\end{gather}
+the matrix representation of $\hat{J}_-$ in the basis of $\{|0,0\rangle,|1,1\rangle,|1,0\rangle,|1,-1\rangle\}$ is
+\begin{equation}
+\hat{J}_+=\left(\begin{array}{cccc}
+0&0&0&0\\
+0&0&0&0\\
+0&\sqrt{2}\hbar&0&0\\
+0&0&\sqrt{2}\hbar&0
+\end{array}\right)
+\end{equation}
+Since $\hat{\vec{J}}^2$ is a diagonal matrix, the eigenvalues of $\hat{\vec{J}}^2$ are its diagonal elements
+\begin{equation}
+\lambda_1=0,\lambda_{2,3,4}=2\hbar^2
+\end{equation}
+The corresponding eigenvector of $\lambda_1$ is
+\begin{equation}
+|\psi_1\rangle=\left(\begin{array}{c}
+1\\
+0\\
+0\\
+0
+\end{array}\right)
+\end{equation}
+with degeneracy degree $1$.\\
+The corresponding eigenvectors of $\lambda_{2,3,4}$ are in the form of
+\begin{equation}
+|\psi_i\rangle=\left(\begin{array}{c}
+0\\
+a_i\\
+b_i\\
+c_i
+\end{array}\right),\quad i=2,3,4
+\end{equation}
+Suppose $|\psi_i\rangle,\quad(i=1,2,3,4)$ are also the eigenvectors of $\hat{J}_x$.\\
+The matrix representation of $\hat{J}_x$ is
+\begin{equation}
+\hat{J}_x=\frac{\hat{J}_++\hat{J}_-}{2}=\left(\begin{array}{cccc}
+0&0&0&0\\
+0&0&\frac{\sqrt{2}}{2}\hbar&0\\
+0&\frac{\sqrt{2}}{2}\hbar&0&\frac{\sqrt{2}}{2}\hbar\\
+0&0&\frac{\sqrt{2}}{2}\hbar&0
+\end{array}\right)
+\end{equation}
+The characteristic equation is
+\begin{equation}
+|\hat{J}_x-\chi I|=\left|\begin{array}{cccc}
+-\chi&0&0&0\\
+0&-\chi&\frac{\sqrt{2}}{2}\hbar&0\\
+0&\frac{\sqrt{2}}{2}\hbar&-\chi&\frac{\sqrt{2}}{2}\hbar\\
+0&0&\frac{\sqrt{2}}{2}\hbar&-\chi
+\end{array}\right|=\chi^4-\hbar^2\chi^2=0
+\end{equation}
+The eigenvalues of $\hat{J}_x$ are
+\begin{equation}
+\chi_{1,2}=0,\quad\chi_3=\hbar,\quad\chi_4=-\hbar
+\end{equation}
+One of the eigenvector corresponding to $\chi=0$ is $|\psi_1\rangle$, so
+\begin{equation}
+|j=0,m_x=0\rangle=|\psi_1\rangle=|j=0,m_z=0\rangle
+\end{equation}
+Another eigenvector corresponding to $\chi=0$ is
+\begin{equation}
+|j=1,m_x=0\rangle=\left(\begin{array}{c}
+0\\
+\frac{\sqrt{2}}{2}\\
+0\\
+-\frac{\sqrt{2}}{2}
+\end{array}\right)=\frac{\sqrt{2}}{2}|j=1,m_z=1\rangle-\frac{\sqrt{2}}{2}|j=1,m_z=-1\rangle
+\end{equation}
+The eigenvector corresponding to $\chi_3$ is
+\begin{equation}
+|j=1,m_x=1\rangle=\left(\begin{array}{c}
+0\\
+\frac{1}{2}\\
+\frac{\sqrt{2}}{2}\\
+\frac{1}{2}
+\end{array}\right)=\frac{1}{2}|j=1,m_z=1\rangle+\frac{\sqrt{2}}{2}|j=1,m_z=0\rangle+\frac{1}{2}|j=1,m_z=-1\rangle
+\end{equation}
+The eigenvector corresponding to $\chi_4$ is
+\begin{equation}
+|j=1,m_x=-1\rangle=\left(\begin{array}{c}
+0\\
+\frac{1}{2}\\
+-\frac{\sqrt{2}}{2}\\
+\frac{1}{2}
+\end{array}\right)=\frac{1}{2}|j=1,m_z=1\rangle-\frac{\sqrt{2}}{2}|j=1,m_z=0\rangle+\frac{1}{2}|j=1,m_z=-1\rangle
+\end{equation}
+\item[(b)]
+\begin{itemize}
+\item[i.] Since
+\begin{gather}
+|j=1,m_z=1\rangle=\frac{1}{2}(|j=1,m_x=1\rangle+\sqrt{2}|j=1,m_x=0\rangle+|j=1,m_x=-1\rangle)\\
+|j=1,m_z=0\rangle=\frac{\sqrt{2}}{2}(|j=1,m_x=1\rangle-|j=1,m_x=-1\rangle)\\
+|j=1,m_z=-1\rangle=\frac{1}{2}(|j=1,m_x=1\rangle-\sqrt{2}|j=1,m_x=0\rangle+|j=1,m_x=-1\rangle)\\
+|j=0,m_z=0\rangle=|j=0,m_x=0\rangle
+\end{gather}
+the state of the system can be written as
+\begin{gather}
+\nonumber|\psi\rangle=(\frac{\alpha}{2}+\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2})|j=1,m_x=1\rangle+(\frac{\sqrt{2}\alpha}{2}-\frac{\sqrt{2}\gamma}{2})|j=1,m_x=0\rangle\\
++(\frac{\alpha}{2}-\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2})|j=1,m_x=-1\rangle+\delta|j=0,m_x=0\rangle
+\end{gather}
+Since $\hat{\vec{J}}^2$ and $\hat{J}_x$ commute, the measurement do not influence each other. The probability of finding $2\hbar$ and $\hbar$ if $\hat{\vec{J}}^2$ and $\hat{J}_x$ are measured simultaneously is $|\frac{\alpha}{2}+\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2$.
+\item[ii.] The mean value of $\hat{J}_z$ is
+\begin{equation}
+\langle\hat{J}_z\rangle=\langle\psi|\hat{J}_z|\psi\rangle=(\alpha-\gamma)\hbar
+\end{equation}
+The probability of measurement result $J_z=\hbar$ is $|\alpha|^2$.\\
+The probability of measurement result $J_z=0$ is $|\beta|^2+|\delta|^2$.\\
+The probability of measurement result $J_z=-\hbar$ is $|\gamma|^2$.
+\item[iii.] The mean value of $\hat{\vec{J}}^2$ is
+\begin{equation}
+\langle\hat{\vec{J}}^2\rangle=\langle\psi|\hat{\vec{J}}^2|\psi\rangle=2(|\alpha|^2+|\beta|^2+|\gamma|^2)\hbar^2
+\end{equation}
+The probability of measurement result $J^2=2\hbar^2$ is $|\alpha|^2+|\beta|^2+|\gamma|^2$.\\
+The probability of measurement result $J^2=0$ is $|\delta|^2$.\\
+The mean value of $\hat{J}_x$ is
+\begin{equation}
+\langle\hat{J}_x\rangle=\langle\psi|\hat{J}_x|\psi\rangle=(|\frac{\alpha}{2}+\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2-|\frac{\alpha}{2}-\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2)\hbar
+\end{equation}
+The probability of measurement result $J_x=\hbar$ is $|\frac{\alpha}{2}+\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2$.\\
+The probability of measurement result $J_x=0$ is $|\frac{\sqrt{2}\alpha}{2}-\frac{\sqrt{2}\gamma}{2}|^2+|\delta|^2$.\\
+The probability of measurement result $J_x=-\hbar$ is $|\frac{\alpha}{2}-\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2$.
+\item[iv.] The probability of possible result $J_z^2=\hbar^2$ is $|\frac{\alpha}{2}+\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2+|\frac{\alpha}{2}-\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2$.\\
+The probability of possible result $J_z^2=0$ is $|\frac{\sqrt{2}\alpha}{2}-\frac{\sqrt{2}\gamma}{2}|^2+|\delta|^2$.
+The mean value of $\hat{J}_z^2$ is
+\begin{equation}
+\langle\hat{J}_z^2\rangle=\langle\psi|\hat{J}_z^2|\psi\rangle=(|\frac{\alpha}{2}+\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2+|\frac{\alpha}{2}-\frac{\sqrt{2}\beta}{2}+\frac{\gamma}{2}|^2)\hbar^2
+\end{equation}
+\end{itemize}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{2}
+[C-T Exercise 6-5] A system whose state space is $\mathscr{E}_{\vec{r}}$ has for its wave function $\psi(x,y,z)=N(x+y+z)e^{-r^2/\alpha^2}$, where $\alpha$, which is real, is given and $N$ is a normalization constant.
+\begin{itemize}
+\item[(a)] The observables $\hat{L}_z$ and $\hat{\vec{L}}^2$ are measured; what are the probabilities of finding $0$ and $2\hbar^2$?
+\item[(b)] Is it possible to predict directly the probabilities of all possible results of measurements of $\hat{\vec{L}}^2$ and $\hat{L}_z$ in the system of wave function $\psi(x,y,z)$?
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The state of the system can be written as
+\begin{equation}
+\psi(x,y,z)=\frac{1}{2\sqrt{\pi}}(\sin\theta\cos\varphi+\sin\theta\sin\varphi+\cos\theta)\cdot2\sqrt{\pi}Nre^{-r^2/\alpha^2}
+\end{equation}
+where the part with $\theta$ and $\varphi$ is normalized
+\begin{equation}
+\int_0^{2\pi}d\varphi\int_0^{\pi}\sin\theta d\theta\frac{1}{2\sqrt{\pi}}(\sin\theta\cos\varphi+\sin\theta\sin\varphi+\cos\theta)^*\frac{1}{2\sqrt{\pi}}(\sin\theta\cos\varphi+\sin\theta\sin\varphi+\cos\theta)=1
+\end{equation}
+The probability of finding $0$ and $2\hbar^2$ is
+\begin{align}
+\nonumber P(m=0,l=1)=&\int_0^{2\pi}d\varphi\int_0^{\pi}\sin\theta d\theta Y_{10}(\theta,\varphi)\frac{1}{2\sqrt{\pi}}(\sin\theta\cos\varphi+\sin\theta\sin\varphi+\cos\theta)\\
+\nonumber=&\int_{-\infty}^{+\infty}r^2dr\int_0^{2\pi}d\varphi\int_0^{\pi}\sin\theta d\theta\sqrt{\frac{3}{4\pi}}\cos\theta\frac{1}{2\sqrt{\pi}}(\sin\theta\cos\varphi+\sin\theta\sin\varphi+\cos\theta)\\
+=&\frac{\sqrt{3}}{3}
+\end{align}
+\item[(b)] Yes, it is possible. The probability of $\vec{L}^2=l(l+1)\hbar^2$ and $L_z=m\hbar$ is
+\begin{equation}
+P(l,m)=\int_0^{2\pi}d\varphi\int_0^{\pi}\sin\theta d\theta Y_{lm}(\theta,\varphi)\frac{1}{2\sqrt{\pi}}(\sin\theta\cos\varphi+\sin\theta\sin\varphi+\cos\theta)
+\end{equation}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{3}
+[C-T Exercise 6-8] Consider a particle in three-dimensional space, whose state vector is $|\psi\rangle$, and whose wave function is $\psi(\vec{r})=\langle\vec{r}|\psi\rangle$. Let $\hat{A}$ be an observable which commutes with $\hat{\vec{L}}=\vec{\hat{r}}\times\hat{\vec{p}}$, the orbital angular momentum of the particle. Assuming that $\hat{A}$, $\hat{\vec{L}}^2$, and $\hat{L}_z$ form a CSCO in $\mathscr{E}_{\vec{r}}$, call $|nlm\rangle$ their common eigenkets, whose eigenvalues are, respectively, $a_n$ (the index $n$ is assumed to be discrete), $l(l+1)\hbar^2$, and $m\hbar$.\\
+Let $\hat{U}(\phi)$ be the unitary operator defined by $\hat{U}(\phi)=e^{i\phi\hat{L}_z/\hbar}$, where $\phi$ is a real dimensionless parameter. For an arbitrary operator $\hat{K}$, we call $\hat{K}$ the transform of $\hat{K}$ by the unitary operator $\hat{U}(\phi)$, $\tilde{\hat{K}}=\hat{U}(\phi)\hat{K}\hat{U}(\phi)$.
+\begin{itemize}
+\item[(a)] We set $\hat{L}_+=\hat{L}_x+i\hat{L}_y$, $\hat{L}_-=\hat{L}_x-i\hat{L}_y$. Calculate $\tilde{\hat{L}}_+|nlm\rangle$ and show that $\hat{L}_+$ and $\tilde{\hat{L}}_+$ are proportional; calculate the proportionality constant. Same question for $\hat{L}_-$ and $\tilde{\hat{L}}_-$.
+\item[(b)] Express $\tilde{\hat{L}}_x$, $\tilde{\hat{L}}_y$, and $\tilde{\hat{L}}_z$ in terms of $\hat{L}_x$, $\hat{L}_y$, and $\hat{L}_z$. What What geometrical transformation can be associated with the transformation of $\hat{\vec{L}}$ into $\tilde{\hat{\vec{L}}}$?
+\item[(c)] Calculate the commutators $[\hat{x}\pm i\hat{y},\hat{L}_z]$ and $[\hat{z},\hat{L}_z]$. Show that the kets $(\hat{x}\pm i\hat{y})|nlm\rangle$ and $\hat{z}|nlm\rangle$ are eigenvectors of $\hat{L}_z$ and calcultate their eigenvalues. What relation must exist between $m$ and $m'$ for the matrix element $\langle n'l'm'|\hat{x}+i\hat{y}|nlm\rangle$ to be non-zero? Same question for $\langle n'l'm'|\hat{z}|nlm\rangle$.
+\item[(d)] By comparing the matrix elements of $\widetilde{\hat{x}+i\hat{y}}$ and $\tilde{\hat{z}}$ with those of $\hat{x}\pm i\hat{y}$ and $\hat{z}$, calculate $\tilde{\hat{x}}$, $\tilde{\hat{y}}$, $\tilde{\hat{z}}$ in the terms of $\hat{x}$, $\hat{y}$, $\hat{z}$. Give a geometrical interpretation.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] If $m=-l,-l+1,\cdots,l-2,l-1$
+\begin{align}
+\nonumber\tilde{\hat{L}}_+|nlm\rangle=&\hat{U}(\phi)\hat{L}_+\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_+e^{-i\phi\hat{L}_z/\hbar}|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_+\sum_{n=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_+\sum_{n=0}^{\infty}\frac{(im)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hat{L}_+|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hbar\sqrt{l(l+1)-m(m+1)}|nl,m+1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m+1)}e^{-i\phi\hat{L}_z/\hbar}|nl,m+1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m+1)}\sum_{n=0}^{\infty}\frac{(-i\hat{L}_z/\hbar)^n}{n!}\phi^n|nl,m+1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m+1)}\sum_{n=0}^{\infty}\frac{[-i(m+1)]^n}{n!}\phi^n|nl,m+1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m+1)}e^{-i(m+1)}|nl,m+1\rangle\\
+=&-i\hbar\sqrt{l(l+1)-m(m+1)}|nl,m+1\rangle
+\end{align}
+\begin{equation}
+\hat{L}_+|nlm\rangle=\hbar\sqrt{l(l+1)-m(m+1)}|nl,m+1\rangle
+\end{equation}
+If $m=l$,
+\begin{align}
+\nonumber\tilde{\hat{L}}_+|nlm\rangle=&\hat{U}(\phi)\hat{L}_+\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_+e^{-i\phi\hat{L}_z/\hbar}|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_+\sum_{n=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_+\sum_{n=0}^{\infty}\frac{(im)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hat{L}_+|nlm\rangle\\
+=&0
+\end{align}
+\begin{equation}
+\hat{L}_+|nlm\rangle=0
+\end{equation}
+Therefore, $\hat{L}_+$ and $\tilde{\hat{L}}_+$ are proportional and the proportionality constant is $-i$.\\
+Similarly, if $m=-l+1,-l+2,\cdots,l-1,l$,
+\begin{align}
+\nonumber\tilde{\hat{L}}_-|nlm\rangle=&\hat{U}(\phi)\hat{L}_-\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_-e^{-i\phi\hat{L}_z/\hbar}|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_-\sum_{n=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_-\sum_{n=0}^{\infty}\frac{(im)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hat{L}_-|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hbar\sqrt{l(l+1)-m(m-1)}|nl,m-1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m-1)}e^{-i\phi\hat{L}_z/\hbar}|nl,m-1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m-1)}\sum_{n=0}^{\infty}\frac{(-i\hat{L}_z/\hbar)^n}{n!}\phi^n|nl,m-1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m-1)}\sum_{n=0}^{\infty}\frac{[-i(m-1)]^n}{n!}\phi^n|nl,m-1\rangle\\
+\nonumber=&e^{im}\hbar\sqrt{l(l+1)-m(m-1)}e^{-i(m-1)}|nl,m+1\rangle\\
+=&i\hbar\sqrt{l(l+1)-m(m+1)}|nl,m-1\rangle
+\end{align}
+\begin{align}
+\hat{L}_-|nlm\rangle=\hbar\sqrt{l(l+1)-m(m-1)}|nl,m-1\rangle
+\end{align}
+If $m=l$,
+\begin{align}
+\nonumber\tilde{\hat{L}}_-|nlm\rangle=&\hat{U}(\phi)\hat{L}_-\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_-e^{-i\phi\hat{L}_z/\hbar}|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_-\sum_{n=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_-\sum_{n=0}^{\infty}\frac{(im)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hat{L}_-|nlm\rangle\\
+=&0
+\end{align}
+\begin{equation}
+\hat{L}_-|nlm\rangle=0
+\end{equation}
+Therefore, $\hat{L}_-$ and $\tilde{\hat{L}}_-$ are proportional and the proportionality constant is $i$.
+\item[(b)]
+\begin{equation}
+\tilde{\hat{L}}_x=\frac{\tilde{\hat{L}}_++\tilde{\hat{L}}_-}{2}=\frac{-i\hat{L}_++i\hat{L}_-}{2}=\hat{L}_y
+\end{equation}
+\begin{equation}
+\tilde{\hat{L}}_y=\frac{\tilde{\hat{L}}_+-\tilde{\hat{L}}_-}{2i}=\frac{-i\hat{L}_+-i\hat{L}_-}{2i}=-\hat{L}_x
+\end{equation}
+Since
+\begin{align}
+\nonumber\tilde{\hat{L}}_z|nlm\rangle=&\hat{U}(\phi)\hat{L}_z\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_ze^{-i\phi\hat{L}_z/\hbar}|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_z\sum_{n=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&\hat{U}(\phi)\hat{L}_z\sum_{n=0}^{\infty}\frac{(im)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)\hat{L}_z|nlm\rangle\\
+\nonumber=&e^{im}\hat{U}(\phi)m\hbar|nlm\rangle\\
+\nonumber=&e^{im}m\hbar e^{-i\phi\hat{L}_z/\hbar}|nlm\rangle\\
+\nonumber=&e^{im}m\hbar\sum_{n=0}^{\infty}\frac{(-i\hat{L}_z/\hbar)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}m\hbar\sum_{n=0}^{\infty}\frac{(-im)^n}{n!}\phi^n|nlm\rangle\\
+\nonumber=&e^{im}m\hbar e^{-im}|nlm\rangle\\
+=&m\hbar|nlm\rangle=\hat{J}_z|nlm\rangle
+\end{align}
+\begin{equation}
+\tilde{\hat{L}}_z=\hat{L}_z
+\end{equation}
+Since
+\begin{equation}
+\hat{\vec{L}}=\hat{L}_x\vec{e}_x+\hat{L}_y\vec{e}_y+\hat{L}_z\vec{e}_z
+\end{equation}
+and
+\begin{equation}
+\tilde{\hat{\vec{L}}}=\hat{U}(\phi)(\hat{L}_x\vec{e}_x+\hat{L}_y\vec{e}_y+\hat{L}_z\vec{e}_z)\hat{U}^{\dagger}(\phi)=\hat{L}_y\vec{e}_x-\hat{L}_x\vec{e}_y+\hat{L}_z\vec{e}_z
+\end{equation}
+the geometrical transformation associated with the transformation of $\hat{\vec{L}}$ into $\tilde{\hat{\vec{L}}}$ is rotation about $z$ axis for $90^{\circ}$ clockwisely.
+\item[(c)]
+\begin{align}
+\nonumber[\hat{x}\pm i\hat{y},\hat{L}_z]=&[\hat{x}\pm i\hat{y},\hat{x}\hat{p}_y-\hat{y}\hat{p}_y]\\
+\nonumber=&[\hat{x},\hat{x}\hat{p}_y]-[\hat{x},\hat{y}\hat{p}_x]\pm i[\hat{y},\hat{x}\hat{p}_y]\mp i[\hat{y},\hat{y}\hat{p}_x]\\
+\nonumber=&-\hat{y}[\hat{x},\hat{p}_x]\pm i\hat{x}[\hat{y},\hat{p}_y]\\
+=&\hbar(-i\hat{y}\mp\hat{x})
+\end{align}
+\begin{align}
+\nonumber[\hat{z},\hat{L}_z]=&[\hat{z},\hat{x}\hat{p}_y-\hat{y}\hat{p}_x]=0
+\end{align}
+Since
+\begin{align}
+\nonumber\hat{L}_z(\hat{x}\pm i\hat{y})|nlm\rangle=&[(\hat{x}\pm i\hat{y})\hat{L}_z-\hbar(-i\hat{y}\mp\hat{x})]|nlm\rangle\\
+\nonumber=&[(\hat{x}\pm i\hat{y})m\hbar-\hbar(-i\hat{y}\mp\hat{x})]|nlm\rangle\\
+=&(m\pm1)\hbar(\hat{x}\pm i\hat{y})|nlm\rangle
+\end{align}
+the ket $(\hat{x}+i\hat{y})|nlm\rangle$ is an eigenvector of $\hat{L}_z$ and its eigenvalue is $(m\pm1)\hbar$.
+Since
+\begin{equation}
+\hat{L}_z\hat{z}|nlm\rangle=\hat{z}\hat{L}_z|nlm\rangle=m\hbar\hat{z}|nlm\rangle
+\end{equation}
+the ket $\hat{z}|nlm\rangle$ is an eigenvector of $\hat{L}_z$ and its eigenvalue is $m\hbar$.\\
+Since
+\begin{gather}
+\langle n'l'm'|\hat{L}_z(\hat{x}\pm i\hat{y})|nlm\rangle=m'\hbar\langle n'l'm'|(\hat{x}\pm i\hat{y})|nlm\rangle=(m\pm1)\hbar\langle n'l'm'|(\hat{x}\pm i\hat{y})\hat{L}_z+|nlm\rangle\\
+\Longrightarrow(m'-m\mp1)\langle n'l'm'|(\hat{x}\pm i\hat{y})\hat{L}_z+|nlm\rangle=0
+\end{gather}
+the relation that $m'=m\pm1$ must exist for $\langle n'l'm'|(\hat{x}\pm i\hat{y})|nlm\rangle$ to be non-zero.
+Since
+\begin{gather}
+\langle n'l'm'|\hat{L}_z\hat{z}|nlm\rangle=m'\hbar\langle n'l'm'|\hat{z}|nlm\rangle=\langle n'l'm'|\hat{z}\hat{L}_z|nlm\rangle=m\hbar\langle n'l'm'|\hat{z}|nlm\rangle\\
+\Longrightarrow(m-m')\langle nlm|\hat{z}|nlm\rangle=0
+\end{gather}
+the relation that $m=m'$ must exist for $\langle nlm|\hat{z}|nlm\rangle$ to be non-zero.
+\item[(d)] The matrix elements of $\widetilde{\hat{x}\pm i\hat{y}}$ are
+\begin{align}
+\nonumber\langle n'l'm'|(\widetilde{\hat{x}\pm i\hat{y}})|nlm\rangle=&\langle n'l'm'|\hat{U}(\phi)(\hat{x}\pm i\hat{y})\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\langle n'l'm'|\sum_{i=0}^{\infty}\frac{(-i\hat{L}_z/\hbar)^i}{i!}\phi^i(\hat{x}\pm i\hat{y})\sum_{j=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^j}{j!}\phi^j|nlm\rangle\\
+\nonumber=&\langle n'l'm'|\sum_{i=0}^{\infty}\frac{(-im')^i}{i!}\phi^i(\hat{x}\pm i\hat{y})\sum_{j=0}^{\infty}\frac{(im)^j}{j!}\phi^j|nlm\rangle\\
+=&e^{i(m-m')\phi}\langle n'l'm'|(\hat{x}\pm i\hat{y})|nlm\rangle=\mp i\delta_{m\pm1,m'}\langle n'l'm'|(\hat{x}\pm i\hat{y})|nlm\rangle
+\end{align}
+The matrix elements of $\tilde{\hat{z}}$ are
+\begin{align}
+\nonumber\langle n'l'm'|\tilde{\hat{z}}|nlm\rangle=&\langle n'l'm'|\hat{U}(\phi)\hat{z}\hat{U}^{\dagger}(\phi)|nlm\rangle\\
+\nonumber=&\langle n'l'm'|\sum_{i=0}^{\infty}\frac{(-i\hat{L}_z/\hbar)^i}{i!}\phi^i\hat{z}\sum_{j=0}^{\infty}\frac{(i\hat{L}_z/\hbar)^j}{j!}\phi^j|nlm\rangle\\
+\nonumber=&\langle n'l'm'|\sum_{i=0}^{\infty}\frac{(-im')^i}{i!}\phi^i\hat{z}\sum_{j=0}^{\infty}\frac{(im)^j}{j!}\phi^j|nlm\rangle\\
+=&e^{i(m-m')\phi}\langle n'l'm'|\hat{z}|nlm\rangle=\delta_{mm'}\langle n'l'm'|\hat{z}|nlm\rangle
+\end{align}
+\begin{equation}
+\tilde{\hat{x}}=\frac{\widetilde{\hat{x}+i\hat{y}}+\widetilde{\hat{x}-i\hat{y}}}{2}=\frac{1}{2}\left(\begin{array}{ccccccc}
+0&i&&&&&\\
+-i&0&i&&&&\\
+&-i&0&\ddots&&&\\
+&&\ddots&\ddots&\ddots&&\\
+&&&\ddots&0&i&\\
+&&&&-i&0&i\\
+&&&&&-i&0
+\end{array}\right)\hat{x}
+\end{equation}
+\begin{equation}
+\tilde{\hat{y}}=\frac{\widetilde{\hat{x}+i\hat{y}}-\widetilde{\hat{x}-i\hat{y}}}{2i}=\frac{1}{2}\left(\begin{array}{ccccccc}
+0&1&&&&&\\
+i&0&1&&&&\\
+&i&0&\ddots&&&\\
+&&\ddots&\ddots&\ddots&&\\
+&&&\ddots&0&1&\\
+&&&&1&0&1\\
+&&&&&1&0
+\end{array}\right)\hat{y}
+\end{equation}
+\begin{equation}
+\tilde{\hat{z}}=\hat{z}
+\end{equation}
+Geometrical interpretation: rotation about $z$ axis is associated with the transformation of $\tilde{\hat{K}}$ into $\hat{K}$.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{4}
+[C-T Exercise 7-1] Let $\rho$, $\phi$, and $z$ be the cylindrical coordinates of a spinless particle ($x=\rho\cos\phi$, $y=\rho\sin\phi$; $\rho\leq0$, $0\leq\phi<2\pi$). Assume that the potential energy of this particle depends only on $\rho$, and not on $\phi$ and $z$. Recall that
+\[
+\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}=\frac{\partial^2}{\partial\rho^2}+\frac{1}{\rho}\frac{\partial}{\partial\rho}+\frac{1}{\rho^2}\frac{\partial^2}{\partial\phi^2}
+\]
+\begin{itemize}
+\item[(a)] Write, in cylindrical coordinates, the differential operator associated with the Hamiltonian. Show that $\hat{H}$ commutes with $\hat{L}_z$ and $\hat{\rho}_z$. Show from this that the wave functions associated with the stationary states of the particle can be chosen in the form $\varphi_{nmk}(\rho,\phi,z)=f_{nm}(\rho)e^{im\phi}e^{ikz}$, where the values that can be taken on by the indices $m$ and $k$ are to be specified.
+\item[(b)] Write, in cylindrical coordinates, the eigenvalue equation of the Hamiltonian $\hat{H}$ of the particle. Derive from it the differential equation which yields $f_{nm}(\rho)$.
+\item[(c)] Let $\hat{\sum}_y$ be the operator whose action, in the $\{|\vec{r}\rangle\}$ representation, is change $y$ to $-y$ (reflection with respect to the $xOz$ plane). Does $\hat{\sum}_y$ commute with $\hat{H}$? Show that $\hat{\sum}_y$ anticommutes with $\hat{L}_z$, and show from this that $\hat{\sum}_y|\varphi_{nmk}\rangle$ is an eigenvector of $\hat{L}_z$. What is the corresponding eigenvalue? What can be concluded concerning the degeneracy of the energy levels of the particle? Could this result be predicted directly from the differential equation established in (b)?
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The differential operator associated with the Hamitonia is
+\begin{align}
+\nonumber\hat{H}=&\frac{\hat{p}^2}{2\mu}+V(\rho)=-\frac{\hbar^2}{2\mu}(\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2})+V(\rho)\\
+=&-\frac{\hbar^2}{2\mu}(\frac{\partial^2}{\partial\rho^2}+\frac{1}{\rho}\frac{\partial}{\partial\rho}+\frac{1}{\rho^2}\frac{\partial^2}{\partial\phi^2}+\frac{\partial^2}{\partial z^2})+V(\rho)
+\end{align}
+The Hamiltonian can be written as
+\begin{equation}
+\hat{H}=\frac{\hat{p}_{\rho}^2}{2\mu}+\frac{\hat{L}_z^2}{2\mu\rho^2}+\frac{\hat{p}_z^2}{2\mu}+V(\rho)
+\end{equation}
+where
+\begin{gather}
+\hat{p}_{\rho}^2=-\hbar^2(\frac{\partial^2}{\partial\rho^2}+\frac{1}{\rho}\frac{\partial}{\partial\rho})\\
+\hat{L}_z=\frac{\hbar}{i}\frac{\partial}{\partial\varphi}
+\end{gather}
+Since $L_z$ depends only on $\varphi$ and $\hat{p}_z$ depends only on $z$ and $\hat{p}_{\rho}^2$ depends only on $\rho$,
+\begin{equation}
+[\hat{L}_z,\hat{p}_{\rho}^2]=[\hat{L}_z,\hat{p}_z]=[\hat{p}_{\rho}^2,\hat{p}_z]=0
+\end{equation}
+Therefore,
+\begin{equation}
+[\hat{H},\hat{L}_z]=[\hat{H},\hat{p}_z]=0
+\end{equation}
+$\hat{H}$ commutes with $\hat{L}_z$ and $\hat{p}_z$.\\
+The stationary Schrödinger equation
+\begin{equation}
+\hat{H}\phi=E\phi
+\end{equation}
+can be written as
+\begin{equation}
+-\frac{\hbar^2}{2\mu}(\Phi Z\frac{\partial^2}{\partial\rho^2}f+\frac{\Phi Z}{\rho}\frac{\partial}{\partial\rho}f+\frac{fZ}{\rho^2}\frac{\partial^2\Phi}{\partial\phi^2}+f\Phi\frac{\partial^2}{\partial z^2}Z)=Ef\Phi Z
+\end{equation}
+Divide the equation above by $f\Phi Z$
+\begin{gather}
+-\frac{\hbar^2}{2m}(\frac{1}{f}\frac{\partial^2}{\partial\rho^2}f+\frac{1}{\rho f}\frac{\partial}{\partial\rho}f+\frac{1}{\rho^2\Phi}\frac{\partial^2}{\partial\phi^2}\Phi+\frac{1}{Z}\frac{\partial^2}{\partial z^2}Z)=E\\
+\frac{1}{f}\frac{\partial^2f}{\partial\rho^2}+\frac{1}{\rho f}\frac{\partial f}{\partial\rho}+\frac{1}{\rho\Phi}\frac{\partial^2\Phi}{\partial\phi^2}+\frac{2mE}{\hbar^2}=-\frac{1}{Z}\frac{\partial^2}{\partial z^2}Z
+\end{gather}
+The right side is a function of $z$ only and the left side is a function of $\phi,\rho$ only, so
+\begin{gather}
+\frac{1}{Z}\frac{\partial^2}{\partial z^2}+k^2=0\\
+\Longrightarrow Z(z)=Ae^{ikz}
+\end{gather}
+where $k$ can be any real number, while the left side can be written as
+\begin{gather}
+\frac{\rho^2}{f}\frac{\partial^2}{\partial\rho^2}+\frac{\rho}{f}\frac{\partial}{\partial\rho}f+(\frac{2mE}{\hbar^2}-k^2)\rho^2=-\frac{1}{\Phi}\frac{\partial^2\Phi}{\partial\phi^2}
+\end{gather}
+Using similar method, we have
+\begin{gather}
+m^2=-\frac{1}{\Phi}\frac{\partial^2\Phi}{\partial\phi^2}\\
+\Longrightarrow\Phi(\phi)=Be^{im\phi}
+\end{gather}
+where $m$ should be interger, while $f$ have parameter $n,m$.
+\item[(b)] The eigenequation is
+\begin{gather}
+[-\frac{\hbar^2}{2\mu}(\frac{\partial^2}{\partial^2\rho}+\frac{1}{\rho}\frac{\partial}{\partial\rho})+\frac{\hbar^2m^2}{2\mu\rho^2}+\frac{\hbar^2V(\rho)}{\mu}]f_{nm}(\rho)=E'_{nm}f_{nm}(\rho)\\
+(\frac{\partial^2}{\partial^2}+\frac{1}{\rho}\frac{\partial}{\partial\rho}-\frac{m^2}{\rho^2}-V(\rho))f_{nm}(\rho)=\sqrt{\frac{2\mu E_{nm}}{\hbar^2}}f_{nm}(\rho)
+\end{gather}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T Exercise 7-2] Consider a particle of mass $\mu$, whose Hamiltonian is
+\[
+\hat{H}_0=\frac{1}{2\mu}\hat{\vec{p}}^2+\frac{1}{2}\mu\omega_0^2\hat{\vec{r}}^2,
+\]
+where $\omega_0$ is a given positive constant.
+\begin{itemize}
+\item[(a)] Find the energy levels of the particle and their degrees of degeneracy. Is it possible to construct a basis of eigenstates common to $\hat{H}_0$, $\hat{\vec{L}}^2$, $\hat{L}_z$?
+\item[(b)] Now, assume that the particle, which has a charge $q$, is is placed in a uniform magnetic field $\hat{B}$ parallel to $Oz$. We set $\omega_L=-qB/2\mu$. If we choose the gauge $\hat{A}=-\vec{r}\times\vec{B}/2$, the Hamiltonian $\hat{H}$ of the particle is then given by $\hat{H}=\hat{H}_0+\hat{H}_1(\omega_L)$, where $\hat{H}_1$ is the sum of an operator which is linearly dependent on $\omega_L$ (the paramagnetic term) and an operator which is quadratically dependent on $\omega_L$ (the diamagnetic term). Show that the new stationary states of the system and their degrees of degeneracy can be determined exactly.
+\item[(c)] Show that, if $\omega_L$ is much smaller than $\omega_0$,  then the effect of the diamagnetic term is negligible compared to that of the paramagnetic term.
+\item[(d)] We now consider the first excited state of the oscillator, that is, the states whose energies approach $5\hbar\omega_0/2$ when $\omega_L\rightarrow0$. To first order in $\omega_L/\omega_0$, what are the energy levels in the presence of the field $\vec{B}$ and their degrees of degeneracy (the Zeeman effect for a three-dimensional harmonic oscillator)? Same questions for the second excited state.
+\item[(e)] Now consider the ground state. How does its energy vary as a function of $\omega_L$ (the diamagnetic effect on the ground state)? Calculate the magnetic susceptibility $\chi$ of this state. Is the ground state, in the presence of the field $\vec{B}$, an eigenvector of $\hat{\vec{L}}^2$? of $\hat{L}_z$? of $\hat{L}_x$? Give the form of its wave function and the corresponding probability current. Show that the effect of the field $\hat{B}$ is to compress the wave function about $Oz$  (in a ratio $[1+(\omega_L/\omega_0)^2]^{1/4}$ and to induce a current.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The energy levels of the particle are
+\begin{equation}
+E_n=\hbar\omega_0(n+\frac{3}{2})
+\end{equation}
+where
+\begin{equation}
+n=n_x+n_y+n_z,\quad n_x,n_y,n_z=0,1,2,\cdots
+\end{equation}
+The degrees of degeneracy of the energy levels $E_n$ are
+\begin{equation}
+g=\sum_{n_x=0}^n\sum_{n_y=0}^{n-n_x}1=\frac{1}{2}n^2+\frac{3}{2}n+1
+\end{equation}
+Since
+\begin{gather}
+[\hat{H}_0,\hat{\vec{L}}^2]=0\\
+[\hat{H}_0,\hat{L}_z]=0
+\end{gather}
+it is possible to construct a basis of eigenstates common to $\hat{H}_0$, $\hat{\vec{L}}^2$, $\hat{L}_z$.
+\item[(b)] Suppose $\vec{B}=B\vec{e}_z$, then
+\begin{equation}
+\hat{A}=-\vec{r}\times\vec{B}/2=(x\vec{e}_y-y\vec{e}_x)B/2
+\end{equation}
+The Hamiltonian is
+\begin{align}
+\nonumber\hat{H}=&\frac{1}{2\mu}(\hat{\vec{p}}-q\hat{\vec{A}})^2+\frac{1}{2}\mu\omega_0^2\hat{\vec{r}}^2\\
+\nonumber=&\frac{1}{2\mu}\hat{\vec{p}}^2+\frac{1}{2}\mu\omega_0^2\hat{\vec{r}}^2+\frac{1}{2\mu}[-q\hat{\vec{p}}\hat{\vec{A}}-q\hat{\vec{A}}\hat{\vec{p}}+q^2\hat{\vec{A}}^2]\\
+\nonumber=&\frac{1}{2\mu}\hat{\vec{p}}^2+\frac{1}{2}\mu\omega_0^2\hat{\vec{r}}^2+\frac{1}{2\mu}[-q(-\hat{p}_x\hat{y}+\hat{p}_y\hat{x})B+q^2(\hat{x}^2+\hat{y}^2)B^2/4]\\
+\nonumber=&\frac{1}{2\mu}\hat{\vec{p}}^2+\frac{1}{2}\mu\omega_0^2\hat{\vec{r}}^2+[\omega_L(-\hat{p}_x\hat{y}+\hat{p}_y\hat{x})+\mu\omega_L^2(\hat{x}^2+\hat{y}^2)/2]\\
+=&\hat{H}_0+\hat{H}_1(\omega_L)
+\end{align}
+where
+\begin{equation}
+\hat{H}_1(\omega_L)=\omega_L(-\hat{p}_x\hat{y}+\hat{p}_y\hat{x})+\mu\omega_L^2(x^2+y^2)/2
+\end{equation}
+Since
+\begin{equation}
+\hat{H}(\omega_L)=[\frac{1}{2\mu}\hat{p}_x^2+\frac{1}{2}\mu(\omega_0^2+\omega_L^2)x^2]+[\frac{1}{2\mu}\hat{p}_y^2+\frac{1}{2}\mu(\omega_0^2+\omega_L^2)y^2]+[\frac{1}{2\mu}\hat{p}_z^2+\frac{1}{2}\mu\omega_0^2z^2]-\omega_L\hat{L}_z
+\end{equation}
+so
+\begin{equation}
+\hat{H}(\omega_L)|nm\rangle=\hbar(\omega_0+\omega_L)(n_x+\frac{1}{2})+\hbar(\omega_0+\omega_L)(n_y+\frac{1}{2})+\hbar\omega_0(n_z+\frac{1}{2})-m\omega_L\hbar
+\end{equation}
+the new stationary states of the system and their degrees of degeneracy can be determined exactly.
+\item[(c)] If $\omega_L$ is much smaller than $\omega_0$, then the ratio of the diamagnetic term and the paramagnetic term is
+\begin{equation}
+\lim_{\omega\rightarrow0}\frac{\mu\omega_L^2(x^2+y^2)/2}{\omega_L(-\hat{p}\hat{y}+\hat{p}_y\hat{x})}=\frac{\mu(x^2+y^2)/2}{(-\hat{p}\hat{y}+\hat{p}_y\hat{x})}\lim_{\omega\rightarrow0}\omega_L=0
+\end{equation}
+so the effect of the diamagnetic term is negligible compared to that of the paramagnetic term.
+\item[(d)] To first order in $\omega_L/\omega_0$, the Hamiltonian is
+\begin{equation}
+\hat{H}=\hat{H}_0-\omega_L\hat{L}_z
+\end{equation}
+The energy levels of the first excited state are
+\begin{equation}
+E_{1,1}=\frac{5}{2}\hbar\omega+\hbar\omega_L
+\end{equation}
+with degree of degeneracy $g=1$,
+\begin{equation}
+E_{1,0}=\frac{5}{2}\hbar\omega
+\end{equation}
+each with degree of degeneracy $g=2$, and
+\begin{equation}
+E_{1,0}=\frac{5}{2}\hbar\omega-\hbar\omega_L
+\end{equation}
+each with degree of degeneracy $g=1$.\\
+The energy levels of the second excited state are
+\begin{equation}
+E_{1,2}=\frac{7}{2}\hbar\omega+2\hbar\omega_L
+\end{equation}
+each with degree of degeneracy $g=1$,
+\begin{equation}
+E_{1,}=\frac{7}{2}\hbar\omega+\hbar\omega_L
+\end{equation}
+each with degree of degeneracy $g=2$,
+\begin{equation}
+E_{1,2}=\frac{7}{2}\hbar\omega
+\end{equation}
+each with degree of degeneracy $g=3$,
+\begin{equation}
+E_{1,2}=\frac{7}{2}\hbar\omega-\hbar\omega_L
+\end{equation}
+each with degree of degeneracy $g=2$, and
+\begin{equation}
+E_{1,2}=\frac{7}{2}\hbar\omega-2\hbar\omega_L
+\end{equation}
+each with degree of degeneracy $g=1$.\\
+\item[(e)] The energy of the ground state is
+\begin{equation}
+E_n=\hbar(\frac{3}{2}\omega_0+\omega_L)
+\end{equation}
+\end{itemize}
+\end{sol}
+\end{document}

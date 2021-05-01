@@ -1,0 +1,511 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_10
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}}
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 10}
+\begin{document}
+\begin{problem}{1}
+[C-T Exercise 4-1] Consider a spin $1/2$ particle of magnetic moment $\hat{\vec{M}}=\gamma\hat{\vec{S}}$. The spin state space is spanned by the basis of the $|+\rangle$ and $|-\rangle$ vectors, eigenvectors of $\hat{S}_z$ with eigenvalues $+\hbar/2$ and $\hbar/2$. At time $t=0$, the state of the system is $|\psi(t=0)\rangle=|+\rangle$.
+\begin{itemize}
+\item[(a)] If the observable $\hat{S}_z$ is measured at time $t=0$, what results can be found, and with what probabilities?
+\item[(b)] Instead of performing the preceding measurement, we let the system evolve under the influence of a magnetic field parallel to $Oy$, of modulus $B_0$. Calculate, in the $\{|+\rangle,|-\rangle\}$ basis, the state of the system at time $t=0$.
+\item[(c)] At time $t$, we measure the observables $\hat{S}_x$, $\hat{S}_y$, $\hat{S}_z$. What values can we find, and with what probabilities? What relation must exist between $B_0$ and $t$ for the result of one of the measurements to be certain? Give a physical interpretation of this condition.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] At time $t$, the state of the system is
+\begin{equation}
+|\psi(t=0)\rangle=|+\rangle=\frac{1}{\sqrt{2}}(|\xi_+\rangle+|\xi_-\rangle)
+\end{equation}
+where the $|\xi_+\rangle$ and $|\xi_-\rangle$ are the two eigenvectors of the observable $\hat{S}_x$ with the eigenvalues $\pm\frac{\hbar}{2}$, respectively.\\
+Since
+\begin{gather}
+P(S_x=\frac{\hbar}{2})=|\langle\xi_+|\psi(t=0)\rangle|^2=\frac{1}{2}\\
+P(S_x=-\frac{\hbar}{2})=|\langle\xi_-|\psi(t=0)\rangle|^2=\frac{1}{2}
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$ and result $-\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$.
+\item[(b)] At time $t$, the state of the system is
+\begin{equation}
+|\psi(t=0)\rangle=|+\rangle=\frac{1}{\sqrt{2}}(|\eta_+\rangle+|\eta_-\rangle)
+\end{equation}
+where the $|\eta_+\rangle$ and $|\eta_-\rangle$ are the two eigenvectors of the observable $\hat{S}_y$ with the eigenvalues $\pm\frac{\hbar}{2}$, respectively.\\
+The Hamiltonian of the particle in the magetic field is
+\begin{equation}
+\hat{H}=\hat{\vec{M}}\cdot\vec{B}=-\gamma B_0\hat{S}_y
+\end{equation}
+so
+\begin{gather}
+\hat{H}|\eta_+\rangle=-\gamma B_0\hat{S}_y|\eta_+\rangle=-\frac{1}{2}\gamma\hbar B_0|\eta_+\rangle=E_{\eta_+}|\eta_+\rangle\Longrightarrow E_{\eta_+}=-\frac{1}{2}\gamma\hbar B_0\\
+\hat{H}|\eta_-\rangle=-\gamma B_0\hat{S}_y|\eta_-\rangle=\frac{1}{2}\gamma\hbar B_0|\eta_-\rangle=E_{\eta_-}|\eta_-\rangle\Longrightarrow E_{\eta_-}=\frac{1}{2}\gamma\hbar B_0
+\end{gather}
+Therefore, at time $t$, the state of the system is
+\small\begin{align}
+\nonumber&|\psi(t)\rangle=\frac{1}{\sqrt{2}}(e^{-iE_{\eta_+}t/\hbar}|\eta\rangle+e^{-iE_{\eta_+}t/\hbar}|\eta\rangle)=\frac{1}{\sqrt{2}}(e^{i\gamma B_0t/2}|\eta\rangle+e^{-i\gamma B_0t/2}|\eta_-\rangle)\\
+\nonumber=&\frac{1}{\sqrt{2}}[(\cos\frac{\gamma B_0t}{2}+i\sin\frac{\gamma B_0t}{2})\frac{1}{\sqrt{2}}(|+\rangle+i|-\rangle)+(\cos\frac{\gamma B_0t}{2}-i\sin\frac{\gamma B_0t}{2})\frac{1}{\sqrt{2}}(|+\rangle-i|-\rangle)]\\
+=&\cos\frac{\gamma B_0t}{2}|+\rangle-\sin\frac{\gamma B_0t}{2}|-\rangle
+\end{align}\normalsize
+\item[(c)] If we measure the observable $\hat{S}_z$, since
+\begin{gather}
+P(S_z=\frac{\hbar}{2})=|\langle+|\psi(t)\rangle|^2=\cos^2\frac{\gamma B_0t}{2}\\
+P(S_z=-\frac{\hbar}{2})=|\langle-|\psi(t)\rangle|^2=\sin^2\frac{\gamma B_0t}{2}
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\cos^2\frac{\gamma B_0t}{2}$ and result $-\frac{\hbar}{2}$ can be found with probability $\sin^2\frac{\gamma B_0t}{2}$.\\
+If $B_0t=\frac{2n\pi}{\gamma},n=0,\pm1,\pm2,\cdots$, the result of the measurement is centain to be $\frac{\hbar}{2}$; if $B_0t=\frac{(2n+1)\pi}{\gamma},n=0,\pm1,\pm2,\cdots$, the reuslt of the measurement is certain to be $-\frac{\hbar}{2}$.\\
+A physical interpretation: the spin of the particle will rotate around the $y$ axis under the magnetic field parallel to $Oy$.\\
+The state of the system at time $t$ can be written as
+\begin{align}
+\nonumber|\psi(t)\rangle=&\cos\frac{\gamma B_0t}{2}|+\rangle-\sin\frac{\gamma B_0t}{2}|-\rangle\\
+\nonumber=&\cos\frac{\gamma B_0t}{2}\frac{1}{\sqrt{2}}(|\xi_+\rangle+|\xi_-\rangle)-\sin\frac{\gamma B_0t}{2}\frac{1}{\sqrt{2}}(|\xi_+\rangle-|\xi_-\rangle)\\
+=&\frac{1}{\sqrt{2}}(\cos\frac{\gamma B_0t}{2}-\sin\frac{\gamma B_0t}{2})|\xi_+\rangle+\frac{1}{\sqrt{2}}(\cos\frac{\gamma B_0t}{2}+\sin\frac{\gamma B_0t}{2})|\xi_-\rangle
+\end{align}
+If we measure the observable $\hat{S}_x$, since
+\begin{gather}
+P(S_x=\frac{\hbar}{2})=|\langle\xi_+|\psi(t)\rangle|^2=\frac{1}{2}(\cos\frac{\gamma B_0t}{2}-\sin\frac{\gamma B_0t}{2})^2=\frac{1}{2}[1-\sin(\gamma B_0t)]\\
+P(S_x=-\frac{\hbar}{2})=|\langle\xi_-|\psi(t)\rangle|^2=\frac{1}{2}(\cos\frac{\gamma B_0t}{2}+\sin\frac{\gamma B_0t}{2})^2=\frac{1}{2}[1+\sin(\gamma B_0t)]
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}[1-\sin(\gamma B_0t)]$ and $-\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}[1+\sin(\gamma B_0t)]$.\\
+If $B_0t=\frac{(4n-1)\pi}{2\gamma}$, the result of the measurement is certain to be $\frac{\hbar}{2}$; if $B_0t=\frac{(4n+1)\pi}{2\gamma}$, the result of the measurement is certain to be $-\frac{\hbar}{2}$.\\
+A physical interpretation: the spin of the particle will rotate around the $y$ axis under the magnetic field parallel to $Oy$.\\
+The state of the system at time $t$ can be written as
+\begin{equation}
+|\psi(t)\rangle=\frac{1}{\sqrt{2}}(e^{i\gamma B_0t/2}|\eta\rangle+e^{-i\gamma B_0t/2}|\eta_-\rangle)
+\end{equation}
+If we measure the observable $\hat{S}_y$, since
+\begin{gather}
+P(S_y=\frac{\hbar}{2})=|\langle\eta_+|\psi(t)\rangle|^2=\frac{1}{2}\\
+P(S_y=-\frac{\hbar}{2})=|\langle\eta_-|\psi(t)\rangle|^2=\frac{1}{2}
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$ and $-\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$.\\
+The result of the measurement cannot be certain at any time.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{2}
+[C-T Exercise 4-3] Consider a spin $1/2$ particle placed in a magnetic field $\hat{B}_0$ with components $B_x=B_0/\sqrt{2}$, $B_y=0$, and $B_z=B_0/\sqrt{2}$. The notation is the same as that of Problem 1.
+\begin{itemize}
+\item[(a)] Calculate the matrix representing, in the $\{|+\rangle,|-\rangle\}$ basis, the operator $\hat{H}$, the Hamiltonian of the system.
+\item[(b)] Calculate the eigenvalues and the eigenvectors of $\hat{H}$.
+\item[(c)] The system at time $t=0$ is in the state $|-\rangle$. What values can be found if the energy is measured, and with what probabilities?
+\item[(d)] Calculate the state vector $|\psi(t)\rangle$ at time $t$. At this instant, $\hat{S}_x$ is measured; what is the mean value of the results that can be obtained? Give a geometrical interpretation.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] In the $\{|+\rangle,|-\rangle\}$ basis, the Hamiltonian of the system is
+\begin{align}
+\nonumber\hat{H}=&-\hat{\vec{M}}\cdot\vec{B}=-\frac{1}{\sqrt{2}}\gamma B_0(\hat{S}_x+\hat{S}_z)\\
+\nonumber=&-\frac{1}{\sqrt{2}}\gamma B_0\left[\frac{\hbar}{2}\left(\begin{array}{cc}0&1\\1&0\end{array}\right)+\frac{\hbar}{2}\left(\begin{array}{cc}1&0\\0&-1\end{array}\right)\right]\\
+=&-\frac{1}{2\sqrt{2}}\gamma\hbar B_0\left(\begin{array}{cc}1&1\\1&-1\end{array}\right)
+\end{align}
+\item[(b)] The characteristic function of the Hamiltonian is
+\begin{gather}
+|\hat{H}-EI|=-\frac{1}{2\sqrt{2}}\gamma\hbar B_0\left(\begin{array}{cc}1-\lambda&1\\1&-(1+\lambda)\end{array}\right)=-\frac{1}{2\sqrt{2}}\gamma\hbar B_0(\lambda^2-2)=0\\
+\Longrightarrow\lambda_{1,2}=\pm\sqrt{2}
+\end{gather}
+where $\lambda=\frac{E}{\frac{1}{\sqrt{2\sqrt{2}}}\gamma\hbar B_0}$,\\
+Therefore, the eigenvalues of the Hamiltonian is
+\begin{equation}
+E_{1,2}=-\frac{1}{2\sqrt{2}}\gamma\hbar B_0\lambda_{1,2}=\mp\frac{1}{2}\gamma\hbar B_0
+\end{equation}
+Assume the eigenvectors of the Hamiltonian is $|\varphi\rangle=\left(\begin{array}{c}a\\b\end{array}\right)$, plug the eigenvalues obtained above into the eigenfunction
+\begin{equation}
+\hat{H}|\varphi\rangle=-\frac{1}{2\sqrt{2}}\gamma\hbar B_0\left(\begin{array}{cc}1&1\\1&-1\end{array}\right)\left(\begin{array}{c}a\\b\end{array}\right)=E_{1,2}\left(\begin{array}{c}a\\b\end{array}\right)
+\end{equation}
+to get the corresponding normalized eigenvectors
+\begin{gather}
+\begin{align}
+\nonumber|\varphi_1\rangle=&\frac{\sqrt{\sqrt{2}+1}}{2^{3/4}}\left(\begin{array}{c}1\\\sqrt{2}-1\end{array}\right)=\frac{(\sqrt{2}+1)^{1/2}}{2^{3/4}}[|+\rangle+(\sqrt{2}-1)|-\rangle]\\
+=&\frac{1}{2^{3/4}}[(\sqrt{2}+1)^{1/2}|+\rangle+(\sqrt{2}-1)^{1/2}|-\rangle]\\
+\end{align}\\
+\begin{align}
+\nonumber|\varphi_2\rangle=&\frac{(\sqrt{2}-1)^{1/2}}{2^{3/4}}\left(\begin{array}{c}1\\-(\sqrt{2}+1)\end{array}\right)=\frac{(\sqrt{2}-1)^{1/2}}{2^{3/4}}[|+\rangle-(\sqrt{2}+1)|-\rangle]\\
+=&\frac{1}{2^{3/4}}[(\sqrt{2}-1)^{1/2}|+\rangle-(\sqrt{2}+1)^{1/2}|-\rangle]
+\end{align}
+\end{gather}
+\item[(c)] The state of the system at time $0$ can be written as
+\begin{equation}
+|\psi(0)\rangle=|-\rangle=\frac{1}{2^{3/4}}[(\sqrt{2}-1)^{1/2}|\varphi_1\rangle-(\sqrt{2}+1)^{1/2}|\varphi_2\rangle]
+\end{equation}
+Since
+\begin{gather}
+P(E_1)=|\langle\varphi_1|\psi(0)\rangle|^2=\frac{\sqrt{2}-1}{2\sqrt{2}}\\
+P(E_2)=|\langle\varphi_2|\psi(0)\rangle|^2=\frac{\sqrt{2}+1}{2\sqrt{2}}
+\end{gather}
+value $E_1$ can be found with probability $\frac{\sqrt{2}-1}{2\sqrt{2}}$ and value $E_2$ can be found with probability $\frac{\sqrt{2}+1}{2\sqrt{2}}$.
+\item[(d)] The state of the system at time $t$ is
+\begin{align}
+\nonumber&|\psi(t)\rangle=\frac{1}{2^{3/4}}[(\sqrt{2}-1)^{1/2}e^{-iE_1t/\hbar}|\varphi_1\rangle-(\sqrt{2}+1)^{1/2}e^{-iE_2t/\hbar}|\varphi_2\rangle]\\
+\nonumber=&\frac{1}{2^{3/4}}[(\sqrt{2}-1)^{1/2}e^{i\gamma B_0t}|\varphi_1\rangle-(\sqrt{2}+1)^{1/2}e^{-i\gamma B_0t}|\varphi_2\rangle]\\
+\nonumber=&\frac{1}{2\sqrt{2}}[(\sqrt{2}-1)^{1/2}e^{i\gamma B_0t}((\sqrt{2}+1)^{1/2}|+\rangle+(\sqrt{2}-1)^{1/2}|-\rangle)\\
+\nonumber&+(\sqrt{2}+1)^{1/2}e^{-i\gamma B_0t}((\sqrt{2}-1)^{1/2}|+\rangle-(\sqrt{2}+1)^{1/2}|-\rangle]\\
+\nonumber=&\frac{1}{\sqrt{2}}[i\sin\frac{\gamma B_0t}{2}|+\rangle+(\sqrt{2}\cos\frac{\gamma B_0t}{2}-i\sin\frac{\gamma B_0t}{2})|-\rangle]\\
+\nonumber=&\frac{1}{\sqrt{2}}[i\sin\frac{\gamma B_0t}{2}\frac{1}{\sqrt{2}}(|\xi_+\rangle+|\xi_-\rangle)+(\sqrt{2}\cos\frac{\gamma B_0t}{2}-i\sin\frac{\gamma B_0t}{2})\frac{1}{\sqrt{2}}(|\xi_+\rangle-|\xi_-\rangle)]\\
+=&\frac{1}{\sqrt{2}}[\cos\frac{\gamma B_0t}{2}|\xi_+\rangle-(\cos\frac{\gamma B_0t}{2}-i\sqrt{2}\sin\frac{\gamma B_0t}{2})|\xi_-\rangle]
+\end{align}
+if the observable $\hat{S}_x$ is measured, since
+\begin{gather}
+P(\frac{\hbar}{2})=|\langle\xi_+|\psi(t)\rangle|^2=\frac{1}{2}\cos^2\frac{\gamma B_0t}{2}\\
+P(-\frac{\hbar}{2})=|\langle\xi_-|\psi(t)\rangle|^2=\frac{1}{2}[1+\sin^2\frac{\gamma B_0t}{2}]
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}\cos^2\frac{\gamma B_0t}{2}$ and result $-\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}[1+\sin^2\frac{\gamma B_0t}{2}]$.\\
+Therefore, the mean value of the result that can be obtained is
+\begin{align}
+\nonumber\bar{S}_x=&P(\frac{\hbar}{2})\frac{\hbar}{2}+P(-\frac{\hbar}{2})(-\frac{\hbar}{2})\\
+\nonumber=&\frac{\hbar}{4}\cos^2\frac{\gamma B_0t}{2}-\frac{\hbar}{4}[1+\sin^2\frac{\gamma B_0T}{2}]\\
+\nonumber=&\frac{\hbar}{4}\cos(\gamma B_0t)-\frac{\hbar}{4}\\
+=&-\frac{\hbar}{2}\sin^2\frac{\gamma B_0t}{2}
+\end{align}
+Geometrical interpretation: the magnetic field is along the angular bisector of the $x$ axis and the $z$ axis, the spin is originally along the negative $z$ axis and rotate around the direction of the magetic field, producing the periodically-changing spin project along $x$ axis.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{3}
+[C-T Exercise 4-6] Consider the system composed of two spin $1/2$'s, $\hat{\vec{S}}_1$ and $\hat{\vec{S}}_2$, and the basis of four vectors $|\pm\pm\rangle$. The system at time $t=0$ is in the state
+\[
+|\psi(0)\rangle=\frac{1}{2}|++\rangle+\frac{1}{2}|+-\rangle+\frac{1}{\sqrt{2}}|--\rangle.
+\]
+\begin{itemize}
+\item[(a)] At time $t=0$, $\hat{S}_{1z}$ is measured; what is the probability of finding $-\hbar/2$? What is the state vector after this measurement? If we then measure $\hat{S}_{1x}$, what results can be found, and with what probabilities?
+\item[(b)] When the system is in the state $|\psi(0)\rangle$ written above, $\hat{S}_{1z}$ and $\hat{S}_{2z}$ are measured simultaneously. What is the probability of finding opposite results? Identical results?
+\item[(c)] Instead of performing the preceding measurements, we let the system evolve under the influence of the Hamiltonian $\hat{H}=\omega_1\hat{S}_{1z}+\omega_2\hat{S}_{2z}$. What is the state vector $|\psi(t)\rangle$ at time $t$? Calculate at time $t$ the mean values $\langle\hat{\vec{S}}_1\rangle$ and $\langle\hat{\vec{S}}_2\rangle$. Give a physical interpretation.
+\item[(d)] Show that the lengths of the vectors $\langle\hat{\vec{S}}_1\rangle$ and $\langle\hat{\vec{S}}_2\rangle$ are less than $\hbar/2$. What must be the form of $|\psi(0)\rangle$ for each of these lengths to be equal to $+\hbar/2$?
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] If $\hat{S}_{1z}$ is measured at time $t=0$, since
+\begin{gather}
+P(S_{1z}=\frac{\hbar}{2})=|\langle+|\otimes1(2)|\psi(0)\rangle|^2=|\frac{1}{\sqrt{2}}1(1)\otimes|+\rangle_2+\frac{1}{\sqrt{2}}1(1)\otimes|-\rangle_2|^2=\frac{1}{2}\\
+P(S_{1z}=-\frac{\hbar}{2})=|\langle-|\otimes1(2)|\psi(0)|^2=\frac{1}{2}
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$ and result $-\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$.\\
+If the result $S_z=\frac{\hbar}{2}$ is found at first, then immediately after the measurement, the state of the system is
+\begin{align}
+\nonumber\psi_{a,+}=&\frac{1}{\sqrt{2}}(|++\rangle+|+-\rangle)=|+\rangle_1\otimes\frac{1}{\sqrt{2}}(|+\rangle_2+|-\rangle_2)\\
+=&\frac{1}{\sqrt{2}}(|\xi_+\rangle_1+|\xi_-\rangle_1)\otimes\frac{1}{\sqrt{2}}(|+\rangle_2+|-\rangle_2)
+\end{align}
+If we then measure $\hat{S}_x$, since
+\begin{gather}
+P(S_{1x}=\frac{\hbar}{2})=|\langle\xi_+|\otimes1(2)|\psi_{a,+}\rangle|^2=\frac{1}{2}\\
+P(S_{1x}=-\frac{\hbar}{2})=|\langle\xi_-|\otimes1(2)|\psi_{a,+}\rangle|^2=\frac{1}{2}
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$ and result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$.\\
+Similarly, if the result $S_z=\frac{\hbar}{2}$ is found at first, the immediately after the measurement, the state of the system is
+\begin{equation}
+\psi_{a,+}=|--\rangle=\frac{1}{\sqrt{2}}(|\xi_+\rangle-|\xi_-\rangle)\otimes|-\rangle
+\end{equation}
+If we then measure $\hat{S}_x$, since
+\begin{gather}
+P(S_{1x}=\frac{\hbar}{2})=|\langle\xi_+|\otimes1(2)|\psi_{a,-}\rangle|^2=\frac{1}{2}\\
+P(S_{1x}=-\frac{\hbar}{2})=|\langle\xi_-|\otimes1(2)|\psi_{a,-}\rangle|^2=\frac{1}{2}
+\end{gather}
+result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$ and result $\frac{\hbar}{2}$ can be found with probability $\frac{1}{2}$.
+\item[(b)] The probability of finding opposite results is
+\begin{align}
+\nonumber P(S_{1z}S_{2z}<0)=&P(S_{1z}=\frac{\hbar}{2},S_{2z}=-\frac{\hbar}{2})+P(S_{1z}=-\frac{\hbar}{2},S_{2z}\\
+=&\frac{\hbar}{2})=|\langle+-|\psi(0)\rangle|^2+|\langle-+|\psi(0)\rangle|^2=\frac{1}{4}
+\end{align}
+The probability of finding identical results is
+\begin{align}
+\nonumber P(S_{1z}S_{2z}>0)=&P(S_{1z}=\frac{\hbar}{2},S_{2z}=\frac{\hbar}{2})+P(S_{1z}=-\frac{\hbar}{2},S_{2z}\\
+=&-\frac{\hbar}{2})=|\langle++|\psi(0)\rangle|^2+|\langle--|\psi(0)\rangle|^2=\frac{1}{4}+\frac{1}{2}=\frac{3}{4}
+\end{align}
+\item[(c)] $|\pm\pm\rangle$ are the eigenvalue of the Hamiltonian
+\begin{gather}
+\hat{H}|++\rangle=(\omega_1\hat{S}_{1z}\otimes1(2)+\omega_21(1)\otimes\hat{S}_{2z})(|+\rangle_1\otimes|-\rangle_2)=\frac{\hbar(\omega_1+\omega_2)}{2}|++\rangle\\
+\hat{H}|+-\rangle=\frac{\hbar(\omega_1-\omega_2)}{2}|+-\rangle\\
+\hat{H}|-+\rangle=\frac{\hbar(-\omega_1+\omega_2)}{2}|-+\rangle\\
+\hat{H}|--\rangle=\frac{\hbar(-\omega_1-\omega_2)}{2}|--\rangle
+\end{gather}
+The eigenvector at time $t$ is
+\begin{equation}
+|\psi(t)\rangle=\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle
+\end{equation}
+The mean values are
+\begin{align}
+\nonumber\langle\hat{S}_{1,x}\rangle=&\langle\psi(t)|\hat{\vec{S}}_{1x}|\psi(t)\rangle\\
+\nonumber=&[\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\langle++|+\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\langle+-|+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\langle--|]\\
+\nonumber&\times\hat{S}_{1,x}[\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle]\\
+\nonumber=&\frac{\hbar}{2}\frac{1}{\sqrt{2}}e^{-i(\omega_1+\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}+\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\\
+=&\frac{\hbar}{4\sqrt{2}}(e^{-i\omega_1t}+e^{-i\omega_1t})=\frac{\hbar}{2\sqrt{2}}\cos(\omega_1t)
+\end{align}
+\begin{align}
+\nonumber\langle\hat{S}_{1,y}\rangle=&\langle\psi(t)|\hat{\vec{S}}_{1,y}|\psi(t)\rangle\\
+\nonumber=&[\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\langle++|+\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\langle+-|+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\langle--|]\\
+\nonumber&\times\hat{S}_{1,y}[\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle]\\
+\nonumber=&i\frac{\hbar}{2}\frac{1}{\sqrt{2}}e^{-i(\omega_1+\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}-i\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\\
+=&i\frac{\hbar}{4\sqrt{2}}(e^{-i\omega_1t}-e^{-i\omega_1t})=\frac{\hbar}{2\sqrt{2}}\sin(\omega_1t)
+\end{align}
+\begin{align}
+\nonumber\langle\hat{S}_{1,z}\rangle=&\langle\psi(t)|\hat{\vec{S}}_{1,z}|\psi(t)\rangle\\
+\nonumber=&[\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\langle++|+\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\langle+-|+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\langle--|]\\
+\nonumber&\times\hat{S}_{1,y}[\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle]\\
+\nonumber=&\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}+\frac{\hbar}{2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}\\
+\nonumber&-\frac{\hbar}{2}\frac{1}{\sqrt{2}}e^{-i(\omega_1+\omega_2)t/2}\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\\
+=&\frac{\hbar}{8}+\frac{\hbar}{8}-\frac{\hbar}{4}=0
+\end{align}
+\begin{equation}
+\Longrightarrow\langle\hat{\vec{S}}_1\rangle=\langle\hat{S}_{1,x}\rangle\vec{e}_x+\langle\hat{S}_{1,y}\rangle\vec{e}_y+\langle\hat{S}_{1,z}\rangle\vec{e}_z=\frac{\hbar}{2\sqrt{2}}[\cos(\omega_1t)\vec{e}_x+\sin(\omega_1t)\vec{e}_y]
+\end{equation}
+\begin{align}
+\nonumber\langle\hat{S}_{2,x}\rangle=&\langle\psi(t)|\hat{\vec{S}}_{2,x}|\psi(t)\rangle\\
+\nonumber=&[\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\langle++|+\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\langle+-|+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\langle--|]\\
+\nonumber&\times\hat{S}_{2,x}[\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle]\\
+\nonumber=&\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}+\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}\\
+=&\frac{\hbar}{8}(e^{-i\omega_2t}+e^{i\omega_2t})=\frac{\hbar}{4}\cos(\omega_2t)
+\end{align}
+\begin{align}
+\nonumber\langle\hat{S}_{2,y}\rangle=&\langle\psi(t)|\hat{\vec{S}}_{2,y}|\psi(t)\rangle\\
+\nonumber=&[\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\langle++|+\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\langle+-|+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\langle--|]\\
+\nonumber&\times\hat{S}_{2,y}[\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle]\\
+\nonumber=&i\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}-i\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1-\omega_2)/2}\\
+=&i\frac{\hbar}{8}(e^{-i\omega_2t}-e^{i\omega_2t})=\frac{\hbar}{4}\sin(\omega_2t)
+\end{align}
+\begin{align}
+\nonumber\langle\hat{S}_{2,z}\rangle=&\langle\psi(t)|\hat{\vec{S}}_{2,z}|\psi(t)\rangle\\
+\nonumber=&[\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\langle++|+\frac{1}{2}e^{i(\omega_1-\omega_2)t/2}\langle+-|+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\langle--|]\\
+\nonumber&\times\hat{S}_{2,z}[\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}|++\rangle+\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}|+-\rangle+\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}|--\rangle]\\
+\nonumber=&\frac{\hbar}{2}\frac{1}{2}e^{i(\omega_1+\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1+\omega_2)t/2}-\frac{\hbar}{2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}\frac{1}{2}e^{-i(\omega_1-\omega_2)t/2}\\
+\nonumber&-\frac{\hbar}{2}\frac{1}{\sqrt{2}}e^{-i(\omega_1+\omega_2)t/2}\frac{1}{\sqrt{2}}e^{i(\omega_1+\omega_2)t/2}\\
+=&\frac{\hbar}{8}-\frac{\hbar}{8}-\frac{\hbar}{4}
+\end{align}
+\begin{equation}
+\Longrightarrow\langle\hat{\vec{S}}_2\rangle=\langle\hat{S}_{2,x}\rangle\vec{e}_x+\langle\hat{S}_{2,y}\rangle\vec{e}_y+\langle\hat{S}_{2,z}\rangle\vec{e}_z=\frac{\hbar}{4}[\cos(\omega_2t)\vec{e}_x+\sin(\omega_2t)\vec{e}_y-\vec{e}_z]
+\end{equation}
+\item[(d)] Since
+\begin{equation}
+|\langle\hat{\vec{S}}_1\rangle|=|\langle\hat{\vec{S}}_2\rangle|=\frac{\hbar}{2\sqrt{2}}<\frac{\hbar}{2}
+\end{equation}
+the lengths of the vectors $\langle\hat{\vec{S}}_1\rangle$ and $\langle\hat{\vec{S}}_2\rangle$ are less than $\hbar/2$.\\
+If the $|\psi(0)\rangle$ is the form of $|\varphi(1)\rangle\otimes|\varphi(2)\rangle$, then each of these lengths are equal to $\hbar/2$, proof:
+If
+\begin{equation}
+|\psi(0)\rangle=|\varphi(1)\rangle\otimes|\varphi(2)\rangle
+\end{equation}
+where
+\begin{align}
+\nonumber|\varphi(1)\rangle=&a|+\rangle+b|-\rangle\\
+\nonumber=&\frac{a+b}{\sqrt{2}}|\xi_+\rangle+\frac{a-b}{\sqrt{2}}|\xi_-\rangle\\
+=&\frac{a-ib}{\sqrt{2}}|\eta_+\rangle+\frac{a+ib}{\sqrt{2}}|\eta_-\rangle
+\end{align}
+and $|a|^2+|b|^2=1$.\\
+The mean values are
+\begin{gather}
+\langle\hat{S}_z\rangle=(|a|^2-|b|^2)\frac{\hbar}{2}\\
+\langle\hat{S}_x\rangle=(\frac{|a+b|^2}{2}-\frac{|a-b|^2}{2})\frac{\hbar}{2}=(ab^*+a^*b)\frac{\hbar}{2}=\hbar\text{Re}(ab^*)\\
+\langle\hat{S}_y\rangle=(\frac{|a-ib|^2}{2}-\frac{|a+ib|^2}{2})\frac{\hbar}{2}=i(ab^*-a^*b)\frac{\hbar}{2}=-\hbar\text{Im}(ab^*)
+\end{gather}
+\begin{gather}
+\begin{align}
+\nonumber|\langle\hat{\vec{S}}\rangle|^2=&\langle\hat{S}_x\rangle^2+\langle\hat{S}_y\rangle^2+\langle\hat{S}_z\rangle^2\\
+\nonumber=&\text{Re}^2(ab^*)\hbar^2+\text{Im}^2(ab^*)^2+(|a|^2-|b|^2)^2\frac{\hbar^2}{4}\\
+\nonumber=&|ab^*|^2\hbar^2+(|a|^2-|b|^2)^2\frac{\hbar^2}{4}\\
+\nonumber=&(|a|^4+2|a|^2|b|^2+|b|^4)\frac{\hbar^2}{4}\\
+\nonumber=&(|a|^2+|b|^2)^2\frac{\hbar^2}{4}\\
+=&\frac{\hbar^2}{4}
+\end{align}\\
+\Longrightarrow|\langle\hat{\vec{S}}\rangle|=\frac{\hbar}{2}
+\end{gather}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{4}
+[C-T Exercise 5-7] Consider a one-dimensional harmonic oscillator of Hamiltonian $\hat{H}$ and stationary states $|\varphi_n\rangle$, $\hat{H}|\varphi_n\rangle=(n+1/2)\hbar\omega|\varphi_n\rangle$. The operator $\hat{U}(k)$ is defined by $\hat{U}(k)=e^{ik\hat{x}}$, where $k$ is real.
+\begin{itemize}
+\item[(a)] Is $\hat{U}(k)$ unitary? Show that, for all $n$, its matrix elements satisfy the relation
+\[
+\sum_{n'}|\langle\varphi_n|\hat{U}(k)|\varphi_{n'}\rangle|^2=1.
+\]
+\item[(b)] Express $\hat{U}(k)$ in terms of the operators $\hat{a}$ and $\hat{a}^{\dagger}$. Use Glauber's formula to put $\hat{U}(k)$ in the form of a product of exponential operators.
+\item[(c)] Establish the relations
+\begin{gather*}
+e^{\lambda\hat{a}}|\varphi_0\rangle=|\varphi_0\rangle,\\
+\langle\varphi_n|e^{\lambda\hat{a}^{\dagger}}|\varphi_0\rangle=\frac{\lambda^n}{\sqrt{n!}},
+\end{gather*}
+where $\lambda$ is an arbitrary complex parameter.
+\item[(d)] Find the expression, in terms of $E_k=\hbar^2k^2/2m$ and $E_{\omega}=\hbar\omega$, for the matrix element $\langle\varphi_0|\hat{U}(k)|\varphi_n\rangle$. What happens when $k$ approaches zero? Could this result have been predicted directly?
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] Since
+\begin{gather}
+\hat{U}(k)\hat{U}^{\dagger}(k)=e^{ik\hat{x}}e^{-ik\hat{x}}=1\\
+\hat{U}(k)^{\dagger}\hat{U}(k)=e^{-ik\hat{x}}e^{ik\hat{x}}=1
+\end{gather}
+$\hat{U}(k)$ is unitary.\\
+\begin{align}
+\nonumber\sum_{n'}|\langle\varphi_n|\hat{U}(k)|\varphi_{n'}\rangle|^2=&\sum_{n'}\langle\varphi_n|\hat{U}(k)|\varphi_{n'}\rangle\langle[\varphi_n|\hat{U}(k)|\varphi_{n'}\rangle]^*\\
+\nonumber=&\sum_{n'}\varphi_n|\hat{U}(k)|\varphi_{n'}\rangle\langle\varphi_{n'}|\hat{U}^{\dagger}(k)|\varphi_n\rangle\\
+\nonumber=&\varphi_n|\hat{U}(k)\hat{U}^{\dagger}(k)|\varphi_n\rangle\\
+=&\varphi_n|\varphi_n\rangle=1
+\end{align}
+\item[(b)] The $\hat{U}(k)$ can be expressed as
+\begin{equation}
+\hat{U}(k)=e^{ik\hat{x}}=e^{ik\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}+\hat{a}^{\dagger})}
+\end{equation}
+According to Glauber's formula
+\begin{equation}
+e^{\hat{A}+\hat{B}}=e^{\hat{B}}e^{\hat{A}}e^{[\hat{A},\hat{B}]/2}
+\end{equation}
+so
+\begin{align}
+\nonumber\hat{U}(k)=&e^{ik\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}+\hat{a}^{\dagger})}=e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}+ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}^{\dagger}}\\
+\nonumber=&e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}^{\dagger}}e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}}e^{-k^2\frac{\hbar}{2m\omega}[\hat{a},\hat{a}^{\dagger}]/2}\\
+=&e^{-\frac{\hbar k^2}{4m\omega}}e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}^{\dagger}}e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}}
+\end{align}
+\item[(c)] Since
+\begin{equation}
+\hat{a}|\varphi_0\rangle=0
+\end{equation}
+\begin{equation}
+e^{\lambda\hat{a}}|\varphi_0\rangle=\sum_{n=0}^{\infty}\frac{\lambda^n}{n!}\hat{a}^n|\varphi_0\rangle=|\varphi_0\rangle
+\end{equation}
+Since
+\begin{equation}
+|\varphi_n\rangle=\frac{1}{\sqrt{n!}}(\hat{a}^{\dagger})^n|\varphi_0\rangle
+\end{equation}
+\begin{equation}
+\langle\varphi_n|e^{\lambda\hat{a}}|\varphi_0\rangle=\sum_{m=0}^{\infty}\langle\varphi_n|\frac{\lambda^m}{\sqrt{m!}}(\hat{a}^{\dagger})^m|\varphi_0\rangle=\sum_{m=0}^{\infty}\frac{\lambda^m}{\sqrt{m!}}\langle\varphi_n|\varphi_m\rangle=\sum_{m=0}^{\infty}\frac{\lambda^m}{\sqrt{m!}}\delta_{mn}=\frac{\lambda^n}{\sqrt{n!}}
+\end{equation}
+\item[(d)]
+\begin{align}
+\nonumber\langle\varphi_0|\hat{U}(k)|\varphi_n\rangle=&e^{-\frac{\hbar k^2}{4m\omega}}\langle\varphi_0|e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}^{\dagger}}e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}}|\varphi_n\rangle\\
+\nonumber=&e^{-\frac{\hbar k^2}{4m\omega}}\langle\varphi_0|e^{ik\sqrt{\frac{\hbar}{2m\omega}}\hat{a}}|\varphi_n\rangle\\
+\nonumber=&e^{-\frac{\hbar k^2}{4m\omega}}\frac{\left(ik\sqrt{\frac{\hbar}{2m\omega}}\right)^n}{\sqrt{n!}}\\
+=&\frac{i^n}{\sqrt{n!}}e^{-\frac{E_k}{2E_{\omega}}}\left(\frac{E_k}{E_{\omega}}\right)^{n/2}
+\end{align}
+When $k\rightarrow0$,
+\begin{equation}
+\langle\varphi_0|\hat{U}(k)|\varphi_n\rangle\rightarrow\frac{i^n}{\sqrt{n!}}e^00^{n/2}=\delta_{n0}
+\end{equation}
+This result can be predicted directly: when $n\rightarrow$, $\hat{U}(k)\rightarrow1\Longrightarrow\lim_{k\rightarrow0}\langle\varphi_0|\hat{U}(k)|\varphi_n\rangle=\langle\varphi_0|\varphi_n\rangle=\delta_{n0}$.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T Exercise 5-8] The evolution operator $\hat{U}(t,0)$ of a one-dimensional harmonic oscillator is written $\hat{U}(t,0)=e^{-i\hat{H}t/\hbar}$ with $\hat{H}=\hbar\omega(\hat{a}^{\dagger}\hat{a}+1/2)$.
+\begin{itemize}
+\item[(a)] Consider the operators $\hat{\tilde{a}}(t)=\hat{U}^{\dagger}(t,0)\hat{a}\hat{U}(t,0)$ and $\hat{\tilde{a}}^{\dagger}(t)=\hat{U}(t,0)\hat{a}^{\dagger}\hat{U}(t,0)$. By calculating their action on the eigenkets $|\varphi_n\rangle$ of $\hat{H}$, find the expression for $\hat{\tilde{a}}(t)$ and $\hat{\tilde{a}}^{\dagger}(t)$ in terms of $\hat{a}$ and $\hat{a}^{\dagger}$.
+\item[(b)] Calculate the operators $\hat{\tilde{x}}(t)$ and $\hat{\tilde{p}}_x(t)$ obtained from $\hat{x}$ and $\hat{p}_x$ by the unitary transformation $\hat{\tilde{x}}(t)=\hat{U}^{\dagger}(t,0)\hat{x}\hat{U}(t,0)$ and $\hat{\tilde{p}}_x(t)=\hat{U}^{\dagger}(t,0)\hat{p}_x\hat{U}(t,0)$. How can the relations so obtained be interpreted?
+\item[(c)] Show that $\hat{U}^{\dagger}(\pi/2\omega,0)|x\rangle$ is an eigenvector of $\hat{p}_x$ and specify its eigenvalue. Similarly, establish that $\hat{U}^{\dagger}(\pi/2\omega,0)|p_x\rangle$ is an eigenvector of $\hat{x}$.
+\item[(d)] At $t=0$, the wave function of the oscillator is $\psi(x,0)$. How can one obtain from $\psi(x,0)$ the wave function of the oscillator at all subsequent times $t_q=q\pi/2\omega$ (where $q$ is a positive integer)?
+\item[(e)] Choose for $\psi(x,0)$ the wave function $\varphi_n(x)$ associated with a stationary state. From the preceding question derive the relation which must exist between $\varphi_n(x)$ and its Fourier transformation $\bar{\varphi}_n(p_x)$.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)]
+\begin{gather}
+\begin{align}
+\nonumber\hat{\tilde{a}}(t)|\varphi_n\rangle=&\hat{U}^{\dagger}(t,0)\hat{a}\hat{U}(t,0)|\varphi_n\rangle\\
+\nonumber=&\hat{U}^{\dagger}(t,0)\hat{a}e^{-iE_nt/\hbar}|\varphi_n\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\hat{U}^{\dagger}(t,0)\hat{a}|\varphi_n\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\hat{U}^{\dagger}(t,0)\sqrt{n}|\varphi_{n-1}\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\sqrt{n}\hat{U}^{\dagger}(t,0)|\varphi_{n-1}\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\sqrt{n}e^{iE_{n-1}t/\hbar}|\varphi_{n-1}\rangle\\
+=&e^{-i\omega t}\sqrt{n}|\varphi_{n-1}\rangle=e^{-i\omega t}\hat{a}|\varphi_n\rangle
+\end{align}\\
+\Longrightarrow\hat{\tilde{a}}(t)=e^{-i\omega t}\hat{a}
+\end{gather}
+\begin{gather}
+\begin{align}
+\nonumber\hat{\tilde{a}}^{\dagger}(t)|\varphi_n\rangle=&\hat{U}^{\dagger}(t,0)\hat{a}^{\dagger}\hat{U}(t,0)|\varphi_n\rangle\\
+\nonumber=&\hat{U}^{\dagger}\hat{a}^{\dagger}e^{-iE_nt/\hbar}|\varphi_n\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\hat{U}^{\dagger}\hat{a}^{\dagger}|\varphi_n\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\hat{U}^{\dagger}\sqrt{n+1}|\varphi_{n+1}\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\sqrt{n+1}\hat{U}^{\dagger}|\varphi_{n+1}\rangle\\
+\nonumber=&e^{-iE_nt/\hbar}\sqrt{n+1}e^{iE_{n+1}t/\hbar}|\varphi_{n+1}\rangle\\
+=&e^{i\omega t}\sqrt{n+1}|\varphi_{n+1}\rangle=e^{i\omega t}\hat{a}^{\dagger}|\varphi_n\rangle
+\end{align}\\
+\Longrightarrow\hat{\tilde{a}}^{\dagger}(t)=e^{i\omega t}\hat{a}^{\dagger}
+\end{gather}
+\item[(b)]
+\begin{align}
+\nonumber\hat{\tilde{x}}(t)=&\hat{U}^{\dagger}(t,0)\hat{x}\hat{U}(t,0)\\
+\nonumber=&\sqrt{\frac{\hbar}{2m\omega}}\hat{U}^{\dagger}(t,0)(\hat{a}+\hat{a}^{\dagger})\hat{U}(t,0)\\
+\nonumber=&\sqrt{\frac{\hbar}{2m\omega}}(e^{-i\omega t}\hat{a}+e^{i\omega t}\hat{a}^{\dagger})\\
+\nonumber=&\frac{1}{2}\left[e^{-i\omega t}\left(\hat{x}+\frac{i}{m\omega}\hat{p}_x\right)+e^{i\omega t}(\hat{x}-\frac{i}{m\omega}\hat{p}_x)\right]\\
+=&\hat{x}\cos(\omega t)+\frac{1}{m\omega}\hat{p}_x\sin(\omega t)
+\end{align}
+\begin{align}
+\nonumber\hat{\tilde{p}}(t)=&\hat{U}^{\dagger}(t,0)\hat{p}\hat{U}(t,0)\\
+\nonumber=&-i\sqrt{\frac{m\hbar\omega}{2}}\hat{U}^{\dagger}(t,0)(\hat{a}-\hat{a}^{\dagger})\hat{U}(t,0)\\
+\nonumber=&-i\sqrt{\frac{m\hbar\omega}{2}}(e^{-i\omega t}\hat{a}-e^{i\omega t}\hat{a}^{\dagger})\\
+\nonumber=&-i\frac{m\omega}{2}\left[e^{-i\omega t}\left(\hat{x}+\frac{i}{m\omega}\hat{p}_x\right)-e^{i\omega t}(\hat{x}-\frac{i}{m\omega}\hat{p}_x)\right]\\
+=&-m\omega\hat{x}\sin(\omega t)+\hat{p}_x\cos(\omega t)
+\end{align}
+Interpretation: the results corresponds the solution of Hamilton's equations, proof:\\
+Hamilton's equations are
+\begin{gather}
+\frac{dx}{dt}=\frac{\partial H}{\partial p}\\
+\frac{dp}{dt}=-\frac{\partial H}{\partial x}
+\end{gather}
+Since Hamiltonian is
+\begin{equation}
+H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2x^2
+\end{equation}
+\begin{gather}
+\frac{dx}{dt}=\frac{p}{m}\\
+\frac{dp}{dp}=-m\omega^2x
+\end{gather}
+Differentiate the two equation above about $t$ to get
+\begin{gather}
+\frac{d^2x}{dt^2}+\omega^2x=0\\
+\frac{d^2p}{dt^2}+\omega^2p=0
+\end{gather}
+The general solutions are
+\begin{equation}
+x(t)=A\cos(\omega t)+B\sin(\omega t)\\
+p(t)=C\cos(\omega t)+D\sin(\omega t)
+\end{equation}
+Considering the initial conditions $x(t=0)=x_0,p(t=0)=p_0,\left.\frac{dx}{dt}\right|_{t=0}=\frac{p_0}{m},\left.\frac{dp}{dt}\right|_{t=0}=-m\omega x_0$ gives
+\begin{gather}
+A=x_0,\quad C=p_0\\
+B=\frac{1}{m\omega}p_0,\quad D=-m\omega x_0
+\end{gather}
+Therefore,
+\begin{gather}
+x(t)=x_0\cos(\omega t)+\frac{1}{m\omega}p_0\sin(\omega t)\\
+p(t)=-m\omega x_0\sin(\omega t)+p_0\cos(\omega t)
+\end{gather}
+which has the similar form as the results obtained in the quantum version.
+\item[(c)]
+\begin{align}
+\nonumber\hat{p}_x\hat{U}^{\dagger}(\pi/2\omega)|x\rangle=&\hat{U}^{\dagger}(\pi/2\omega)\hat{U}(\pi/2\omega)\hat{p}_x\hat{U}^{\dagger}(\pi/2\omega)|x\rangle\\
+\nonumber=&\hat{U}^{\dagger}(\pi/2\omega)[-m\omega\hat{x}\sin(-\frac{\pi}{2})+\hat{p}_x\cos(-\frac{\pi}{2})]|x\rangle\\
+\nonumber=&m\omega x\hat{U}^{\dagger}(\pi/2\omega)
+\end{align}
+Therefore, $\hat{U}^{\dagger}(\pi/2\omega,0)|x\rangle$ is an eigenvector of $\hat{p}_x$ with eigenvalue $m\omega x$.
+\begin{align}
+\nonumber\hat{x}\hat{U}^{\dagger}(\pi/2\omega)|p_x\rangle=&\hat{U}^{\dagger}(\pi/2\omega)\hat{U}(\pi/2\omega)\hat{x}\hat{U}^{\dagger}(\pi/2\omega)|p_x\rangle\\
+\nonumber=&\hat{U}^{\dagger}(\pi/2\omega)[\hat{x}\cos(-\frac{\pi}{2})+\frac{1}{m\omega}\hat{p}_x\sin(-\frac{\pi}{2})]|p_x\rangle\\
+=-\frac{p_x}{m\omega}\hat{U}^{\dagger}(\pi/2\omega)|p_x\rangle
+\end{align}
+Therefore, $\hat{U}^{\dagger}(\pi/2\omega,0)|p_x\rangle$ is an eigenvector of $\hat{x}$ with eigenvalue $-\frac{p_x}{m\omega}$.
+\item[(d)] 
+\begin{align}
+\nonumber\psi(x,q\pi/2\omega)=&\langle x|\psi(q\pi/2\omega)\rangle=\langle x|U(q\pi/2\omega,t)|\psi(0)\rangle\\
+\nonumber=&\int dx'\langle x|\hat{U}(q\pi/2\omega,t)|x'\rangle\langle x'|\psi(0)\rangle\\
+=&\int dx'\langle x|\hat{U}(q\pi/2\omega,t)|x'\rangle\psi(x',0)
+\end{align}
+\item[(e)] 
+\end{itemize}
+\end{sol}
+\end{document}

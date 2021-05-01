@@ -1,0 +1,1105 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_6
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 6}
+\begin{document}
+\begin{problem}{1}
+In a given representation, the matrix representing the Hamiltonian of a particle is given by
+\[
+H=\hbar\omega_0\left(\begin{array}{cccccc}
+-1+\varepsilon&0&0&0&0&0\\
+0&-1-\varepsilon&\sqrt{2}\varepsilon&0&0&0\\
+0&\sqrt{2}\varepsilon&-1&0&0&0\\
+0&0&0&-1&\sqrt{2}\varepsilon&0\\
+0&0&0&\sqrt{2}\varepsilon&-1-\varepsilon&0\\
+0&0&0&0&0&-1+\varepsilon\\
+\end{array}\right)
+\]
+with $0<\varepsilon<1$. Find the energy eigenvalues and eigenfunctions of the particle in the representation.
+\end{problem}
+\begin{sol}
+For convenience, let eigenvalue $\lambda=\hbar\omega_0\lambda'$.The characteristic equation
+\begin{align}
+\nonumber|H-\lambda I|=&\hbar\omega_0\left|\begin{array}{cccccc}
+-1+\varepsilon-\lambda'&0&0&0&0&0\\
+0&-1-\varepsilon-\lambda'&\sqrt{2}\varepsilon&0&0&0\\
+0&\sqrt{2}\varepsilon&-1-\lambda'&0&0&0\\
+0&0&0&-1-\lambda'&\sqrt{2}\varepsilon&0\\
+0&0&0&\sqrt{2}\varepsilon&-1-\varepsilon-\lambda'&0\\
+0&0&0&0&0&-1+\varepsilon-\lambda'\\
+\end{array}\right|\\
+\nonumber=&\hbar\omega_0[(-1+\varepsilon-\lambda')(-1-\varepsilon-\lambda')(-1-\lambda')(-1-\lambda')(-1-\varepsilon-\lambda')(-1+\varepsilon-\lambda')\\
+\nonumber&-(-1+\varepsilon-\lambda')\sqrt{2}\varepsilon\sqrt{2}\varepsilon(-1-\lambda')(-1-\varepsilon-\lambda')(-1+\varepsilon-\lambda')\\
+\nonumber&-(-1+\varepsilon-\lambda')(-1-\varepsilon-\lambda')(-1-\lambda')\sqrt{2}\varepsilon\sqrt{2}\varepsilon(-1+\varepsilon-\lambda')\\
+\nonumber&+(-1+\varepsilon-\lambda')\sqrt{2}\varepsilon\sqrt{2}\varepsilon\sqrt{2}\varepsilon\sqrt{2}\varepsilon(-1+\varepsilon-\lambda')]\\
+=&\hbar\omega_0(-1+\varepsilon-\lambda')^4(-1-2\varepsilon-\lambda')^2=0
+\end{align}
+gives
+\begin{equation}
+\lambda_1'=\lambda_2'=\lambda_3'=\lambda_4'=-1+\varepsilon,\quad\lambda_5'=\lambda_6'=-1-2\varepsilon
+\end{equation}
+so the eigenvalues are
+\begin{equation}
+\lambda_1=\lambda_2=\lambda_3=\lambda_4=\hbar\omega_0(-1+\varepsilon),\quad\lambda_3=\lambda_4=\hbar\omega_0(-1-2\varepsilon)
+\end{equation}
+When the eigenvalue $\lambda=\hbar\omega_0(-1+\varepsilon)$,
+\begin{equation}
+(H-\lambda I)\psi=\hbar\omega_0\left(\begin{array}{cccccc}
+0&0&0&0&0&0\\
+0&-2\varepsilon&\sqrt{2}\varepsilon&0&0&0\\
+0&\sqrt{2}\varepsilon&-\varepsilon&0&0&0\\
+0&0&0&-\varepsilon&\sqrt{2}\varepsilon&0\\
+0&0&0\sqrt{2}\varepsilon&-2\varepsilon&0\\
+0&0&0&0&0&0\\
+\end{array}\right)\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+c_4\\
+c_5\\
+c_6\\
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+gives four independent normalized eigenvectors
+\begin{equation}
+\psi_1=\frac{1}{\sqrt{7}}\left(\begin{array}{c}
+1\\
+1\\
+\sqrt{2}\\
+\sqrt{2}\\
+1\\
+0\\
+\end{array}\right),\quad
+\psi_2=\frac{1}{\sqrt{7}}\left(\begin{array}{c}
+0\\
+1\\
+\sqrt{2}\\
+\sqrt{2}\\
+1\\
+1\\
+\end{array}\right),\quad
+\psi_3=\frac{1}{\sqrt{7}}\left(\begin{array}{c}
+1\\
+1\\
+\sqrt{2}\\
+-\sqrt{2}\\
+-1\\
+0\\
+\end{array}\right),\quad
+\psi_4=\frac{1}{\sqrt{7}}\left(\begin{array}{c}
+0\\
+1\\
+\sqrt{2}\\
+-\sqrt{2}\\
+-1\\
+1\\
+\end{array}\right)
+\end{equation}
+When eigenvalue $\lambda=\hbar\omega_0(-1-2\varepsilon)$,
+\begin{equation}
+(H-\lambda I)\psi=\hbar\omega_0\left(\begin{array}{cccccc}
+3\varepsilon&0&0&0&0&0\\
+0&\varepsilon&\sqrt{2}\varepsilon&0&0&0\\
+0&\sqrt{2}\varepsilon&2\varepsilon&0&0&0\\
+0&0&0&2\varepsilon&\sqrt{2}\varepsilon&0\\
+0&0&0\sqrt{2}\varepsilon&2\varepsilon&0\\
+0&0&0&0&0&3\varepsilon\\
+\end{array}\right)\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+c_4\\
+c_5\\
+c_6\\
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+gives two independent normalized eigenvectors
+\begin{equation}
+\psi_5=\frac{1}{\sqrt{6}}\left(\begin{array}{c}
+0\\
+\sqrt{2}\\
+-1\\
+-1\\
+\sqrt{2}\\
+0\\
+\end{array}\right),\quad
+\psi_6=\frac{1}{\sqrt{6}}\left(\begin{array}{c}
+0\\
+\sqrt{2}\\
+-1\\
+1\\
+-\sqrt{2}\\
+0\\
+\end{array}\right)
+\end{equation}
+\end{sol}
+
+\begin{problem}{2}
+[C-T exercise 2-4] Let $\hat{K}$ be the operator defined by $\hat{K}=|\varphi\rangle\langle\psi|$, where $|\varphi\rangle$ and $|\psi\rangle$ are two vectors of the state space.
+\begin{itemize}
+\item[(a)] Under what condition is $\hat{K}$ Hermitian?
+\item[(b)] Calculate $\hat{K}^2$. Under what condition is $\hat{K}$ a projector?
+\item[(c)] Show that $\hat{K}$ can always be written in the form $\hat{K}=\lambda\hat{P}_1\hat{P}_2$ where $\lambda$ is a constant to be calculated and $\hat{P}_1$ and $\hat{P}_2$ are projectors.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The definition of Hermitian
+\begin{equation}
+\hat{K}=\hat{K}^{\dagger}
+\end{equation}
+Plugging in definition of $\hat{H}$, we get
+\begin{equation}
+|\varphi\rangle\langle\psi|=(|\varphi\rangle\langle\psi|)^{\dagger}
+\end{equation}
+Using the relation
+\begin{equation}
+(|\varphi\rangle\langle\psi|)^{\dagger}=|\psi\rangle\langle\varphi|
+\end{equation}
+we get
+\begin{equation}
+|\varphi\rangle\langle\psi|=|\psi\rangle\langle\varphi|
+\end{equation}
+Therefore, $\hat{H}$ is Hermitian when $|\varphi\rangle\langle\psi|=|\psi\rangle\langle\varphi|$.
+\item[(b)]
+\begin{equation}
+\hat{K}^2=|\varphi\rangle\langle\psi|\varphi\rangle\langle\psi|
+\end{equation}
+The definition of projector
+\begin{gather}
+\hat{K}^2=|\varphi\rangle\langle\psi|\varphi\rangle\langle\psi|=\hat{K}=|\varphi\rangle\langle\psi|\\
+\Longrightarrow\langle\psi|\varphi\rangle=1
+\end{gather}
+Therefore, $\hat{K}$ is a projector when $\langle\psi|\varphi\rangle=1$.
+\item[(c)] Rewrite $\hat{K}$ as
+\begin{equation}
+\hat{K}=\frac{|\varphi\rangle\langle\varphi|\psi\rangle\langle\psi|}{\langle\varphi|\psi\rangle}
+\end{equation}
+Therefore, $\hat{K}$ can always be written in the form
+\begin{equation}
+\hat{K}=\lambda\hat{P}_1\hat{P}_2
+\end{equation}
+where
+\begin{equation}
+\lambda=\frac{1}{\langle\varphi|\psi\rangle}
+\end{equation}
+is a constant to be calculated and
+\begin{gather}
+\hat{P}_1=|\varphi\rangle\langle\varphi|\\
+\hat{P}_2=|\psi\rangle\langle\psi|
+\end{gather}
+are projectors.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{3}
+[C-T exercise 2-5] Let $\hat{P}_1$ be the orthogonal projector onto the subspace $\mathcal{E}_1$, $\hat{P}_2$ the orthogonal projector on to the subspace $\mathcal{E}_2$. Show that, for the product $\hat{P}_1\hat{P}_2$ to be an orthogonal projector as well, it is necessary and sufficient that $\hat{P}_1$ and $\hat{P}_2$ commute. In this case, what is the subspace onto with $\hat{P}_1\hat{P}_2$ projects?
+\end{problem}
+\begin{sol}
+% Suppose the subspace $\mathcal{E}_1$ is spanned by orthonormal vectors $|\varphi_1^{1}\rangle,|\varphi_1^{2}\rangle,\cdots,|\varphi_1^{g_n}\rangle$ while the subspace $\mathcal{E}_2$ is spanned by othornormal vectors $|\varphi_2^{1}\rangle,|\varphi_2^{2}\rangle,\cdots,|\varphi_2^{g_m}\rangle$. Then the orthogonal projectors are represented as
+% \begin{gather}
+% \hat{P}_1=\sum_{i=1}^{g_n}|\varphi_1^i\rangle\langle\varphi_1^i|\\
+% \hat{P}_2=\sum_{j=1}^{g_m}|\varphi_2^j\rangle\langle\varphi_2^j|
+% \end{gather}
+% The product
+% \begin{equation}
+% \hat{P}_1\hat{P}_2=\sum_{i=1}^{g_n}|\varphi_1^i\rangle\langle\varphi_1^i|\sum_{j=1}^{g_m}|\varphi_2^j\rangle\langle\varphi_2^j|
+% \end{equation}
+Since $\hat{P}_1$ and $\hat{P}_2$ are orthogonal projectors,
+\begin{align}
+\text{orthogonal: }&\hat{P}_1\hat{P}_1^T=I\\
+&\hat{P}_2\hat{P}_2^T=I\\
+\text{projector: }&\hat{P}_1\hat{P}_1=\hat{P}\\
+&\hat{P}_2\hat{P}_2=\hat{P}_2
+\end{align}
+
+First, let's show that $\hat{P}_1$ and $\hat{P}_2$ commute is necessary for the product $\hat{P}_1\hat{P}_2$ to be orthogonal projector:
+
+Suppose $\hat{P}_1\hat{P}_2$ is orthogonal projector,
+\begin{align}
+\text{orthogonal: }&(\hat{P}_1\hat{P}_2)(\hat{P}_1\hat{P}_2)^T=I\\
+\label{projector}\text{projector: }&(\hat{P}_1\hat{P}_2)(\hat{P}_1\hat{P}_2)=(\hat{P}_1\hat{P}_2)
+\end{align}
+Premultiplying the equation (\ref{projector}) with $\hat{P}_1^T\hat{P}_2^T$ at both side gives
+\begin{equation}
+\hat{P}_1\hat{P}_2=\hat{P}_2^T\hat{P}_1^T(\hat{P}_1\hat{P}_2)(\hat{P}_1\hat{P}_2)=\hat{P}_2^T\hat{P}_1^T(\hat{P}_1\hat{P}_2)=I
+\end{equation}
+Premultiplying the equation (\ref{projector}) with $\hat{P}_1^T$ and postmultiplying it with $\hat{P}_2^T$ at both side gives
+\begin{equation}
+\hat{P}_2\hat{P}_1=\hat{P}_1^T(\hat{P}_1\hat{P}_2)(\hat{P}_1\hat{P}_2)\hat{P}_2^T=\hat{P}_1^T(\hat{P}_1\hat{P}_2)\hat{P}_2^T=I
+\end{equation}
+So
+\begin{equation}
+[\hat{P}_1,\hat{P}_2]=\hat{P}_1\hat{P}_2-\hat{P}_2\hat{P}_1=I-I=0
+\end{equation}
+$\hat{P}_1$ and $\hat{P}_2$ commute.
+
+Next, let's show that $\hat{P}_1$ and $\hat{P}_2$ commute is sufficient for the product $\hat{P}_1\hat{P}_2$ to be orthogonal projector:
+
+Suppose $\hat{P}_1$ and $\hat{P}_2$ commute,
+\begin{gather}
+[\hat{P}_1,\hat{P}_2]=\hat{P}_1\hat{P}_2-\hat{P}_2\hat{P}_1=0\\
+\Longrightarrow\hat{P}_1\hat{P}_2=\hat{P}_2\hat{P}_1
+\end{gather}
+Then we have
+\begin{equation}
+(\hat{P}_1\hat{P}_2)(\hat{P}_1\hat{P}_2)=\hat{P}_1\hat{P}_2\hat{P}_1\hat{P}_2=\hat{P}_1\hat{P}_1\hat{P}_2\hat{P}_2=(\hat{P}_1\hat{P}_1)(\hat{P}_2\hat{P}_2)=\hat{P}_1\hat{P}_2
+\end{equation}
+so $\hat{P}_1\hat{P}_2$ is a projector.\\
+And
+\begin{equation}
+(\hat{P}_1\hat{P}_2)(\hat{P}_1\hat{P}_2)^T=\hat{P}_1\hat{P}_2\hat{P}_2^T\hat{P}_1^T=\hat{P}_1(\hat{P}_2\hat{P}_2^T)\hat{P}_1^T=\hat{P}_1\hat{P}_1^T=I
+\end{equation}
+so $\hat{P}_1\hat{P}_2$ is orthogonal.
+
+Therefore, for the product $\hat{P}_1\hat{P}_2$ to be an orthogonal projector as well, it is necessary and sufficient that $\hat{P}_1$ and $\hat{P}_2$ commute.
+
+The subspace onto which $\hat{P}_1\hat{P}_2$ projects is $\mathcal{E}_1\otimes\mathcal{E}_2$
+\end{sol}
+
+\begin{problem}{4}
+[C-T exercise 2-11] Consider a physical system whose three-dimensional state space is spanned by the orthogonal basis formed by the three kets $|u_1\rangle$, $|u_2\rangle$, and $|u_3\rangle$.  In the basis of these three vectors, taken in this order,  the two operators $\hat{H}$ and $\hat{B}$ are defined by
+\[
+H=\hbar\omega_0\left(\begin{array}{ccc}
+1&0&0\\
+0&-1&0\\
+0&0&-1\\
+\end{array}\right),\quad B=b\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right)
+\]
+where $\omega_0$ and $b$ are real constants.
+\begin{itemize}
+\item[(a)] Are $H$ and $B$ Hermitian?
+\item[(b)] Show that $H$ and $B$ commute. Give a basis of eigenvectors common to $H$ and $B$.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)]
+\begin{equation}
+H^{\dagger}=(H^T)^*=\hbar\omega\left(\begin{array}{ccc}
+1&0&0\\
+0&-1&0\\
+0&0&-1\\
+\end{array}\right)=H
+\end{equation}
+so $H$ is Hermitian.
+\begin{equation}
+B^{\dagger}=(B^T)^*=b\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right)=B
+\end{equation}
+so $B$ is Hermitian.
+\item[(b)]
+\begin{align}
+\nonumber[H,B]=&HB-BH\\
+\nonumber=&\hbar\omega_0b\left(\begin{array}{ccc}
+1&0&0\\
+0&-1&0\\
+0&0&-1\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right)-\hbar\omega_0\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&-1&0\\
+0&0&-1\\
+\end{array}\right)\\
+=&\hbar\omega_0\left(\begin{array}{ccc}
+1&0&0\\
+0&0&-1\\
+0&-1&0\\
+\end{array}\right)-\hbar\omega_0\left(\begin{array}{ccc}
+1&0&0\\
+0&0&-1\\
+0&-1&0\\
+\end{array}\right)=0
+\end{align}
+so $H$ and $B$ commute.\\
+Since $H$ and $B$ commute, they have common eigenspace. Let's first find the eigenvectors of $H$. Let $\lambda_H=\hbar\omega_0\lambda_H'$, then the characteristic equation of $H$
+\begin{align}
+\nonumber|H-\lambda_HI|=&|H-\hbar\omega\lambda_H'I|=\hbar\omega_0\left|\begin{array}{ccc}
+1-\lambda'&0&0\\
+0&-1-\lambda'&0\\
+0&0&-1-\lambda'\\
+\end{array}\right|\\
+=&\hbar\omega_0(1-\lambda_H')(-1-\lambda_H')^2=0
+\end{align}
+gives
+\begin{equation}
+\lambda_{H1}'=1,\quad\lambda_{H2}'=\lambda_{H3}'=-1
+\end{equation}
+so the eigenvalues of $H$
+\begin{equation}
+\lambda_{H1}=\hbar\omega_0,\quad\lambda_{H2}=\lambda_{H3}=-\hbar\omega_0
+\end{equation}
+When the eigenvalue of $H$ $\lambda_H=\hbar\omega_0$,
+\begin{equation}
+(H-\lambda_HI)\psi=\hbar\omega_0\left(\begin{array}{ccc}
+0&0&0\\
+0&-2&0\\
+0&0&-2\\
+\end{array}\right)\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+gives one normalized eigenvector
+\begin{equation}
+\psi_{H1}=\left(\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+When the eigenvalue of $H$ $\lambda_H=-\hbar\omega_0$,
+\begin{equation}
+(H-\lambda_HI)\psi=\hbar\omega_0\left(\begin{array}{ccc}
+2&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+gives two independent normalized eigenvectors
+\begin{equation}
+\psi_{H2}=\left(\begin{array}{c}
+0\\
+1\\
+0\\
+\end{array}\right),\quad\psi_{H3}=\left(\begin{array}{c}
+0\\
+0\\
+1\\
+\end{array}\right)
+\end{equation}
+Obviously, $\psi_1$ are also an eigenvector of $B$
+\begin{equation}
+B\psi_{H1}=b\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right)\left(\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}\right)=b\left(\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}\right)=b\psi_{H1}
+\end{equation}
+Let $\lambda_B=b\lambda_B'$, then the characteristic equation of $B$
+\begin{align}
+\nonumber|B-\lambda_BI|=&|B-b\lambda_B'I|=b\left|\begin{array}{ccc}
+1-\lambda_B'&0&0\\
+0&-\lambda_B'&1\\
+0&1&-\lambda_B'\\
+\end{array}\right|\\
+=&-b(\lambda_B'-1)^2(\lambda_B'+1)=0
+\end{align}
+gives
+\begin{equation}
+\lambda_{B1}'=\lambda_{B2}'=1,\quad\lambda_{B3}'=-1
+\end{equation}
+so the eigenvalues of $B$
+\begin{equation}
+\lambda_{B1}'=\lambda_{B2}'=b,\quad\lambda_{B3}'=-b
+\end{equation}
+When eigenvalue of $B$ $\lambda_B=b$,
+\begin{equation}
+(B-\lambda_BI)\psi_B=b\left(\begin{array}{ccc}
+0&0&0\\
+0&-1&1\\
+0&1&-1\\
+\end{array}\right)\left(\begin{array}{c}
+d_1\\
+d_2\\
+d_3\\
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+Besides, $\psi_{B1}=(1,0,0)$, another normalized eigenvector is
+\begin{equation}
+\psi_{B2}=\left(\begin{array}{c}
+0\\
+\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}}\\
+\end{array}\right)
+\end{equation}
+which can be written as a linear combination of eigenvectors of $H$: $\psi_{B2}=\frac{1}{\sqrt{2}}\psi_{H2}+\frac{1}{\sqrt{2}}\psi_{H3}$.\\
+When eigenvalue of $B$ $\lambda_B=-b$
+\begin{equation}
+(B-\lambda_BI)\psi_B=b\left(\begin{array}{ccc}
+2&0&0\\
+0&1&1\\
+0&1&1\\
+\end{array}\right)\left(\begin{array}{c}
+d_1\\
+d_2\\
+d_3\\
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)
+\end{equation}
+gives one normalized eigenvector
+\begin{equation}
+\psi_{B2}=\left(\begin{array}{c}
+0\\
+\frac{1}{\sqrt{2}}\\
+-\frac{1}{\sqrt{2}}\\
+\end{array}\right)
+\end{equation}
+which can be written as a linear combination of eigenvectors of $H$: $\psi_{B3}=\frac{1}{\sqrt{2}}\psi_{H2}-\frac{1}{\sqrt{2}}\psi_{H3}$
+
+Therefore, $\left\{\left(\begin{array}{c}1\\0\\0\end{array}\right),\left(\begin{array}{c}0\\\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{array}\right),\left(\begin{array}{c}0\\\frac{1}{\sqrt{2}}\\-\frac{1}{\sqrt{2}}\end{array}\right)\right\}$ is a basis of eigenvectors common to $H$ and $B$.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T exercise 2-12] In the same state space as that of the preceding exercise, consider two operators $\hat{L}_z$ and $\hat{S}$ defined by
+\begin{gather*}
+\hat{L}_z|u_1\rangle=|u_1\rangle,\quad\hat{L}_z|u_2\rangle=0,\quad\hat{L}_z=-|u_3\rangle;\\
+\hat{S}|u_1\rangle=|u_3\rangle,\quad\hat{S}|u_2\rangle=|u_2\rangle,\quad\hat{S}|u_3\rangle=|u_1\rangle.
+\end{gather*}
+\begin{itemize}
+\item[(a)] Write the matrices which represent, in the $\{|u_1\rangle,|u_2\rangle,|u_3\rangle\}$ basis, the operator $\hat{L}_z$, $\hat{L}_z^2$, $\hat{S}$, and $\hat{S}^2$. Are these operators observables?
+\item[(b)] Give the form of the most general matrix which represents an operator which commutes with $\hat{L}_z$. Same question for $\hat{L}_z^2$, then $\hat{S}^2$.
+\item[(c)] Do $\hat{L}_z^2$ and $\hat{S}$ form a CSCO? Give a basis of common eigenvectors.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+% \item[(a)] Diagonalize $L_z$
+% \begin{gather}
+% \left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)^{-1}\hat{L}_z\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&0&0\\
+% 0&0&-1\\
+% \end{array}\right)\\
+% \Longrightarrow\hat{L}_z=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&0&0\\
+% 0&0&-1\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)^{-1}=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&-\frac{1}{2}&\frac{1}{2}\\
+% 0&\frac{1}{2}&-\frac{1}{2}\\
+% \end{array}\right)
+% \end{gather}
+% so
+% \begin{equation}
+% \hat{L}_z^2=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&-\frac{1}{2}&\frac{1}{2}\\
+% 0&\frac{1}{2}&-\frac{1}{2}\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&-\frac{1}{2}&\frac{1}{2}\\
+% 0&\frac{1}{2}&-\frac{1}{2}\\
+% \end{array}\right)=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{2}&-\frac{1}{2}\\
+% 0&-\frac{1}{2}&\frac{1}{2}\\
+% \end{array}\right)
+% \end{equation}
+% Diagonalize $S$
+% \begin{gather}
+% \left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)^{-1}\hat{S}\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)\\
+% \Longrightarrow\hat{S}=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)^{-1}=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)
+% \end{gather}
+% so
+% \begin{equation}
+% \hat{S}^2=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)
+% \end{equation}
+% \begin{equation}
+% \hat{L}_z^{\dagger}=(\hat{L}_z^T)^*=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&-\frac{1}{2}&\frac{1}{2}\\
+% 0&\frac{1}{2}&-\frac{1}{2}\\
+% \end{array}\right)=\hat{L}_z
+% \end{equation}
+% so $\hat{L}_z$ is Hermitian.
+% \begin{equation}
+% (\hat{L}_z^2)^{\dagger}=[(\hat{L}_z^2)^T]^*=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&\frac{1}{2}&-\frac{1}{2}\\
+% 0&-\frac{1}{2}&\frac{1}{2}\\
+% \end{array}\right)=\hat{L}_z^2
+% \end{equation}
+% so $\hat{L}_z^2$ is Hermitian.
+% \begin{equation}
+% \hat{S}^{\dagger}=(\hat{S}^T)^*=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)=\hat{S}
+% \end{equation}
+% so $\hat{S}$ is Hermitian.
+% \begin{equation}
+% (\hat{S}^2)^{\dagger}=[(\hat{S}^2)^T]^*=\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)=\hat{S}^2
+% \end{equation}
+% so $\hat{S}^2$ is Hermitian.
+% \begin{align}
+% \nonumber\sum_i|u_i\rangle\langle u_i|=&\left(\begin{array}{c}
+% 1\\
+% 0\\
+% 0\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 1&0&0\\
+% \end{array}\right)+\left(\begin{array}{c}
+% 0\\
+% \frac{1}{\sqrt{2}}\\
+% \frac{1}{\sqrt{2}}\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+% \end{array}\right)\\
+% \nonumber&+\left(\begin{array}{c}
+% 0\\
+% \frac{1}{\sqrt{2}}\\
+% -\frac{1}{\sqrt{2}}\\
+% \end{array}\right)\left(\begin{array}{ccc}
+% 0&\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\
+% \end{array}\right)\\
+% =&\left(\begin{array}{ccc}
+% 1&0&0\\
+% 0&1&0\\
+% 0&0&1\\
+% \end{array}\right)=I
+% \end{align}
+% so their orthonormal system of eigenvectors forms basis in the state space.
+
+% Therefore, these operators are observables.
+\item[(a)] Diagonalize $L_z$
+\begin{gather}
+\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)^{-1}\hat{L}_z\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)\\
+\Longrightarrow\hat{L}_z=\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)^{-1}=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)
+\end{gather}
+so
+\begin{equation}
+\hat{L}_z^2=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)
+\end{equation}
+Diagonalize $S$
+\begin{gather}
+\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)^{-1}\hat{S}\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)=\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)\\
+\Longrightarrow\hat{S}=\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)^{-1}=\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)
+\end{gather}
+so
+\begin{equation}
+\hat{S}^2=\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)=\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)
+\end{equation}
+\begin{equation}
+\hat{L}_z^{\dagger}=(\hat{L}_z^T)^*=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)=\hat{L}_z
+\end{equation}
+so $\hat{L}_z$ is Hermitian.
+\begin{equation}
+(\hat{L}_z^2)^{\dagger}=[(\hat{L}_z^2)^T]^*=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)=\hat{L}_z^2
+\end{equation}
+so $\hat{L}_z^2$ is Hermitian.
+\begin{equation}
+\hat{S}^{\dagger}=(\hat{S}^T)^*=\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)=\hat{S}
+\end{equation}
+so $\hat{S}$ is Hermitian.
+\begin{equation}
+(\hat{S}^2)^{\dagger}=[(\hat{S}^2)^T]^*=\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)=\hat{S}^2
+\end{equation}
+so $\hat{S}^2$ is Hermitian.
+\begin{align}
+\nonumber\sum_i|u_i\rangle\langle u_i|=&\left(\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+\end{array}\right)+\left(\begin{array}{c}
+0\\
+1\\
+0\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&1&0\\
+\end{array}\right)\\
+\nonumber&+\left(\begin{array}{c}
+0\\
+0\\
+1\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)=I
+\end{align}
+so their orthonormal system of eigenvectors forms basis in the state space.\\
+Therefore, these operators are observables.
+\item[(b)] Suppose the most general matrix
+\begin{equation}
+A=\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)
+\end{equation}
+If $A$ commute with $\hat{L}_z$
+\begin{gather}
+\begin{align}
+\nonumber[A,\hat{L}_z]&=A\hat{L}_z-\hat{L}_zA\\
+\nonumber=&\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)-\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+0&-a_{12}&-2a_{12}\\
+a_{21}&0&-a_{23}\\
+2a_{31}&a_{32}&0\\
+\end{array}\right)=\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)
+\end{align}\\
+\Longrightarrow a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=0
+\end{gather}
+so the most general matrix commuting with $\hat{L}_z$ is
+\begin{equation}
+\left(\begin{array}{ccc}
+a_{11}&0&0\\
+0&a_{22}&0\\
+0&0&a_{33}\\
+\end{array}\right)
+\end{equation}
+If $A$ commute with $\hat{L}_z^2$
+\begin{gather}
+\begin{align}
+\nonumber[A,\hat{L}_z^2]&=A\hat{L}_z^2-\hat{L}_z^2A\\
+\nonumber=&\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)-\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&-1\\
+\end{array}\right)\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+0&a_{12}&0\\
+a_{21}&0&a_{23}\\
+0&a_{32}&0\\
+\end{array}\right)=\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)
+\end{align}\\
+\Longrightarrow a_{12}=a_{21}=a_{23}=a_{32}=0
+\end{gather}
+so the most general matrix commuting with $\hat{L}_z^2$ is
+\begin{equation}
+\left(\begin{array}{ccc}
+a_{11}&0&a_{13}\\
+0&a_{22}&0\\
+a_{31}&0&a_{33}\\
+\end{array}\right)
+\end{equation}
+If $A$ commute with $\hat{S}$
+\begin{gather}
+\begin{align}
+\nonumber[A,\hat{S}]&=A\hat{S}-\hat{S}A\\
+\nonumber=&\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)-\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)
+\end{align}\\
+\Longrightarrow a_{11}=a_{12}=a_{13}=a_{21}=a_{22}=a_{23}=a_{31}=a_{32}=a_{33}=0
+\end{gather}
+so the most general matrix commuting with $\hat{S}$ is
+\begin{equation}
+\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)
+\end{equation}
+If $A$ commute with $\hat{S}^2$
+\begin{gather}
+\begin{align}
+\nonumber[A,\hat{S}^2]&=A\hat{S}^2-\hat{S}^2A\\
+\nonumber=&\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)-\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)
+\end{align}\\
+\Longrightarrow a_{11}=a_{12}=a_{13}=a_{21}=a_{22}=a_{23}=a_{31}=a_{32}=a_{33}=0
+\end{gather}
+so the most general matrix commuting with $\hat{S}^2$ is
+\begin{equation}
+\left(\begin{array}{ccc}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}\\
+\end{array}\right)
+\end{equation}
+\item[(c)]
+\begin{align}
+\nonumber[\hat{L}_z^2,\hat{S}]=&\hat{L}_z^2\hat{S}-\hat{S}\hat{L}_z^2=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)-\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)
+\end{align}
+so $\hat{L}_z^2$ and $\hat{S}$ commute.\\
+$|u_2\rangle=\left(\begin{array}{c}0\\1\\0\end{array}\right)$ is a common eigenvector of $\hat{L}_z^2$ and $\hat{S}$.
+\begin{equation}
+\hat{L}_z^2|u_2\rangle=0|u_2\rangle,\quad\hat{S}|u_2\rangle=1|u_2\rangle
+\end{equation}
+ In the subspace spanned by $|u_1\rangle=\left(\begin{array}{c}1\\0\\0\end{array}\right)$ and $|u_3\rangle=\left(\begin{array}{c}0\\0\\1\end{array}\right)$,
+\begin{gather}
+\sum_{i=1,3}|u_i\rangle\langle u_i|\hat{L}_z^2\sum_{i=1,3}|u_i\rangle\langle u_i|=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)
+=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)\\
+\sum_{i=1,3}|u_i\rangle\langle u_i|\hat{S}\sum_{i=1,3}|u_i\rangle\langle u_i|=\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&0&1\\
+0&1&0\\
+1&0&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&0\\
+0&0&1\\
+\end{array}\right)
+=\left(\begin{array}{ccc}
+0&0&1\\
+0&0&0\\
+1&0&0\\
+\end{array}\right)
+\end{gather}
+The other two common eigenvectors are
+\begin{gather}
+|\psi_2\rangle=\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+0\\
+\frac{1}{\sqrt{2}}\\
+\end{array}\right)\\
+|\psi_3\rangle=\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+0\\
+-\frac{1}{\sqrt{2}}\\
+\end{array}\right)
+\end{gather}
+\begin{gather}
+\hat{L}_z^2|\psi_2\rangle=1|\psi_2\rangle\\
+\hat{L}_z^2|\psi_3\rangle=1|\psi_3\rangle\\
+\hat{S}|\psi_2\rangle=1|\psi_2\rangle\\
+\hat{S}|\psi_3\rangle=-1|\psi_3\rangle
+\end{gather}
+so specifying the eigenvalues of $\hat{L}_z^2$ and $\hat{S}$ determine a unique set of common eigenvector $\left\{\left(\begin{array}{c}0\\1\\0\\\end{array}\right),\left(\begin{array}{c}\frac{1}{\sqrt{2}}\\0\\\frac{1}{\sqrt{2}}\\\end{array}\right),\left(\begin{array}{c}\frac{1}{\sqrt{2}}\\0\\-\frac{1}{\sqrt{2}}\\\end{array}\right)\right\}$.\\
+Therefore, $\hat{L}_z^2$ and $\hat{S}$ form a CSCO.
+\end{itemize}
+\end{sol}
+\end{document}

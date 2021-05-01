@@ -1,0 +1,859 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_9
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1in,bottom=1in,left=.5in,right=.5in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}}
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 9}
+\begin{document}
+\begin{problem}{1}
+[C-T Exercise 3-4] Consider a free particle in one dimension.
+\begin{itemize}
+\item[(a)] Show, applying Ehrenfest's theorem, that $\langle\hat{x}\rangle$ is a linear function of time, the mean value $\langle\hat{p}_x\rangle$ remaining constant.
+\item[(b)] Write the equations of motion for the mean values $\langle\hat{x}^2\rangle$ and $\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle$. Integrate these equations.
+\item[(c)] Show that, with a suitable choice of the time origin, the root-mean square deviation $\Delta x$ is given by
+\[
+(\Delta x)^2=\frac{1}{m^2}(\Delta p_x)_0^2t^2+(\Delta x)_0^2,
+\]
+where $(\Delta x)_0$ and $(\Delta p_x)_0$ are the root-mean-square deviations at the initial time.\\
+How does the width of the wave packet vary as a function of time? Give a physical interpretation.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] According to Ehrenfest's theorem
+\begin{gather}
+\frac{d\langle\hat{x}\rangle}{dt}=\frac{1}{m}\langle\hat{p}_x\rangle\\
+\frac{d\langle\hat{p}_x\rangle}{dt}=-\langle\vec{\nabla}\hat{V}(\hat{x})\rangle
+\end{gather}
+For a free particle, $V(\hat{x})$ is a constant, so
+\begin{equation}
+\frac{d\langle\hat{p}_x\rangle}{dt}=-\langle\frac{\partial}{\partial x}\hat{V}(\hat{x})\rangle=0
+\end{equation}
+the mean value $\langle\hat{p}_x\rangle$ remains constant. In this way,
+\begin{equation}
+\frac{d\langle\hat{\hat{r}}\rangle}{dt}=\frac{1}{m}\langle\hat{p}_x\rangle
+\end{equation}
+is also a constant, so
+\begin{equation}
+\langle\hat{x}\rangle=\frac{\langle\hat{p}_x\rangle}{m}t+x_0
+\end{equation}
+$\langle\hat{x}\rangle$ is a linear function of time, where $x_0$ is a integration constant.
+\item[(b)] The equations of motion for mean value $\langle\hat{x}^2\rangle$ is
+\begin{equation}
+\frac{d\langle\hat{x}^2\rangle}{dt}=\frac{1}{i\hbar}\langle[\hat{x}^2,\hat{H}]\rangle
+\end{equation}
+Since
+\begin{align}
+\nonumber[\hat{x}^2,\hat{H}]=&[\hat{x}^2,\frac{\hat{p}_x^2}{2m}+\hat{V}(\hat{x})]=[\hat{x}^2,\frac{\hat{p}_x^2}{2m}]+[\hat{x}^2,\hat{V}(\hat{x})]\\
+\nonumber=&\frac{1}{2m}\left(\hat{x}[\hat{x},\hat{p}_x^2]+[\hat{x},\hat{p}_x^2]\hat{x}\right)+(\hat{x}\hat{V}(\hat{x})-\hat{V}(\hat{x})\hat{x})\\
+\nonumber=&\frac{1}{2m}\left(\hat{x}(\hat{p}_x[\hat{x},\hat{p}_x]+[\hat{x},\hat{p}_x]\hat{p}_x)+(\hat{p}_x[\hat{x},\hat{p}_x]+[\hat{x},\hat{p}_x]\hat{p}_x)\hat{x}\right)+(xV(x)-V(x)x)\\
+=&\frac{i\hbar}{m}(\hat{x}\hat{p}_x+\hat{p}_x\hat{x})
+\end{align}
+we have
+\begin{equation}
+\frac{d\langle\hat{x}^2\rangle}{dt}=\frac{1}{m}\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle
+\end{equation}
+The equation of motion for mean value $\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle$ is
+\begin{equation}
+\frac{d\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle}{dt}=\frac{1}{i\hbar}\langle[\hat{x}\hat{p}_x+\hat{p}_x\hat{x},\hat{H}]\rangle
+\end{equation}
+Since
+\begin{align}
+\nonumber[\hat{x}\hat{p}_x+\hat{p}_x\hat{x},\hat{H}]=&[\hat{x}\hat{p}_x+\hat{p}_x\hat{x},\frac{\hat{p}^2}{2m}+\hat{V}(\hat{x})]\\
+\nonumber=&[\hat{x}\hat{p}_x,\frac{\hat{p}_x^2}{2m}]+[\hat{p}_x\hat{x},\frac{\hat{p}_x^2}{2m}]+[\hat{x}\hat{p}_x,\hat{V}(\hat{x})]+[\hat{p}_x\hat{x},\hat{V}(\hat{x})]\\
+\nonumber=&\frac{1}{2m}[\hat{x}\hat{p}_x,\hat{p}_x^2]+\frac{1}{2m}[\hat{p}_x\hat{x},\hat{p}_x^2]\\
+\nonumber&+(\hat{x}\hat{p}_x\hat{V}(\hat{x})-\hat{V}(\hat{x})\hat{x}\hat{p}_x)+(\hat{p}_x\hat{x}\hat{V}(\hat{x})-\hat{V}(\hat{x})\hat{p}_x\hat{x})\\
+\nonumber=&\frac{1}{2m}\left(\hat{x}[\hat{p}_x,\hat{p}_x^2]+[\hat{x},\hat{p}_x^2]\hat{p}_x+\hat{p}_x[\hat{x},\hat{p}_x^2]+[\hat{p}_x,\hat{p}_x^2]\hat{x}\right)\\
+\nonumber=&\frac{1}{2m}\left(\hat{x}(\hat{p}_x[\hat{p}_x,\hat{p}_x]+[\hat{p}_x,\hat{p}_x]\hat{p}_x)+(\hat{p}_x[\hat{x},\hat{p}_x]+[\hat{x},\hat{p}_x]\hat{p}_x)\hat{p}_x\right.\\
+\nonumber&\quad\left.+\hat{p}_x(\hat{p}_x[\hat{x},\hat{p}_x]+[\hat{x},\hat{p}_x]\hat{p}_x)+(\hat{p}_x[\hat{p}_x,\hat{p}_x]+[\hat{p}_x,\hat{p}_x]\hat{p}_x)\hat{x}\right)\\
+=&\frac{2i\hbar}{m}\hat{p}_x^2
+\end{align}
+we have
+\begin{equation}
+\frac{d\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle}{dt}=\frac{2}{m}\langle\hat{p}_x^2\rangle
+\end{equation}
+The equation of motion of the mean value $\langle\hat{p}_x^2\rangle$ is
+\begin{equation}
+\frac{d\langle\hat{p}_x^2\rangle}{dt}=\frac{1}{i\hbar}\langle[\hat{p}_x^2,\hat{H}]\rangle
+\end{equation}
+Since
+\begin{align}
+\nonumber[\hat{p}_x^2,\hat{H}]=&[\hat{p}_x^2,\frac{\hat{p}_x^2}{2m}+\hat{V}(\hat{x})]\\
+\nonumber=&\frac{1}{2m}[\hat{p}_x^2,\hat{p}_x^2]+[\hat{p}_x^2,\hat{V}(\hat{x})]\\
+=&0
+\end{align}
+we have
+\begin{equation}
+\frac{d\langle\hat{p}_x^2\rangle}{dt}=0
+\end{equation}
+so $\langle\hat{p}_x^2\rangle$ is a constant.\\
+Using this fact, integrate the equation of motion for the mean value $\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle$ to get
+\begin{equation}
+\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle=\frac{2\langle\hat{p}_x^2\rangle}{m}t+\left.\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle\right|_{t=0}
+\end{equation}
+where $\left.\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle\right|_{t=0}$ is a integration constant.\\
+Using the conclusion above, we have
+\begin{equation}
+\frac{d\langle\hat{x}^2\rangle}{dt}=\frac{2\langle\hat{p}_x^2\rangle}{m^2}t+\frac{\left.\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle\right|_{t=0}}{m}
+\end{equation}
+Integrate the equation of motion for the mean value $\langle\hat{x}^2\rangle$ to get
+\begin{equation}
+\langle\hat{x}^2\rangle=\frac{\langle\hat{p}_x^2\rangle}{m^2}t^2+\frac{\left.\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle\right|_{t=0}}{m}t+\left.\langle\hat{x}^2\rangle\right|_{t=0}
+\end{equation}
+where $\left.\langle\hat{x}^2\rangle\right|_{t=0}$ is another integration constant.
+\item[(c)] The root-mean square deviation $\Delta x$ can be written as
+\begin{equation}
+(\Delta x)^2=\langle\hat{x}^2\rangle-\langle\hat{x}\rangle^2
+\end{equation}
+where, using the conclusion obtained for last question
+\begin{equation}
+\langle\hat{x}^2\rangle=\frac{\langle\hat{p}_x^2\rangle}{m^2}t^2+\frac{\left.\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle\right|_{t=0}}{m}t+\left.\langle\hat{x}^2\rangle\right|_{t=0}
+\end{equation}
+and using the conclusion for (a)
+\begin{equation}
+\langle\hat{x}\rangle=\frac{\langle\hat{p}_x\rangle}{m}t+x_0
+\end{equation}
+Suitably choosing the time origin to make $\left.\langle\hat{x}\hat{p}_x+\hat{p}_x\hat{x}\rangle\right|_{t=0}=2\langle\hat{p}_x\rangle x_0$, then
+\begin{equation}
+(\Delta x)^2=\frac{\langle\hat{p}_x^2\rangle-\langle\hat{p}_x\rangle^2}{m^2}t^2+\left\langle\hat{x}^2\rangle\right|_{t=0}-x_0^2=\frac{1}{m^2}(\Delta p_x)_0^2t^2+(\Delta x)_0^2,
+\end{equation}
+where constant $(\Delta x)_0^2=\left\langle\hat{x}^2\rangle\right|_{t=0}-x_0^2$.\\
+According to the equation derived above, the width of the wave packet is a monotonically increasing function of time.\\
+Physcial interpretation: the group velocity of the particle is different from its phase particle, making the probability density for finding the particle diffuse in the space as it spreads.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{2}
+[C-T Exercise 3-5] In a one-dimensional problem, consider a particle of potential energy $\hat{V}(\hat{x})=-f\hat{x}$, where $f$ is a positive constant [$\hat{V}(\hat{x})$ arises, for example, from a gravity field or a uniform electric field].
+\begin{itemize}
+\item[(a)] Write Ehrenfest's theorem for the mean values of the position $\hat{x}$ and the momentum $\hat{p}_x$ of the particle. Integrate these equations; compare with the classical motion.
+\item[(b)] Show that the root-mean-square deviation $\Delta p_x$ does not vary over time.
+\item[(c)] Write the Schrödinger equation in the $\{|p_x\rangle\}$ representation. Deduce from it a relation between $\frac{\partial}{\partial t}|\langle p_x|\psi(t)\rangle|^2$ and $\frac{\partial}{\partial p_x}|\langle p_x|\psi(t)\rangle|^2$. Integrate the equation thus obtained; give a physical interpretation.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] According to Ehrenfest's theorem, the mean value for the position satisfies
+\begin{equation}
+\frac{d\langle\hat{x}\rangle}{dt}=\frac{1}{m}\langle\hat{p}_x\rangle
+\end{equation}
+The mean value for the momentum satisfies
+\begin{equation}
+\frac{d\langle\hat{p}_x\rangle}{dt}=-\langle\frac{\partial}{\partial x}\hat{V}(\hat{x})\rangle=f
+\end{equation}
+Integrate the equation above to get
+\begin{equation}
+\langle\hat{p}_x\rangle=ft+\left.\langle\hat{p}_x\rangle\right|_{t=0}
+\end{equation}
+where $\left.\langle\hat{p}_x\rangle\right|_{t=0}$ is an integration constant. Plug the equation above into the first equation in this solution to get
+\begin{equation}
+\frac{d\langle\hat{x}\rangle}{dt}=\frac{ft+\left.\langle\hat{p}_x\rangle\right|_{t=0}}{m}
+\end{equation}
+Intergrate the equation above to get
+\begin{equation}
+\langle\hat{x}\rangle=\frac{f}{2m}t^2+\frac{\left.\langle\hat{p}_x\rangle\right|_{t=0}}{m}t+\left.\langle\hat{x}\rangle\right|_{t=0}
+\end{equation}
+where $\left.\langle\hat{x}\rangle\right|_{t=0}$ is an integration constant.\\
+The equations obtained from integration can depict the classical motion in an uniform potential field well, such as that momentum is a linear function about the time and the position quadratic function.
+\item[(b)] According to Ehrenfest theorem, the mean value of the square of the momentum satisfies
+\begin{equation}
+\frac{d\langle\hat{p}_x\rangle}{dt}=\frac{1}{i\hbar}\langle[\hat{p}_x^2,\hat{H}]\rangle
+\end{equation}
+Since
+\begin{gather}
+\begin{align}
+\nonumber[\hat{p}_x^2,\hat{H}]\psi=&\left([\hat{p}_x^2,\frac{\hat{p}_x^2}{2m}+\hat{V}(\hat{x})]\right)\psi\\
+\nonumber=&\left(\frac{1}{2m}[\hat{p}_x^2,\hat{p}_x^2]+[\hat{p}_x^2,\hat{V}(\hat{x})]\right)\psi\\
+\nonumber=&\left(\hat{p}_x^2\hat{V}(\hat{x})-\hat{V}(\hat{x})\hat{p}_x^2\right)\psi\\
+\nonumber=&\left(-\hbar^2\frac{d^2}{dx^2}(-fx)-(-fx)(-\hbar^2)\frac{d^2}{dx^2}\right)\psi\\
+=&2\hbar^2f\frac{d}{dx}\psi
+\end{align}\\
+\Longrightarrow[\hat{p}_x^2,\hat{H}]=2\hbar^2f\frac{d}{dx}=2i\hbar f\hat{p}_x
+\end{gather}
+we have
+\begin{equation}
+\frac{d\langle\hat{p}_x^2\rangle}{dt}=2f\langle\hat{p}_x\rangle=2f(ft+\left.\langle\hat{p}_x\rangle\right|_{t=0})
+\end{equation}
+so the mean value of the momentum of is
+\begin{equation}
+\langle\hat{p}_x^2\rangle=ft^2+2f\left.\langle\hat{p}_x\rangle\right|_{t=0}t+\left.\langle\hat{p}_x^2\rangle\right|_{t=0}
+\end{equation}
+where the integration constant $\left.\langle\hat{p}_x^2\rangle\right|_{t=0}=\left[\left.\langle\hat{p}_x\rangle\right|_{t=0}\right]^2$.\\
+Therefore, the root-mean-square deviation of the momentum is
+\begin{equation}
+\Delta p_x=\sqrt{\langle\hat{p}_x^2\rangle-\langle\hat{p}_x\rangle^2}=0
+\end{equation}
+which does not vary over time.
+\item[(c)] The Schrödinger equation in the $\{|p_x\rangle\}$ representation is
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\bar{\psi}(p_x,t)=\left[\frac{p_x^2}{2m}+\hat{V}(i\hbar\frac{d}{dx})\right]\bar{\psi}(p_x,t)
+\end{equation}
+where $\bar{\psi}(p_x,t)$ is the wave function in the momentum representation.\\
+In the potential energy $\hat{V}(\hat{x})=-f\hat{x}$, the Schrödinger equation can be written as
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\bar{\psi}(p_x,t)=\left(\frac{p_x^2}{2m}-i\hbar f\frac{\partial}{\partial p_x}\right)\bar{\psi}(p_x,t)
+\end{equation}
+Using the equation above,
+\begin{align}
+\nonumber\frac{\partial}{\partial t}|\bar{\psi}(p_x,t)|^2=&\bar{\psi}^*(p_x,t)\frac{\partial\bar{\psi(p_x,t)}}{\partial t}+\bar{\psi}(p_x,t)\frac{\partial\bar{\psi}^*(p_x,t)}{\partial t}\\
+\nonumber=&-\bar{\psi}^*(p_x,t)\left(\frac{ip_x^2}{2m\hbar}+f\frac{\partial}{\partial p_x}\right)\bar{\psi}(p_x,t)+\bar{\psi}(p_x,t)\\
+\nonumber&+\bar{\psi}(p_x,t)\left(\frac{ip_x^2}{2m\hbar}-f\frac{\partial}{\partial p_x}\right)\bar{\psi}^*(p_x,t)\\
+\nonumber=&-f\left(\bar{\psi}^*(p_x,t)\frac{\partial\bar{\psi}(p_x,t)}{\partial p_x}+\bar{\psi}(p_x,t)\frac{\partial\bar{\psi}^*(p_x,t)}{\partial p_x}\right)\\
+=&-f\frac{\partial}{\partial p_x}|\bar{\psi}(p_x,t)|^2
+\end{align}
+Let
+\begin{gather}
+r=p-ft\\
+s=p+ft
+\end{gather}
+then
+\begin{gather}
+\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial p}=\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial r}+\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial s}\\
+\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial t}=-f\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial r}+f\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial s}
+\end{gather}
+so
+\begin{equation}
+\frac{\partial|\bar{\psi}(p_x,t)|^2}{\partial s}=0
+\end{equation}
+which means that $|\bar{\psi}(p_x,t)|^2$ is a function of $r$ along
+\begin{equation}
+|\bar{\psi}(p_x,t)|^2=P(p-ft)
+\end{equation}
+where $P$ is an arbitrary function and
+\begin{equation}
+|\bar{\psi}(p_x,t)|^2=|\bar{\psi}(p_x-ft,0)|^2
+\end{equation}
+Physical interpretation: the probability density in momentum representation moves according to the classical equation of motion, $p=p_0+ft$.
+\end{itemize}
+Reference: http://scipp.ucsc.edu/$\sim$haber/ph215/QMsol18\_2.pdf
+\end{sol}
+
+\begin{problem}{3}
+ [C-T Exercise 3-9] One wants to show that the physical state of a (spinless) particle is completely defined by specifying the probability density $\rho(\vec{r})=|\psi(\vec{r})|^2$ and the probability current $\vec{J}(\vec{r})$.
+ \begin{itemize}
+ \item[(a)] Assume the function $\psi(\vec{r})$ known and let $\xi(\vec{r})$ be its argument, $\psi(\vec{r})=\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}$. Show that
+ \[
+ \vec{J}(\vec{r})=\frac{\hbar}{m}\rho(\vec{r})\vec{\nabla}\xi(\vec{r}).
+ \]
+ Deduce that two wave functions leading to the same density $\rho(\vec{r})$ and current $\vec{J}(\vec{r})$ can differ only by a global phase factor.
+\item[(b)] Given arbitrary functions $\rho(\vec{r})$ and $\vec{J}(\vec{r})$, show that a quantum state $\psi(\vec{r})$ can be associated with them only if $\vec{\nabla}\times\vec{v}(\vec{r})=0$, where $\vec{v}(\vec{r})=\vec{J}(\vec{r})/\rho(\vec{r})$ is the velocity associated with the probability fluid.
+\item[(c)] Now assume that the particle is submitted to a magnetic field $\vec{B}=\vec{\nabla}\times\vec{A}(\vec{r})$. Show that
+\begin{gather*}
+\vec{J}(\vec{r})=\frac{\rho(\vec{r})}{m}[\hbar\vec{\nabla}\xi(\vec{r})-q\vec{A}(\vec{r})],\\
+\vec{\nabla}\times\vec{v}(\vec{r})=-\frac{q}{m}\vec{B}(\vec{r}).
+\end{gather*}
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The probability current is
+\begin{align}
+\nonumber\vec{J}(\vec{r})=&\frac{\hbar}{2im}(\psi^*\vec{\nabla}\psi-\psi\vec{\nabla}\psi^*)\\
+\nonumber=&\frac{\hbar}{2im}\left(\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\vec{\nabla}\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}-\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}\vec{\nabla}\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\right)\\
+\nonumber=&\frac{\hbar}{2im}\left[\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\left(e^{i\xi(\vec{r})}\vec{\nabla}\sqrt{\rho(\vec{r})}+\sqrt{\rho(\vec{r})}\vec{\nabla}e^{i\xi(\vec{r})}\right)\right.\\
+\nonumber&\left.-\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}\left(e^{-i\xi(\vec{r})}\vec{\nabla}\sqrt{\rho(\vec{r})}+\sqrt{\rho(\vec{r})}\vec{\nabla}e^{-i\xi(\vec{r})}\right)\right]\\
+\nonumber=&\frac{\hbar}{2im}\left[\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\left(e^{i\xi(\vec{r})}\frac{\vec{\nabla}\rho(\vec{r})}{2\sqrt{\rho(\vec{r})}}+\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}i\vec{\nabla}\xi(\vec{r})\right)\right.\\
+\nonumber&\left.-\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}\left(e^{-i\xi(\vec{r})}\frac{\vec{\nabla}\rho(\vec{r})}{2\sqrt{\rho(\vec{r})}}+\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}(-i\vec{\nabla}\xi(\vec{r}))\right)\right]\\
+=&\frac{\hbar}{m}\rho(\vec{r})\vec{\nabla}\xi(\vec{r})
+\end{align}
+For a wave function with the same density $\rho(\vec{r})=|\psi(\vec{r})|^2$ differing by a global phase vector
+\begin{equation}
+\varphi(\vec{r})=\psi(\vec{r})e^{i\psi}=\sqrt{\rho(\vec{r})}e^{i[\xi(\vec{r})+\phi]}
+\end{equation}
+its probability
+\begin{align}
+\nonumber\vec{J}_1(\vec{r})=&\frac{\hbar}{2im}(\varphi^*\vec{\nabla}\varphi-\varphi\vec{\nabla}\varphi^*)\\
+\nonumber=&\frac{\hbar}{2im}\left(\sqrt{\rho(\vec{r})}e^{-i[\xi(\vec{r})+\phi(\vec{r})]}\vec{\nabla}\sqrt{\rho(\vec{r})}e^{i[\xi(\vec{r})+\phi]}-\sqrt{\rho(\vec{r})}e^{i[\xi(\vec{r})+\phi]}\vec{\nabla}\sqrt{\rho(\vec{r})}e^{-i[\xi(\vec{r})+\phi]}\right)\\
+\nonumber=&\frac{\hbar}{2im}\left[\sqrt{\rho(\vec{r})}e^{-i[\xi(\vec{r})+\phi]}\left(e^{i[\xi(\vec{r})+\phi]}\vec{\nabla}\sqrt{\rho(\vec{r})}+\sqrt{\rho(\vec{r})}\vec{\nabla}e^{i[\xi(\vec{r})+\phi]}\right)\right.\\
+\nonumber&\left.-\sqrt{\rho(r)}e^{i[\xi(\vec{r})+\phi]}\left(e^{-i[\xi(\vec{r})+\phi]}\vec{\nabla}\sqrt{\rho(\vec{r})}+\sqrt{\rho(\vec{r})}\vec{\nabla}e^{-i[\xi(\vec{r})+\phi]}\right)\right]\\
+\nonumber=&\frac{\hbar}{2im}\left[\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\left(e^{i[\xi(\vec{r})+\phi]}\frac{\vec{\nabla}\rho(\vec{r})}{2\sqrt{\rho(\vec{r})}}+\sqrt{\rho(\vec{r})}e^{i[\xi(\vec{r})+\phi]i\vec{\nabla}\xi(\vec{r})}\right)\right.\\
+\nonumber&\left.-\sqrt{\rho(\vec{r})}\left(e^{-i[\xi(\vec{r})+\phi]}\frac{\vec{\nabla}\rho(\vec{r})}{2\sqrt{\rho(\vec{r})}}+\sqrt{\rho(\vec{r})}e^{-i[\xi(\vec{r})+\phi]}(-i\vec{\nabla}\xi(\vec{r}))\right)\right]\\
+=&\frac{\hbar}{m}\rho(\vec{r})\vec{\nabla}\xi(\vec{r})
+\end{align}
+is the same as $\psi(\vec{r})$'s.\\
+Therefore, two wave functions leading to the same density and current can differ only by a global phase factor
+\item[(b)] For an arbitrary wave function $\psi(\vec{r})$,
+\begin{equation}
+\nonumber\vec{\nabla}\times\vec{v}(\vec{r})=\nabla\times\frac{\hbar}{m}\vec{\nabla}\xi(\vec{r})=0
+\end{equation}
+Therefore, a quantum state $\psi(\vec{r})$ can be associated withe $\rho(\vec{r})$ and $\vec{J}(\vec{r})$ only if $\vec{\nabla}\times\vec{v}(\vec{r})=0$.
+\item[(c)] In the magnetic field $\vec{B}=\vec{\nabla}\times\vec{A}(\vec{r})$, the probability current is
+\begin{align}
+\nonumber\vec{J}(\vec{r},t)=&\frac{\hbar}{2m}\left\{\psi^*(\vec{r},t)[-i\hbar\vec{\nabla}-q\vec{A}(\vec{r})]\psi(\vec{r},t)-\psi(\vec{r},t)[-i\hbar\vec{\nabla}-q\vec{A}(\vec{r})]\psi^*(\vec{r},t)\right\}\\
+\nonumber=&\frac{\hbar}{2m}\left\{\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}[-i\hbar\vec{\nabla}-q\vec{A}(\vec{r})]\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}\right.\\
+\nonumber&\left.-\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}[-i\hbar\vec{\nabla}-q\vec{A}(\vec{r})]\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\right\}\\
+\nonumber=&\frac{\hbar}{2m}\left\{\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\left[-i\hbar e^{i\xi(\vec{r})}\frac{\vec{\nabla}\rho(\vec{r})}{2\sqrt{\rho(\vec{r})}}-i\hbar\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}i\vec{\nabla}\xi(\vec{r})-q\vec{A}\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}\right]\right.\\
+\nonumber&\left.-\sqrt{\rho(\vec{r})}e^{i\xi(\vec{r})}\left[-i\hbar e^{-i\xi(\vec{r})}\frac{\vec{\nabla}\rho(\vec{r})}{2\sqrt{\rho(\vec{r})}}-i\hbar\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}(-i\vec{\nabla}\xi(\vec{r}))-q\vec{A}\sqrt{\rho(\vec{r})}e^{-i\xi(\vec{r})}\right]\right\}\\
+=&\frac{\rho(\vec{r})}{m}[\hbar\vec{\nabla}\xi(\vec{r})-q\vec{A}(\vec{r})]
+\end{align}
+The curl of the velocity is
+\begin{equation}
+\vec{\nabla}\times\vec{v}(\vec{r})=\nabla\times\frac{\vec{J}(\vec{r})}{\rho(\vec{r})}=\frac{1}{m}\nabla\times[\hbar\vec{\nabla}\xi(\vec{r})-q\vec{A}(\vec{r})]=-\frac{q}{m}\vec{\nabla}\times\vec{A}(\vec{r})=-\frac{q}{m}\vec{B}(\vec{r})
+\end{equation}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{4}
+[C-T Exercise 3-16] Consider a physical system formed by two particles (1) and (2), of the same mass $m$, which do not interact with each other and which are both placed in an infinite potential well of width $a$. Denote by $\hat{H}(1)$ and $\hat{H}(2)$ the Hamiltonians of each of the two particles and by $|\varphi_n(1)\rangle$ and $|\varphi_q(2)\rangle$ the corresponding eigenstates of the first and second particle, of energies $n^2\pi^2\hbar^2/2ma^2$ and $q^2\pi^2\hbar^2/2ma^2$. In the state space of the global system, the basis chosen is composed of the states $|\varphi_n\varphi_q\rangle$ defined by $|\varphi_n(1)\rangle\otimes|\varphi_q(2)$.
+\begin{itemize}
+\item[(a)] What are the eigenstates and the eigenvalues of the operator $\hat{H}=\hat{H}(1)+\hat{H}(2)$, the total Hamiltonian of the system? Give the degree of degeneracy of the two lowest energy levels.
+\item[(b)] Assume that the system, at time $t=0$, is in the state
+\[
+|\psi(0)\rangle=\frac{1}{\sqrt{6}}|\varphi_1\varphi_1\rangle+\frac{1}{\sqrt{3}}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{6}}|\varphi_2\varphi_1\rangle+\frac{1}{\sqrt{3}}|\varphi_2\varphi_2\rangle
+\]
+\begin{itemize}
+\item[i.] What is the state of the system at time $t$?
+\item[ii.] The total energy $\hat{H}$ is measured. What results can be found, and with what probabilities?
+\item[iii.] Same questions if, instead of measuring $\hat{H}$, one measures $\hat{H}(1)$.
+\end{itemize}
+\item[(c)]
+\begin{itemize}
+\item[i.] Show that $|\psi(0)\rangle$ is a tensor product state. When the system is in this state, calculate the following mean values: $\langle\hat{H}(1)\rangle$, $\langle\hat{H}(2)\rangle$ and $\langle\hat{H}(1)\hat{H}(2)\rangle$. Compare $\langle\hat{H}(1)\rangle\langle\hat{H}(2)\rangle$ with $\langle\hat{H}(1)\hat{H}(2)\rangle$; how can this result be explained?
+\item[ii.] Show that the preceding results remain valid when the state of the system is the state $|\psi(t)\rangle$ calculated in $(b)$.
+\end{itemize}
+\item[(d)] Now assume that the state $|\psi(0)\rangle$ is given by
+\[
+|\psi(0)\rangle=\frac{1}{\sqrt{5}}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}|\varphi_2\varphi_1\rangle
+\]
+\begin{itemize}
+\item[i.] Show that $|\psi(0)\rangle$ cannot be put in the form of a tensor product. When the system is in this state, calculate the following mean values: $\langle\hat{H}(1)\rangle$, $\langle\hat{H}(2)\rangle$ and $\langle\hat{H}(1)\hat{H}(2)\rangle$. Compare $\langle\hat{H}(1)\rangle\langle\hat{H}(2)\rangle$ with $\langle\hat{H}(1)\hat{H}(2)\rangle$; how can this result be explained?
+\item[ii.] Show that the preceding results remain valid when the state of the system is the state $|\psi(t)\rangle$ derived from the above-given $|\psi(0)\rangle$.
+\end{itemize}
+\item[(e)] Write the matrix, in the basis of the vectors $|\varphi_n\varphi_q\rangle$, which represents the density matrix $\rho(0)$  corresponding to the ket $|\psi(0)\rangle$ given in (b). What is the density matrix $\rho(t)$ at time $t$? Calculate, at the instant $t=0$, the partial traces $\rho(1)=\text{Tr}_2\rho$ and $\rho(2)=\text{Tr}_1\rho$. Do the density operators $\rho$, $\rho(1)$ and $\rho(2)$ describe pure states? Compare $\rho$ with $\rho(1)\otimes\rho(2)$; what is your interpretation?
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The eigenstates of the operator $\hat{H}=\hat{H}(1)+\hat{H}(2)$ are
+\begin{equation}
+|\varphi_n\varphi_q\rangle=|\varphi_n(1)\rangle\otimes|\varphi_q(2)\rangle
+\end{equation}
+The eigenequation are
+\begin{equation}
+\hat{H}|\varphi_n\varphi_q\rangle=[\hat{H}(1)1(2)+1(1)\hat{H}(2)]|\varphi_n(1)\rangle\otimes|\varphi_q(2)\rangle=\left[\frac{n^2\pi^2\hbar^2}{2ma^2}+\frac{q^2\pi^2\hbar^2}{2ma^2}\right]|\varphi_n(1)\rangle\otimes|\varphi_q(2)\rangle
+\end{equation}
+so the eigenvalues are
+\begin{equation}
+\frac{n^2\pi^2\hbar^2}{2ma^2}+\frac{q^2\pi^2\hbar^2}{2ma^2},\quad n=1,2,3,\cdots,q=1,2,3,\cdots
+\end{equation}
+The eigenvalue of the lowest energy level
+\begin{equation}
+\frac{1^2\pi^2\hbar^2}{2ma^2}+\frac{1^2\pi^2\hbar^2}{2ma^2}=\frac{\pi^2\hbar^2}{ma^2}
+\end{equation}
+requires
+\begin{equation}
+n=1,q=1
+\end{equation}
+so the degree of degeneracy of the lowest energy level is $1$.\\
+The eigenvalue of the second lowest energy level
+\begin{equation}
+\frac{1^2\pi^2\hbar^2}{2ma^2}+\frac{2^2\pi^2\hbar^2}{2ma^2}=\frac{5\pi^2\hbar^2}{ma^2}
+\end{equation}
+requires
+\begin{equation}
+n=1,q=2\text{ or }n=2,q=1
+\end{equation}
+so the degree of degeneracy of the second lowest energy level is $2$.\\
+\item[(b)]
+\begin{itemize}
+\item[i.] The state of the system at time $t=0$ is
+\small\begin{equation}
+|\psi(0)\rangle=\frac{1}{\sqrt{6}}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\frac{1}{\sqrt{3}}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle+\frac{1}{\sqrt{6}}|\varphi_2(1)\rangle\otimes|\varphi_1(2)\rangle+\frac{1}{\sqrt{3}}|\varphi_2(1)\rangle\otimes|\varphi_2(2)\rangle
+\end{equation}\normalsize
+The state of the system at time $t$ is
+\small\begin{align}
+\nonumber|\psi(t)\rangle=&\frac{1}{\sqrt{6}}e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(1)\rangle\otimes e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(2)\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(1)\rangle\otimes e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}|\varphi_2(2)\rangle\\
+\nonumber&+\frac{1}{\sqrt{6}}e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}|\varphi_2(1)\rangle\otimes e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(2)\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}|\varphi_2(1)\rangle\otimes e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}|\varphi_2(2)\rangle\\
+\nonumber=&\frac{1}{\sqrt{6}}e^{-i\frac{2\pi^2\hbar}{2ma^2}t}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle\\
+\nonumber&+\frac{1}{\sqrt{6}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_2(1)\rangle\otimes|\varphi_1(2)\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{4\pi^2\hbar}{ma^2}t}|\varphi_2(1)\rangle\otimes|\varphi_2(2)\rangle\\
+=&\frac{1}{\sqrt{6}}e^{-i\frac{2\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{6}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{4\pi^2\hbar}{ma^2}t}|\varphi_2\varphi_2\rangle
+\end{align}\normalsize
+\item[ii.] The possible measure results for $\hat{H}$ and their corresponding probabilities are shown in the table below
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Results                       & Probabilities \\ \hline
+$\frac{\pi^2\hbar^2}{ma^2}$   & $\frac{1}{6}$ \\ \hline
+$\frac{5\pi^2\hbar^2}{2ma^2}$ & $\frac{1}{2}$ \\ \hline
+$\frac{4\pi^2\hbar^2}{ma^2}$  & $\frac{1}{3}$ \\ \hline
+\end{tabular}
+\end{table}
+\item[iii.] The possible measure results for $\hat{H}(1)$ and their corresponding probabilities are shown in the table below
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Results                      & Probabilities \\ \hline
+$\frac{\pi^2\hbar^2}{2ma^2}$ & $\frac{1}{2}$ \\ \hline
+$\frac{2\pi^2\hbar^2}{ma^2}$ & $\frac{1}{2}$ \\ \hline
+\end{tabular}
+\end{table}
+\end{itemize}
+\item[(c)]
+\begin{itemize}
+\item[i.] $|\psi(0)\rangle$ is a tensor product state:
+\begin{equation}
+|\psi(0)\rangle=\left(\frac{1}{\sqrt{2}}|\psi_1(1)\rangle+\frac{1}{\sqrt{2}}|\psi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}|\psi_1(1)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\psi_2(2)\rangle\right)
+\end{equation}
+When the system is in this state,
+\begin{align}
+\nonumber\langle\hat{H}(1)\rangle=&\langle\varphi(0)|\hat{H}(1)|\varphi(0)\rangle\\
+\nonumber=&\left(\frac{1}{\sqrt{2}}\langle\varphi_1(1)|+\frac{1}{\sqrt{2}}\langle\varphi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\varphi_1(1)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\varphi_2(2)|\right)\hat{H}(1)1(2)\\
+\nonumber&\quad\quad\quad\quad\quad\quad\quad\quad\left(\frac{1}{\sqrt{2}}|\varphi_1(1)\rangle+\frac{1}{\sqrt{2}}|\varphi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}|\varphi_1(1)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\varphi_2(2)\rangle\right)\\
+\nonumber=&\frac{1}{2}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{2}\frac{2\pi^2\hbar^2}{ma^2}=\frac{5\pi^2\hbar^2}{4ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(2)\rangle=&\langle\psi(0)|\hat{H}(2)|\psi(0)\rangle\\
+\nonumber=&\left(\frac{1}{\sqrt{2}}\langle\psi_1(1)|+\frac{1}{\sqrt{2}}\langle\psi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\psi_1(1)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\psi_2(2)|\right)1(1)\hat{H}(2)\\
+\nonumber&\quad\quad\quad\quad\quad\quad\quad\quad\left(\frac{1}{\sqrt{2}}|\psi_1(1)\rangle+\frac{1}{\sqrt{2}}|\psi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}|\psi_1(1)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\psi_2(2)\rangle\right)\\
+\nonumber=&\frac{1}{3}\frac{\pi^2\hbar^2}{2ma^2}+\frac{2}{3}\frac{2\pi^2\hbar^2}{ma^2}=\frac{3\pi^2\hbar^2}{2ma^2}
+\end{align}
+\begin{align}
+\nonumber&\langle\hat{H}(1)\hat{H}(2)\rangle=\langle\psi(0)|\hat{H}(1)\hat{H}(2)|\psi(0)\rangle\\
+\nonumber=&\left(\frac{1}{\sqrt{2}}\langle\psi_1(1)|+\frac{1}{\sqrt{2}}\langle\psi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\psi_1(1)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\psi_2(2)|\right)\hat{H}(1)\hat{H}(2)\\
+\nonumber&\quad\quad\quad\quad\quad\quad\quad\quad\left(\frac{1}{\sqrt{2}}|\psi_1(1)\rangle+\frac{1}{\sqrt{2}}|\psi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}|\psi_1(1)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\psi_2(2)\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{2}}\langle\psi_1(1)|+\frac{1}{\sqrt{2}}\langle\psi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\psi_1(1)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\psi_2(2)|\right)\hat{H}(1)\\
+\nonumber&\quad\quad\quad\quad\left(\frac{1}{\sqrt{2}}|\psi_1(1)\rangle+\frac{1}{\sqrt{2}}|\psi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}\frac{\pi^2\hbar^2}{2ma^2}|\psi_1(1)\rangle+\frac{\sqrt{2}}{\sqrt{3}}\frac{2\pi^2\hbar^2}{ma^2}|\psi_2(2)\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{2}}\langle\psi_1(1)|+\frac{1}{\sqrt{2}}\langle\psi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\psi_1(1)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\psi_2(2)|\right)\\
+\nonumber&\quad\quad\left(\frac{1}{\sqrt{2}}\frac{\pi^2\hbar^2}{2ma^2}|\psi_1(1)\rangle+\frac{1}{\sqrt{2}}\frac{2\pi^2\hbar^2}{ma^2}|\psi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}\frac{\pi^2\hbar^2}{2ma^2}|\psi_1(1)\rangle+\frac{\sqrt{2}}{\sqrt{3}}\frac{2\pi^2\hbar^2}{ma^2}|\psi_2(2)\rangle\right)\\
+=&\frac{15}{8}\left(\frac{\pi^2\hbar^2}{ma^2}\right)^2
+\end{align}
+\begin{equation}
+\langle\hat{H}(1)\rangle\langle\hat{H}(2)\rangle=\langle\hat{H}(2)\hat{H}(1)\rangle
+\end{equation}
+Explanation: Since the two particles (1) and (2) do not interact with each other, their Hamiltonians are independent.
+\item[ii.] At time $t$,
+\footnotesize\begin{align}
+\nonumber\langle\hat{H}(1)\rangle=&\left(\frac{1}{\sqrt{6}}e^{i\frac{2\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_1|+\frac{1}{\sqrt{3}}e^{i\frac{5\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{6}}e^{i\frac{5\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|+\frac{1}{\sqrt{3}}e^{i\frac{4\pi^2\hbar}{ma^2}t}\langle\varphi_2\varphi_2|\right)\hat{H}(1)\\
+\nonumber&\left(\frac{1}{\sqrt{6}}e^{-i\frac{2\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{6}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{4\pi^2\hbar}{ma^2}t}|\varphi_2\varphi_2\rangle\right)\\
+=&\frac{1}{6}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{3}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{6}\frac{2\pi^2\hbar^2}{ma^2}+\frac{1}{3}\frac{2\pi^2\hbar^2}{ma^2}=\frac{5}{4}\frac{\pi^2\hbar^2}{ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(2)\rangle=&\left(\frac{1}{\sqrt{6}}e^{i\frac{2\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_1|+\frac{1}{\sqrt{3}}e^{i\frac{5\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{6}}e^{i\frac{5\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|+\frac{1}{\sqrt{3}}e^{i\frac{4\pi^2\hbar}{ma^2}t}\langle\varphi_2\varphi_2|\right)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{6}}e^{-i\frac{2\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{6}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{4\pi^2\hbar}{ma^2}t}|\varphi_2\varphi_2\rangle\right)\\
+=&\frac{1}{6}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{3}\frac{2\pi^2\hbar^2}{ma^2}+\frac{1}{6}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{3}\frac{2\pi^2\hbar^2}{ma^2}=\frac{3\pi^2\hbar^2}{2ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(1)\hat{H}(2)\rangle=&\left(\frac{1}{\sqrt{6}}e^{i\frac{2\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_1|+\frac{1}{\sqrt{3}}e^{i\frac{5\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{6}}e^{i\frac{5\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|+\frac{1}{\sqrt{3}}e^{i\frac{4\pi^2\hbar}{ma^2}t}\langle\varphi_2\varphi_2|\right)\hat{H}(1)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{6}}e^{-i\frac{2\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{6}}e^{-i\frac{5\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle+\frac{1}{\sqrt{3}}e^{-i\frac{4\pi^2\hbar}{ma^2}t}|\varphi_2\varphi_2\rangle\right)\\
+=&\left(\frac{1}{6}\times\frac{1}{2}\times\frac{1}{2}+\frac{1}{3}\times\frac{1}{2}\times2+\frac{1}{6}\times2\times\frac{1}{2}+\frac{1}{3}\times2\times2\right)\left(\frac{\pi^2\hbar^2}{ma^2}\right)=\frac{15}{8}\left(\frac{\pi^2\hbar^2}{ma^2}\right)
+\end{align}\normalsize
+Still,
+\begin{equation}
+\langle\hat{H}(1)\rangle\langle\hat{H}(2)\rangle=\langle\hat{H}(2)\hat{H}(1)\rangle
+\end{equation}
+Therefore, the preceding results remain valid when the state is the state $|\psi(t)\rangle$ calculated in (b).
+\end{itemize}
+\item[(d)]
+\begin{itemize}
+\item[i.] Assume that $|\psi(0)\rangle$ can be put in the form of a tensor product
+\begin{equation}
+|\psi(0)\rangle=\sum_ia_i|\varphi_i(1)\rangle\otimes\sum_jb_j|\varphi_j(2)\rangle=\sum_{i,j}a_ib_j|\varphi_i(1)\rangle\otimes|\varphi_j(2)\rangle=\sum_{i,j}a_ib_j|\varphi_i\varphi_j\rangle
+\end{equation}
+where
+\begin{gather}
+\sum_i|a_i|^2=1\\
+\sum_j|b_j|^2=1
+\end{gather}
+If so,
+\begin{gather}
+a_1b_1=\sqrt{\frac{1}{5}}\\
+\label{cond1}a_1b_2=\sqrt{\frac{3}{5}}\\
+\label{cond2}a_2b_1=\sqrt{\frac{1}{5}}\\
+\label{cond3}a_ib_j=0\quad(\text{for }i\neq1,j\neq1)
+\end{gather}
+From equation (\ref{cond1}) and (\ref{cond2}), we know
+\begin{equation}
+a_2\neq0,\quad b_2\neq0
+\end{equation}
+which means
+\begin{equation}
+a_2b_2\neq0
+\end{equation}
+contradicting equation (\ref{cond3}).\\
+Therefore, the assumption above is incorrect and $|\psi(0)\rangle$ cannot be put in the form of a tensor product.\\
+When the system is in this state,
+\begin{align}
+\nonumber\langle\hat{H}(1)\rangle=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}\langle\varphi_2\varphi_1|\right)\hat{H}(1)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}|\varphi_2\varphi_1\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1(1)|\otimes\langle\varphi_1(2)|+\sqrt{\frac{3}{5}}\langle\varphi_1(1)|\otimes\langle\varphi_2(2)|+\frac{1}{\sqrt{5}}\langle\varphi_2(1)|\otimes\langle\varphi_1(2)|\right)\hat{H}(1)1(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\sqrt{\frac{3}{5}}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle+\frac{1}{\sqrt{5}}|\varphi_2(1)\rangle\otimes|\varphi_2(2)\rangle\right)\\
+=&\frac{1}{5}\frac{\pi^2\hbar^2}{2ma^2}+\frac{3}{5}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{5}\frac{2\pi^2\hbar^2}{ma^2}=\frac{4\pi^2\hbar^2}{5ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(2)\rangle=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}\langle\varphi_2\varphi_1|\right)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}|\varphi_2\varphi_1\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1(1)|\otimes\langle\varphi_1(2)|+\sqrt{\frac{3}{5}}\langle\varphi_1(1)|\otimes\langle\varphi_2(2)|+\frac{1}{\sqrt{5}}\langle\varphi_2(1)|\otimes\langle\varphi_1(2)|\right)1(1)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\sqrt{\frac{3}{5}}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle+\frac{1}{\sqrt{5}}|\varphi_2(1)\rangle\otimes|\varphi_2(2)\rangle\right)\\
+=&\frac{1}{5}\frac{\pi^2\hbar^2}{2ma^2}+\frac{3}{5}\frac{2\pi^2\hbar^2}{ma^2}+\frac{1}{5}\frac{2\pi^2\hbar^2}{ma^2}=\frac{17\pi^2\hbar^2}{10ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(1)\hat{H}(2)\rangle=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}\langle\varphi_2\varphi_1|\right)\hat{H}(1)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}|\varphi_2\varphi_1\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}\langle\varphi_2\varphi_1|\right)\hat{H}(1)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}\frac{\pi^2\hbar^2}{2ma^2}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}\frac{2\pi^2\hbar^2}{ma^2}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}\frac{2\pi^2\hbar^2}{ma^2}|\varphi_2\varphi_1\rangle\right)\\
+=&\left(\frac{1}{5}\times\frac{1}{2}\times\frac{1}{2}+\frac{3}{5}\times\frac{1}{2}\times2+\frac{1}{5}\times2\times\frac{1}{2}\right)\left(\frac{\pi^2\hbar^2}{ma^2}\right)^2=\frac{17}{20}\left(\frac{\pi^2\hbar^2}{ma^2}\right)
+\end{align}
+\begin{equation}
+\langle\hat{H}(1)\rangle\langle\hat{H}(2)\rangle\neq\langle\hat{H}(1)\hat{H}(2)\rangle
+\end{equation}
+Explanation: The state $|\psi(0)\rangle$ cannot be put in the form of a tensor product, and thus, is not an existent state that satisfies that the Hamiltonians of the two particles are independent.
+\item[ii.] The state at time $t$ derived from the above-given $|\psi(0)\rangle$ is
+\small\begin{align}
+\nonumber|\psi(t)\rangle=&\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(1)\rangle\otimes e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(2)\rangle+\frac{\sqrt{3}}{\sqrt{5}}e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(1)\rangle\otimes e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}|\varphi_2(2)\rangle\\
+\nonumber&+\frac{1}{\sqrt{5}}e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}|\varphi_2(1)\rangle\otimes e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}|\varphi_1(2)\rangle\\
+\nonumber=&\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar}{ma^2}t}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\frac{\sqrt{3}}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle+\frac{1}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_2(1)\rangle\otimes|\varphi_1(2)\rangle\\
+=&\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar}{ma^2}t}|\varphi_1\varphi_1\rangle+\frac{\sqrt{3}}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle
+\end{align}\normalsize
+When the state is in the state $|\psi(t)\rangle$,
+\small\begin{align}
+\nonumber\langle\hat{H}(1)\rangle=&\left(\frac{1}{\sqrt{5}}e^{i\frac{\pi^2\hbar}{ma^2}t}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|\right)\hat{H}(1)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar}{ma^2}t}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1(1)|\otimes\langle\varphi_1(2)|+\sqrt{\frac{3}{5}}\langle\varphi_1(1)|\otimes\langle\varphi_2(2)|+\frac{1}{\sqrt{5}}\langle\varphi_2(1)|\otimes\langle\varphi_1(2)|\right)\hat{H}(1)1(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\sqrt{\frac{3}{5}}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle+\frac{1}{\sqrt{5}}|\varphi_2(1)\rangle\otimes|\varphi_2(2)\rangle\right)\\
+=&\frac{1}{5}\frac{\pi^2\hbar^2}{2ma^2}+\frac{3}{5}\frac{\pi^2\hbar^2}{2ma^2}+\frac{1}{5}\frac{2\pi^2\hbar^2}{ma^2}=\frac{4\pi^2\hbar^2}{5ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(2)\rangle=&\left(\frac{1}{\sqrt{5}}e^{i\frac{\pi^2\hbar}{ma^2}t}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|\right)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar}{ma^2}t}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{5}}\langle\varphi_1(1)|\otimes\langle\varphi_1(2)|+\sqrt{\frac{3}{5}}\langle\varphi_1(1)|\otimes\langle\varphi_2(2)|+\frac{1}{\sqrt{5}}\langle\varphi_2(1)|\otimes\langle\varphi_1(2)|\right)1(1)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}|\varphi_1(1)\rangle\otimes|\varphi_1(2)\rangle+\sqrt{\frac{3}{5}}|\varphi_1(1)\rangle\otimes|\varphi_2(2)\rangle+\frac{1}{\sqrt{5}}|\varphi_2(1)\rangle\otimes|\varphi_2(2)\rangle\right)\\
+=&\frac{1}{5}\frac{\pi^2\hbar^2}{2ma^2}+\frac{3}{5}\frac{2\pi^2\hbar^2}{ma^2}+\frac{1}{5}\frac{2\pi^2\hbar^2}{ma^2}=\frac{17\pi^2\hbar^2}{10ma^2}
+\end{align}
+\begin{align}
+\nonumber\langle\hat{H}(1)\hat{H}(2)\rangle=&\left(\frac{1}{\sqrt{5}}e^{i\frac{\pi^2\hbar}{ma^2}t}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|\right)\hat{H}(1)\hat{H}(2)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar}{ma^2}t}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}|\varphi_2\varphi_1\rangle\right)\\
+\nonumber=&\left(\frac{1}{\sqrt{5}}e^{i\frac{\pi^2\hbar}{ma^2}t}\langle\varphi_1\varphi_1|+\sqrt{\frac{3}{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_1\varphi_2|+\frac{1}{\sqrt{5}}e^{i\frac{3\pi^2\hbar}{2ma^2}t}\langle\varphi_2\varphi_1|\right)\hat{H}(1)\\
+\nonumber&\left(\frac{1}{\sqrt{5}}e^{-i\frac{\pi^2\hbar}{ma^2}t}\frac{\pi^2\hbar^2}{2ma^2}|\varphi_1\varphi_1\rangle+\sqrt{\frac{3}{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}\frac{2\pi^2\hbar^2}{ma^2}|\varphi_1\varphi_2\rangle+\frac{1}{\sqrt{5}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}\frac{\pi^2\hbar^2}{2ma^2}|\varphi_2\varphi_1\rangle\right)\\
+=&\left(\frac{1}{5}\times\frac{1}{2}\times\frac{1}{2}+\frac{3}{5}\times\frac{1}{2}\times2+\frac{1}{5}\times2\times\frac{1}{2}\right)\left(\frac{\pi^2\hbar^2}{ma^2}\right)=\frac{17\pi^2\hbar^2}{20ma^2}
+\end{align}\normalsize
+Still,
+\begin{equation}
+\langle\hat{H}(1)\rangle\langle\hat{H}(2)\rangle\neq\langle\hat{H}(1)\hat{H}(2)\rangle
+\end{equation}
+Therefore, the preceding results remain valid when the state of the system is the state $|\psi(t)\rangle$ derived from the above-given $|\psi(0)\rangle$.
+\end{itemize}
+\item[(e)] The tensor product of the state $|\psi(0)\rangle=\left(\frac{1}{\sqrt{2}}|\varphi_1(1)\rangle+\frac{1}{\sqrt{2}}|\varphi_2(1)\rangle\right)\left(\frac{1}{\sqrt{3}}|\varphi_1(2)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\varphi_2(2)\rangle\right)$ given in (b) can be written as
+\begin{equation}
+|\psi(0)\rangle=\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}}\\
+0\\
+0\\
+\vdots\\
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{3}}&\frac{\sqrt{2}}{\sqrt{3}}&0&0&\cdots\\
+\end{array}\right)=\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}}&0&0&\cdots\\
+\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)
+\end{equation}
+The density matrix corresponding to the ket $|\psi(0)\rangle$ is
+\begin{equation}
+\rho(0)=|\psi(0)\rangle\langle\psi(0)|=\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}}&0&0&\cdots\\
+\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{6}}&0&0&\cdots\\
+\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)
+\end{equation}
+At time $t$, the tensor product of the state is
+\begin{align}
+\nonumber|\psi(t)\rangle=&\left(\frac{1}{\sqrt{2}}e^{-i\frac{\pi^2\hbar}{2ma^2}t}|\varphi_1(1)\rangle+\frac{1}{\sqrt{2}}e^{-i\frac{2\pi^2\hbar}{ma^2}}t|\varphi_2(1)\rangle\right)\left(\frac{1}{\sqrt{3}}e^{-i\frac{\pi^2\hbar}{2ma^2}t}|\varphi_1(2)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\varphi_2(2)\rangle\right)\\
+\nonumber=&\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}e^{-i\frac{\pi^2\hbar}{2ma^2}t}\\
+\frac{1}{\sqrt{2}}e^{-i\frac{2\pi^2\hbar}{ma^2}t}\\
+0\\
+0\\
+\vdots
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{3}}e^{-i\frac{\pi^2\hbar}{2ma^2}t}&\frac{\sqrt{2}}{\sqrt{3}}e^{-i\frac{2\pi^2\hbar}{ma^2}}&0&0&\cdots\\
+\end{array}\right)\\
+\nonumber=&\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{6}}e^{-i\frac{\pi^2\hbar}{ma^2}t}&\frac{1}{\sqrt{3}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}&0&0&\cdots\\
+\frac{1}{\sqrt{6}}e^{-i\frac{3\pi^2\hbar}{2ma^2}t}&\frac{1}{\sqrt{3}}e^{-i\frac{4\pi^2\hbar}{ma^2}t}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)
+\end{align}
+The matrix element of the partial trace $\rho(1)$ is
+\small
+\begin{gather}
+\begin{align}
+\nonumber\langle\varphi_n(1)|\rho(1)|\varphi_{n'}(1)\rangle=&\sum_p(\langle\varphi_n(1)|\otimes\langle\varphi_p(2)|)\left(\frac{1}{\sqrt{2}}|\varphi_1(1)\rangle+\frac{1}{\sqrt{2}}|\varphi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}|\varphi_1(2)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\varphi_2(2)\rangle\right)\\
+\nonumber&\left(\frac{1}{\sqrt{2}}\langle\varphi_1(1)|+\frac{1}{\sqrt{2}}\langle\varphi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\varphi_1(2)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\varphi_2(2)|\right)(|\varphi_{n'}(1)\rangle\otimes|\varphi_p(2)\rangle)\\
+=&\frac{1}{2}\left(\delta_{1n}+\delta_{2n}\right)\left(\delta_{1n'}+\delta_{2n'}\right)
+% \sum_p(\langle\varphi_n(1)|\otimes\langle\varphi_p(2)|)\rho(|\varphi_{n'}(1)\rangle\otimes|\varphi_p(2)\rangle)\\
+% \nonumber=&\left(\begin{array}{c}
+% \text{totally }(p-1)\text{ zeros}\\
+% 1\\
+% 0\\
+% 0\\
+% \vdots\\
+% \end{array}\right)\left(\begin{array}{ccccc}
+% \text{totally }(n-1)\text{ zeros}&1&0&0\cdots\\
+% \end{array}\right)\left(\begin{array}{ccccc}
+% \frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+% \frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+% 0&0&0&0&\cdots\\
+% 0&0&0&0&\cdots\\
+% \vdots&\vdots&\vdots&\vdots&\ddots\\
+% \end{array}\right)\\
+% \nonumber&\left(\begin{array}{c}
+% \text{totally }(n'-1)\text{ zeros}\\
+% 1\\
+% 0\\
+% 0\\
+% \vdots\\
+% \end{array}\right)\left(\begin{array}{ccccc}
+% \text{totally }(p-1)\text{ zeros}&1&0&0\cdots\\
+% \end{array}\right)\\
+% \nonumber=&\sum_p\left(\begin{array}{c}
+% \text{A matrix of all zeros}\\
+% \text{except whose element at }p\text{ row, }p\text{ column equal }\rho\text{'s element at }n\text{ row, }n'\text{column}
+% \end{array}\right)\\
+% \nonumber=&\left\{\begin{array}{ll}
+% \left(\begin{array}{ccccc}
+% \frac{1}{2}&0&0&0&\cdots\\
+% 0&\frac{1}{2}&0&0&\cdots\\
+% 0&0&\frac{1}{2}&0&\cdots\\
+% 0&0&0&\frac{1}{2}&\cdots\\
+% \vdots&\vdots&\vdots&\vdots&\ddots\\
+% \end{array}\right),&\text{if }1\leq n\leq2,1\leq n'\leq2\\
+% 0,&\text{otherwise}\\
+% \end{array}\right.
+\end{align}\\
+\Longrightarrow\rho(1)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)
+\end{gather}\normalsize
+Similarly,
+\small\begin{gather}
+\begin{align}
+\nonumber\langle\varphi_p(1)|\rho(1)|\varphi_{p'}(1)\rangle=&\sum_n(\langle\varphi_n(1)|\otimes\langle\varphi_p(2)|)\left(\frac{1}{\sqrt{2}}|\varphi_1(1)\rangle+\frac{1}{\sqrt{2}}|\varphi_2(1)\rangle\right)\otimes\left(\frac{1}{\sqrt{3}}|\varphi_1(2)\rangle+\frac{\sqrt{2}}{\sqrt{3}}|\varphi_2(2)\rangle\right)\\
+\nonumber&\left(\frac{1}{\sqrt{2}}\langle\varphi_1(1)|+\frac{1}{\sqrt{2}}\langle\varphi_2(1)|\right)\otimes\left(\frac{1}{\sqrt{3}}\langle\varphi_1(2)|+\frac{\sqrt{2}}{\sqrt{3}}\langle\varphi_2(2)|\right)(|\varphi_{n}(1)\rangle\otimes|\varphi_{p'}(2)\rangle)\\
+=&\left(\frac{1}{\sqrt{3}}\delta_{1p}+\frac{\sqrt{2}}{\sqrt{3}}\delta_{2p}\right)\left(\frac{1}{\sqrt{3}}\delta_{1p'}+\frac{\sqrt{2}}{\sqrt{3}}\delta_{2p'}\right)
+\end{align}\\
+\Longrightarrow\rho(2)=\left(\begin{array}{ccccc}
+\frac{1}{3}&\frac{\sqrt{2}}{3}&0&0&\cdots\\
+\frac{\sqrt{2}}{3}&\frac{2}{3}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)
+\end{gather}\normalsize
+Since
+\begin{gather}
+\rho^2=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\\
+\text{Tr}(\rho^2)=\text{Tr}\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=1
+\end{gather}
+\begin{gather}
+\rho^2(1)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\\
+\text{Tr}\rho^2(1)=\text{Tr}\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=1
+\end{gather}
+\begin{gather}
+\rho^2(2)=\left(\begin{array}{ccccc}
+\frac{1}{3}&\frac{\sqrt{2}}{3}&0&0&\cdots\\
+\frac{\sqrt{2}}{3}&\frac{2}{3}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{3}&\frac{\sqrt{2}}{3}&0&0&\cdots\\
+\frac{\sqrt{2}}{3}&\frac{2}{3}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\left(\begin{array}{ccccc}
+\frac{1}{3}&\frac{\sqrt{2}}{3}&0&0&\cdots\\
+\frac{\sqrt{2}}{3}&\frac{2}{3}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\\
+\text{Tr}\rho^2(2)=\text{Tr}\left(\begin{array}{ccccc}
+\frac{1}{3}&\frac{\sqrt{2}}{3}&0&0&\cdots\\
+\frac{\sqrt{2}}{3}&\frac{2}{3}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=1
+\end{gather}
+the density operators $\rho$, $\rho(1)$ and $\rho(2)$ all describe pure states.
+\begin{equation}
+\rho(1)\otimes\rho(2)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\left(\begin{array}{ccccc}
+\frac{1}{3}&\frac{\sqrt{2}}{3}&0&0&\cdots\\
+\frac{\sqrt{2}}{3}&\frac{2}{3}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\left(\begin{array}{ccccc}
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+\frac{1}{2}&\frac{1}{2}&0&0&\cdots\\
+0&0&0&0&\cdots\\
+0&0&0&0&\cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\rho
+\end{equation}
+Interpretation: Since the density operators $\rho$, $\rho(1)$ and $\rho(2)$ all describe pure states, $\rho$ can be factored into $\rho(1)$ and $\rho(2)$.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T Exercise 3-17] Let $\hat{\rho}$ be the density operator of an arbitrary system, where $|\chi_l\rangle$ and $\pi_l$ are the eigenvectors and eigenvalues of $\hat{\rho}$. Write $\hat{\rho}$ and $\hat{\rho}^2$ in terms of the $|\chi_l\rangle$ and $\pi_l$. What do the matrices representing these two operators in the $\{\chi_l\}$ basis look like --- first, in the case where $\hat{\rho}$ describes a pure state and then, in the case of a statistical mixture of states? (Begin by showing that, in a pure case, $\hat{\rho}$ has only one non-zero diagonal element, equal to $1$, while for a statistical mixture, $\hat{\rho}$ several diagonal elements included between $0$ and $1$.) Show that $\hat{\rho}$ corresponds to a pure case if and only if the trace of $\hat{\rho}^2$ is equal to $1$.
+\end{problem}
+\begin{sol}
+\begin{gather}
+\hat{\rho}=\sum_l\pi_l|\xi_l\rangle\langle\xi_l|\\
+\hat{\rho}^2=\sum_l\pi_l^2|\xi_l\rangle\langle\xi_l|
+\end{gather}
+The matrix representation of these operators in the $\{\xi_l\}$ are
+\begin{gather}
+\hat{\rho}=\left(\begin{array}{cccc}
+\pi_1&0&0&\cdots\\
+0&\pi_2&0&\cdots\\
+0&0&\pi_3&\cdots\\
+\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\\
+\hat{\rho}^2=\left(\begin{array}{cccc}
+\pi_1^2&0&0&\cdots\\
+0&\pi_2^2&0&\cdots\\
+0&0&\pi_3^2&\cdots\\
+\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)
+\end{gather}
+where
+\begin{gather}
+0\leq\pi_l\leq1\\
+\sum_l\pi_l=1
+\end{gather}
+In the case where $\hat{\rho}$ describes a pure state,
+\begin{gather}
+\hat{\rho^2}=\left(\begin{array}{cccc}
+\pi_1^2&0&0&\cdots\\
+0&\pi_2^2&0&\cdots\\
+0&0&\pi_3^2&\cdots\\
+\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)=\hat{\rho}=\left(\begin{array}{cccc}
+\pi_1&0&0&\cdots\\
+0&\pi_2&0&\cdots\\
+0&0&\pi_3&\cdots\\
+\vdots&\vdots&\vdots&\ddots\\
+\end{array}\right)\\
+\text{Tr}\hat{\rho}^2=\pi_1^2+\pi_2^2+\pi_3^2+\cdots=1\\
+\Longrightarrow\pi_l=\left\{\begin{array}{ll}
+1,&\text{for one certain }l\\
+0,&\text{otherwise}
+\end{array}\right.
+\end{gather}
+the matrices representing of these operators in the $\{\xi_l\}$ are diagonal matrix whose diagonal elements are all zeros except one is $1$.\\
+In the case of a statistical mixture of states,
+\begin{gather}
+0\leq\text{Tr}\hat{\rho}^2=\sum_l\pi_l^2=<1
+\end{gather}
+the matrices representing of these operators in the $\{\xi_l\}$ are diagonal matrix whose diagonal elements are all all at the range of $[0,1)$ and satisfies $0\leq\sum_l\pi^2\leq1$.\\
+The necessacity has been proven above.\\
+Sufficiency: If the trace of $\hat{\rho}^2$ is equal to $1$,
+\begin{gather}
+0\leq\pi_l\leq1\\
+0\leq\sum_l\pi_l=1\\
+\text{Tr}\hat{\rho}^2=\sum_l\pi_l^2=1\\
+\Longrightarrow\pi_l=\left\{\begin{array}{ll}
+1,&\text{for one certain }l\\
+0,&\text{otherwise}
+\end{array}\right.
+\end{gather}
+In this way, $\hat{\rho}$ corresponds to a pure case.\\
+Therefore, if only if the trace of $\hat{\rho}^2$ is equal to $1$, $\hat{\rho}$ corresponds to a pure case.
+\end{sol}
+\end{document}

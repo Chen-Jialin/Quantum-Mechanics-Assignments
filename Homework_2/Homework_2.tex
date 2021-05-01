@@ -1,0 +1,216 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_2
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 2}
+\begin{document}
+\begin{problem}{1}
+Consider a particle in a complex potential $V(\vec{r})=U(\vec{r})+iW(r)$, where $U(\vec{r})$ and $W(\vec{r})$ are real functions.\\
+(a) Derive the continuity equation for the time-dependent Schrödinger equation for a particle of mass m in the above complex potential.\\
+(b) What is the integral form of the continuity equation?\\
+(c) What is the condition on $W(\vec{r})$ for it to describe a source? What is the condition on $W(\vec{r})$ for it to describe a sink?
+\end{problem}
+\begin{sol}
+(a) The Shrödinger equation
+\begin{equation}
+i\hbar\frac{\partial\psi(\vec{r},t)}{\partial t}=-\frac{\hbar^2}{2m}\nabla^2\psi(\vec{r},t)+V(\vec{r},t)\psi(\vec{r},t)=-\frac{\hbar^2}{2m}\nabla^2\psi(\vec{r},t)+[U(\vec{r},t)+iW(\vec{r},t)]\psi(\vec{r},t)
+\end{equation}
+Complex conjugate of the Shrödinger equation
+\begin{equation}
+-i\hbar\frac{\partial\psi^*(\vec{r},t)}{\partial t}=-\frac{\hbar^2}{2m}\nabla^2\psi^*(\vec{r},t)+[U(\vec{r},t)-iW(\vec{r},t)]\psi^*(\vec{r},t)
+\end{equation}
+Multiplying the Shrödinger equation with $\psi^*(\vec{r},t)$
+\begin{equation}
+i\hbar\psi^*\frac{\psi}{\partial t}=-\frac{\hbar^2}{2m}\psi^*\nabla^2\psi+(V+iW)\psi^*\psi
+\end{equation}
+Mutiplying the complex conjugate of the Shrödinger equation with $\psi(\vec{r},t)$
+\begin{equation}
+-i\hbar\psi\frac{\partial\psi^*}{\partial t}=-\frac{\hbar^2}{2m}\psi\nabla^2\psi^*+[V-iW]\psi\psi^*
+\end{equation}
+Substracting the two resultant equation
+\begin{gather}
+i\hbar(\psi^*\frac{\partial\psi}{\partial t}+\psi\frac{\partial\psi^*}{\partial t})=-\frac{\hbar^2}{2m}(\psi^*\nabla^2\psi-\psi\nabla^2\psi^*)+2iW\psi\psi^*\\
+\Longrightarrow i\hbar\frac{\partial}{\partial t}(\psi^*\psi)=-\frac{\hbar^2}{2m}\nabla\cdot(\psi^*\nabla\psi-\psi\nabla\psi^*)+2iW\rho
+\end{gather}
+Defining the probability current density as
+\begin{equation}
+\vec{J}=\frac{\hbar}{2im}[\psi^*(\vec{r},t)\nabla\psi(\vec{r},t)-\psi(\vec{r},t)\nabla\psi^*(\vec{r},t)]
+\end{equation}
+Continuity equation
+\begin{equation}
+\frac{\partial\rho}{\partial t}+\nabla\vec{J}=\frac{2W}{\hbar}\rho
+\end{equation}
+(b) Integrating the continuity equation over $\Omega$
+\begin{gather}
+\int_{\Omega}\frac{\partial\rho}{\partial t}d^3r+\int_{\Omega}\nabla\cdot\vec{J}=\frac{2W}{\hbar}\int_{\Omega}\rho d^3r\\
+\Longrightarrow\frac{\partial}{\partial t}\int_{\Omega}\rho d^3r+\int_{\Sigma}\vec{J}\cdot d\vec{S}=\frac{2W}{\hbar}\int_{\Omega}\rho d^3r
+\end{gather}
+(c) The continuity equation describes a source if $W(\vec{r})>0$.\\
+The continuity equation describes a sink if $W(\vec{r})<0$.
+\end{sol}
+
+\begin{problem}{2}
+Show that
+\[
+\hat{\vec{p}}^2=\frac{1}{r^2}\hat{\vec{L}}^2-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})
+\]
+\end{problem}
+\begin{sol}
+Due to
+\begin{equation}
+\hat{\vec{p}}=-i\hbar\nabla
+\end{equation}
+left side of the equation
+\begin{align}
+\nonumber\hat{\vec{p}}^2=&-\hbar^2\nabla^2\\
+=&-\hbar^2[\frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}(\sin\theta\frac{\partial}{\partial\theta})+\frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\varphi^2}]-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})
+\end{align}
+Due to
+\begin{equation}
+\hat{\vec{L}}=-i\hbar\vec{r}\times\nabla
+\end{equation}
+right side of the equation
+\begin{align}
+\nonumber&\frac{1}{r^2}\hat{\vec{L}}^2-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})\\
+\nonumber=&-\frac{\hbar^2}{r^2}(\vec{r}\times\nabla)\cdot(\vec{r}\times\nabla)-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})\\
+\nonumber=&-\hbar^2[\hat{r}\times(\frac{\partial}{\partial r}\hat{r}+\frac{1}{r}\frac{\partial}{\partial\theta}\hat{\theta}+\frac{1}{r\sin\theta}\frac{\partial}{\partial\varphi}\hat{\varphi})]\cdot[\hat{r}\times(\frac{\partial}{\partial r}\hat{r}+\frac{1}{r}\frac{\partial}{\partial\theta}\hat{\theta}+\frac{1}{r\sin\theta}\frac{\partial}{\partial\varphi}\hat{\varphi})]-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})\\
+\nonumber=&-\hbar^2(\frac{1}{r}\frac{\partial}{\partial\theta}\hat{\varphi}-\frac{1}{r\sin\theta}\frac{\partial}{\partial\varphi}\hat{\theta})\cdot(\frac{1}{r}\frac{\partial}{\partial\theta}\hat{\varphi}-\frac{1}{r\sin\theta}\frac{\partial}{\partial\varphi}\hat{\theta})-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})\\
+=&-\hbar^2[\frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}(\sin\theta\frac{\partial}{\partial\theta})+\frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\varphi^2}]-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})
+\end{align}
+Therefore
+\begin{equation}
+\hat{\vec{p}}^2=\frac{1}{r^2}\hat{\vec{L}}^2-\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})
+\end{equation}
+\end{sol}
+
+\begin{problem}{3}
+(a) Find the Taylor expansion of $\hat{f}(\lambda)=e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}$ with respect to $\lambda$ about $\lambda=0$. Here the operators $\hat{A}$ and $\hat{B}$ may not commute.\\
+(b) Setting $\lambda=1$ in the above Taylor expansion of $\hat{f}=e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}$, derive an expansion for $e^{\hat{A}}\hat{B}e^{-\hat{A}}$.\\
+(c) Using the expansion of $e^{\hat{A}}\hat{B}e^{-\hat{A}}$, evaluate $e^{i\hat{L}_y\theta/\hbar}\hat{L}_ze^{i\hat{L}_y\theta/\hbar}$.
+\end{problem}
+\begin{sol}
+\\(a) The first-order derivative of $\hat{f}(\lambda)$ with respect to $\lambda$ about $\lambda=0$
+\begin{equation}
+\left.\frac{df}{d\lambda}\right|_{\lambda=0}=\left.\left(e^{\lambda\hat{A}}\hat{A}\hat{B}e^{-\lambda\hat{A}}-e^{\lambda\hat{A}}\hat{B}\hat{A}e^{-\lambda\hat{A}}\right)\right|_{\lambda=0}=\left.\left\{e^{\lambda\hat{A}}[\hat{A},\hat{B}]e^{-\lambda\hat{A}}\right\}\right|_{\lambda=0}=[\hat{A},\hat{B}]
+\end{equation}
+The second-order derivative of $\hat{f}(\lambda)$ with respect to $\lambda$ about $\lambda=0$
+\begin{equation}
+\left.\frac{d^2\hat{f}}{d\lambda^2}\right|_{\lambda=0}=\left.\left\{e^{\lambda\hat{A}}\hat{A}[\hat{A},\hat{B}]e^{-\lambda\hat{A}}-e^{\lambda\hat{A}}[\hat{A},\hat{B}]\hat{A}e^{-\lambda\hat{A}}\right\}\right|_{\lambda=0}=[\hat{A},[\hat{A},\hat{B}]]
+\end{equation}
+\[
+\cdots\cdots
+\]
+%The $n$ th-order derivative of $\hat{f}(\lambda)$ with respect to $\lambda$ about $\lambda=0$
+%\begin{equation}
+%\hat{f}^{(n)}(0)=\sum_{k=0}^{n}(-1)^k\left(\begin{array}{c}n\\k\end{array}\right)\hat{A}^k\hat{B}\hat{A}^{n-k}
+%\end{equation}
+The Taylor expansion of $\hat{f}(\lambda)$ about $\lambda=0$
+\begin{equation}
+\hat{f}(\lambda)=\hat{B}+\frac{1}{1!}[\hat{A},\hat{B}]\lambda^1+\frac{1}{2!}[\hat{A},[\hat{A},\hat{B}]]\lambda^2+\frac{1}{3!}[\hat{A},[\hat{A},[\hat{A},\hat{B}]]]\lambda^3+\cdots
+%\hat{f}(\lambda)=\sum_{n=0}^{\infty}\frac{\hat{f}^{(n)(0)}}{n!}\lambda^n=\sum_{n=0}^{\infty}\frac{\sum_{k=0}^n(-1)^k\left(\begin{array}{c}n\\k\end{array}\right)\hat{A}^k\hat{B}\hat{A}^{n-k}}{n!}\lambda^n
+\end{equation}
+(b) The $n$ th-order derivative of $\hat{f}(\lambda)$ with respect to $\lambda$ about $\lambda=1$
+\begin{equation}
+e^{\hat{A}}\hat{B}e^{-\hat{A}}=\hat{B}+\frac{1}{1!}[\hat{A},\hat{B}]\lambda^1+\frac{1}{2!}[\hat{A},[\hat{A},\hat{B}]]\lambda^2+\frac{1}{3!}[\hat{A},[\hat{A},[\hat{A},\hat{B}]]]\lambda^3+\cdots
+%e^{\hat{A}}\hat{B}e^{-\hat{A}}=\hat{h}(1)=\sum_{n=0}^{\infty}\frac{\sum_{k=0}^n(-1)^k\left(\begin{array}{c}n\\k\end{array}\right)\hat{A}^k\hat{B}\hat{A}^{n-k}}{n!}
+\end{equation}
+(c)
+\begin{equation}
+e^{i\hat{L}_y\theta/\hbar}\hat{L}_ze^{i\hat{L}_y\theta/\hbar}=\hat{L}_z+\frac{i\theta}{1!\hbar}[\hat{L}_y,\hat{L}_z]+\frac{i^2\theta^2}{2!\hbar^2}[\hat{L}_y,[\hat{L}_y,\hat{L}_z]]+\frac{i^3\theta^3}{3!\hbar^3}[\hat{L}_y,[\hat{L}_y,[\hat{L}_y,\hat{L}_z]]]+\cdots
+%e^{i\hat{L}_y\theta/\hbar}\hat{L}_ze^{i\hat{L}_y\theta/\hbar}=\sum_{n=0}^{\infty}\frac{\sum_{k=0}^n(-1)^k\left(\begin{array}{c}n\\k\end{array}\right)\left(\frac{i\hat{L}_y\theta}{\hbar}\right)^k\hat{L}_z\left(\frac{i\hat{L}_y\theta}{\hbar}\right)^{n-k}}{n!}
+\end{equation}
+Due to $[\hat{\lambda}_{\alpha},\hat{L}_{\beta}]=i\hbar\sum_{\gamma=x,y,z}\varepsilon_{\alpha\beta\gamma}\hat{L}_{\gamma}$
+\begin{equation}
+e^{i\hat{L}_y\theta/\hbar}\hat{L}_ze^{i\hat{L}_y\theta/\hbar}=\sum_{n=0}^{\infty}\frac{\theta^n}{n!}\left\{\begin{array}{ll}\hat{L}_z,&n\text{ mod }4=0\\\hat{L}_x,&n\text{ mod }4=1\\-\hat{L_z},&n\text{ mod }4=2\\-\hat{L}_x,&n\text{ mod }4=3\end{array}\right.
+\end{equation}
+Due to $\cos\theta=\sum_{k=0}^{\infty}\frac{(-1)^k\theta^{2k}}{(2k)!},\sin\theta=\sum_{k=0}^{\infty}\frac{(-1)^{2k+1}\theta^k}{(2k+1)!}$
+\begin{equation}
+e^{i\hat{L}_y\theta/\hbar}\hat{L}_ze^{i\hat{L}_y\theta/\hbar}=\hat{L}_z\cos\theta+\hat{L}_x\sin\theta
+\end{equation}
+\end{sol}
+
+\begin{problem}{4}
+The operators $\hat{A}$ and $\hat{B}$ do not commute, $[\hat{A},\hat{B}]=\hat{C}\neq0$, but they both commute with their commutator $\hat{C}$, $[\hat{A},\hat{C}]=[\hat{B},\hat{C}]=0$. Show that
+\[
+e^{\hat{A}+\hat{B}}=e^{\hat{A}}e^{\hat{B}}e^{-\hat{C}/2}=e^{\hat{B}}e^{\hat{A}}e^{\hat{C}/2}
+\]
+\end{problem}
+\begin{sol}
+Let
+\begin{equation}
+\hat{f}(\lambda)=e^{-\lambda\hat{B}}e^{-\lambda{A}}e^{\lambda(\hat{A}+\hat{B})}
+\end{equation}
+The derivative of $\hat{f}(\lambda)$
+\begin{align}
+\nonumber\frac{d\hat{f}}{d\lambda}=&-e^{-\lambda\hat{B}}\hat{B}e^{-\lambda\hat{A}}e^{\lambda(\hat{A}+\hat{B})}-e^{-\lambda\hat{B}}e^{-\lambda\hat{A}}\hat{A}e^{\lambda(\hat{A}+\hat{B})}+e^{-\lambda\hat{A}}e^{-\lambda\hat{B}}e^{\lambda(\hat{A}+\hat{B})}(\hat{A}+\hat{B})\\
+\nonumber=&-e^{-\lambda\hat{B}}\hat{B}e^{-\lambda\hat{A}}e^{\lambda(\hat{A}+\hat{B})}+e^{-\lambda\hat{B}}e^{-\lambda\hat{A}}\hat{B}e^{\lambda(\hat{A}+\hat{B})}\\
+=&-\hat{B}\hat{f}(\lambda)-e^{-\lambda\hat{B}}(e^{-\lambda\hat{A}}\hat{B}e^{\lambda\hat{A}})e^{-\lambda\hat{A}}e^{\lambda(\hat{A}+\hat{B})}
+\end{align}
+where
+\begin{equation}
+e^{-\lambda\hat{A}}\hat{B}e^{\lambda\hat{A}}=\hat{B}-\frac{1}{1!}[\hat{A},\hat{B}]\lambda^1+\frac{1}{2!}[\hat{A},[\hat{A},\hat{B}]]\lambda^2-\frac{1}{3!}[\hat{A},[\hat{A},[\hat{A},\hat{B}]]]\lambda^3+\cdots
+\end{equation}
+Due to $[\hat{A},\hat{B}]=\hat{C},[\hat{A},\hat{C}]=[\hat{B},\hat{C}]=0$
+\begin{equation}
+e^{-\lambda\hat{A}}\hat{B}e^{\lambda\hat{A}}=\hat{B}-\hat{C}\lambda
+\end{equation}
+so
+\begin{align}
+\frac{d\hat{f}}{d\lambda}=&-\hat{B}\hat{f}(\lambda)+e^{-\lambda\hat{B}}(\hat{B}-\hat{C}\lambda)e^{-\lambda}\hat{A}e^{\lambda(\hat{A}+\lambda\hat{B})}\\
+=&-\lambda\hat{C}\hat{f}(\lambda)
+\end{align}
+integrate to get
+\begin{gather}
+\hat{f}(\lambda)=e^{-\lambda^2\hat{C}/2}\\
+\Longrightarrow e^{\hat{A}+\hat{B}}=e^{\hat{A}}e^{\hat{B}}e^{-\hat{C}/2}
+\end{gather}
+Similarly, let
+\begin{gather}
+\hat{g}(\lambda)=e^{-\hat{A}}e^{-\hat{B}}e^{\hat{A}+\hat{B}}\\
+\Longrightarrow\frac{dg}{d\lambda}=-\hat{A}\hat{g}(\lambda)+e^{-\lambda\hat{A}}(e^{-\lambda\hat{B}}\hat{A}e^{\lambda\hat{B}})e^{-\lambda\hat{B}}e^{\lambda(\hat{A}+\hat{B})}=-\hat{A}\hat{g}(\lambda)+e^{-\lambda\hat{A}}(\hat{A}-\lambda\hat{C})e^{-\lambda\hat{B}}e^{\lambda(\hat{A}+\hat{B})}\\
+\Longrightarrow\hat{g}(\lambda)=e^{\lambda^2\hat{C}/2}\\
+\Longrightarrow e^{\hat{A}+\hat{B}}=e^{\hat{B}}e^{\hat{A}}e^{\hat{C}/2}
+\end{gather}
+\end{sol}
+
+\begin{problem}{5}
+Consider a particle of mass $m$ subject to a potential $V(x)=\lambda|x|^n$ with $\lambda$ a constant, $n\neq-2$, and $-\infty<x<\infty$. The energy of the particle is given by $E=\frac{p^2}{2m}+\lambda|x|^n$.\\
+(a) Making use of $|p|\sim\Delta p$, $\Delta x\Delta p\sim\hbar$, and $|x|\sim\Delta x/2$, express $E$ in terms of $\Delta x$.\\
+(b) To obtain the ground-state energy, minimize $E$ with respect to $\Delta x$. Find the value of $\Delta x$ in the ground state.\\
+(c) What is the expression of the ground-state energy?
+\end{problem}
+\begin{sol}
+(a) $E$ in terms of $\Delta x$
+\begin{equation}
+E=\frac{p^2}{2m}+\lambda|x|^n=\frac{\hbar^2}{2m\Delta x^2}+\lambda(\frac{\Delta x}{2})^n
+\end{equation}
+(b) The derivative of $E$ about $\Delta x$
+\begin{equation}
+\frac{d E}{d\Delta x}=-\frac{\hbar^2}{m\Delta x^3}+\frac{n\lambda}{2}(\frac{\Delta x}{2})^{n-1}
+\end{equation}
+Let
+\begin{gather}
+\frac{d E}{d\Delta x}=0\\
+\Longrightarrow\Delta x=\left(\frac{2^n\hbar^2}{nm\lambda}\right)^{1/(n+2)}
+\end{gather}
+(c) The expression of the ground-state energy
+\begin{equation}
+E_0=\frac{\hbar^2}{2m}\left(\frac{2^n\hbar^2}{nm\lambda}\right)^{-2/(n+2)}+\lambda\left(\frac{2^n\hbar^2}{nm\lambda}\right)^{n/(n+2)}
+\end{equation}
+\end{sol}
+\end{document}

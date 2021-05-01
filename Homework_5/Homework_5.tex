@@ -1,0 +1,572 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_5
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 5}
+\begin{document}
+\begin{problem}{1}
+[C-T Exercise 2-1] $|\varphi_n\rangle$ are the eigenstates of a Hermitian operator $\hat{H}$ ($\hat{H}$ is, for example, the Hamiltonian of an arbitrary physical system). Assume that the states $|\varphi_n\rangle$ form a discrete orthonormal basis. The operator $\hat{U}(m,n)$ is defined by $\hat{U}(m,n)=|\varphi_m\rangle\langle\varphi_n|$.
+\begin{itemize}
+\item[(a)] Calculate the adjoint $\hat{U}^{\dagger}(m,n)$ of $\hat{U}(m,n)$.
+\item[(b)] Calculate the commutator $[\hat{H},\hat{U}(m,n)]$.
+\item[(c)] Prove the relation $\hat{U}(m,n)\hat{U}^{\dagger}(p,q)=\delta_{nq}\hat{U}(m,p)$.
+\item[(d)] Calculate $\text{Tr}\{\hat{U}(m,n)\}$, the trace of the operator $\hat{U}(m,n)$.
+\item[(e)] Let $\hat{A}$ be an operator, with matrix elements $A_{mn}=\langle\varphi_m|\hat{A}|\varphi_n\rangle$. Prove the relation $\hat{A}=\sum_{m,n}A_{mn}\hat{U}(m,n)$.
+\item[(f)] Show that $A_{pq}=\text{Tr}\{\hat{A}U^{\dagger}(p,q)\}$.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)]
+\begin{align}
+\nonumber&\langle\psi|U^{\dagger}(m,n)|\varphi\rangle=\langle\psi|(|\varphi_m\rangle\langle\varphi_n|)^{\dagger}|\varphi\rangle=[\langle\varphi|(|\varphi_m\rangle\langle\varphi_n|)|\psi\rangle]^*=[\langle\varphi|\varphi_m\rangle\langle\varphi_n|\psi\rangle]^*\\
+=&\langle\varphi|\varphi_m\rangle^*\langle\varphi_n|\psi\rangle^*=\langle\varphi_m|\varphi\rangle\langle\psi|\varphi_n\rangle=\langle\psi|\varphi_n\rangle\langle\varphi_m|\varphi\rangle=\langle\psi|(|\varphi_n\rangle\langle\varphi_m|)|\varphi\rangle
+\end{align}
+Therefore,
+\begin{equation}
+\hat{U}^{\dagger}(m,n)=|\varphi_n\rangle\langle\varphi_m|
+\end{equation}
+\item[(b)]
+\begin{align}
+\nonumber[\hat{H},\hat{U}(m,n)]|\varphi\rangle=&\hat{H}\hat{U}(m,n)|\varphi\rangle-\hat{U}(m,n)\hat{H}|\varphi\rangle\\
+\nonumber=&\hat{H}|\varphi_m\rangle\langle\varphi_n|\varphi\rangle-|\varphi_m\rangle\langle\varphi_n|\hat{H}|\varphi\rangle\\
+\nonumber=&\hat{H}|\varphi_m\rangle\langle\varphi_n|\varphi\rangle-|\varphi_m\rangle\langle\varphi_n|\hat{H}^{\dagger}|\varphi\rangle\\
+\nonumber=&H_m|\varphi_m\rangle\langle\varphi_n|\varphi\rangle-|\varphi_m\rangle\langle\varphi_n|H_n|\varphi\rangle\\
+=&(H_m-H_n)|\varphi_m\rangle\langle\varphi_n|\varphi\rangle
+\end{align}
+Therefore,
+\begin{equation}
+[\hat{H},\hat{U}(m,n)]=(H_m-H_n)|\varphi_m\rangle\langle\varphi_n|
+\end{equation}
+\item[(c)]
+\begin{align}
+\nonumber\hat{U}(m,n)\hat{U}^{\dagger}(p,q)=&|\varphi_m\rangle\langle\varphi_n|(|\varphi_p\rangle\langle\varphi_q|)^{\dagger}\\
+\nonumber=&|\varphi_m\rangle\langle\varphi_n|\varphi_q\rangle\langle\varphi_p|\\
+\nonumber=&|\varphi_m\rangle\delta_{nq}\langle\varphi_p|\\
+\nonumber=&\delta_{nq}|\varphi_m\rangle\langle\varphi_p|\\
+=&\delta_{nq}\hat{U}(m,p)
+\end{align}
+\item[(d)]
+\begin{align}
+\nonumber\text{Tr}\{\hat{U}(m,n)\}=&\sum_i[\hat{U}(m,n)]_{ii}\\
+\nonumber=&\sum_i\langle\varphi_i|\varphi_m\rangle\langle\varphi_n|\varphi_i\rangle\\
+\nonumber=&\sum_i\delta_{im}\delta_{ni}\\
+=&\delta_{mn}
+\end{align}
+\item[(e)]
+\begin{align}
+\nonumber\left[\sum_{m,n}A_{mn}\hat{U}(m,n)\right]_{ij}=&\langle\varphi_i|\left[\sum_{m,n}A_{mn}|\varphi_m\rangle\langle\varphi_n|\right]|\varphi_j\rangle\\
+\nonumber=&\sum_{m,n}A_{mn}\langle\varphi_i|\varphi_m\rangle\langle\varphi_n|\varphi_j\rangle\\
+\nonumber=&\sum_{m,n}A_{mn}\delta_{im}\delta_{nj}\\
+=&A_{ij}=\langle\varphi_m|\hat{A}|\varphi_n\rangle
+\end{align}
+Therefore,
+\begin{equation}
+\hat{A}=\sum_{m,n}A_{mn}\hat{U}(m,n)
+\end{equation}
+\item[(f)]
+\begin{align}
+\nonumber\text{Tr}\{\hat{A}U^{\dagger}(p,q)\}=&\sum_i[\hat{A}U^{\dagger}(p,q)]_{ii}\\
+\nonumber=&\sum_i\langle\varphi_i|\left[\left(\sum_{m,n}A_{mn}\hat{U}(m,n)\right)U^{\dagger}(p,q)\right]|\varphi_i\rangle\\
+\nonumber=&\sum_i\langle\varphi_i|\left[\left(\sum_{m,n}A_{mn}|\varphi_m\rangle\langle\varphi_n|\right)U^{\dagger}(p,q)\right]|\varphi_i\rangle\\
+\nonumber=&\sum_{mn}\left[A_{mn}\sum_i\langle\varphi_i|\varphi_m\rangle\langle\varphi_n|\varphi_q\rangle\langle\varphi_p|\varphi_i\rangle\right]\\
+\nonumber=&\sum_{mn}\left[A_{mn}\sum_i\delta_{im}\delta_{nq}\delta_{pi}\right]\\
+\nonumber=&\sum_{mn}A_{mn}\delta_{mp}\delta_{nq}\\
+=&A_{pq}
+\end{align}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{2}
+[C-T Exercise 2-2] In a three-dimensional vector space, consider the operator whose matrix, in an orthonormal basis $\{|1\rangle,|2\rangle,|3\rangle\}$, is wirtten as $\hat{L}_y=\frac{\hbar}{\sqrt{2}}\left(\begin{array}{ccc}0&-i&0\\i&0&-i\\0&i&0\end{array}\right)$.
+\begin{itemize}
+\item[(a)] Is $\hat{L}_y$ Hermitian? Calculate its eigenvalues and eigenvectors (giving their normalized expansion in terms of the $\{|1\rangle,|2\rangle,|3\rangle\}$ basis).
+\item[(b)]  Calculate the matrices which represent the projectors onto these eigenvectors. Then verify that they satisfy the orthogonality and closure relations.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The Hermitian conjugate of $\hat{L}_y$
+\begin{equation}
+\hat{L}_y^{\dagger}=(\hat{L}_y^T)^*=
+\frac{\hbar}{\sqrt{2}}\left(\begin{array}{ccc}
+0&-i&0\\
+-i&0&i\\
+0&-i&0\\
+\end{array}\right)
+=\hat{L}_y
+\end{equation}
+Therefore, $\hat{L}_y$ is Hermitian.\\
+The secular equation of $\hat{L}_y$
+\begin{equation}
+\det|A-\lambda I|=
+\left|\begin{array}{ccc}
+-\lambda&-i&0\\
+i&-\lambda&-i\\
+0&i&-\lambda\\
+\end{array}\right|
+=-\lambda^3+2\lambda=0
+\end{equation}
+The eigenvalues of $\hat{L}_y$ are
+\begin{equation}
+\lambda_1=\sqrt{2},\quad\lambda_2=0,\quad\lambda_3=-\sqrt{2}
+\end{equation}
+The normalized eigenvectors of $\hat{L}_y$ are
+\begin{gather}
+\nonumber(A-\lambda_1I)|\varphi_1\rangle
+=
+\left(\begin{array}{ccc}
+-\sqrt{2}&-i&0\\
+i&-\sqrt{2}&-i\\
+0&i&-\sqrt{2}\\
+\end{array}\right)
+\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)
+=
+\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)\\
+\Longrightarrow|\varphi_1\rangle=
+\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)
+=
+\left(\begin{array}{c}
+\frac{1}{2}\\
+\frac{\sqrt{2}}{2}i\\
+-\frac{1}{2}\\
+\end{array}\right)\\
+\nonumber(A-\lambda_2I)|\varphi_2\rangle
+=
+\left(\begin{array}{ccc}
+0&-i&0\\
+i&0&-i\\
+0&i&0\\
+\end{array}\right)
+\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)
+=
+\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)\\
+\Longrightarrow|\varphi_2\rangle=
+\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)
+=
+\left(\begin{array}{c}
+\frac{\sqrt{2}}{2}\\
+0\\
+\frac{\sqrt{2}}{2}\\
+\end{array}\right)\\
+\nonumber(A-\lambda_3I)|\varphi_3\rangle
+=
+\left(\begin{array}{ccc}
+\sqrt{2}&-i&0\\
+i&\sqrt{2}&-i\\
+0&i&\sqrt{2}\\
+\end{array}\right)
+\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)
+=
+\left(\begin{array}{c}
+0\\
+0\\
+0\\
+\end{array}\right)\\
+\Longrightarrow|\varphi_3\rangle=
+\left(\begin{array}{c}
+c_1\\
+c_2\\
+c_3\\
+\end{array}\right)
+=
+\left(\begin{array}{c}
+\frac{1}{2}\\
+-\frac{\sqrt{2}}{2}i\\
+-\frac{1}{2}\\
+\end{array}\right)
+\end{gather}
+Rewritein them in terms of the $\{|1\rangle,|2\rangle,|3\rangle\}$ basis
+\begin{gather}
+|\varphi_1\rangle=\frac{1}{2}|1\rangle+\frac{\sqrt{2}}{2}i|2\rangle-\frac{1}{2}|3\rangle\\
+|\varphi_2\rangle=\frac{\sqrt{2}}{2}|1\rangle+\frac{\sqrt{2}}{2}|3\rangle\\
+|\varphi_3\rangle=\frac{1}{2}|1\rangle-\frac{\sqrt{2}}{2}i|2\rangle-\frac{1}{2}|3\rangle
+\end{gather}
+\item[(b)] The matrices which represent the projectors onto these eigenvectors
+\begin{gather}
+P_1=|\varphi_1\rangle\langle\varphi_1|=
+\left(\begin{array}{c}
+\frac{1}{2}\\
+\frac{\sqrt{2}}{2}i\\
+-\frac{1}{2}\\
+\end{array}\right)
+(\frac{1}{2}\quad\frac{\sqrt{2}}{2}i\quad-\frac{1}{2})
+=
+\left(\begin{array}{ccc}
+\frac{1}{4}&\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+\frac{\sqrt{2}}{4}i&-\frac{1}{2}&-\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&-\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)\\
+P_2=|\varphi_2\rangle\langle\varphi_2|=
+\left(\begin{array}{c}
+\frac{\sqrt{2}}{2}\\
+0\\
+\frac{\sqrt{2}}{2}\\
+\end{array}\right)
+(\frac{\sqrt{2}}{2}\quad0\quad\frac{\sqrt{2}}{2})
+=
+\left(\begin{array}{ccc}
+\frac{1}{2}&0&\frac{1}{2}\\
+0&0&0\\
+\frac{1}{2}&0&\frac{1}{2}\\
+\end{array}\right)\\
+P_3=|\varphi_3\rangle\langle\varphi_3|=
+\left(\begin{array}{c}
+\frac{1}{2}\\
+-\frac{\sqrt{2}}{2}i\\
+-\frac{1}{2}\\
+\end{array}\right)
+(\frac{1}{2}\quad-\frac{\sqrt{2}}{2}i\quad-\frac{1}{2})
+=
+\left(\begin{array}{ccc}
+\frac{1}{4}&-\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+-\frac{\sqrt{2}}{4}i&-\frac{1}{2}&\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)
+\end{gather}
+\begin{gather}
+P_1P_2=
+\left(\begin{array}{ccc}
+\frac{1}{4}&\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+\frac{\sqrt{2}}{4}i&-\frac{1}{2}&-\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&-\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)
+\left(\begin{array}{ccc}
+\frac{1}{2}&0&\frac{1}{2}\\
+0&0&0\\
+\frac{1}{2}&0&\frac{1}{2}\\
+\end{array}\right)
+=
+\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)\\
+P_2P_3=
+\left(\begin{array}{ccc}
+\frac{1}{2}&0&\frac{1}{2}\\
+0&0&0\\
+\frac{1}{2}&0&\frac{1}{2}\\
+\end{array}\right)
+\left(\begin{array}{ccc}
+\frac{1}{4}&-\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+-\frac{\sqrt{2}}{4}i&-\frac{1}{2}&\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)
+=
+\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)\\
+P_3P_1=
+\left(\begin{array}{ccc}
+\frac{1}{4}&-\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+-\frac{\sqrt{2}}{4}i&-\frac{1}{2}&\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)
+\left(\begin{array}{ccc}
+\frac{1}{4}&\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+\frac{\sqrt{2}}{4}i&-\frac{1}{2}&-\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&-\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)
+=
+\left(\begin{array}{ccc}
+0&0&0\\
+0&0&0\\
+0&0&0\\
+\end{array}\right)
+\end{gather}
+Therefore, the matrices which represent the projectors onto these eigenvectors satisfy the orthogonality relation.
+\begin{align}
+\nonumber P_1+P_2+P_3=&
+\left(\begin{array}{ccc}
+\frac{1}{4}&\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+\frac{\sqrt{2}}{4}i&-\frac{1}{2}&-\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&-\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)
++
+\left(\begin{array}{ccc}
+\frac{1}{2}&0&\frac{1}{2}\\
+0&0&0\\
+\frac{1}{2}&0&\frac{1}{2}\\
+\end{array}\right)
++
+\left(\begin{array}{ccc}
+\frac{1}{4}&-\frac{\sqrt{2}}{4}i&-\frac{1}{4}\\
+-\frac{\sqrt{2}}{4}i&-\frac{1}{2}&\frac{\sqrt{2}}{4}i\\
+-\frac{1}{4}&\frac{\sqrt{2}}{4}i&\frac{1}{4}\\
+\end{array}\right)\\
+=&\left(\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1\\
+\end{array}\right)
+\end{align}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{3}
+[C-T Exercise 2-3] The state space of a certain physical system is three-dimensional. Let $\{|u_1\rangle,|u_2\rangle,|u_3\rangle\}$ be an orthonormal basis of this space. The kets $|\psi_0\rangle$ and $|\psi_1\rangle$ are confined by
+\begin{gather*}
+|\psi_0\rangle=\frac{1}{\sqrt{2}}|u_1\rangle+\frac{i}{2}|u_2\rangle+\frac{1}{2}|u_3\rangle\\
+|\psi_1\rangle=\frac{1}{\sqrt{3}}|u_1\rangle+\frac{i}{\sqrt{3}}|u_3\rangle
+\end{gather*}
+\begin{itemize}
+\item[(a)] Are these kets normalized?
+\item[(b)] Calculate the matrices $\rho_0$ and $\rho_1$ representing, in the $\{|u_1\rangle,|u_2\rangle,|u_3\rangle\}$ basis, the projection operators onto the state $|\psi_0\rangle$ and onto the state $|\psi_1\rangle$. Verify that these matrices are Hermitian.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)]
+\begin{gather}
+\begin{align}
+\nonumber\langle\psi_0|\psi_0\rangle=&(\frac{1}{\sqrt{2}}\langle u_1|-\frac{i}{2}\langle u_2|+\frac{1}{2}\langle u_3|)(\frac{1}{\sqrt{2}}|u_1\rangle+\frac{i}{2}|u_2\rangle+\frac{1}{2}|u_3\rangle)\\
+=&\frac{1}{2}\langle u_1|u_1\rangle+\frac{1}{4}\langle u_2|u_2\rangle+\frac{1}{4}\langle u_3|u_3\rangle=\frac{1}{2}+\frac{1}{4}+\frac{1}{4}=1
+\end{align}\\
+\begin{align}
+\nonumber\langle\psi_1|\psi_1\rangle=&(\frac{1}{\sqrt{3}}\langle u_1|-\frac{i}{\sqrt{3}}\langle u_3|)(\frac{1}{\sqrt{3}}|u_1\rangle+\frac{i}{\sqrt{3}}|u_3\rangle)\\
+=&\frac{1}{3}\langle u_1|u_1\rangle+\frac{1}{3}\langle u_3|u_3\rangle=\frac{1}{3}+\frac{1}{3}=\frac{2}{3}
+\end{align}
+\end{gather}
+Therefore, ket $|\psi_0\rangle$ is normalized while ket $|\psi_1\rangle$ is not normalized.
+\item[(b)] In the $\{|u_1\rangle,|u_2\rangle,|u_3\rangle\}$ basis, (where ket $|\psi_1\rangle$ got normalized)
+\begin{gather}
+|\psi_0\rangle=
+\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+\frac{i}{2}\\
+\frac{1}{2}
+\end{array}\right)\\
+|\psi_1\rangle=
+\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+0\\
+\frac{i}{\sqrt{2}}\\
+\end{array}\right)
+\end{gather}
+The projector matrices onto the state $|\psi_0\rangle$ and onto the $|\psi_1\rangle$ are
+\begin{gather}
+\rho_0=|\psi_0\rangle\langle\psi_0|=
+\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+\frac{i}{2}\\
+\frac{1}{2}
+\end{array}\right)
+(\frac{1}{\sqrt{2}}\quad-\frac{i}{2}\quad\frac{1}{2})
+=
+\left(\begin{array}{ccc}
+\frac{1}{2}&-\frac{i}{2\sqrt{2}}&\frac{1}{2\sqrt{2}}\\
+\frac{i}{2\sqrt{2}}&\frac{1}{4}&\frac{i}{4}\\
+\frac{1}{2\sqrt{2}}&-\frac{i}{4}&\frac{1}{4}\\
+\end{array}\right)\\
+\rho_1=|\psi_1\rangle\langle\psi_1|=
+\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+0\\
+\frac{i}{\sqrt{2}}
+\end{array}\right)
+(\frac{1}{\sqrt{2}}\quad0\quad-\frac{i}{\sqrt{2}})
+=
+\left(\begin{array}{ccc}
+\frac{1}{2}&0&-\frac{i}{2}\\
+0&0&0\\
+\frac{i}{2}&0&\frac{1}{2}\\
+\end{array}\right)
+\end{gather}
+\begin{gather}
+\rho_0^{\dagger}=(\rho_0^T)^*=
+\left(\begin{array}{ccc}
+\frac{1}{2}&-\frac{i}{2\sqrt{2}}&\frac{1}{2\sqrt{2}}\\
+\frac{i}{2\sqrt{2}}&\frac{1}{4}&\frac{i}{4}\\
+\frac{1}{2\sqrt{2}}&-\frac{i}{4}&\frac{1}{4}\\
+\end{array}\right)
+=\rho_0\\
+\rho_1^{\dagger}=(\rho_1^T)^*=
+\left(\begin{array}{ccc}
+\frac{1}{2}&0&-\frac{i}{2}\\
+0&0&0\\
+\frac{i}{2}&0&\frac{1}{2}\\
+\end{array}\right)
+=\rho_1
+\end{gather}
+Therefore, these matrices are Hermitian.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{4}
+[C-T Exercise 2-9] Let $\hat{H}$  be the Hamiltonian operator of a physical system. Denote by $|\varphi_n\rangle$ the eigenvectors of $\hat{H}$, with eigenvalue $E_n$, $\hat{H}|\varphi_n\rangle=E_n|\varphi_n\rangle$.
+\begin{itemize}
+\item[(a)] For an arbitrary operator $\hat{A}$, prove the relation $\langle\varphi_n|[\hat{A},\hat{H}]|\varphi_n\rangle=0$.
+\item[(b)] Consider a one-dimensional problem, where the physical system is a particle of mass $m$ and of potential energy $\hat{V}(\hat{x})$. In this case, $\hat{H}$ is written as $\hat{H}=\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})$.
+\begin{itemize}
+\item[i.] In terms of $\hat{p},\hat{x}$, and $\hat{V}(\hat{x})$, find the commutators: $[\hat{H},\hat{p}],[\hat{H},\hat{x}]$ and $[\hat{H},\hat{x}\hat{p}]$.
+\item[ii.] Show that the matrix element $\langle\varphi_n|\hat{p}|\varphi_n\rangle$ is zero.
+\item[iii.] Establish a relation between $E_k=\langle\varphi_n|\frac{\hat{p}^2}{2m}|\varphi_n\rangle$ and $\langle\varphi_n|\hat{x}\frac{d\hat{V}(\hat{x})}{d\hat{x}}|\varphi_n\rangle$. Apply the derived relation to $\hat{V}(\hat{x})=V_0\hat{x}^{\lambda}$ with $\lambda=2,4,6,\cdots$ and $V_0>0$?
+\end{itemize}
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)]
+\begin{align}
+\nonumber\langle\varphi_n|[\hat{A},\hat{H}]|\varphi_n\rangle=&\langle\varphi_n|[\hat{A}\hat{H}-\hat{H}\hat{A}]|\varphi_n\rangle\\
+\nonumber=&\langle\varphi_n|\hat{A}\hat{H}|\varphi_n\rangle-\langle\varphi_n|\hat{H}\hat{A}|\varphi_n\rangle\\
+\nonumber=&\langle\varphi_n|\hat{A}E_n|\varphi_n\rangle-\langle\varphi_n|E_n\hat{A}|\varphi_n\rangle\\
+\nonumber=&E_n\langle\varphi_n|\hat{A}|\varphi_n\rangle-E_n\langle\varphi_n|\hat{A}|\varphi_n\rangle\\
+=&0
+\end{align}
+\item[(b)]
+\begin{itemize}
+\item[i.]
+\begin{align}
+\nonumber[\hat{H},\hat{p}]=&\hat{H}\hat{p}-\hat{p}\hat{H}\\
+\nonumber=&\left[\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})\right]\hat{p}-\hat{p}\left[\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})\right]\\
+\nonumber=&\frac{1}{2m}\hat{p}^3+\hat{V}(\hat{x})\hat{p}-\frac{1}{2m}\hat{p}^3-\hat{p}\hat{V}(\hat{x})\\
+=&\hat{V}(\hat{x})\hat{p}-\hat{p}\hat{V}(\hat{x})=[\hat{V}(\hat{x}),\hat{p}]
+\end{align}
+\begin{align}
+\nonumber[\hat{H},\hat{x}]=&\hat{H}\hat{x}-\hat{x}\hat{H}\\
+\nonumber=&\left[\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})\right]\hat{x}-\hat{x}\left[\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})\right]\\
+\nonumber=&\frac{1}{2m}\hat{p}^2\hat{x}+\hat{V}(\hat{x})\hat{x}-\frac{1}{2m}\hat{x}\hat{p}^2-\hat{x}\hat{V}(\hat{x})\\
+\nonumber=&\frac{1}{2m}(\hat{p}^2\hat{x}-\hat{x}\hat{p}^2)\\
+\nonumber=&\frac{1}{2m}(\hat{p}^2\hat{x}-\hat{p}\hat{x}\hat{p}+\hat{p}\hat{x}\hat{p}-\hat{x}\hat{p}^2)\\
+\nonumber=&\frac{1}{2m}[\hat{p}(\hat{p}\hat{x}-\hat{x}\hat{p})+(\hat{p}\hat{x}-\hat{x}\hat{p})\hat{p}]\\
+\nonumber=&\frac{1}{2m}[\hat{p}[\hat{p},\hat{x}]+[\hat{p},\hat{x}]\hat{p}]\\
+\nonumber=&\frac{1}{2m}[\hat{p}(-i\hbar)-i\hbar\hat{p}]\\
+=&-\frac{i\hbar}{m}\hat{p}
+\end{align}
+\begin{align}
+\nonumber[\hat{H},\hat{x}\hat{p}]=&\hat{H}\hat{x}\hat{p}-\hat{x}\hat{p}\hat{H}\\
+\nonumber=&\left[\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})\right]\hat{x}\hat{p}-\hat{x}\hat{p}\left[\frac{1}{2m}\hat{p}^2+\hat{V}(\hat{x})\right]\\
+\nonumber=&\frac{1}{2m}\hat{p}^2\hat{x}\hat{p}+\hat{V}(\hat{x})\hat{x}\hat{p}-\frac{1}{2m}\hat{x}\hat{p}^3-\hat{x}\hat{p}\hat{V}(\hat{x})\\
+\nonumber=&\frac{1}{2m}(\hat{p}^2\hat{x}-\hat{x}\hat{p}^2)\hat{p}+\hat{x}\hat{V}(\hat{x})\hat{p}-\hat{x}\hat{p}\hat{V}(\hat{x})\\
+=&-\frac{i\hbar}{m}\hat{p}^2+\hat{x}[\hat{V}(\hat{x}),\hat{p}]
+\end{align}
+\item[ii.] According to the conclusion derived in (b) i., $\hat{p}=\frac{im}{\hbar}[\hat{H},\hat{x}]$, so
+\begin{equation}
+\langle\varphi_n|\hat{p}|\varphi_n\rangle=\frac{im}{\hbar}\langle\varphi_n|[\hat{H},\hat{x}]|\varphi_n\rangle=-\frac{im}{\hbar}\langle\varphi_n|[\hat{x},\hat{H}]|\varphi_n\rangle
+\end{equation}
+According to the conclusion derived in (a), $\langle\varphi_n|[\hat{A},\hat{H}]|\varphi_n\rangle=0$, therefore
+\begin{equation}
+\langle\varphi_n|\hat{p}|\varphi_n\rangle=-\frac{im}{\hbar}\langle\varphi_n|[\hat{x},\hat{H}]|\varphi_n\rangle=0
+\end{equation}
+\item[iii.] According to the conclusion derived in (b) i., $[\hat{H},\hat{x}\hat{p}]=-\frac{i\hbar}{m}\hat{p}^2+[\hat{V}(\hat{x}),\hat{x}\hat{p}]$, so
+\begin{align}
+\nonumber\langle\varphi_n|\frac{\hat{p}^2}{2m}|\varphi_n\rangle=&\langle\varphi_n|\left[-\frac{1}{2i\hbar}([\hat{H},\hat{x}\hat{p}]-\hat{x}[\hat{V}(\hat{x}),\hat{p}])\right]|\varphi_n\rangle\\
+\nonumber=&-\frac{1}{2i\hbar}\left[\langle\varphi_n|[\hat{H},\hat{x}\hat{p}]|\varphi_n\rangle-\langle\varphi_n|\hat{x}[\hat{V}(\hat{x}),\hat{p}]|\varphi_n\rangle\right]\\
+=&\frac{1}{2i\hbar}\langle\varphi_n|\hat{x}[\hat{V}(\hat{x}),\hat{p}]|\varphi_n\rangle
+\end{align}
+where
+\begin{gather}
+\begin{align}
+\nonumber[\hat{V}(\hat{x}),\hat{p}]\psi(x)=&i\hbar[V(x)\frac{d}{dx}\psi(x)-\frac{d}{dx}V(x)\psi(x)]\\
+\nonumber=&i\hbar[V(x)\frac{d}{dx}\psi(x)-\left(\frac{d}{dx}V(x)\right)\psi(x)-V(x)\frac{d}{dx}\psi(x)]\\
+=&-i\hbar\left(\frac{d}{dx}V(x)\right)\psi(x)
+\end{align}\\
+\Longrightarrow[\hat{V}(\hat{x}),\hat{p}]=-i\hbar\left(\frac{d}{dx}V(x)\right)
+\end{gather}
+so
+\begin{align}
+\nonumber\langle\varphi_n|\frac{\hat{p}^2}{2m}|\varphi_n\rangle=&\frac{1}{2i\hbar}\langle\varphi_n|\hat{x}[\hat{V}(\hat{x}),\hat{p}]|\varphi_n\rangle\\
+=&-\frac{1}{2}\langle\varphi_n|\hat{x}\frac{d\hat{V}(\hat{x})}{d\hat{x}}|\varphi_n\rangle
+\end{align}
+Apply the derived relation to $\hat{V}(\hat{x})=V_0\hat{x}^{\lambda}$ with $\lambda=2,4,6,\cdots$ and $V_0>0$
+\begin{align}
+\nonumber E_k=&-\frac{1}{2}\langle\varphi_n|\hat{x}\frac{\hat{V}(\hat{x})}{d\hat{x}}|\varphi_n\rangle\\
+\nonumber=&-\frac{1}{2}\langle\varphi_n|\lambda V_0\hat{x}^{\lambda}|\varphi_n\rangle\\
+\nonumber=&-\frac{\lambda}{2}V_0x^{\lambda}\\
+=&-\frac{\lambda}{2}V(x)
+\end{align}
+\end{itemize}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T Exercise 2-10] Using the relation $\langle x|p\rangle=(2\pi\hbar)^{-1/2}e^{ipx/\hbar}$, find the expression $\langle x|\hat{x}\hat{p}|\psi\rangle$ and $\langle x|\hat{p}\hat{x}|\psi\rangle$ in terms of $\psi(x)$. Can these results be found directly by using the fact that in the $\{|x\rangle\}$ representing, $\hat{p}$ acts like $-i\hbar\frac{d}{dx}$?
+\end{problem}
+\begin{sol}
+\begin{gather}
+\begin{align}
+\nonumber\langle x|\hat{x}\hat{p}|\psi\rangle=&\langle x|x\hat{p}|\psi\rangle\\
+\nonumber=&x\langle x|1\hat{p}1|\psi\rangle\\
+\nonumber=&x\langle x|\int dp|p\rangle\langle p|\hat{p}\int dx|x\rangle\langle x|\psi\rangle\\
+\nonumber=&x\langle x|\int dp|p\rangle\langle p|p\int dx|x\rangle\langle x|\psi\rangle\\
+\nonumber=&x\int dp\langle x|p\rangle p\int dx\langle p|x\rangle\langle x|\psi\rangle\\
+\nonumber=&x\int dp(2\pi\hbar)^{-1/2}e^{-ipx/\hbar}p\int dx(2\pi\hbar)^{-1/2}e^{ipx/\hbar}\psi(x)\\
+\nonumber=&x\int dp(2\pi\hbar)^{-1/2}e^{-ipx/\hbar}p\bar{\psi}_p(x)\\
+=&-i\hbar x\frac{d}{dx}\psi(x)
+\end{align}\\
+\begin{align}
+\nonumber\langle x|\hat{p}\hat{x}|\psi\rangle=&\langle x|1\hat{p}\hat{x}|\psi\rangle\\
+\nonumber=&\langle x|\int dp|p\rangle\langle p|\hat{p}\hat{x}|\psi\rangle\\
+\nonumber=&\int dp\langle x|p\rangle\langle p|\hat{p}\hat{x}|\psi\rangle\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}\langle p|p\hat{x}|\psi\rangle\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}\langle p|p1\hat{x}|\psi\rangle\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}\langle p|p\int dx|x\rangle\langle x|\hat{x}|\psi\rangle\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}p\int dx\langle p|x\rangle\langle x|x|\psi\rangle\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}p\int dx(2\pi\hbar)^{-1/2}e^{-ipx/\hbar}x\psi(x)\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}pi\frac{d}{dp}\bar{\psi}_p(x)\\
+\nonumber=&\int dp(2\pi\hbar)^{-1/2}e^{ipx/\hbar}i[\frac{d}{dp}(p\bar{\psi}_p(x))-\bar{\psi}_p(x)]\\
+=&-i\hbar[x\frac{d}{dx}\psi(x)+\psi(x)]
+\end{align}
+\end{gather}
+These results can be found directly by using the fact that in $|x\rangle$ representing, $\hat{p}$ act like $-i\hbar\frac{d}{dx}$:
+\begin{gather}
+\begin{align}
+\nonumber\langle x|\hat{x}\hat{p}|\psi\rangle=&\int dx'\delta(x'-x)x'(-i\hbar\frac{d}{dx'})\psi(x')\\
+\nonumber=&-i\hbar\int dx'\delta(x'-x)x'\frac{d}{dx'}\psi(x')\\
+=&-i\hbar x\frac{d}{dx}\psi(x)
+\end{align}\\
+\begin{align}
+\nonumber\langle x|\hat{p}\hat{x}|\psi\rangle=&\int dx'\delta(x'-x)(-i\hbar\frac{d}{dx'})x'\psi(x')\\
+\nonumber=&-i\hbar\int dx'\delta(x'-x)[\psi(x')+x'\frac{d}{dx'}\psi(x')]\\
+=&-i\hbar[\psi(x)+x\frac{d}{dx}\psi(x)]
+\end{align}
+\end{gather}
+\end{sol}
+\end{document}

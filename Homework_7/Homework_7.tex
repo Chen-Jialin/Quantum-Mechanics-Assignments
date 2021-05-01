@@ -1,0 +1,217 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_7
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 7}
+\begin{document}
+\begin{problem}{1}
+Starting from the time-dependent Schrödinger equation in the Dirac notation, $i\hbar\frac{d|\psi(t)\rangle}{dt}=[\frac{\hat{\vec{p}}^2}{2m}+\hat{V}(\hat{\vec{r}})]|\psi(t)\rangle$, derive the time-dependent Schrödinger equation in the $\{|\vec{p}\}$  representation.
+\[
+i\hbar\frac{\partial}{\partial t}\bar{\psi}(\vec{p},t)=\left[\frac{\vec{p}^2}{2m}+\hat{V}(i\hbar\vec{\nabla}_{\vec{p}})\right]\bar{\psi}(\vec{p},t)
+\]
+\end{problem}
+\begin{sol}
+The scalar product of
+\begin{equation}
+i\hbar\frac{\partial|\psi(t)\rangle}{\partial t}=\left[\frac{\hat{\vec{p}}^2}{2m}+\hat{V}(\hat{\vec{r}})\right]|\psi(t)\rangle
+\end{equation}
+by $|\vec{p}\rangle$ is
+\begin{equation}
+i\hbar\langle\vec{p}|\frac{d}{dt}|\psi(t)\rangle=\langle\vec{p}|\left[\frac{\hat{\vec{p}}^2}{2m}+\hat{V}(\hat{\vec{r}})\right]|\psi(t)\rangle
+\end{equation}
+where
+\begin{equation}
+\langle\vec{p}|\frac{d}{dt}|\psi(t)\rangle=\frac{\partial}{\partial t}\langle\vec{p}|\psi(t)\rangle=\frac{\partial}{\partial t}\bar{\psi}(\vec{p},t)
+\end{equation}
+and
+\begin{equation}
+\langle\vec{p}|\hat{\vec{p}}^2|\psi(t)\rangle=\langle\vec{p}|\vec{p}^2|\psi\rangle=\vec{p}^2\langle\vec{p}|\psi(t)\rangle=\vec{p}^2\bar{\psi}(\vec{p},t)
+\end{equation}
+and
+\begin{equation}
+\langle\vec{p}|\hat{V}(\hat{\vec{r}})|\psi(t)\rangle=\langle|\hat{V}(i\hbar\vec{\nabla}_{\vec{p}})|\psi(t)\rangle=\hat{V}(i\hbar\vec{\nabla}_{\vec{p}})\langle\vec{p}|\psi(t)\rangle=\hat{V}(i\hbar\vec{\nabla}_{\vec{p}})\bar{\psi}(\vec{p},t)
+\end{equation}
+Therefore,
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\bar{\psi}(\vec{p},t)=\left[\frac{\vec{p}^2}{2m}+\hat{V}(i\hbar\vec{\nabla}_{\vec{p}})\right]\bar{\psi}(\vec{p},t)
+\end{equation}
+\end{sol}
+
+\begin{problem}{2}
+Introducing the Fourier transform of the potential energy $V(\vec{r})$ in the $\{|\vec{r}\rangle\}$ representation, $\bar{V}(\vec{p})=\frac{1}{(2\pi\hbar)^{3/2}}\int d^3re^{-i\vec{p}\cdot\vec{r}/\hbar}V(\vec{r})$, show that the time-dependent Schrödinger equation in the $\{|\vec{p}\rangle\}$ representation can be also written as
+\[
+i\hbar\frac{\partial}{\partial t}\bar{\psi}(\vec{p},t)=\frac{\vec{p}^2}{2m}\bar{\psi}(\vec{p},t)+\frac{1}{(2\pi\hbar)^{3/2}}\int d^3p'\bar{V}(\vec{p}-\vec{p}')\bar{\psi}(\vec{p}',t)
+\]
+\end{problem}
+\begin{sol}
+\begin{align}
+\nonumber\langle\vec{p}|\hat{V}(\hat{\vec{r}})|\psi(t)\rangle=&\int d^3p'\langle\vec{p}|\hat{V}(\hat{\vec{r}})\cdot1|\psi(t)\rangle\\
+\nonumber=&\int d^3p'\langle\vec{p}|\hat{V}(\hat{\vec{r}})|\vec{p}'\rangle\langle\vec{p}'|\psi(t)\rangle\\
+\nonumber=&\int d^3p'\langle\vec{p}|\hat{V}(\hat{\vec{r}})|\vec{p}'\rangle\bar{\psi}(\vec{p}',t)\\
+\nonumber=&\int d^3p'\left[\int d^3r\frac{1}{(2\pi\hbar)^{3/2}}e^{-i\vec{p}\cdot\vec{r}}\hat{V}(\hat{\vec{r}})\frac{1}{(2\pi\hbar)^{3/2}}e^{i\vec{p}'\cdot\vec{r}}\right]\bar{\psi}(\vec{p}',t)\\
+\nonumber=&\int d^3p'\left[\int d^3r\frac{1}{(2\pi\hbar)^{3/2}}e^{-i\vec{p}\cdot\vec{r}}V(\vec{r})\frac{1}{(2\pi\hbar)^{3/2}}e^{i\vec{p}'\cdot\vec{r}}\right]\bar{\psi}(\vec{p}',t)\\
+\nonumber=&\frac{1}{(2\pi\hbar)^{3/2}}\int d^3p'\left[\frac{1}{(2\pi\hbar)^{3/2}}\int d^3re^{-i(\vec{p}-\vec{p}')\cdot\vec{r}}V(\vec{r})\right]\bar{\psi}(\vec{p}',t)\\
+\nonumber=&\frac{1}{(2\pi\hbar)^{3/2}}\int d^3p'V(\vec{p}-\vec{p}')\bar{\psi}(\vec{p}',t)
+\end{align}
+Plugging the equation above into the time-dependent Schrödinger equation in the $\{|\vec{p}\rangle\}$ representation (the conclusion derived in problem 1) gives
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\bar{\psi}(\vec{p},t)=\frac{\vec{p}^2}{2m}\bar{\psi}(\vec{p},t)+\frac{1}{(2\pi\hbar)^{3/2}}\int d^3p'\bar{V}(\vec{p}-\vec{p}')\bar{\psi}(\vec{p}',t)
+\end{equation}
+\end{sol}
+
+\begin{problem}{3}
+In the $\{|p_x\rangle\}$ representation, find the energy eigenvalue and eigenfunction of a particle of mass $m$ in the one-dimensional $\delta$-function potential well
+\[
+V(x)=-\lambda\delta(x),\quad\lambda>0
+\]
+\end{problem}
+\begin{sol}
+The Fourier transformation of the potential energy $V(\vec{r})$ in the representation is
+\begin{equation}
+\bar{V}(\vec{p})=\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{+\infty}dxe^{-ip_xx/\hbar}V(x)=-\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{+\infty}dxe^{-ip_xx/\hbar}\lambda\delta(x)=-\frac{\lambda}{\sqrt{2\pi\hbar}}
+\end{equation}
+The time-dependent Schrödinger equation in the $\{|p_x\rangle\}$ representation
+\begin{align}
+\nonumber i\hbar\frac{\partial}{\partial t}\bar{\psi}(p_x,t)=&\frac{p_x^2}{2m}\bar{\psi}(p_x,t)+\frac{1}{\sqrt{2\pi\hbar}}\int dp_x'\bar{V}(p_x-p_x')\psi(p_x',t)\\
+\nonumber=&\frac{p_x^2}{2m}\bar{\psi}(p_x,t)-\frac{1}{\sqrt{2\pi\hbar}}\int dp_x'\frac{\lambda}{\sqrt{2\pi\hbar}}\bar{\psi}(p_x',t)\\
+=&\frac{p_x^2}{2m}\bar{\psi}(p_x,t)-\frac{\lambda}{2\pi\hbar}\int dp_x'\bar{\psi}(p_x',t)
+\end{align}
+gives the stationary Schrödinger equation in the $\{|p_x\rangle\}$ representation
+\begin{equation}
+\nonumber E\bar{\psi}(p_x)=\hat{H}\bar{\psi}(p_x,t)=\frac{p_x^2}{2m}\bar{\psi}(p_x)-\frac{\lambda}{2\pi\hbar}\int dp_x'\bar{\psi}(p_x')
+\end{equation}
+Differentiating both sides of the equation above about the $p_x$ gives
+\begin{gather}
+(E-\frac{p_x^2}{2m})\frac{d}{dp_x}\bar{\psi}(p_x)=\frac{p_x}{m}\bar{\psi(p_x)}\\
+\Longrightarrow\frac{d\bar{\psi(p_x)}}{\psi(p_x)}=\frac{2p_x}{2mE-p_x^2}dp_x
+\end{gather}
+Integral both sides of the equation above gives
+\begin{gather}
+\ln\psi(p_x)=-\ln(2mE-p_x^2)+C_1\\
+\Longrightarrow\psi(p_x)=\frac{C}{p_x^2-2mE}
+\end{gather}
+where $C$ is the normalization constant.\\
+The normalization condition is
+\begin{gather}
+\begin{align}
+\nonumber\int_{-\infty}^{+\infty}dp_x\bar{\psi}^*(p_x)\bar{psi}(p_x)=&C^2\int dp_x\frac{1}{(p_x^2-2mE)^2}\\
+\nonumber=&2\pi iC^2\text{Res}\left[\frac{1}{(p_x^2-2mE)^2},i\sqrt{-2mE}\right]\\
+\nonumber=&2\pi iC^2\lim_{p\rightarrow i\sqrt{-2mE}}\frac{d}{dp_x}\frac{1}{(p_x+i\sqrt{-2mE})^2}\\
+\nonumber=&-2\pi iC^2\lim_{p\rightarrow i\sqrt{-2mE}}\frac{2}{(p_x+i\sqrt{-2mE})^3}\\
+=&\frac{\pi C^2}{2(-2mE)^{3/2}}=1
+\end{align}\\
+\Longrightarrow C=\left(\frac{2}{\pi}\right)^{1/2}(-2mE)^{3/4}
+\end{gather}
+Therefore, the eigenfunction of a particle of mass $m$ in the one-dimensional $\delta$-function potential well is
+\begin{equation}
+\bar{\psi}(p_x)=\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}
+\end{equation}
+Plugging the eigenfunction into the stationary Schrödinger equation gives the energy eigenvalue
+\begin{gather}
+\begin{align}
+\nonumber&\frac{p_x^2}{2m}\bar{\psi}(p_x)+\frac{\lambda}{2\pi\hbar}\int dp_x'\bar{\psi}(p_x')\\
+\nonumber=&\frac{p_x^2}{2m}\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}+\frac{\lambda}{2\pi\hbar}\int dp_x'\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x'^2-2mE)}\\
+\nonumber=&\frac{p_x^2}{2m}\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}+\frac{\lambda(-2mE)^{3/4}}{2^{1/2}\pi^{3/2}\hbar}2\pi i\text{Res}\left[\frac{1}{(p_x'^2-2mE)},i\sqrt{-2mE}\right]\\
+\nonumber=&\frac{p_x^2}{2m}\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}+\left(\frac{2}{\pi}\right)^{1/2}\frac{\lambda(-2mE)^{3/4}}{\hbar}i\lim_{p_x'\rightarrow i\sqrt{-2mE}}\frac{1}{(p_x'+i\sqrt{-2mE})}\\
+\nonumber=&\frac{p_x^2}{2m}\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}+\left(\frac{2}{\pi}\right)^{1/2}\frac{\lambda(-2mE)^{3/4}}{\hbar}i\lim_{p_x\rightarrow i\sqrt{-2mE}}\frac{1}{(p_x'+i\sqrt{-2mE})}\\
+\nonumber=&\frac{p_x^2}{2m}\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}+\left(\frac{2}{\pi}\right)^{1/2}\frac{\lambda(-2mE)^{1/4}}{2\hbar}\\
+=&E\bar{\psi}(p_x)=E\left(\frac{2}{\pi}\right)^{1/2}\frac{(-2mE)^{3/4}}{(p_x^2-2mE)}
+\end{align}\\
+\Longrightarrow E=-\frac{m\lambda^2}{2\hbar^2}
+\end{gather}
+\end{sol}
+
+\begin{problem}{4}
+In the $\{|\vec{p}\rangle\}$ representation, the wave function of a particle at a given time is given by $\bar{\psi}(\vec{p})=Ne^{-\alpha|\vec{p}|/\hbar}$ with $\alpha>0$. Find the value of the normalization constant $N$ and the wave function $\psi(\vec{r})$ in the $\{|\vec{r}\rangle\}$ representation.
+\end{problem}
+\begin{sol}
+The normalization condition is
+\begin{gather}
+\begin{align}
+\nonumber\int d^3p\bar{\psi}^*(\vec{p})\bar{\psi}(\vec{p})=&N^2\int d^3pe^{-2\alpha|\vec{p}|/\hbar}\\
+\nonumber=&N^2\int_0^{+\infty}p^2e^{-2\alpha p/\hbar}dp\int_0^{2\pi}d\phi\int_0^{\pi}\sin\theta d\theta\\
+\nonumber=&-\frac{2\pi\hbar}{\alpha}N^2\int_0^{+\infty}p^2d\left(e^{-2\alpha p/\hbar}\right)\\
+\nonumber=&-\frac{2\pi\hbar}{\alpha}N^2\left[\left.\left(p^2e^{-2\alpha p/\hbar}\right)\right|_0^{+\infty}-\int_0^{+\infty}e^{-2\alpha p/\hbar}dp^2\right]\\
+\nonumber=&\frac{4\pi\hbar}{\alpha}N^2\int_0^{+\infty}pe^{-2\alpha p/\hbar}dp\\
+\nonumber=&-\frac{2\pi\hbar^2}{\alpha^2}N^2\int_0^{+\infty}pd\left(e^{-2\alpha p/\hbar}\right)\\
+\nonumber=&-\frac{2\pi\hbar^2}{\alpha^2}N^2\left[\left.\left(pe^{-2\alpha p/\hbar}\right)\right|_0^{+\infty}-\int_0^{+\infty}e^{-2\alpha p/\hbar}dp\right]\\
+\nonumber=&\frac{2\pi\hbar^2}{\alpha^2}N^2\int_0^{+\infty}e^{-2\alpha p/\hbar}dp\\
+=&\frac{\pi\hbar^3}{\alpha^3}N^2=1
+\end{align}\\
+\Longrightarrow N=\sqrt{\frac{\alpha^3}{\pi\hbar^3}}
+\end{gather}
+The wave function in $\{|\vec{p}\rangle\}$ representation is
+\begin{equation}
+\bar{\psi}(\vec{p})=\sqrt{\frac{\alpha^3}{\pi\hbar^3}}e^{-\alpha|\vec{p}|/\hbar}
+\end{equation}
+The wave function in $\{|\vec{r}\rangle\}$ representation is
+\begin{align}
+\nonumber\psi(\vec{r})=&\frac{1}{(2\pi\hbar)^{3/2}}\int d^3pe^{i\vec{p}\cdot\vec{r}/\hbar}\bar{\psi}(\vec{p})\\
+\nonumber=&\frac{\alpha^{3/2}}{2^{3/2}\pi^2\hbar^3}\int d^3pe^{i\vec{p}\cdot\vec{r}/\hbar}e^{-\alpha|\vec{p}|/\hbar}\\
+\nonumber=&\frac{\alpha^{3/2}}{2^{3/2}\pi^2\hbar^3}\int_0^{+\infty}\int_0^{2\pi}\int_0^{\pi}e^{ipr\cos\theta/\hbar}e^{-\alpha p/\hbar}p^2\sin\theta d\theta d\phi dp\\
+\nonumber=&-\frac{\alpha^{3/2}}{2^{1/2}\pi\hbar^3}\int_0^{+\infty}\int_0^{\pi}e^{irp\cos\theta/\hbar}e^{-\alpha p/\hbar}p^2d\cos\theta dp\\
+\nonumber=&\frac{2^{1/2}\alpha^{3/2}}{\pi\hbar^2r}\int_0^{+\infty}pe^{-\alpha p/\hbar}\sin\left(\frac{pr}{\hbar}\right)dp
+\end{align}
+where
+\begin{align}
+\nonumber\int_0^{+\infty}pe^{-\alpha/\hbar}\sin\left(\frac{pr}{\hbar}\right)dp=&\text{Im}\left[\int_0^{+\infty}pe^{-\alpha p/\hbar}e^{ipr/\hbar}dp\right]\\
+\nonumber=&\text{Im}\left[\int_0^{+\infty}pe^{p(ir-\alpha)/\hbar}dp\right]\\
+\nonumber=&\text{Im}\left[\frac{\hbar}{ir-\alpha}\int_0^{+\infty}pde^{p(ir-\alpha)/\hbar}\right]\\
+\nonumber=&\text{Im}\left[\frac{\hbar}{ir-\alpha}\left.\left(pe^{p(ir-\alpha)/\hbar}\right)\right|_0^{+\infty}-\frac{\hbar}{ir-\alpha}\int_0^{+\infty}e^{p(ir-\alpha)/\hbar}dp\right]\\
+\nonumber=&\text{Im}\left[\left.-\frac{\hbar^2}{(ir-\alpha)^2}e^{p(ir-\alpha)/\hbar}\right|_0^{+\infty}\right]\\
+\nonumber=&\text{Im}\left[\frac{\hbar^2}{r^2-\alpha^2-2ir\alpha}\right]\\
+\nonumber=&\text{Im}\left[\frac{\hbar^2(r^2-\alpha^2+2ir\alpha)}{r^4+\alpha^4+2r^2\alpha^2}\right]\\
+=&\frac{2\hbar^2r\alpha}{(r^2+\alpha^2)^2}
+\end{align}
+Therefore, the wavefunction $\psi(\vec{r})$ in the $\{|\vec{r}\rangle\}$ representation is
+\begin{equation}
+\psi(\vec{r})=\frac{2^{3/2}\alpha^{5/2}}{\pi(r^2+\alpha^2)}
+\end{equation}
+\end{sol}
+
+\begin{problem}{5}
+For a particle in one-dimensional space, find the expression of the operator $\hat{x}^{-1}=\frac{1}{\hat{x}}$ in the $\{|p_x\rangle\}$ representation and the expression of the operator $\hat{p}_x^{-1}=\frac{1}{\hat{p}_x}$ in the $\{|x\rangle\}$ representation.\\
+Note that $\hat{x}^{-1}$ is the inverse of $\hat{x}$ and that $\hat{p}_x^{-1}$ is the inverse of $\hat{p}_x$.
+\end{problem}
+\begin{sol}
+Since
+\begin{equation}
+\hat{x}\hat{x}^{-1}=1
+\end{equation}
+\begin{gather}
+\hat{x}\hat{x}^{-1}\bar{\psi}(p_x)=ih\frac{d}{dp_x}[\hat{x}^{-1}\bar{\psi}(p_x)]=\bar{\psi(p_x)}\\
+\Longrightarrow\hat{x}^{-1}\bar{\psi}(p_x)=\frac{1}{i\hbar}\int_{-\infty}^{p_x}dp_x\bar{\psi}(p_x)
+\end{gather}
+Therefore,
+\begin{equation}
+\hat{x}^{-1}=\frac{1}{i\hbar}\int_{-\infty}^{p_x}dp_x
+\end{equation}
+Since
+\begin{equation}
+\hat{p}_x\hat{p}_x^{-1}=1
+\end{equation}
+\begin{gather}
+\hat{p}_x\hat{p}_x^{-1}\psi(x)=-i\hbar\frac{d}{dx}[\hat{p}_x^{-1}\psi(x)]=\psi(x)\\
+\Longrightarrow\hat{p}_x^{-1}\psi(p_x)=-\frac{1}{i\hbar}\int_{-\infty}^{x}dx\psi(x)
+\end{gather}
+Therefore,
+\begin{equation}
+\hat{p}_x^{-1}=-\frac{1}{i\hbar}\int_{-\infty}^{x}dx
+\end{equation}
+\end{sol}
+\end{document}

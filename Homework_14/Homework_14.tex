@@ -1,0 +1,530 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_14
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}}
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\usepackage{mathrsfs}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 14}
+\begin{document}
+\begin{problem}{1}
+[C-T Exercise 11-1] A particle of mass $m$ is placed in an infinite one-dimensional well of width $a$,
+\[
+V(x)=\left\{\begin{array}{ll}
+0,&0\leq x\leq a,\\
++\infty,&\text{everywhere else.}
+\end{array}\right.
+\]
+It is subject to a perturbation $\hat{W}$ of the form $\hat{W}(x)=aw_0\delta(x-a/2)$, where $w_0$ is a real constant with dimensions of an energy.
+\begin{itemize}
+\item[(a)] Calculate, to first order in $w_0$, the modifications induced by $\hat{W}(x)$ in the energy levels of the particle.
+\item[(b)] Actually, the problem is exactly soluble. Setting $k=\sqrt{2mE/\hbar^2}$, show that the possible values of the energy are given by one of the two equations $\sin(ka/2)=0$ or $\tan(ka/2)=-\hbar^2k/ma\omega_0$ (watch out for the discontinuity of the derivative of the wave function at $x=a/2$).\\
+Discuss the results obtained with respect to the sign and size of $w_0$. In the limit $w_0\rightarrow0$, show that one obtains the results of the preceding question.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The wave functions of the eigenstates without perturbation are
+\begin{equation}
+\varphi_n(x)=\left\{\begin{array}{ll}
+\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),&0\leq x\leq a,\\
+0,&\text{everywhere else.}
+\end{array}\right.,\quad n=1,2,3,\cdots
+\end{equation}
+The energy levels without perturbation are
+\begin{equation}
+E_n^{(0)}=\frac{n^2\pi^2\hbar^2}{2ma^2},\quad n=1,2,3,\cdots
+\end{equation}
+The modifications induced by $\hat{W}(x)$ in the energy levels of the particle are
+\begin{align}
+\nonumber E_n^{(1)}=&\langle\varphi_n|\hat{W}(x)|\varphi_n\rangle\\
+\nonumber=&\int_{-\infty}^{+\infty}\varphi_n^*(x)\hat{W}(x)\varphi_n(x)dx\\
+\nonumber=&\int_0^a\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)aw_0\delta(x-a/2)\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)dx\\
+\nonumber=&2w_0\sin^2\left(\frac{n\pi}{2}\right)\\
+=&\left\{\begin{array}{ll}
+2w_0,&n\text{ is odd},\\
+0,&n\text{ is even}.
+\end{array}\right.
+\end{align}
+\item[(b)] The stationary Schrödinger equation of the particle subjected to the perturbation is
+\begin{equation}
+-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\varphi(x)+[V(x)+\hat{W}(x)]\varphi(x)=E\varphi(x)
+\end{equation}
+At $x<0$ or $x>a$, since the total potential energy $V(x)+\hat{W}(x)=+\infty$,
+\begin{equation}
+\varphi(x)=0,\quad x<0\text{ or }x>a
+\end{equation}
+At $0\leq x\leq \frac{a}{2}$, the general solution of the wave function is
+\begin{equation}
+\varphi(x)=A\sin kx,\quad0\leq x\leq \frac{a}{2}
+\end{equation}
+At $\frac{a}{2}<a\leq a$, the general solution of the wave function is
+\begin{equation}
+\varphi(x)=B\sin[k(a-x)],\quad\frac{a}{2}\leq x\leq a
+\end{equation}
+The matching conditions are
+\begin{equation}
+\varphi(\frac{a}{2}^-)=A\sin\left(\frac{ka}{2}\right)=\varphi(\frac{a}{2}^+)=B\sin\left(\frac{ka}{2}\right)
+\end{equation}
+\begin{align}
+\nonumber&\varphi'(\frac{a}{2}^+)-\varphi'(\frac{a}{2}^-)=-Bk\cos\left(\frac{ka}{2}\right)-Ak\cos\left(\frac{ka}{2}\right)\\
+=&\lim_{\varepsilon\rightarrow}\int_{a/2-\varepsilon}^{a/2+\varepsilon}-\frac{2m}{\hbar^2}[E-V(x)-\hat{W}(x)]\varphi(x)dx=\frac{2maw_0}{\hbar^2}\varphi(\frac{a}{2})
+\end{align}
+give
+\begin{gather}
+\left\{\begin{array}{ll}
+A=-B\\
+\sin\left(\frac{ka}{2}\right)=0
+\end{array}\right.(\text{odd parity states})\\
+\left\{\begin{array}{ll}
+A=B\\
+\tan\left(\frac{ka}{2}\right)=-\frac{\hbar^2k}{maw_0}
+\end{array}\right.(\text{even parity states})
+\end{gather}
+Therefore, the wave function of the odd states is
+\begin{equation}
+\varphi_n(x)=\left\{\begin{array}{ll}
+A\sin k_nx,&0\leq x\leq a,\\
+0,&\text{everywhere else.}
+\end{array}\right.
+\end{equation}
+where $A$ is the normalization constant and the energy levels are
+\begin{equation}
+k_n=\sqrt{\frac{2mE_n}{\hbar^2}}=\frac{2n\pi}{a}\Longrightarrow E_n=\frac{(2n)^2\pi^2\hbar^2}{2ma^2},\quad n=0,1,2,\cdots
+\end{equation}
+And the wave function of the even states is
+\begin{equation}
+\varphi(x)=\left\{\begin{array}{ll}
+A\sin ka,&0\leq x\leq\frac{a}{2},\\
+A\sin[k(x-a)],&\frac{a}{2}<x\leq a,\\
+0,&\text{everywhere else.}
+\end{array}\right.
+\end{equation}
+where $A$ is the normalization constant and the energy levels are determined by
+\begin{equation}
+\tan\left(\frac{ka}{2}\right)=-\frac{\hbar^2k}{maw_0}
+\end{equation}
+The $k$'s of the even states, $k_n$, ($n=0,1,2,\cdots$) are the $k$-coordinates of the intersections of the curve $y(k)=\tan\left(\frac{ka}{2}\right)$ and the curve $y(k)=-\frac{\hbar^2k}{maw_0}$ ($k>0$).\\
+When $-\hbar^2/maw_0<0$ or $w_0>0$, $(2n-1)\pi/a<k_n<2n\pi/a$ ($n=1,2,3,\cdots$) $\Longrightarrow(2n-1)^2\pi^2\hbar^2/2ma^2<E_n<(2n)^2\pi^2\hbar^2/2ma^2$ ($n=1,2,3,\cdots$), as shown in figure \ref{problem_11}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{problem_11.png}
+\caption{When $w_0\geq0$.}\label{problem_11}
+\end{figure}
+\\When $0<-\hbar^2/maw_0\leq a/2$ or $w_0\leq-2\hbar^2/ma^2$, $2n\pi/a<k_n<(2n+1)\pi/a$ ($n=1,2,3,\cdots$) $\Longrightarrow(2n)^2\pi^2\hbar^2/2ma^2<E_n<(2n+1)^2\pi^2\hbar^2/2ma^2$ ($n=1,2,3,\cdots$), as shown in figure \ref{problem_12}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{problem_12.png}
+\caption{When $w\leq-2\hbar^2/ma^2$.}\label{problem_12}
+\end{figure}
+\\When $-\hbar^2/maw_0>a/2$ or $-2\hbar^2/ma^2<w<0$, $(2n-2)\pi/a<k_n<(2n-1)\pi/a$, ($n=1,2,3,\cdots$) $\Longrightarrow(2n-2)^2\pi^2\hbar^2/2ma^2<E_n<(2n-1)^2\pi^2\hbar^2/2ma^2$ ($n=1,2,3,\cdots$), as shown in figure \ref{problem_13}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{problem_13.png}
+\caption{When $-2\hbar^2/ma^2<w_0<0$.}\label{problem_13}
+\end{figure}
+\\In the limit $w_0\rightarrow0$, $k_n=(2n-1)\pi/a$. The energy levels of the even states are $E_n=(2n-1)^2\pi^2\hbar^2/2ma^2$.\\
+The energy levels of both the odd states and the even states without approximation are
+\begin{equation}
+E_n^{(0)}=\frac{n^2\pi^2\hbar^2}{2ma^2},\quad n=1,2,3,\cdots
+\end{equation}
+where even $n$'s are for odd states and odd $n$'s are for even states.\\
+For odd states, $E_n=E_n^{(0)}$, $E_n^{(1)}=0$, where $n=2,4,6,\cdots$.\\
+For even states, let
+\begin{equation}
+k_n=\frac{n\pi}{a}+\lambda w_0
+\end{equation}
+where $n=1,3,5,\cdots$.\\
+Then
+\begin{equation}
+\tan\left(\frac{ka}{2}\right)=\tan\left(\frac{n\pi}{2}+\frac{a\lambda w_0}{2}\right)=\tan\left(\frac{\pi}{2}+\frac{a\lambda w_0}{2}\right)
+\end{equation}
+\begin{equation}
+-\frac{\hbar^2k}{maw_0}=\frac{\hbar^2\left(\frac{n\pi}{a}+\lambda w_0\right)}{maw_0}\approx\frac{n\pi\hbar^2}{ma^2w_0}
+\end{equation}
+\begin{equation}
+\tan\left(\frac{ka}{2}\right)=-\frac{\hbar^2k}{maw_0}\Longrightarrow1=-\frac{\frac{n\pi\hbar^2}{ma^2w_0}}{\tan\left(\frac{\pi}{2}+\frac{a\lambda w_0}{2}\right)}\approx-\frac{n\pi\hbar^2}{ma^2w_0}\cos\left(\frac{\pi}{2}+\frac{a\lambda w_0}{2}\right)\approx\frac{n\pi\hbar^2}{ma^2w_0}\frac{a\lambda w_0}{2}
+\end{equation}
+\begin{equation}
+\Longrightarrow\lambda=\frac{2ma}{n\pi\hbar^2}
+\end{equation}
+\begin{equation}
+k_n=\frac{n\pi}{a}+\lambda w_0=\frac{n\pi}{a}+\frac{2ma}{n\pi\hbar^2}w_0
+\end{equation}
+The energy levels are
+\begin{align}
+\nonumber E_n=&\frac{\hbar^2k_n^2}{2m}=\frac{\hbar^2}{2m}\left(\frac{n\pi}{a}+\frac{2ma}{n\pi\hbar^2}w_0\right)^2=\frac{\hbar^2}{2m}\left(\frac{n^2\pi^2}{a^2}+\frac{4m}{\hbar^2}w_0+\frac{4m^2a^2}{n^2\pi^2\hbar^4}w_0^2\right)\\
+\approx&\frac{n^2\pi^2\hbar^2}{2ma^2}+2w_0=E_n^{(0)}+E_n^{(1)}
+\end{align}
+Therefore, the results are the same as the preceding question.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{2}
+[C-T Exercise 11-3] A particle of mass $m$, constrained to move in the $xOy$ plane, has a Hamiltonian $\hat{H}_0=\frac{1}{2m}(\hat{p}_x^2+\hat{p}_y^2)+\frac{1}{2}m\omega^2(\hat{x}^2+\hat{y}^2)$ (a two-dimensional harmonic oscillator, of angular frequency $\omega$). We want to study the effect on this particle of a perturbation $\hat{W}=\lambda\hat{W}_1+\lambda\hat{W}_2$, where $\lambda_1$ and $\lambda_2$ are constants, and the expressions for $\hat{W}_1$ and $\hat{W}_2$ are $\hat{W}_1=m\omega^2\hat{x}\hat{y}$ and $\hat{W}_2=\hbar\omega(\hat{L}_z^2/\hbar^2-2)$. Here $\hat{L}_z$ is the component along $Oz$ of the orbital angular momentum of the particle.\\
+In  the perturbation calculations, consider only the corrections to first order for the energies and to zeroth order for the state vectors.
+\begin{itemize}
+\item[(a)] Indicate without calculations the eigenvalues of $\hat{H}_0$, their degrees of degeneracy and the associated eigenvectors. In what follows, consider only the second excited state of $\hat{H}_0$, of energy $3\hbar\omega$ and which is the three-fold degenerate.
+\item[(b)] Calculate the matrices representing the restrictions of $\hat{W}_1$ and $\hat{W}_2$ to the eigensubspace of the eigenvalue $3\hbar\omega$ of $\hat{H}_0$.
+\item[(c)] Assume $\lambda_2=0$ and $\lambda_1\ll1$. Calculate, using perturbation theory, the effect of the term $\lambda\hat{W}_1$ on the second excited state of $\hat{H}_0$.
+\item[(d)] Compare the results obtained in (c) with the limited expansion of the exact solution.
+\item[(e)] Assume $\lambda_2\ll\lambda_1\ll1$. Considering the results of question (c) to be a new unperturbed situation, calculate the effect of the term $\lambda_2\hat{W}_2$.
+\item[(f)] Now assume that $\lambda_1=0$ and $\lambda_2\ll1$. Using perturbation theory, find the effect of the term $\lambda_2\hat{W}_2$ on the second excited state of $\hat{H}_0$.
+\item[(g)] Compare the results obtained in (f) with the exact solution.
+\item[(h)] Finally, assume that $\lambda_1\ll\lambda_2\ll1$. Considering the results of question (f) to be a new unperturbed situation, calculate the effect of the term $\lambda_1\hat{W}_1$.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The eigenvalues of $\hat{H}_0$ are
+\begin{equation}
+E_n^{(0)}=\hbar\omega(n_x+n_y+1)
+\end{equation}
+where $n=n_x+n_y$.\\
+The degree of degeneracy of $E_n^{(0)}$ is
+\begin{equation}
+g_n=n_x+n_y+1
+\end{equation}
+The associated eigenvector of $E_{n_xn_y}$ is
+\begin{equation}
+|\varphi_n^{n_x+1}\rangle=|\varphi_{n_xn_y}\rangle
+\end{equation}
+which satisfies
+\begin{equation}
+\langle xy|\varphi_{n_xn_y}^{(0)}\rangle=\varphi_{n_xn_y}^{(0)}(x,y)=\frac{1}{2^{n_x+n_y}n_x!n_y!}\left(\frac{\alpha^2}{\pi}\right)^{\frac{1}{2}}\left(\alpha x-\frac{d}{\alpha dx}\right)^{n_x}e^{-\frac{\alpha^2x^2}{2}}\left(\alpha y-\frac{d}{\alpha dx}\right)^{n_y}e^{-\frac{\alpha^2y^2}{2}}
+\end{equation}
+where
+\begin{equation}
+\alpha=\sqrt{\frac{m\omega}{\hbar}}
+\end{equation}
+\item[(b)] $\hat{W}_1$ can be written as
+\begin{equation}
+\hat{W}_1=m\omega^2\hat{x}\hat{y}=m\omega^2\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}_x+\hat{a}_x^{\dagger})\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}_y+\hat{a}_y^{\dagger})=\frac{\hbar\omega}{2}(\hat{a}_x+\hat{a}_x^{\dagger})(\hat{a}_y+\hat{a}_y^{\dagger})
+\end{equation}
+The matrix element of $\hat{W}_1$ is
+\begin{align}
+\nonumber\langle\varphi_{n_x'n_y'}^{(0)}|\hat{W}_1|\varphi_{n_xn_y}^{(0)}\rangle=&\langle\varphi_{n_x'n_y'}^{(0)}|\frac{\hbar\omega}{2}(\hat{a}_x+\hat{a}_x^{\dagger})(\hat{a}_y+\hat{a}_y^{\dagger})|\varphi_{n_xn_y}^{(0)}\rangle\\
+\nonumber=&\frac{\hbar\omega}{2}\langle\varphi_{n_x'n_y'}^{(0)}|(\hat{a}_x+\hat{a}_x^{\dagger})(\sqrt{n_y}|\varphi_{n_x,n_y-1}^{(0)}\rangle+\sqrt{n_y+1}|\varphi_{n_x,n_y+1}^{(0)}\rangle)\\
+\nonumber=&\frac{\hbar\omega}{2}\langle\varphi_{n_x'n_y'}^{(0)}|[\sqrt{n_x}(\sqrt{n_y}|\varphi_{n_x-1,n_y-1}^{(0)}\rangle+\sqrt{n_y+1}|\varphi_{n_x-1,n_y+1}^{(0)}\rangle)\\
+\nonumber&+\sqrt{n_x+1}(\sqrt{n_y}|\varphi_{n_x+1,n_y-1}^{(0)}\rangle+\sqrt{n_y+1}|\varphi_{n_x+1,n_y+1}\rangle)]\\
+\nonumber=&\frac{\hbar\omega}{2}(\sqrt{n_xn_y}\delta_{n_x',n_x-1}\delta_{n_y',n_y-1}+\sqrt{n_x(n_y+1)}\delta_{n_x',n_x-1}\delta_{n_y',n_y+1}\\
+\nonumber&+\sqrt{(n_x+1)n_y}\delta_{n_x',n_x+1}\delta_{n_y,n_y-1}+\sqrt{(n_x+1)(n_y+1)}\delta_{n_x',n_x+1}\delta_{n_y',n_y+1})
+\end{align}
+The matrix representing of $\hat{W}_1$ in the basis of the second excited states of $\hat{H}_0$, $\{|\varphi_{20}^{(0)}\rangle,|\varphi_{11}^{(0)}\rangle,|\varphi_{02}^{(0)}\rangle\}$, is
+\begin{equation}
+\hat{W}_1^{(2)}=\frac{\hbar\omega}{2}\left(\begin{array}{ccc}
+0&\sqrt{2}&0\\
+\sqrt{2}&0&\sqrt{2}\\
+0&\sqrt{2}&0
+\end{array}\right)
+\end{equation}
+$\hat{W}_2$ can be written as
+\begin{align}
+\nonumber\hat{W}_2=&\hbar\omega\left(\frac{\hat{L}_z^2}{\hbar^2}-2\right)=\hbar\omega\left(\frac{(\hat{x}\hat{p}_y-\hat{y}\hat{p}_x)}{\hbar^2}-2\right)\\
+\nonumber=&\hbar\omega\left[\frac{\left(\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}_x+\hat{a}_x^{\dagger})(-i)\sqrt{\frac{m\hbar\omega}{2}}(\hat{a}_y-\hat{a}_y^{\dagger})-\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}_y+\hat{a}_y^{\dagger})(-i)\sqrt{\frac{m\hbar\omega}{2}}(\hat{a}_x-\hat{a}_x^{\dagger})\right)^2}{\hbar^2}-2\right]\\
+\nonumber=&\hbar\omega[-(\hat{a}_x\hat{a}_y^{\dagger}-\hat{a}_x^{\dagger}\hat{a}_y)^2-2]\\
+\nonumber=&\hbar\omega(-\hat{a}_x^2\hat{a}_y^{\dagger2}+\hat{a}_x\hat{a}_x^{\dagger}\hat{a}_y^{\dagger}\hat{a}_y+\hat{a}_x^{\dagger}\hat{a}_x\hat{a}_y\hat{a}_y^{\dagger}-\hat{a}_x^{\dagger2}\hat{a}_y^2-2)\\
+\nonumber=&\hbar\omega[-\hat{a}_x^2\hat{a}_y^{\dagger2}+(\hat{N}_x+1)\hat{N}_y+\hat{N}_x(\hat{N}_y+1)-\hat{a}_x^{\dagger2}\hat{a}_y^2-2]\\
+=&\hbar\omega(-\hat{a}_x^2\hat{a}_y^{\dagger2}+2\hat{N}_x\hat{N}_y+\hat{N}_x+\hat{N}_y-\hat{a}_x^{\dagger2}\hat{a}_y^2-2)
+\end{align}
+The matrix element of $\hat{W}_2$ is
+\begin{align}
+\nonumber&\langle\varphi_{n_x'n_y'}^{(0)}|\hat{W}_2|\varphi_{n_xn_y}^{(0)}\rangle\\
+\nonumber=&\langle\varphi_{n_x'n_y'}^{(0)}|\hbar\omega(-\hat{a}_x^2\hat{a}_y^{\dagger2}+2\hat{N}_x\hat{N}_y+\hat{N}_x+\hat{N}_y-\hat{a}_x^{\dagger2}\hat{a}_y^2-2)|\varphi_{n_xn_y}^{(0)}\rangle\\
+\nonumber=&\hbar\omega\langle\varphi_{n_x'n_y'}^{(0)}|(-\sqrt{n_x(n_x-1)(n_y+1)(n_y+2)}|\varphi_{n_x-2,n_y+2}^{(0)}\rangle+2n_xn_y|\varphi_{n_xn_y}^{(0)}\rangle+n_x|\varphi_{n_xn_y}^{(0)}\rangle\\
+\nonumber&+n_y|\varphi_{n_xn_y}^{(0)}\rangle-\sqrt{(n_x+1)(n_x+2)n_y(n_y-1)}|\varphi_{n_x+2,n_y-2}^{(0)}\rangle-2|\varphi_{n_xn_y}^{(0)}\rangle)\\
+\nonumber=&\hbar\omega(-\sqrt{n_x(n_x-1)(n_y+1)(n_y+2)}\delta_{n_x',n_x-2}\delta_{n_y',n_y+2}+2n_xn_y\delta_{n_x'n_x}\delta_{n_yn_y'}+n_x\delta_{n_x'n_x}\delta_{n_y'n_y}\\
+&+n_y\delta_{n_x'n_x}\delta_{n_y'n_y}-\sqrt{(n_x+1)(n_x+2)n_y(n_y-1)}\delta_{n_x',n_x+2}\delta_{n_y',n_y-2}-2\delta_{n_x',n_x}\delta_{n_y',n_y})
+\end{align}
+The matrix representing of $\hat{W}_2$ in the basis of the second excited state of $\hat{H}_0$, $\{|\varphi_{20}^{(0)}\rangle,|\varphi_{11}^{(0)}\rangle,|\varphi_{02}^{(0)}\rangle\}$, is
+\begin{equation}
+\hat{W}_2^{(2)}=\hbar\omega\left(\begin{array}{ccc}
+0&0&-2\\
+0&2&0\\
+-2&0&0
+\end{array}\right)
+\end{equation}
+\item[(c)] To first order in the perturbation, the energy levels of the second excited states is
+\begin{equation}
+E_n=E_n^{(0)}+\varepsilon_1\lambda_1+O(\lambda_1^2)
+\end{equation}
+where the correction of energy to first order satisfies
+\begin{equation}
+\varepsilon_1\langle\varphi_n^i|0\rangle=\sum_{i'=1}^{g_n}\langle\varphi_n^i|\hat{W}_1|\varphi_n^{i'}\rangle\langle\varphi_n^{i'}|0\rangle
+\end{equation}
+which means
+\begin{equation}
+\hat{W}_1|0\rangle=\varepsilon_1|0\rangle
+\end{equation}
+$|0\rangle$ is the eigenvector and $\varepsilon_1$ is the eigenvalue of $\hat{W}_1$.\\
+The characteristic equation of $\hat{W}_1$ is
+\begin{equation}
+|\hat{W}_1-\varepsilon_1I|=\left|\begin{array}{ccc}
+-\varepsilon_1&\frac{\sqrt{2}\hbar\omega}{2}&0\\
+\frac{\sqrt{2}\hbar\omega}{2}&-\varepsilon_1&\frac{\sqrt{2}\hbar\omega}{2}\\
+0&\frac{\sqrt{2}\hbar\omega}{2}&-\varepsilon_1
+\end{array}\right|=-\varepsilon_1(\varepsilon_1^2-\hbar^2\omega^2)=0
+\end{equation}
+The eigenvalues of $\hat{W}_1$ are
+\begin{gather}
+\varepsilon_1^{(1)}=\hbar\omega\\
+\varepsilon_1^{(2)}=0\\
+\varepsilon_1^{(3)}=-\hbar\omega
+\end{gather}
+The eigenvector corresponding to $\varepsilon_1^{(1)}$ is
+\begin{equation}
+|0\rangle_1=\left(\begin{array}{c}
+\frac{1}{2}\\
+\frac{\sqrt{2}}{2}\\
+\frac{1}{2}
+\end{array}\right)
+\end{equation}
+The eigenvector corresponding to $\varepsilon_1^{(2)}$ is
+\begin{equation}
+|0\rangle_2=\left(\begin{array}{c}
+\frac{\sqrt{2}}{2}\\
+0\\
+-\frac{\sqrt{2}}{2}
+\end{array}\right)
+\end{equation}
+The eigenvector corresponding to $\varepsilon_1^{(3)}$ is
+\begin{equation}
+|0\rangle_3=\left(\begin{array}{c}
+\frac{1}{2}\\
+-\frac{\sqrt{2}}{2}\\
+\frac{1}{2}
+\end{array}\right)
+\end{equation}
+The energy levels of the second excited states to first order are
+\begin{gather}
+E_{21}^{(1)}=E_2^{(0)}+\varepsilon_1^{(1)}\lambda_1=(3+\lambda_1)\hbar\omega\\
+E_{22}^{(1)}=E_2^{(0)}+\varepsilon_1^{(2)}\lambda_1=3\hbar\omega\\
+E_{23}^{(1)}=E_2^{(0)}+\varepsilon_1^{(3)}\lambda_1=(3-\lambda_1)\hbar\omega
+\end{gather}
+\item[(d)] The Hamiltonian under perturbation is
+\begin{equation}
+\hat{H}_0+\lambda_1\hat{W}_1=\frac{1}{2m}(\hat{p}_x^2+\hat{p}_y^2)+\frac{1}{2}m\omega^2(\hat{x}^2+\hat{y}^2)+\lambda_1mw_1\hat{x}\hat{y}
+\end{equation}
+Let
+\begin{gather}
+\hat{x}_+=\frac{1}{2}(\hat{x}+\hat{y}),\quad\hat{p}_+=\hat{p}_x+\hat{p}_y\\
+\hat{x}_-=\hat{x}-\hat{y},\quad\hat{p}_-=\frac{1}{2}(\hat{p}_x-\hat{p}_y)
+\end{gather}
+so that
+\begin{gather}
+[\hat{x}_+,\hat{p}_+]=[\hat{x}_-,\hat{p}_-]=i\hbar\\
+[\hat{x}_+,\hat{x}_-]=[\hat{p}_+,\hat{p}_-]=[\hat{x}_+,\hat{p}_-]=[\hat{x}_-,\hat{p}_+]=0
+\end{gather}
+and
+\begin{gather}
+\hat{x}=\hat{x}_++\frac{1}{2}\hat{x}_-,\quad\hat{p}_x=\frac{1}{2}\hat{p}_++\hat{p}_-\\
+\hat{y}=\hat{x}_+-\frac{1}{2}\hat{x}_-,\quad\hat{p}_x=\frac{1}{2}\hat{p}_+-\hat{p}_-\\
+\hat{x}\hat{y}=\hat{x}_+^2-\frac{1}{4}\hat{x}_-^2
+\end{gather}
+The Hamiltonian under perturbation can be written as
+\begin{equation}
+\hat{H}_0+\lambda_1\hat{W}_1=\frac{1}{2(2m)}\hat{p}_+^2+\frac{1}{2}(2m)(1+\lambda_1)\omega^2\hat{x}_+^2+\frac{1}{2\frac{m}{2}}\hat{p}_-^2+\frac{1}{2}\frac{m}{2}(1-\lambda_1)\omega^2\hat{x}_-^2
+\end{equation}
+The energy levels under perturbation are
+\begin{equation}
+E_n'=\hbar\sqrt{1+\lambda_1}\omega(n_++\frac{1}{2})+\hbar\sqrt{1-\lambda_1}\omega(n_-+\frac{1}{2})
+\end{equation}
+As $\lambda\ll1$, $\sqrt{1+\lambda_1}=1+\frac{1}{2}\lambda_1$, $\sqrt{1-\lambda_1}=1-\frac{1}{2}\lambda_1$, so the energy levels
+\begin{equation}
+\hat{E}_n'=\hbar\omega[n_++n_-+\frac{1}{2}(n_+-n_-)\lambda+1]
+\end{equation}
+For the second excited states, $n=2$
+\begin{gather}
+n_+=2,n_-=0\Longrightarrow E_{21}=(3+\lambda_1)\hbar\omega\\
+n_+=1,n_-=1\Longrightarrow E_{22}=3\hbar\omega\\
+n_+=0,n_-=2\Longrightarrow E_{23}=(3-\lambda_1)\hbar\omega
+\end{gather}
+which is the same as the results obtained in question (c).
+\item[(e)] To first order in the perturbation, the energy levels of the second excited states are
+\begin{equation}
+E_n=E_0^{(1)}+\varepsilon_1'\lambda_2+O(\lambda_2^{2})
+\end{equation}
+where the correction of energy to first order satisfies
+\begin{equation}
+\varepsilon_1'\langle0|_i|0\rangle'=\sum_{i'=1}^{g_n}\langle0|_i\hat{W}_2|0\rangle_{i'}\langle0|_{i'}|0\rangle'
+\end{equation}
+which means
+\begin{equation}
+\hat{W}_2|0\rangle'=\varepsilon_1'|0\rangle'
+\end{equation}
+$|0\rangle'$ is the eigenvector and $\varepsilon_1'$ is the eigenvalue of $\hat{W}_2$.\\
+The characteristic equation of $\hat{W}_2$ is
+\begin{equation}
+|\hat{W}_2-\varepsilon_1'I|=\left|\begin{array}{ccc}
+-\varepsilon_1'&0&-2\hbar\omega\\
+0&2\hbar\omega-\varepsilon_1'&0\\
+-2\hbar\omega&0&-\varepsilon_1'
+\end{array}\right|=-(\varepsilon_1'+2\hbar\omega)(\varepsilon_1'-2\hbar\omega)^2=0
+\end{equation}
+The eigenvalues of $\hat{W}_2$ are
+\begin{gather}
+\varepsilon_{1}^{'(1)}=2\hbar\omega\\
+\varepsilon_1^{'(2)}=2\hbar\omega\\
+\varepsilon_1^{'(3)}=-2\hbar\omega
+\end{gather}
+The energy levels of the second excited states to first order are
+\begin{gather}
+E_{21}^{'(1)}=E_{21}^{(1)}+\varepsilon_1^{'(1)}\lambda_2=(3+\lambda_1+2\lambda_2)\hbar\omega\\
+E_{22}^{'(1)}=E_{22}^{(1)}+\varepsilon_1^{'(2)}\lambda_2=(3+2\lambda_2)\hbar\omega\\
+E_{23}^{'(1)}=E_{23}^{(1)}+\varepsilon_1^{'(3)}\lambda_2=(3-\lambda_1-2\lambda_2)\hbar\omega
+\end{gather}
+As $\lambda_2\ll\lambda_1$,
+\begin{gather}
+E_{21}^{'(1)}=(3+\lambda_1)\hbar\omega\\
+E_{22}^{'(1)}=(3+2\lambda_2)\hbar\omega\\
+E_{23}^{'(1)}=(3-\lambda_1)\hbar\omega
+\end{gather}
+\item[(f)] To first order in the perturbation, the energy levels of the second excited states is
+\begin{equation}
+E_n=E_n^{(0)}+\varepsilon_1\lambda_2+O(\lambda_2^2)
+\end{equation}
+where the correction of energy to first order satisfies
+\begin{equation}
+\varepsilon_1\langle\varphi_n^i|0\rangle=\sum_{i'=1}^{g_n}\langle\varphi_n^i|\hat{W}_2|\varphi_n^{i'}\rangle\langle\varphi_n^{i'}|0\rangle
+\end{equation}
+which means
+\begin{equation}
+\hat{W}_2|0\rangle=\varepsilon_1|0\rangle
+\end{equation}
+$|0\rangle$ is the eigenvecotr and $\varepsilon_1$ is the eigenvalue of $\hat{W}_2$.\\
+The characteristic equation of $\hat{W}_2$ is
+\begin{equation}
+|\hat{W}_2-\varepsilon_1I|=\left|\begin{array}{ccc}
+-\varepsilon_1&0&-2\\
+0&2-\varepsilon_1&0\\
+-2&0&-\varepsilon_1
+\end{array}\right|=-(\varepsilon_1+2\hbar\omega)(\varepsilon_1-2\hbar\omega)^2=0
+\end{equation}
+The eigenvalues of $\hat{W}_2$ are
+\begin{gather}
+\varepsilon_1^{(1)}=2\hbar\omega\\
+\varepsilon_1^{(2)}=2\hbar\omega\\
+\varepsilon_1^{(3)}=-2\hbar\omega
+\end{gather}
+The energy levels of the second excited states to first order are
+\begin{gather}
+E_{21}^{(1)}=E_2^{(1)}+\varepsilon_1^{(1)}\lambda_2=(3+2\lambda_2)\hbar\omega\\
+E_{22}^{(1)}=E_2^{(2)}+\varepsilon_1^{(2)}\lambda_2=(3+2\lambda_2)\hbar\omega\\
+E_{23}^{(1)}=E_2^{(3)}+\varepsilon_1^{(3)}\lambda_2=(3-2\lambda_2)\hbar\omega
+\end{gather}
+\item[(g)] The Hamiltonian under perturbation is
+\begin{align}
+\nonumber\hat{H}_0+\lambda_2\hat{W}_2=&\frac{1}{2m}(\hat{p}_x^2+\hat{p}_y^2)+\frac{1}{2}m\omega^2(\hat{x}^2+\hat{y}^2)+\lambda_2\hbar\omega\left(\frac{\hat{L}_z^2}{\hbar^2}-2\right)\\
+=&\hbar\omega(\hat{a}_x^{\dagger}\hat{a}_x+\hat{a}_y^{\dagger}\hat{a}_y-\hat{a}_x^2\hat{a}_y^{\dagger2}+\hat{a}_x\hat{a}_x^{\dagger}\hat{a}_y^{\dagger}\hat{a}_y+\hat{a}_x^{\dagger}\hat{a}_x\hat{a}_y\hat{a}_y^{\dagger}-\hat{a}_x^{\dagger2}\hat{a}_y^2-1)
+\end{align}
+Let
+\begin{gather}
+\hat{a}_+=\frac{1}{\sqrt{2}}(\hat{a}_x+i\hat{a}_y)\\
+\hat{a}_-=\frac{1}{\sqrt{2}}(\hat{a}_x-i\hat{a}_y)
+\end{gather}
+so that
+\begin{gather}
+[\hat{a}_+,\hat{a}_+^{\dagger}]=[\hat{a}_-,\hat{a}_-^{\dagger}]=1\\
+[\hat{a}_+,\hat{a}_-]=[\hat{a}_x,\hat{a}_y^{\dagger}]=[\hat{a}_x^{\dagger},\hat{a}_y]=[\hat{a}_x^{\dagger},\hat{a}_y^{\dagger}]=0
+\end{gather}
+and
+\begin{gather}
+\hat{a}_x=\frac{1}{\sqrt{2}}(\hat{a}_++\hat{a}_-)\\
+\hat{a}_x^{\dagger}=\frac{1}{\sqrt{2}}(\hat{a}_+^{\dagger}+\hat{a}_-^{\dagger})\\
+\hat{a}_y=-\frac{i}{\sqrt{2}}(\hat{a}_+-\hat{a}_-)\\
+\hat{a}_y^{\dagger}=\frac{i}{\sqrt{2}}(\hat{a}_+^{\dagger}-\hat{a}_-^{\dagger})
+\end{gather}
+The Hamiltonian under perturbation can be written as
+\begin{equation}
+\hat{H}_0+\lambda_2\hat{W}_2=\frac{1}{2}
+\end{equation}
+\item[(h)] 
+\end{itemize}
+\end{sol}
+
+\begin{problem}{3}
+[C-T Exercise 11-4] Consider a particle $P$ of mass $\mu$, constrained to move in the $xOy$ plane in a circle centered at $O$ with fixed radius $\rho$ (a  two-dimensional rotator). The only variable of the system is the angle $\alpha=\angle(Ox,OP)$, and the quantum state of the particle is defined by the wave function $\psi(\alpha)$ (which represents the probability amplitude of finding the particle at the point of the circle fixed by the angle $\alpha$). At each point of the circle, $\psi(\alpha)$ can take only one value, so that $\psi(\alpha+2\pi)=\psi(\alpha)$. $\psi(\alpha)$ is normalized of $\int_0^{2\pi}d\alpha|\psi(\alpha)|^2=1$.
+\begin{itemize}
+\item[(a)] Consider the operator $\hat{M}=-i\hbar\frac{d}{d\alpha}$. Is $\hat{M}$ Hermitian? Calculate the eigenvalues and normalized eigenfunctions of $\hat{M}$. What is the physical meaning of $\hat{M}$?
+\item[(b)] The kinetic energy of the particle can be written as $\hat{H}_0=\frac{\hat{M}^2}{2\mu\rho^2}$. Calculate the eigenvalues and eigenfunctions of $\hat{H}_0$. Are the energies degenerate?
+\item[(c)] At $t=0$, the wave function of the particle is $N\cos^2\alpha$, where $N$ is a normalization coefficient. Discuss the localization of the particle on the circle at a subsequent time $t$.
+\item[(d)] Assume that the particle has a charge $q$ and that it interacts with a uniform electric field $\mathscr{E}$? parallel to $Ox$. We must therefore add to the Hamiltonian $\hat{H}_0$ the perturbation $\hat{W}=-q\mathscr{E}\rho\cos\alpha$. Calculate the new wave function of the ground state to first order in $\mathscr{E}$. Determine the proportionality coefficient $\chi$ (the linear susceptibility) between the electric dipole parallel to $Ox$ acquired by the particle and the field $\mathscr{E}$.
+\item[(e)] Consider, for the ethane molecule CH$_3$-CH$_3$, a rotation of one CH$_3$ group relative to the other about the straight line joining the two carbon atoms. To a first approximation, this rotation is free, and the Hamiltonian $\hat{H}_0$ introduced in (b) describes the rotational kinetic energy of one of the CH$_3$ groups relative to the other ($2\mu\rho^2$ must, however, be replaced by $\lambda I$, where $I$ is the moment of inertia of the CH$_3$ group with respect to the rotational axis and $\lambda$ is a constant). To take account of the electrostatic interaction energy between the two CH$_3$ groups, we add to $\hat{H}_0$ a term of the form $\hat{W}=b\cos(3\alpha)$, where $b$ is a real constant. Give a physical justification for the $\alpha$-dependence of $\hat{W}$. Calculate the energy and wave function of the new ground state (to first order in $b$ for the wave function and to second order for the energy). Give a physical interpretation of the result.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] 
+\item[(b)] 
+\item[(c)] 
+\item[(d)] 
+\item[(e)] 
+\end{itemize}
+\end{sol}
+
+\begin{problem}{4}
+[C-T Exercise 11-6] Consider a system formed by an electron spin $\hat{\vec{S}}$ and two nuclear spins $\hat{\vec{I}}_1$ and $\hat{\vec{I}}$ ($\hat{\vec{S}}$ is, for example, the spin of the unpaired electron of a paramagnetic diatomic molecule, and $\hat{\vec{I}}_1$ and $\hat{\vec{I}}_2$ are the spins of the two nuclei of this molecule).\\
+Assume that $\hat{\vec{S}}$, $\hat{\vec{I}}_1$, $\hat{\vec{I}}_2$ are all spin $1/2$'s. The state space of the three-spin system is spanned by the eight orthornormal kets $|\varepsilon_S\varepsilon_1\varepsilon_2\rangle$, common eigenvectors of $\hat{S}_z$, $\hat{\vec{I}}_{1z}$, $\hat{\vec{I}}_{2z}$, with respective eigenvalues $\varepsilon_S\hbar/2$, $\varepsilon_1\hbar/2$, $\varepsilon_2\hbar/2$ (with $\varepsilon_S=\pm$, $\varepsilon_1=\pm$, $\varepsilon_2=\pm$). For example, the ket $|+-+\rangle$ corresponds to the eigenvalues $+\hbar/2$ for $\hat{S}_z$, $-\hbar/2$ for $\hat{I}_{1z}$, and $+\hbar/2$ for $\hat{I}_{2z}$.
+\begin{itemize}
+\item[(a)] We begin by neglecting any coupling of the three spins. We assume, however, that they are placed in a uniform magnetic field $\vec{B}$ parallel to $Oz$. Since the gyromagnetic ratios of $\hat{\vec{I}}_1$ and $\hat{\vec{I}}_2$ are equal, the Hamiltonian $\hat{H}_0$ of the system can be written as $\hat{H}_0=\Omega\hat{S}_z+\omega\hat{I}_{1z}+\omega\hat{I}_{2z}$, where $\Omega$ and $\omega$ are real, positive constants, proportional to $|\vec{B}|$. Assume $\Omega>\omega$. What are the possible energies of the three-spin system and their degrees of degeneracy? Draw the energy diagram.
+\item[(b)] We now take coupling of the spins into account by adding the Hamiltonian $\hat{W}=a\hat{\vec{S}}\cdot\hat{\vec{I}}_1+a\hat{\vec{S}}\cdot\hat{\vec{I}}_2$, where $a$ is a real, positive constant (the direct coupling of $\hat{\vec{I}}_1$ and $\hat{\vec{I}}_2$ is negligible). What conditions must he satisfied by $\varepsilon_S$, $\varepsilon_1$, $\varepsilon_2$, $\varepsilon_S'$, $\varepsilon_1'$, $\varepsilon_2'$ for $a\hat{\vec{S}}\cdot\hat{\vec{I}}_1$ to have a non-zero matrix element between $|\varepsilon_S\varepsilon_1\varepsilon_2\rangle$ and $|\varepsilon_S'\varepsilon_1'\varepsilon_2'\rangle$? Same question for $a\hat{\vec{S}}\cdot\hat{\vec{I}}_2$.
+\item[(c)] Assume that $a\hbar^2\ll\hbar\Omega$, $\hbar\omega$ so that $\hat{W}$ can be treated like a perturbation with respect to $\hat{H}_0$. To first order in $\hat{W}$, what are the eigenvalues of the total Hamiltonian $\hat{H}=\hat{H}_0+\hat{W}$? To zeroth order in $\hat{W}$, what are the eigenstates of $\hat{H}$? Draw the energy diagram.
+\item[(d)] Using the approximation of the preceding question, determine the Bohr frequencies which can appear in the evolution of $\langle\hat{S}_x\rangle$ when the coupling $\hat{W}$  of the spins is taken into account.\\
+In an EPR (Electronic Paramagnetic Resonance) experiment, the frequencies of the resonance lines observed are equal to the preceding Bohr frequencies. What is the shape of the EPR spectrum observed for the three-spin system? How can the coupling constant $a$ be determined from this spectrum?
+\item[(e)] Now assume that the magnetic field $\vec{B}$ is zero, so that $\Omega=\omega=0$. The Hamiltonian then reduces to $\hat{W}$.
+\begin{itemize}
+\item[i.] Let $\hat{\vec{I}}=\hat{\vec{I}}_1+\hat{\vec{I}}_2$ be the total nuclear spin. What are the eigenvalues of $\hat{\vec{I}}^2$ and their degrees of degeneracy? Show that $\hat{W}$ has no matrix elements between eigenstates of $\hat{\vec{I}}^2$ of different eigenvalues.
+\item[ii.] Let $\hat{\vec{J}}=\hat{\vec{S}}+\hat{\vec{I}}$ be the total spin. What are the eigenvalues of $\hat{\vec{J}}^2$ and their degrees of degeneracy? Determine the energy eigenvalues of the three-spin system and their degrees of degeneracy. Does the set $\{\hat{\vec{J}}^2,\hat{J}_z\}$ form a CSCO? Same question for $\{\hat{\vec{I}}^2,\hat{\vec{J}}^2,\hat{J}_z\}$.
+\end{itemize}
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] 
+\item[(b)] 
+\item[(c)] 
+\item[(d)] 
+\item[(e)]
+\begin{itemize}
+\item[i.] 
+\item[ii.] 
+\end{itemize}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T Exercise 11-9] We want to calculate the ground state energy of the hydrogen atom by the variational method, choosing as trial functions the spherically symmetrical functions $\varphi_{\alpha}(r)$ whose $r$-dependence is given by
+\[
+\left\{\begin{array}{ll}
+\varphi_{\alpha}(r)=C(1-r/\alpha),&r\leq\alpha,\\
+\varphi_{\alpha}(r)=0,&r>\alpha
+\end{array}\right.
+\]
+Here $C$ is normalization constant and $\alpha$ is the variational parameter.
+\begin{itemize}
+\item[(a)] Calculate the mean value of the kinetic and potential energies of the electron in the state $|\varphi_{\alpha}\rangle$. Express the mean value of the kinetic energy in terms of $\vec{\nabla}\varphi_{\alpha}$, so as to avoid the "delta functions" which appear in $\vec{\nabla}^2\varphi_{\alpha}$ (since $\vec{\nabla}\varphi_{\alpha}$ is discontinuous).
+\item[(b)] Find the optional value $\alpha_0$ of $\alpha$. Compare $\alpha_0$ with the Bohr radius $a_0$.
+\item[(c)] Compare the approximate value obtained for the ground state energy with the exact value $-E_I$.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] 
+\item[(b)] 
+\item[(c)] 
+\end{itemize}
+\end{sol}
+\end{document}

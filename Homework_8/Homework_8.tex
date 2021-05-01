@@ -1,0 +1,564 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_8
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\usepackage{multirow}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 8}
+\begin{document}
+\begin{problem}{1}
+[C-T Exercise 3-1] In a one-dimensional problem, consider a particle whose wave function is
+\[
+\psi(x)=N\frac{e^{ip_0x/\hbar}}{\sqrt{x^2+a^2}}
+\]
+where $a$ and $p_0$ are real constants and $N$ is a normalization coefficient.
+\begin{itemize}
+\item[(a)] Determine $N$ so that $\psi(x)$ is normalized.
+\item[(b)] The position of the particle is measured. What is the probability of finding a result between $-a/\sqrt{3}$ and $+a/\sqrt{3}$.
+\item[(c)] Calculate the mean value of the momentum of a particle which has $\psi(x)$ for its wave function.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The normalization condition is
+\begin{equation}
+\int_{-\infty}^{+\infty}dx\psi^*(x)\psi(x)=N^2\int_{-\infty}^{+\infty}\frac{dx}{x^2+a^2}=N^2\left.\frac{\arctan\frac{x}{a}}{a}\right|_{-\infty}^{+\infty}=N^2\frac{\pi}{a}=1
+\end{equation}
+Therefore, the normalization coefficient is
+\begin{equation}
+N=\sqrt{\frac{a}{\pi}}
+\end{equation}
+so the normalized wave function is
+\begin{equation}
+\psi(x)=\sqrt{\frac{a}{\pi}}\frac{e^{ip_0x/\hbar}}{\sqrt{x^2+a^2}}
+\end{equation}
+\item[(b)] The probability of finding the position of the particle between $-a/\sqrt{3}$ and $+a/\sqrt{3}$ is
+\begin{align}
+\nonumber P(-a/\sqrt{3}<x<+a/\sqrt{3})=&\int_{-a/\sqrt{3}}^{+a/\sqrt{3}}dx\psi^*(x)\psi(x)=\frac{a}{\pi}\int_{-a/\sqrt{3}}^{+a/\sqrt{3}}\frac{dx}{x^2+a^2}\\
+=&\frac{a}{\pi}\left.\frac{\arctan\frac{x}{a}}{a}\right|_{-a/\sqrt{3}}^{+a/\sqrt{3}}=\frac{2}{3}
+\end{align}
+\item[(c)] The mean value of the momentum of the particle is
+\begin{align}
+\nonumber\langle p_x\rangle=&\int_{-\infty}^{+\infty}dx\psi^*(x)\hat{p}_x\psi(x)=\frac{a}{\pi}\int_{-\infty}^{+\infty}dx\frac{e^{-ip_0x/\hbar}}{\sqrt{x^2+a^2}}(-i\hbar\frac{d}{dx})\frac{e^{ip_0x/\hbar}}{\sqrt{x^2+a^2}}\\
+\nonumber=&-\frac{ia\hbar}{\pi}\int_{-\infty}^{+\infty}dx\left[\frac{ip_0}{\hbar(x^2+a^2)}-\frac{x}{(x^2+a^2)^2}\right]\\
+\nonumber=&-\frac{ia\hbar}{\pi}\left\{\frac{ip_0}{\hbar}\left.\frac{\arctan\frac{x}{a}}{a}\right|_{-\infty}^{+\infty}-2\pi i\text{Res}\left[\frac{x}{(x^2+a^2)^2},i|a|\right]\right\}\\
+\nonumber=&-\frac{ia\hbar}{\pi}\left\{\frac{ip_0}{\hbar}\frac{\pi}{a}-2\pi i\lim_{x\rightarrow i|a|}\frac{d}{dx}\frac{x}{(x+i|a|)^2}\right\}\\
+=&-\frac{ia\hbar}{\pi}\left\{\frac{ip_0}{\hbar}\frac{\pi}{a}-2\pi i\lim_{x\rightarrow i|a|}\frac{i|a|-x}{(x+i|a|)^3}\right\}=p_0
+\end{align}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{2}
+[C-T Exercise 3-12] Consider a particle of mass $m$ submitted to the potential
+\[
+V(x)=\left\{\begin{array}{ll}
+0,&0\leq x\leq a,\\
++\infty,&x<0,x>a.
+\end{array}\right.
+\]
+$|\varphi\rangle$'s are the eigenstates of the Hamiltonian $\hat{H}$ of the system, and their eigenvalues are $E_n=n^2\pi^2\hbar^2/2ma^2$. The state of the particle at the instant $t=0$ is
+\[
+|\psi(0)\rangle=a_1|\varphi_1\rangle+a_2|\varphi_2\rangle+a_3|\varphi_3\rangle+a_4|\varphi_4\rangle
+\]
+\begin{itemize}
+\item[(a)] What is the probability, when the energy of the particle in the state $|\psi(0)\rangle$ is measured, of finding a value smaller than $3\pi^2\hbar^2/ma^2$?
+\item[(b)] What is the mean value and what is the root-mean-square deviation of the energy of the particle in the state $|\psi(0)\rangle$?
+\item[(c)] Calculate the state vector $|\psi(t)\rangle$ at the instant $t$. Do the results found in the previous two parts at the instant $t=0$ remain valid at an arbitrary time $t$?
+\item[(d)] When the energy is measured, the result $8\pi^2\hbar^2/ma^2$ is found. After the measurement, what is the state of the system? What is the result if the energy is measured again?
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The normalizaed state vector is
+\begin{equation}
+|\psi(0)\rangle=N[a_1|\varphi_1\rangle+a_2|\varphi_2\rangle+a_3|\varphi_3\rangle+a_4|\varphi_4\rangle]
+\end{equation}
+The normalization condition is
+\begin{gather}
+\langle\psi(0)|\psi(0)\rangle=N^2(|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2)=1\\
+\Longrightarrow N=\frac{1}{\sqrt{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}}
+\end{gather}
+The Hamiltonian eigenvalues are
+\begin{equation}
+E_1=\frac{\pi^2\hbar^2}{2ma^2},\quad E_2=\frac{2\pi^2\hbar^2}{ma^2},\quad E_3=\frac{9\pi^2\hbar^2}{2ma^2},\quad E_4=\frac{8\pi^2\hbar^2}{ma^2}
+\end{equation}
+The probability that measured energy of the particle is smaller than $3\pi^2\hbar^2/ma^2$ is
+\begin{equation}
+P(E<3\pi^2\hbar^2/ma^2)=(\langle\psi_1|\psi(0)\rangle)^2+(\langle\psi_2|\psi(0)\rangle)^2=\frac{|a_1|^2+|a_2|^2}{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}
+\end{equation}
+\item[(b)] The mean value of the energy of the particle is
+\begin{align}
+\nonumber\langle E\rangle=&E_1(\langle\psi_1|\psi(0)\rangle)^2+E_2(\langle\psi_2|\psi(0)\rangle)^2+E_3(\langle\psi_3|\psi(0)\rangle)^2+E_4(\langle\psi_4|\psi(0)\rangle)^2\\
+=&\frac{|a_1|^2+4|a_2|^2+9|a_3|^2+16|a_4|^2}{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}\frac{\pi^2\hbar^2}{2ma^2}
+\end{align}
+The mean value of the square of the energy of the particle is
+\begin{align}
+\nonumber\langle E^2\rangle=&E_1^2(\langle\psi_1|\psi(0)\rangle)^2+E_2^2(\langle\psi_2|\psi(0)\rangle)^2+E_3^2(\langle\psi_3|\psi(0)\rangle)^2+E_4^2(\langle\psi_4|\psi(0)\rangle)^2\\
+=&\frac{|a_1|^2+16|a_2|^2+81|a_3|^2+256|a_4|^2}{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}\left(\frac{\pi^2\hbar^2}{2ma^2}\right)^2
+\end{align}
+The root-mean-square deviation of the energy of the particle is
+\scriptsize\begin{align}
+\nonumber\Delta E=&\sqrt{\langle E^2\rangle-\langle E\rangle^2}\\
+=&\frac{\sqrt{9|a_1|^2|a_2|^2+64|a_1|^2|a_3|^2+225|a_1|^2|a_4|^2+25|a_2|^2|a_3|^2+144|a_2|^2|a_4|^2+49|a_3|^2|a_4|^2}}{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}\frac{\pi^2\hbar^2}{2ma^2}
+\end{align}\normalsize
+\item[(c)] At instant $t$, the state vector is
+\begin{align}
+\nonumber|\psi(t)\rangle=&\frac{a_1|\psi_1\rangle e^{-iE_1t/\hbar}+a_2|\psi_2\rangle e^{-iE_2t/\hbar}+a_3|\psi_3\rangle e^{-iE_3t/\hbar}+a_4|\psi_4\rangle e^{-iE_4t/\hbar}}{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}\\
+=&\frac{a_1|\psi_1\rangle e^{-i\frac{\pi^2\hbar^2}{2ma^2}t/\hbar}+a_2|\psi_2\rangle e^{-i\frac{2\pi^2\hbar^2}{ma^2}t/\hbar}+a_3|\psi_3\rangle e^{-i\frac{9\pi^2\hbar^2}{2ma^2}t/\hbar}+a_4|\psi_4\rangle e^{-i\frac{8\pi^2\hbar^2}{ma^2}t/\hbar}}{|a_1|^2+|a_2|^2+|a_3|^2+|a_4|^2}
+\end{align}
+Because the probabilities of finding each eigenstate remains the same as at instant $t=0$, the result found in the previous two parts remains valid at an arbitrary time $t$.
+\item[(d)] After the measurement, the state of the system is $|\psi_4\rangle$.\\
+The result $8\pi^2\hbar^2/ma^2$ will be found again if the energy is measured again.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{3}
+[C-T Exercise 3-13] In a two-dimensional problem, consider a particle of mass $m$; its Hamiltonian $\hat{H}$ is written as $\hat{H}=\hat{H}_x+\hat{H}_y$ with
+\[
+\hat{H}_x=\frac{\hat{p}_x^2}{2m}+\hat{V}(\hat{x}),\hat{H}_y=\frac{\hat{p}_y^2}{2m}+\hat{V}(y)
+\]
+The potential energy $V(x)$ [or $V(y)$] is zero when $x$ (or $y$) is included in the interval $[0,a]$ and is infinite everywhere else.
+\begin{itemize}
+\item[(a)] Of the following sets of operators, which form a CSCO?
+\[
+\{\hat{H}\},\{\hat{H}_x\},\{\hat{H}_x,\hat{H}_y\},\{\hat{H},\hat{H}_x\}
+\]
+\item[(b)] Consider a particle whose wave function is
+\[
+\psi(x,y)=N\cos\left(\frac{\pi x}{a}\right)\cos\left(\frac{\pi y}{a}\right)\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{2\pi y}{a}\right)
+\]
+if $0\leq x\leq a$ and $0\leq y\leq a$, and is zero everywhere else (where $N$ is a constant).
+\begin{itemize}
+\item[i.] What is the mean value $\langle\hat{H}\rangle$ of the energy of the particle? If the energy $\hat{H}$ is measured, what results can be found, and with what probabilities?
+\item[ii.] The observable $\hat{H}_x$ is measured; what results can be found, and with what probabilities? If this measurement yields the result $\pi^2\hbar^2/2ma^2$, what will be the results of a subsequent measurement of $\hat{H}_y$, and with what probabilities?
+\item[iii.] Instead of performing the preceding measurements, one now performs a simultaneous measurement of $\hat{H}_x$ and $\hat{p}_y$. What are the probabilities of finding the following results?
+\[
+E_x=\frac{9\pi^2\hbar^2}{2ma^2}\text{ and }p_0\leq p_y\leq p_0+dp
+\]
+\end{itemize}
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The eigenstates and the eigenvalue of $\hat{H}$, $\hat{H}_x$ and $\hat{H}_y$ are list below
+\begin{table}[h]
+\centering
+\caption{The eitenstates and the eigenvalue of $\hat{H}$, $\hat{H}_x$ and $\hat{H}_y$}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multirow{2}{*}{Eigenstates} & \multicolumn{3}{c|}{Eigenvalues of:}                                                                      \\ \cline{2-4} 
+                              & $\hat{H}$                             & $\hat{H}$                       & $\hat{H}_y$                     \\ \hline
+$\psi_{11}(x,y)=\frac{2}{a}\sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{\pi x}{a}\right)$             & $\frac{\pi^2\hbar^2}{ma^2}$           & $\frac{\pi^2\hbar^2}{2ma^2}$    & $\frac{\pi^2\hbar^2}{2ma^2}$    \\ \hline
+$\psi_{12}(x,y)=\frac{2}{a}\sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right)$             & $\frac{5\pi^2\hbar^2}{2ma^2}$         & $\frac{\pi^2\hbar^2}{2ma^2}$    & $\frac{2\pi^2\hbar^2}{ma^2}$    \\ \hline
+$\psi_{21}(x,y)=\frac{2}{a}\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{\pi x}{a}\right)$             & $\frac{5\pi^2\hbar^2}{2ma^2}$         & $\frac{2\pi^2\hbar^2}{ma^2}$    & $\frac{\pi^2\hbar^2}{2ma^2}$    \\ \hline
+$\psi_{22}(x,y)=\frac{2}{a}\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right)$             & $\frac{4\pi^2\hbar^2}{ma^2}$          & $\frac{2\pi^2\hbar^2}{ma^2}$    & $\frac{2\pi^2\hbar^2}{ma^2}$    \\ \hline
+$\vdots$                      & $\vdots$                              & $\vdots$                        & $\vdots$                        \\ \hline
+$\psi_{mn}(x,y)=\frac{2}{a}\sin\left(\frac{m\pi x}{a}\right)\sin\left(\frac{n\pi x}{a}\right)$             & $\frac{\pi^2\hbar^2}{2ma^2}(m^2+n^2)$ & $\frac{m^2\pi^2\hbar^2}{2ma^2}$ & $\frac{n^2\pi^2\hbar^2}{2ma^2}$ \\ \hline
+$\vdots$                      & $\vdots$                              & $\vdots$                        & $\vdots$                        \\ \hline
+\end{tabular}
+\end{table}
+\\Therefore, $\{\hat{H}\}$ cannot form a CSCO;\\
+$\{\hat{H}_x\}$ cannot form a CSCO;\\
+$\{\hat{H}_x,\hat{H}_y\}$ can form a CSCO;\\
+$\{\hat{H},\hat{H}_x\}$ can form a CSCO.
+\item[(b)]
+\begin{itemize}
+\item[i.] The normalization condition is
+\begin{gather}
+\begin{align}
+\nonumber&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi^*(x,y)\psi(x,y)\\
+\nonumber=&N^2\int_0^adx\cos^2\left(\frac{\pi x}{a}\right)\sin^2\left(\frac{2\pi x}{a}\right)\int_0^ady\cos^2\left(\frac{\pi y}{a}\right)\sin^2\left(\frac{2\pi y}{a}\right)\\
+\nonumber=&16N^2\int_0^adx\cos^4\left(\frac{\pi x}{a}\right)\sin^2\left(\frac{2\pi x}{a}\right)\int_0^ady\cos^4\left(\frac{\pi y}{a}\right)\sin^2\left(\frac{\pi y}{a}\right)\\
+\nonumber=&16N^2\int_0^adx\cos^4\left(\frac{\pi x}{a}\right)\left[1-\cos^2\left(\frac{2\pi x}{a}\right)\right]\int_0^ady\cos^4\left(\frac{\pi y}{a}\right)\left[1-\cos^2\left(\frac{\pi y}{a}\right)\right]\\
+\nonumber=&16N^2\cdot2\frac{a}{\pi}\left(\frac{3!!}{4!!}\frac{\pi}{2}-\frac{5!!}{6!!}\frac{\pi}{2}\right)\cdot2\frac{a}{\pi}\left(\frac{3!!}{4!!}\frac{\pi}{2}-\frac{5!!}{6!!}\frac{\pi}{2}\right)\\
+=&\frac{a^2}{16}N^2=1
+\end{align}\\
+\Longrightarrow N=\frac{4}{a}
+\end{gather}
+so the normalized wave function is
+\begin{equation}
+\psi(x,y)=\frac{4}{a}\cos\left(\frac{\pi x}{a}\right)\cos\left(\frac{\pi y}{a}\right)\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{2\pi y}{a}\right)
+\end{equation}
+The wave function can be written as
+\begin{align}
+\nonumber\psi(x,y)=&\sum_{m=1}^{\infty}a_m\sin\left(\frac{m\pi x}{a}\right)\sum_{n=1}^{\infty}b_n\sin\left(\frac{n\pi x}{a}\right)\\
+\nonumber=&\frac{1}{a}\left[\sin\left(\frac{3\pi x}{a}\right)+\sin\left(\frac{\pi x}{a}\right)\right]\left[\sin\left(\frac{3\pi y}{a}\right)+\sin\left(\frac{\pi y}{a}\right)\right]\\
+=&\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]
+\end{align}
+The mean value of the energy of the particle is
+\begin{align}
+\nonumber\langle\hat{H}\rangle=&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi^*(x,y)\hat{H}\psi(x,y)\\
+=&\frac{1}{4}\frac{\pi^2\hbar^2}{2ma^2}[(1^2+1^2)+(1^2+3^2)+(3^2+1^2)+(3^2+3^2)]=\frac{5\pi^2\hbar^2}{ma^2}
+\end{align}
+Since
+\small\begin{gather}
+\begin{align}
+\nonumber&P\left(E=\frac{\pi^2\hbar^2}{ma^2}\right)=\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{11}^*(x,y)\psi(x,y)\right]^2\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{11}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+=&\frac{1}{4}
+\end{align}\\
+\begin{align}
+\nonumber&P\left(E=\frac{5\pi^2\hbar^2}{2ma^2}\right)\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{13}^*(x,y)\psi(x,y)\right]^2+\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{31}^*(x,y)\psi(x,y)\right]^2\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{13}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+\nonumber&+\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{31}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+=&\frac{1}{4}+\frac{1}{4}=\frac{1}{2}
+\end{align}\\
+\begin{align}
+\nonumber&P\left(E=\frac{9\pi^2\hbar^2}{2ma^2}\right)=\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{33}^*(x,y)\psi(x,y)\right]^2\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\psi_{11}^*(x,y)\cdot\frac{1}{2}[\psi_{33}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+=&\frac{1}{4}
+\end{align}
+\end{gather}\normalsize
+If the energy $\hat{H}$ is measured, result $\frac{\pi^2\hbar^2}{ma^2}$ can be found with probability $\frac{1}{4}$;\\
+result $\frac{5\pi^2\hbar^2}{2ma^2}$ can be found with probability $\frac{1}{2}$;\\
+result $\frac{9\pi^2\hbar^2}{2ma^2}$ can be found with probability $\frac{1}{2}$.
+\item[ii.] Since
+\begin{gather}
+\begin{align}
+\nonumber&P\left(E_x=\frac{\pi^2\hbar^2}{2ma^2}\right)=\sum_{n}\left[\int_{-\infty}^{+\infty}\psi_{1n}^*(x,y)\psi(x,y)\right]^2\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\psi_{1,1}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+\nonumber&+\left[\int_{-\infty}^{+\infty}\psi_{1,3}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+=&\frac{1}{4}+\frac{1}{4}=\frac{1}{2}
+\end{align}\\
+\begin{align}
+\nonumber&P\left(E_x=\frac{9\pi^2\hbar^2}{2ma^2}\right)=\sum_{n}\left[\int_{-\infty}^{+\infty}\psi_{3n}^*(x,y)\psi(x,y)\right]^2\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\psi_{3,1}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+\nonumber&+\left[\int_{-\infty}^{+\infty}\psi_{3,3}^*(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+=&\frac{1}{4}+\frac{1}{4}=\frac{1}{2}
+\end{align}
+\end{gather}
+If observable $\hat{H}_x$ is measured, result $\frac{\pi^2\hbar^2}{2ma^2}$ will be find with probability $\frac{1}{2}$;\\
+result $\frac{9\pi^2\hbar^2}{2ma^2}$ will be find with probability $\frac{1}{2}$.\\
+If this measurement yields the result $\pi^2\hbar^2/2ma^2$, then the subsequent state of the partial is
+\begin{align}
+\nonumber\psi_1(x,y)=&\frac{\sqrt{2}}{a}\sin\left(\frac{\pi x}{a}\right)\left[\sin\left(\frac{3\pi y}{a}\right)+\sin\left(\frac{\pi y}{a}\right)\right]\\
+=&\frac{1}{\sqrt{2}}[\psi_{13}(x,y)+\psi_{33}(x,y)]
+\end{align}
+Then
+\begin{gather}
+\begin{align}
+\nonumber P(E_y=\frac{\pi^2\hbar^2}{2ma^2})=&\sum_{m}\left[\int_{-\infty}^{+\infty}dy\psi_{m1}^*(y)\psi_1(x,y)\right]^2\\
+=&\left[\int_{-\infty}^{+\infty}dy\psi_{11}(y)\cdot\frac{1}{\sqrt{2}}[\psi_{13}(x,y)+\psi_{33}(x,y)]\right]^2=\frac{1}{2}
+\end{align}\\
+\begin{align}
+\nonumber P(E_y=\frac{9\pi^2\hbar^2}{2ma^2})=&\sum_{m}\left[\int_{-\infty}^{+\infty}dy\psi_{m3}^*(y)\psi_1(x,y)\right]^2\\
+=&\left[\int_{-\infty}^{+\infty}dy\psi_{13}(y)\cdot\frac{1}{\sqrt{2}}[\psi_{13}(x,y)+\psi_{33}(x,y)]\right]^2=\frac{1}{2}
+\end{align}
+\end{gather}
+Therefore, the subsequent measurement of $\hat{H}$ will have result $\frac{\pi^2\hbar^2}{2ma^2}$ with probability $\frac{1}{2}$ and result $\frac{9\pi^2\hbar^2}{2ma^2}$ with probability $\frac{1}{2}$.
+\item[iii.] The probability of finding result $E_x=\frac{9\pi^2\hbar^2}{2ma^2}$ when measuring $\hat{H}_x$ is
+\begin{align}
+\nonumber&P\left(E_x=\frac{9\pi^2\hbar^2}{2ma^2}\right)=\sum_{n}\left[\int_{-\infty}^{+\infty}\psi_{3n}(x,y)\right]^2\\
+\nonumber=&\left[\int_{-\infty}^{+\infty}\psi_{31}(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+\nonumber&+\left[\int_{-\infty}^{+\infty}\psi_{33}(x,y)\cdot\frac{1}{2}[\psi_{11}(x,y)+\psi_{13}(x,y)+\psi_{31}(x,y)+\psi_{33}(x,y)]\right]^2\\
+=&\frac{1}{4}+\frac{1}{4}=\frac{1}{2}
+\end{align}
+The probability of finding result $p_0\leq p_y\leq p_0+dp$ when measuring $\hat{p}_y$ is
+\begin{equation}
+P(p_0\leq p_y\leq P_0+dp)=\frac{1}{2}[\langle p_0|(|\psi_{y,1}\rangle+|\psi_{y,3}\rangle)]^2dp
+\end{equation}
+where
+\footnotesize\begin{gather}
+\begin{align}
+\nonumber&\langle p_0|\psi_{y,n}\rangle=\frac{1}{\sqrt{2\pi\hbar}}\int_0^adye^{-ip_0y/\hbar}\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi y}{a}\right)\\
+\nonumber=&\frac{1}{\sqrt{2\pi\hbar}}\sqrt{\frac{2}{a}}\frac{\hbar}{-ip_0}\int_0^a\sin\left(\frac{n\pi y}{a}\right)de^{-ip_0y/\hbar}\\
+\nonumber=&\frac{1}{\sqrt{2\pi\hbar}}\sqrt{\frac{2}{a}}\frac{\hbar}{-ip_0}\left\{\left.\left[e^{-ip_0y/\hbar}\sin\left(\frac{n\pi y}{a}\right)\right]\right|_0^a-\int_0^ae^{-ip_0y/\hbar}d\sin\left(\frac{n\pi y}{a}\right)\right\}\\
+\nonumber=&-\frac{1}{\sqrt{2\pi\hbar}}\sqrt{\frac{2}{a}}\frac{\hbar}{-ip_0}\frac{n\pi}{a}\int_0^ae^{-ip_0y/\hbar}\cos\left(\frac{n\pi y}{a}\right)dy\\
+\nonumber=&-\frac{1}{\sqrt{2\pi\hbar}}\sqrt{\frac{2}{a}}\left(\frac{\hbar}{-ip_0}\right)^2\frac{n\pi}{a}\int_0^a\cos\left(\frac{n\pi y}{a}\right)de^{-ip_0y/\hbar}\\
+\nonumber=&-\frac{1}{\sqrt{2\pi\hbar}}\sqrt{\frac{2}{a}}\left(\frac{\hbar}{-ip_0}\right)^2\frac{n\pi}{a}\left\{\left.\left[e^{-ip_0y/\hbar}\cos\left(\frac{n\pi y}{a}\right)\right]\right|_0^a-\int_0^ae^{-ip_0y/\hbar}d\cos\left(\frac{n\pi y}{a}\right)\right\}\\
+=&-\frac{1}{\sqrt{2\pi\hbar}}\sqrt{\frac{2}{a}}\left(\frac{\hbar}{-ip_0}\right)^2\frac{n\pi}{a}\left\{\left[e^{-ip_0a/\hbar}(-1)^n-1\right]+\frac{n\pi}{a}\int_0^ae^{-ip_0y/\hbar}\sin\left(\frac{n\pi y}{a}\right)dy\right\}
+\end{align}\\
+\Longrightarrow\langle p_0|\psi_{y,n}\rangle=\frac{\sqrt{\pi a}\hbar^{3/2}n}{(p_ya)^2-(n\pi\hbar)^2}\left[1-(-1)^ne^{-ip_ya/\hbar}\right]
+\end{gather}\normalsize
+so the probability of finding result $p_0\leq p_y\leq p_0+dp$ when measuring $\hat{p}_y$ is
+\begin{align}
+\nonumber&P(p_0\leq p_y\leq p_0+dp)\\
+\nonumber=&\frac{1}{2}\left\{\frac{\sqrt{\pi a}\hbar^{3/2}}{(p_0a)^2-(\pi\hbar)^2}\left[1+e^{-ip_0a/\hbar}\right]+\frac{\sqrt{\pi a}\hbar^{3/2}3}{(p_0a)^2-(3\pi\hbar)^2}\left[1+e^{-ip_0a/\hbar}\right]\right\}^2dp\\
+=&32\pi a\hbar^3\left\{\frac{(pa)^2-3(\pi\hbar)^2}{(p_0a)^2-(\pi\hbar)^2}\cos\left(\frac{p_0a}{2\hbar}\right)\right\}^2dp
+\end{align}
+Therefore, the probability of finding the following results $E_x=\frac{9\pi^2\hbar^2}{2ma^2}$ and $p_0\leq p_y\leq p_0+dp$ is
+\small\begin{align}
+\nonumber P\left(E_x=\frac{9\pi^2\hbar^2}{2ma^2},p_0\leq p_y\leq P_0+dp\right)=&P\left(E_x=\frac{9\pi^2\hbar^2}{2ma^2}\right)P(p_0\leq p_y\leq P_0+dp)\\
+=&16\pi a\hbar^3\left\{\frac{(pa)^2-3(\pi\hbar)^2}{(p_0a)^2-(\pi\hbar)^2}\cos\left(\frac{p_0a}{2\hbar}\right)\right\}^2dp
+\end{align}\normalsize
+\end{itemize}
+\end{itemize}
+\end{sol}
+
+\begin{problem}{4}
+[C-T Exercise 3-14] Consider a physical system whose state space, which is three-dimensional, is spanned by the orthonormal basis formed by the three kets $|u_1\rangle$, $|u_2\rangle$, and $|u_3\rangle$. In this basis, the Hamiltonian operator $\hat{H}$ of the system and the two observables $\hat{A}$ and $\hat{B}$ are written as
+\[
+H=\hbar\omega\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right),\quad A=a\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right),\quad B=b\left(\begin{array}{ccc}
+0&1&0\\
+1&0&0\\
+0&0&1\\
+\end{array}\right)
+\]
+where $\omega_0$, $a$, and $b$ are positive real constants. The physical system at time $t=0$ is in the state
+\[
+|\psi(0)\rangle=\frac{1}{\sqrt{2}}|u_1\rangle+\frac{1}{2}|u_2\rangle+\frac{1}{2}|u_3\rangle
+\]
+\begin{itemize}
+\item[(a)] At time $t=0$, the energy of the system is measured. What values can be found, and with what probabilities? Calculate, for the system in the state $|\psi(0)\rangle$, the mean value $\langle\hat{H}\rangle$ and the root-mean-square deviation $\Delta H$.
+\item[(b)] Instead of measuring $\hat{H}$ at time $t=0$, one measures $\hat{A}$; what results can be found, and with what probabilities? What is the state vector immediately after the measurement?
+\item[(c)] Calculate the state vector $|\psi(t)\rangle$ of the system at time $t$.
+\item[(d)] Calculate the mean values $\langle\hat{A}\rangle(t)$ and $\langle\hat{B}\rangle(t)$ of $\hat{A}$ and $\hat{B}$ at time $t$. What comments can be made?
+\item[(e)] What results are obtained if the observable $\hat{A}$ is measured at time $t$? Same question for the observable $\hat{B}$. Interpret.
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The energy eigenvalue of the three kets forming the orthonormal basis are
+\begin{gather}
+\hat{H}|u_1\rangle=\hbar\omega\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right)\left(\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}\right)=\hbar\omega\left(\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}\right)=\hbar\omega|u_1\rangle\Longrightarrow E_1=\hbar\omega\\
+\hat{H}|u_1\rangle=\hbar\omega\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right)\left(\begin{array}{c}
+0\\
+1\\
+0\\
+\end{array}\right)=2\hbar\omega\left(\begin{array}{c}
+0\\
+1\\
+0\\
+\end{array}\right)=\hbar\omega|u_1\rangle\Longrightarrow E_2=2\hbar\omega\\
+\hat{H}|u_1\rangle=\hbar\omega\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right)\left(\begin{array}{c}
+0\\
+0\\
+1\\
+\end{array}\right)=2\hbar\omega\left(\begin{array}{c}
+0\\
+0\\
+1\\
+\end{array}\right)=\hbar\omega|u_1\rangle\Longrightarrow E_3=2\hbar\omega
+\end{gather}
+Since
+\begin{gather}
+P(E_1)=|\langle u_1|\psi(0)\rangle|^2=\frac{1}{2}\\
+P(E_2)=|\langle u_2|\psi(0)\rangle|^2=\frac{1}{4}\\
+P(E_3)=|\langle u_3|\psi(0)\rangle|^2=\frac{1}{4}\\
+\end{gather}
+Value $\hbar\omega$ can be found with probability $\frac{1}{2}$;\\
+value $2\hbar\omega$ can be found with probability $\frac{1}{4}+\frac{1}{4}=\frac{1}{2}$.\\
+The mean value of of the energy is
+\begin{equation}
+\langle\hat{H}\rangle=\langle\psi(0)|\hat{H}|\psi(0)\rangle=\hbar\omega\left(\begin{array}{ccc}
+\frac{1}{\sqrt{2}}&\frac{1}{2}&\frac{1}{2}\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right)\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+\frac{1}{2}\\
+\frac{1}{2}\\
+\end{array}\right)=\frac{3}{2}\hbar\omega
+\end{equation}
+The mean value of square of the energy is
+\begin{align}
+\nonumber\langle\hat{H}^2\rangle=&\langle\psi(0)|\hat{H}^2|\psi(0)\rangle=\hbar^2\omega^2\left(\begin{array}{ccc}
+\frac{1}{\sqrt{2}}&\frac{1}{2}&\frac{1}{2}\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&2&0\\
+0&0&2\\
+\end{array}\right)\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}\\
+\frac{1}{2}\\
+\frac{1}{2}\\
+\end{array}\right)\\
+=&\frac{5}{2}\hbar^2\omega^2
+\end{align}
+The root-mean-square deviation of the energy is
+\begin{equation}
+\Delta H=\sqrt{\langle H^2\rangle-\langle H\rangle^2}=\frac{1}{2}\hbar\omega
+\end{equation}
+\item[(b)] The characteristic equation of $\hat{A}$
+\begin{equation}
+|A-A_mI|=a\left|\begin{array}{ccc}
+1-\lambda&0&0\\
+0&-\lambda&1\\
+0&1&-\lambda\\
+\end{array}\right|=-a(\lambda+1)(\lambda-1)^2=0\\
+\end{equation}
+gives the eigenvalues of $\hat{A}$
+\begin{equation}
+A_1=A_2=a\lambda_{1,2}=a,\quad A_3=a\lambda_3=-a
+\end{equation}
+and the corresponding eigenvectors of $\hat{A}$
+\begin{gather}
+|u_1\rangle,\quad\frac{1}{\sqrt{2}}(|u_2\rangle+|u_3\rangle),\quad\frac{1}{\sqrt{2}}(|u_2\rangle-|u_3\rangle)
+\end{gather}
+The system state at time $t=0$ can be written as
+\begin{equation}
+|\psi(0)\rangle=\frac{1}{\sqrt{2}}|u_2\rangle+\frac{1}{\sqrt{2}}\left[\frac{1}{\sqrt{2}}(|u_2\rangle+|u_3\rangle)\right]
+\end{equation}
+Since
+\begin{gather}
+P(A_1)=|\langle u_1|\psi(0)\rangle|^2=\frac{1}{2}\\
+P(A_2)=|\frac{1}{\sqrt{2}}(\langle u_1|+\langle u_2|)\psi(0)\rangle|^2=\frac{1}{2}
+\end{gather}
+Result $A_{1,2}=a$ can be found with probability $\frac{1}{2}+\frac{1}{2}=1$;\\
+result $A_3=-a$ can be found with probability $\frac{1}{2}$.\\
+After the measurement, the state vector remains $\frac{1}{\sqrt{2}}|u_1\rangle+\frac{1}{\sqrt{2}}\left[\frac{1}{\sqrt{2}}(|u_2\rangle+|u_3\rangle)\right]$
+\item[(c)] The state vector of the system at time $t$ is
+\begin{equation}
+|\psi(t)\rangle=\frac{1}{\sqrt{2}}|u_1\rangle e^{-i\omega t}+\frac{1}{2}|u_2\rangle e^{-2i\omega t}+\frac{1}{2}|u_3\rangle e^{-2i\omega t}
+\end{equation}
+\item[(c)] The mean value of $\hat{A}$ at time $t$ is
+\begin{align}
+\nonumber\langle\hat{A}\rangle=&\langle\psi(t)|\hat{A}|\psi(t)\rangle=a\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}e^{i\omega t}\\
+\frac{1}{2}e^{2i\omega t}\\
+\frac{1}{2}e^{2i\omega t}\\
+\end{array}\right)\left(\begin{array}{ccc}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{array}\right)\left(\begin{array}{ccc}
+\frac{1}{\sqrt{2}}e^{-i\omega t}&\frac{1}{2}e^{-2i\omega t}&\frac{1}{2}e^{-2i\omega t}
+\end{array}\right)\\
+=&a
+\end{align}
+The mean value of $\hat{A}$ at time $t$ is
+\begin{align}
+\nonumber\langle\hat{B}\rangle=&\langle\psi(t)|\hat{B}|\psi(t)\rangle=b\left(\begin{array}{c}
+\frac{1}{\sqrt{2}}e^{i\omega t}\\
+\frac{1}{2}e^{2i\omega t}\\
+\frac{1}{2}e^{2i\omega t}\\
+\end{array}\right)\left(\begin{array}{ccc}
+0&1&0\\
+1&0&0\\
+0&0&1\\
+\end{array}\right)\left(\begin{array}{ccc}
+\frac{1}{\sqrt{2}}e^{-i\omega t}&\frac{1}{2}e^{-2i\omega t}&\frac{1}{2}e^{-2i\omega t}
+\end{array}\right)\\
+=&b\left(\frac{1}{2\sqrt{2}}e^{-i\omega t}+\frac{1}{2\sqrt{2}}e^{i\omega t}+\frac{1}{4}\right)=\left(\frac{1}{\sqrt{2}}\cos\omega t+\frac{1}{4}\right)b
+\end{align}
+Comment: $\hat{A}$ is a constant of motion while $\hat{B}$ not.
+\item[(e)] If the observable $\hat{A}$ is measured at time $t$, result $a$ is obtained, because $\hat{A}$ is a constant of the motion and the probability of finding an eigenvalue of a constant of the motion is not time-independent.\\
+The characteristic equation of $\hat{B}$
+\begin{equation}
+|B-B_nI|=b\left|\begin{array}{ccc}
+-\lambda&1&0\\
+1&-\lambda&0\\
+0&0&1-\lambda\\
+\end{array}\right|=-b(\lambda+1)(\lambda-1)^2
+\end{equation}
+gives the eigenvalue of $\hat{B}$
+\begin{equation}
+B_1=b\lambda_1=-b,\quad B_2=B_3=b\lambda_{2,3}=-b
+\end{equation}
+and the corresponding eigenvectors of $\hat{B}$
+\begin{equation}
+\frac{1}{\sqrt{2}}(|u_1\rangle-|u_2\rangle),\quad\frac{1}{\sqrt{2}}(|u_1\rangle+|u_2\rangle),\quad|u_3\rangle
+\end{equation}
+The state vector of the system at time $t$ can be written as
+\begin{align}
+\nonumber|\psi(t)\rangle=&\frac{1}{2}\left(\frac{1}{\sqrt{2}}e^{-i\omega t}-\frac{1}{2}e^{-2i\omega t}\right)\left[\frac{1}{\sqrt{2}}(|u_1\rangle-|u_2\rangle)\right]\\
+&+\frac{1}{2}\left(\frac{1}{\sqrt{2}}e^{-i\omega t}+\frac{1}{2}e^{-2i\omega t}\right)\left[\frac{1}{\sqrt{2}}(|u_1\rangle+|u_2\rangle)\right]+\frac{1}{2}|u_3\rangle
+\end{align}
+Since
+\begin{gather}
+P(B_1)=\left|\frac{1}{\sqrt{2}}(|u_1\rangle-|u_2\rangle)|\psi(t)\rangle\right|^2=\left|\frac{1}{2}\left(\frac{1}{\sqrt{2}}e^{-i\omega t}-\frac{1}{2}e^{-2i\omega t}\right)\right|^2=\frac{3-2\sqrt{2}\cos\omega t}{8}\\
+P(B_2)=\left|\frac{1}{\sqrt{2}}(|u_1\rangle+|u_2\rangle)|\psi(t)\rangle\right|^2=\left|\frac{1}{2}\left(\frac{1}{\sqrt{2}}e^{-i\omega t}+\frac{1}{2}e^{-2i\omega t}\right)\right|^2=\frac{3+2\sqrt{2}\cos\omega t}{8}\\
+P(B_3)=\left|\langle u_3|\psi(t)\rangle\right|^2=\frac{1}{4}
+\end{gather}
+Result $B_1=-b$ is obtained with probability $\frac{3-2\sqrt{2}\cos\omega t}{8}$;\\
+result $B_{2,3}=b$ is obtained with probability $\frac{3+2\sqrt{2}\cos\omega t}{8}+\frac{1}{4}=\frac{5+2\sqrt{2}\cos\omega t}{8}$.
+\end{itemize}
+\end{sol}
+
+\begin{problem}{5}
+[C-T Exercise 3-8] Let $\vec{j}(\vec{r})$ be the probability current density associated with a wave function $\psi(\vec{r})$ describing the state of a particle of mass $m$.
+\begin{itemize}
+\item[(a)] Show that
+\[
+m\int d^3r\vec{j}(\vec{r})=\langle\hat{\vec{p}}\rangle
+\]
+where $\langle\hat{\vec{p}}\rangle$ is the mean value of the momentum.
+\item[(b)] Consider the operator $\hat{\vec{L}}$ (orbital angular momentum) defined by $\hat{\vec{L}}=\hat{\vec{r}}\times\hat{\vec{p}}$. Are the three components of $\hat{\vec{L}}$ Hermitian operators? Establish the relation
+\[
+m\int d^3r[\vec{r}\times\vec{j}(\vec{r})]=\langle\hat{\vec{L}}\rangle
+\]
+\end{itemize}
+\end{problem}
+\begin{sol}
+\begin{itemize}
+\item[(a)] The probability current density is
+\begin{equation}
+\vec{j}=\frac{\hbar}{2im}[\psi^*(\vec{r})\vec{\nabla}\psi(\vec{r})-\psi(\vec{r})\vec{\nabla}\psi^*(\vec{r})]
+\end{equation}
+so
+\begin{align}
+\nonumber m\int d^3r\vec{j}(\vec{r})=&\frac{1}{2}\int d^3r[\psi^*(\vec{r})(-i\hbar\vec{\nabla})\psi(\vec{r})+\psi(\vec{r})(-i\hbar\vec{\nabla})\psi^*(\vec{r})]\\
+\nonumber=&\frac{1}{2}\int d^3r[\psi^*(\vec{r})\hat{\vec{p}}\psi(\vec{r})+\psi(\vec{r})\hat{\vec{p}}\psi^*(\vec{r})]\\
+=&\frac{1}{2}(\langle\hat{\vec{p}}\rangle+\langle\hat{\vec{p}}\rangle)=\langle\hat{\vec{p}}\rangle
+\end{align}
+\item[(b)] The three components of $\hat{\vec{L}}$ are
+\begin{gather}
+\hat{\vec{L}}_x=\hat{y}\hat{p}_z-\hat{z}\hat{p}_y\\
+\hat{\vec{L}}_y=\hat{z}\hat{p}_x-\hat{x}\hat{p}_z\\
+\hat{\vec{L}}_z=\hat{x}\hat{p}_y-\hat{y}\hat{p}_x
+\end{gather}
+The Hermitian conjugation of the three components above are
+\begin{gather}
+\hat{\vec{L}}_x^{\dagger}=\hat{p}_z^{\dagger}\hat{y}^{\dagger}-\hat{p}_y^{\dagger}\hat{z}^{\dagger}=\hat{p}_z\hat{y}-\hat{p}_y\hat{z}=\hat{y}\hat{p}_z-\hat{z}\hat{p}_y=\hat{L}_x\\
+\hat{\vec{L}}_y^{\dagger}=\hat{p}_x^{\dagger}\hat{z}^{\dagger}-\hat{p}_z^{\dagger}\hat{x}^{\dagger}=\hat{p}_x\hat{z}-\hat{p}_z\hat{x}=\hat{z}\hat{p}_x-\hat{x}\hat{p}_z=\hat{L}_y\\
+\hat{\vec{L}}_z^{\dagger}=\hat{p}_y^{\dagger}\hat{x}^{\dagger}-\hat{p}_x^{\dagger}\hat{y}^{\dagger}=\hat{p}_y\hat{x}-\hat{p}_x\hat{y}=\hat{x}\hat{p}_y-\hat{y}\hat{p}_x=\hat{L}_z
+\end{gather}
+Therefore, the three components of $\hat{\vec{L}}$ Hermitian operator are Hermitian operators.\\
+\begin{align}
+\nonumber m\int d^3r[\vec{r}\times\vec{j}(\vec{r})]=&\frac{1}{2}\int d^3r[\vec{r}\times\psi^*(\vec{r})(-i\hbar\vec{\nabla})\psi(\vec{r})+\vec{r}\times\psi(\vec{r})(-i\hbar\vec{\nabla})\psi^*(\vec{r})]\\
+\nonumber=&\frac{1}{2}\int d^3r[\vec{r}\times\psi^*(\vec{r})\hat{\vec{p}}\psi(\vec{r})+\vec{r}\times\psi(\vec{r})\hat{\vec{p}}\psi^*(\vec{r})]\\
+\nonumber=&\frac{1}{2}\int d^3r[\psi^*(\vec{r})\hat{\vec{L}}\psi(\vec{r})+\psi(\vec{r})\hat{\vec{L}}\psi^*(\vec{r})]\\
+=&\frac{1}{2}(\langle\hat{\vec{L}}\rangle+\langle\hat{\vec{L}}\rangle)=\langle\hat{\vec{L}}\rangle
+\end{align}
+\end{itemize}
+\end{sol}
+\end{document}

@@ -1,0 +1,328 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_3
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1in,bottom=1in,left=.5in,right=.5in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 3}
+\begin{document}
+\begin{problem}{1}
+The Hamiltonian of a quantum system is given by $\hat{H}=\frac{\hat{\vec{p}}^2}{2m}+V(\vec{r})$ where $V(\vec{r})$ is the real-valued potential energy. The eigenvalue spectrum of $\hat{H}$ is discrete with the eigenequation of $\hat{H}$ given by $\hat{H}\psi_n(\vec{r})=E_n\psi_n(\vec{r})$. Assume that $\psi_n(\vec{r})$ are normalized.\\
+(a) Evaluate the commutators $[\hat{H},x]$ and $[[\hat{H},x],x]$.\\
+(b) Show that $\sum_{n'}(E_{n'}-E_n)|(\psi_{n'},x\psi_n)|^2=\frac{\hbar^2}{2m}$ using the result for the commutator $[[\hat{H},x],x]$.
+\end{problem}
+\begin{sol}
+\\(a)
+\begin{gather}
+\begin{align}
+\nonumber[\hat{H},x]\psi=&\hat{H}x\psi-x\hat{H}\psi\\
+\nonumber=&[-\frac{\hbar^2}{2m}\nabla^2+V(\vec{r})](x\psi)-x[-\frac{\hbar^2}{2m}\nabla^2+V(\vec{r})]\psi\\
+\nonumber=&-\frac{\hbar^2}{2m}(\psi\nabla^2x+2\nabla x\cdot\nabla\psi+x\nabla^2\psi)+V(\vec{r})x\psi+\frac{\hbar^2}{2m}x\nabla^2\psi-xV(\vec{r})\psi\\
+=&-\frac{\hbar^2}{m}\nabla\psi
+\end{align}\\
+\Longrightarrow[\hat{H},x]=-\frac{\hbar^2}{m}\nabla
+\end{gather}
+\begin{gather}
+\begin{align}
+\nonumber[[\hat{H},x],x]\psi=&[-\frac{\hbar^2}{m}\nabla,x]\psi\\
+\nonumber=&-\frac{\hbar^2}{m}\nabla(x\psi)+x\frac{\hbar^2}{m}\nabla\psi\\
+\nonumber=&-\frac{\hbar^2}{m}\psi\nabla x-\frac{\hbar^2}{m}x\nabla\psi+x\frac{\hbar^2}{m}\nabla\psi\\
+=&-\frac{\hbar^2}{m}\psi
+\end{align}\\
+\Longrightarrow[[\hat{H},x],x]=-\frac{\hbar^2}{m}
+\end{gather}
+(b)
+\begin{align}
+\nonumber\sum_{n'}(E_{n'}-E_n)|(\psi_{n'},x\psi_n)|^2=&\sum_{n'}E_{n'}(\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)-\sum_{n'}E_n(\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)\\
+\nonumber=&\sum_{n'}(E_{n'}\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)-E_n\sum_{n'}(\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)\\
+\nonumber=&\sum_{n'}(\hat{H}\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)-E_n\sum_{n'}(\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)\\
+\nonumber=&\sum_{n'}(\psi_{n'},\hat{H}x\psi_n)(\psi_{n'},x\psi_n)-E_n\sum_{n'}(\psi_{n'},x\psi_n)(\psi_{n'},x\psi_n)\\
+\nonumber=&(\psi_{n'},x\hat{H}x\psi_n)-E_n(\psi_n,x^2\psi_n)
+\end{align}
+On the one hand,
+\begin{align}
+\nonumber(\psi_{n'},x\hat{H}x\psi_n)-E_n(\psi_n,x^2\psi_n)=&(\psi_{n'},x\hat{H}x\psi_n)-(E_n\psi_n,x^2\psi_n)\\
+\nonumber=&(\psi_{n'},x\hat{H}x\psi_n)-(\hat{H}\psi_n,x^2\psi_n)\\
+\nonumber=&(\psi_{n'},x\hat{H}x\psi_n)-(\psi_n,\hat{H}x^2\psi_n)\\
+\nonumber=&(\psi_{n'},(x\hat{H}x-\hat{H}x^2\psi_n)\\
+=&(\psi_{n'},-[\hat{H},x]x\psi_n)
+\end{align}
+On the other hand,
+\begin{align}
+\nonumber(\psi_{n'},x\hat{H}x\psi_n)-E_n(\psi_n,x^2\psi_n)=&(\psi_{n'},x\hat{H}x\psi_n)-(\psi_n,x^2E_n\psi_n)\\
+\nonumber=&(\psi_{n'},x\hat{H}x\psi_n)-(\psi_n,x^2\hat{H}\psi_n)\\
+\nonumber=&(\psi_{n'},(x\hat{H}x-x^2\hat{H}\psi_n)\\
+=&(\psi_{n'},x[\hat{H},x]\psi_n)
+\end{align}
+Therefore,
+\begin{align}
+\sum_{n'}(E_{n'}-E_n)|(\psi_{n'},x\psi_n)|^2=&\frac{1}{2}[(\psi_{n'},x[\hat{H},x]\psi_n)+(\psi_{n'},-[\hat{H},x]x\psi_n)]\\
+\nonumber=&\frac{1}{2}(\psi_{n'},(x[\hat{H},x]-[\hat{H},x]x)\psi_n)\\
+\nonumber=&\frac{1}{2}(\psi_{n'},-[[\hat{H},x],x]\psi_n)\\
+=&\frac{\hbar^2}{2m}
+\end{align}
+\end{sol}
+
+\begin{problem}{2}
+The Hamiltonian $\hat{H}(\lambda)$ of a quantum system depends on the real parameter $\lambda$, which leads to the $\lambda$-dependence of the eigenvalues and eigenfunctions of $\hat{H}(\lambda)$. The eigenequation of $\hat{H}(\lambda)$ reads $\hat{H}(\lambda)\psi_n(\lambda)=E_n(\lambda)\psi_n(\lambda)$. The eigenvalue spectrum of $\hat{H}(\lambda)$ is assumed to be discrete. Here the variable $\vec{r}$ in real space is suppressed. The eigenfunctions $\psi_n(\lambda)$'s are normalized.\\
+(a) Show that $E_n(\lambda)=(\psi_n(\lambda),\hat{H}(\lambda)\psi_n(\lambda))$.\\
+(b) Derive the Hellmann-Feynman theorem $\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\frac{\partial\hat{H}(\lambda)}{\partial\lambda}\psi_n(\lambda))$.
+\end{problem}
+\begin{sol}
+(a)
+\begin{align}
+\nonumber(\psi_n(\lambda),\hat{H}(\lambda)(\lambda)\psi_n(\lambda))=&\int d^3r\psi_n^*(\lambda)\hat{H}\psi_n(\lambda)\\
+\nonumber=&\int d^3r\psi_n^*(\lambda)E_n(\lambda)\psi_n(\lambda)\\
+\nonumber=&E_n(\lambda)\int d^3r\psi_n^*(\lambda)\psi_n(\lambda)\\
+=&E_n(\lambda)
+\end{align}
+(b)
+\begin{align}
+\nonumber&\frac{\partial E_n(\lambda)}{\partial\lambda}\\
+\nonumber=&\frac{\partial}{\partial\lambda}[\int d^3r\psi_n^*(\lambda)\hat{H}(\lambda)\psi_n(\lambda)]\\
+\nonumber=&\int d^3r\frac{\partial}{\partial\lambda}[\psi_n^*(\lambda)]E_n(\lambda)\psi_n(\lambda)+\int d^3r\psi_n^*(\lambda)[\frac{\partial}{\partial\lambda}\hat{H}(\lambda)]\psi_n(\lambda)+\int d^3r\psi_n^*(\lambda)E_n[\frac{\partial}{\partial\lambda}]\psi_n(\lambda)\\
+\nonumber=&E_n(\lambda)[\int d^3r\psi_n(\lambda)\frac{\partial}{\partial\lambda}\psi_n^*(\lambda)+\psi_n^*(\lambda)\frac{\partial}{\partial\lambda}\psi_n(\lambda)]+\int d^3r\psi_n^*(\lambda)\frac{\partial}{\partial\lambda}\hat{H}(\lambda)\psi_n(\lambda)\\
+\nonumber=&E_n(\lambda)\frac{\partial}{\partial\lambda}\int d^3r\psi_n(\lambda)\psi_n^*(\lambda)+\int d^3r\psi_n^*(\lambda)\frac{\partial}{\partial\lambda}\hat{H}(\lambda)\psi_n(\lambda)\\
+\nonumber=&E_n(\lambda)\frac{\partial}{\partial\lambda}1+\int d^3r\psi_n^*(\lambda)\frac{\partial}{\partial\lambda}\hat{H}(\lambda)\psi_n(\lambda)\\
+\nonumber=&\int d^3r\psi_n^*(\lambda)\frac{\partial}{\partial\lambda}\hat{H}(\lambda)\psi_n(\lambda)\\
+=&(\psi_n(\lambda),\frac{\partial\hat{H}(\lambda)}{\partial\lambda}\psi_n(\lambda))
+\end{align}
+\end{sol}
+
+\begin{problem}{3}
+It is known that the eigenfunction of the position operator $\hat{\vec{r}}$ corresponding to the eigenvalue $\vec{r}'$ is given by $\psi_{\vec{r}'}(\vec{r})=\delta(\vec{r}-\vec{r}')$ in real space.\\
+(a) Find the eigenfunction $\varphi_{\vec{r}'}(\vec{p})$ of $\hat{\vec{r}}$ corresponding to the eigenvalue $\vec{r}'$ in momentum space through the Fourier transformation $\varphi_{\vec{r}'}(\vec{p})=\frac{1}{(2\pi\hbar)^{3/2}}\int d^3r\psi_{\vec{r}'}(\vec{r})e^{-i\vec{p}\cdot\vec{r}/\hbar}$.\\
+(b) The eigenequation of $\vec{r}$ in momentum space reads $\hat{\vec{r}}\varphi_{\vec{r}'}(\vec{p})=\vec{r}'\varphi_{\vec{r}'}(\vec{p})$. Using the above-obtained expression of $\varphi_{\vec{r}'}(\vec{p})$, deduce the expression of $\hat{\vec{r}}$ in momentum space. Does the obtained expression of $\hat{\vec{r}}$ in momentum space satisfy the fundamental commutation relations $[\hat{r}_{\alpha},\hat{p}_{\beta}]=i\hbar\delta_{\alpha\beta}$ with $\alpha,\beta=x,y,z$ in the momentum space?
+\end{problem}
+\begin{sol}
+\\(a) The eigenfunction of $\hat{\vec{r}}$
+\begin{align}
+\nonumber\varphi_{\vec{r}'}(\vec{p})=&\frac{1}{(2\pi\hbar)^{3/2}}\int d^3r\psi_{\vec{r}'}(\vec{r})e^{-i\vec{p}\cdot\vec{r}/\hbar}\\
+\nonumber=&\frac{1}{(2\pi\hbar)^{3/2}}\int d^3r\delta(\vec{r}-\vec{r}')e^{-i\vec{p}\cdot\vec{r}/\hbar}\\
+=&\frac{1}{(2\pi\hbar)^{3/2}}e^{-i\vec{p}\cdot\vec{r}{~}^{'}/\hbar}
+\end{align}
+(b) The expression of $\hat{\vec{r}}$ in momentum space
+\begin{gather}
+\hat{\vec{r}}\varphi_{\vec{r}'}(\vec{p})=\vec{r}'\varphi_{\vec{r}'}(\vec{p})\\
+\Longrightarrow\hat{\vec{r}}\frac{1}{(2\pi\hbar)^{3/2}}e^{-i\vec{p}\cdot\vec{r}{~}^{'}/\hbar}=\frac{\vec{r}'}{(2\pi\hbar)^{3/2}}e^{-i\vec{p}\cdot\vec{r}{~}^{'}/\hbar}\\
+\Longrightarrow\hat{\vec{r}}=i\hbar\nabla_{\vec{p}}
+\end{gather}
+\begin{gather}
+\begin{align}
+\nonumber[\hat{r}_x,\hat{p}_x]\psi=&[i\hbar\frac{\partial}{\partial p_x},p_x]\psi\\
+\nonumber=&i\hbar\frac{\partial}{\partial p_x}(p_x\psi)-i\hbar p_x\frac{\partial}{\partial p_x}\psi\\
+\nonumber=&i\hbar\psi+i\hbar p_x\frac{\partial}{\partial p_x}\psi-i\hbar p_x\frac{\partial}{\partial p_x}\psi\\
+=&i\hbar\psi
+\end{align}\\
+\Longrightarrow[\hat{r}_x,\hat{p}_x]=i\hbar
+\end{gather}
+\begin{gather}
+\begin{align}
+\nonumber[\hat{r}_x,\hat{p}_y]\psi=&[i\hbar\frac{\partial}{\partial p_x},p_y]\psi\\
+\nonumber=&[i\hbar\frac{\partial}{\partial p_x},p_y]\psi\\
+\nonumber=&i\hbar\frac{\partial}{\partial p_x}(p_y\psi)-i\hbar p_y\frac{\partial}{\partial p_x}\psi\\
+=&0
+\end{align}\\
+\Longrightarrow[\hat{r}_x,\hat{p}_y]=0
+\end{gather}
+Similarly, we have
+\begin{gather}
+[\hat{r}_y,\hat{p}_y]=[\hat{r}_z,\hat{p}_z]=i\hbar\\
+[\hat{r}_y,\hat{p}_z]=[\hat{r}_z,\hat{p}_x]=0
+\end{gather}
+Therefore, the obtained expression of $\hat{\vec{r}}$ in momentum
+space satisfy the fundamental commutation relations
+\begin{equation}
+[\hat{r}_{\alpha},\hat{p}_{\beta}]=i\hbar\delta_{\alpha\beta}
+\end{equation}
+with $\alpha,\beta=x,y,z$ in the momentum space.
+\end{sol}
+
+\begin{problem}{4}
+The Hamiltonian of a quantum system is given by $\hat{H}=\frac{\hat{\vec{p}}^2}{2m}+\hat{V}(\vec{r})$ where $\hat{V}(\vec{r})$ is the Hermitian potential
+energy operator. The eigenequation of $\hat{H}$ reads $\hat{H}\psi_n=E_n\psi_n$. Assume that the eigenvalue spectrum of $\hat{H}$ is discrete and that $\psi_n$'s are normalized. Take $\hbar$ to be the parameter in the Hellmann-Feynman theorem.\\
+(a) Apply the Hellmann-Feynman theorem in real space.\\
+(b) Apply the Hellmann-Feynman theorem in momentum space.\\
+(c) Using the results obtained in the previous two parts, derive the virial theorem $(\psi_n,\frac{\hat{\vec{p}}^2}{2m}\psi_n)=\frac{1}{2}(\psi_n,\vec{r}\cdot\vec{\nabla}V(\vec{r})\psi_n)$; also write as $\langle T\rangle=\frac{1}{2}\langle\vec{r}\cdot\vec{\nabla}V(\vec{r})\rangle_n$ with $\hat{T}=\frac{\hat{\vec{p}}^2}{2m}$ the kinetic energy operator.
+\end{problem}
+\begin{sol}
+\\(a) Hamiltonian in real space
+\begin{gather}
+\hat{H}=\frac{\hat{\vec{p}}^2}{2m}+\hat{V}(\vec{r})=-\frac{\hbar^2}{2m}\nabla^2+\hat{V}(\vec{r})\\
+\Longrightarrow\frac{\partial\hat{H}}{\partial\hbar}=-\frac{\hbar}{m}\nabla^2
+\end{gather}
+The Hellmann-Feynman theorem in real space
+\begin{gather}
+\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\frac{\partial\hat{H}(\lambda)}{\partial\lambda}\psi_n(\lambda))\\
+\Longrightarrow\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),-\frac{\hbar}{m}\nabla^2\psi_n(\lambda))\\
+(\text{or}\quad\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\frac{2}{\hbar}\frac{\hat{\vec{p}}^2}{2m}\psi_n(\lambda)))
+\end{gather}
+(b) Hamiltonian in momentum space
+\begin{gather}
+\hat{H}=\frac{\hat{\vec{p}}^2}{2m}+\hat{V}(\vec{r})\\
+\Longrightarrow\frac{\partial\hat{H}}{\partial\hbar}=\nabla V(\vec{r})\cdot\frac{\partial\hat{\vec{r}}}{\partial\hbar}=\nabla V(\vec{r})\cdot\frac{\partial i\hbar\nabla_{\vec{p}}}{\partial\hbar}=\nabla V(\vec{r})\cdot i\nabla_{\vec{p}}
+\end{gather}
+The Hellmann-Feynman theorem in momentum space
+\begin{gather}
+\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\frac{\partial\hat{H}(\lambda)}{\partial\lambda}\psi_n(\lambda))\\
+\Longrightarrow\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\nabla V(\vec{r})\cdot i\nabla_{\vec{p}}\psi_n(\lambda))\\
+(\text{or}\quad\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\frac{\vec{r}}{\hbar}\cdot\nabla V(\vec{r})\psi_n(\lambda)))
+\end{gather}
+(c) Using the results obtained in the previous two parts
+\begin{gather}
+\frac{\partial E_n(\lambda)}{\partial\lambda}=(\psi_n(\lambda),\frac{2}{\hbar}\frac{\hat{\vec{p}}^2}{2m}\psi_n(\lambda)))=(\psi_n(\lambda),\frac{\vec{r}}{\hbar}\cdot\nabla V(\vec{r})\psi_n(\lambda)))\\
+\Longrightarrow(\psi_n,\frac{\hat{\vec{p}}^2}{2m}\psi_n)=\frac{1}{2}(\psi_n,\vec{r}\cdot\vec{\nabla}V(\vec{r})\psi_n)
+\end{gather}
+\end{sol}
+
+\begin{problem}{5}
+The ladder operators of the orbital angular momentum are defined by $\hat{L}_{\pm}=\hat{L}_x+i\hat{L}_y$.\\
+(a) Derive the expression of $\hat{L}_{\pm}$ in the spherical coordinate system.\\
+(b) Show that $\hat{L}_{\pm}Y_{lm}(\theta,\phi)=\hbar\sqrt{l(l+1)-m(m\pm1)}Y_{l,m\pm1}(\theta,\phi)$.\\
+(c) Show that
+\begin{gather*}
+\cos\theta Y_{lm}=\left[\frac{(l+m)(l-m)}{(2l-1)(2l+1)}\right]^{1/2}Y_{l-1,m}+\left[\frac{(l+m+1)(l-m+1)}{(2l+1)(2l+3)}\right]Y_{l+1,m},\\
+\sin\theta e^{\pm i\phi}Y_{lm}=\pm\left[\frac{(l\mp m)(l\mp m-1)}{(2l-1)(2l+1)}\right]^{1/2}Y_{l-1,m\pm1}\mp\left[\frac{(l\pm m+2)(l\pm m+1)}{(2l+1)(2l+3)}\right]^{1/2}Y_{l+1,m\pm1}
+\end{gather*}
+\end{problem}
+\begin{sol}
+(a)
+% The angular momentum operator in the spherical coordinate system
+% \begin{align}
+% \nonumber\hat{L}_x=&-i\hbar(y\frac{\partial}{\partial z}-z\frac{\partial}{\partial y})\\
+% \nonumber=&-i\hbar\left(r\sin\theta\sin\phi\frac{\partial}{\partial(r\cos\theta)}-r\cos\theta\frac{\partial}{\partial(r\sin\theta\sin\phi)}\right)\\
+% \nonumber=&-i\hbar\left[r\sin\theta\sin\phi\left(\frac{1}{\frac{\partial(r\cos\theta)}{\partial r}}\frac{\partial}{\partial r}+\frac{1}{\frac{\partial(r\cos\theta)}{\partial\theta}}\frac{\partial}{\partial\theta}\right)\right.\\
+% \nonumber&\left.-r\cos\theta\left(\frac{1}{\frac{\partial(r\sin\theta\sin\phi)}{\partial r}}\frac{\partial}{\partial r}+\frac{1}{\frac{\partial(r\sin\theta\sin\phi)}{\partial\theta}}\frac{\partial}{\partial \theta}+\frac{1}{\frac{\partial(r\sin\theta\sin\phi)}{\partial\phi}}\frac{\partial}{\partial\phi}\right)\right]\\
+% =&-i\hbar\left[r\left(\frac{\sin\theta}{\cos\theta}\sin\phi-\frac{\cos\theta}{\sin\theta}\frac{1}{\sin\phi}\right)\frac{\partial}{\partial r}-\left(\sin\phi+\frac{1}{\sin\phi}\right)\frac{\partial}{\partial\theta}-\frac{\cos\theta}{\sin\theta}\frac{1}{\cos\phi}\frac{\partial}{\partial\phi}\right]
+% \end{align}
+% Similarly,
+% \begin{equation}
+% \nonumber\hat{L}_y=-i\hbar\left[r\left(\frac{\cos\theta}{\sin\theta}\frac{1}{\cos\phi}-\frac{\sin\theta}{\cos\theta}\cos\phi\right)\frac{\partial}{\partial r}-\left(\frac{1}{\cos\phi}+\cos\phi\right)\frac{\partial}{\partial\theta}-\frac{\cos\theta}{\sin\theta}\frac{1}{\sin\phi}\frac{\partial}{\partial\phi}\right]
+% % &-i\hbar(z\frac{\partial}{\partial x}-x\frac{\partial}{\partial z})\\
+% % \nonumber=&-i\hbar\left(r\cos\theta\frac{\partial}{\partial(r\sin\theta\cos\phi)}-r\sin\theta\cos\phi\frac{\partial}{\partial(r\cos\theta)}\right)\\
+% % \nonumber=&-i\hbar\left[r\cos\theta\left(\frac{1}{\frac{\partial(r\sin\theta\cos\phi)}{\partial r}}\frac{\partial}{\partial r}+\frac{1}{\frac{\partial(r\sin\theta\cos\phi)}{\partial\theta}}\frac{\partial}{\partial\theta}+\frac{1}{\frac{\partial(r\sin\theta\cos\phi)}{\partial\phi}}\frac{\partial}{\partial\phi}\right)\right.\\
+% % \nonumber&\left.-r\sin\theta\cos\phi\left(\frac{1}{\frac{\partial(r\cos\theta)}{\partial r}}\frac{\partial}{\partial r}+\frac{1}{\frac{\partial(r\cos\theta)}{\partial\theta}}\frac{\partial}{\partial \theta}\right)\right]\\
+% \end{equation}
+\begin{align}
+\nonumber\frac{\partial}{\partial x}=&\frac{\partial r}{\partial x}\frac{\partial}{\partial r}+\frac{\partial\cos\theta}{\partial x}\frac{\partial}{\partial\cos\theta}+\frac{\partial\tan\phi}{\partial x}\frac{\partial}{\partial\tan\phi}\\
+\nonumber=&\frac{x}{r}\frac{\partial}{\partial r}+\frac{-xz}{r^3}\frac{-1}{\sin\theta}\frac{\partial}{\partial\theta}-\frac{y}{x^2}\cos^2\phi\frac{\partial}{\partial\phi}\\
+\nonumber=&\sin\theta\cos\phi\frac{\partial}{\partial r}+\frac{1}{r}\sin\theta\cos\phi\cos\theta\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}-\frac{1}{r}\frac{\sin\theta\sin\phi}{\sin^2\theta\cos^2\phi}\cos^2\phi\frac{\partial}{\partial\phi}\\
+=&\sin\theta\cos\phi\frac{\partial}{\partial r}+\frac{1}{r}\cos\phi\cos\theta\frac{\partial}{\partial\theta}-\frac{1}{r}\frac{\sin\phi}{\sin\theta}\frac{\partial}{\partial\phi}\\
+\nonumber\frac{\partial}{\partial y}=&\frac{\partial r}{\partial y}\frac{\partial}{\partial r}+\frac{\partial\cos\theta}{\partial y}\frac{\partial}{\partial\cos\theta}+\frac{\partial\tan\phi}{\partial y}\frac{\partial}{\partial\tan\phi}\\
+\nonumber=&\frac{y}{r}\frac{\partial}{\partial r}+\frac{-yz}{r^3}\frac{-1}{\sin\theta}\frac{\partial}{\partial\theta}+\frac{1}{x}\cos^2\phi\frac{\partial}{\partial\phi}\\
+\nonumber=&\sin\theta\sin\phi\frac{\partial}{\partial r}+\frac{1}{r}\sin\theta\sin\phi\cos\theta\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}+\frac{1}{r}\frac{1}{\sin\theta\cos\phi}\cos^2\phi\frac{\partial}{\partial\phi}\\
+=&\sin\theta\sin\phi\frac{\partial}{\partial r}+\frac{1}{r}\sin\phi\cos\theta\frac{\partial}{\partial\theta}+\frac{1}{r}\frac{\cos\phi}{\sin\theta}\frac{\partial}{\partial\phi}\\
+\nonumber\frac{\partial}{\partial z}=&\frac{\partial r}{\partial z}\frac{\partial}{\partial r}+\frac{\partial\cos\theta}{\partial z}\frac{\partial}{\partial\cos\theta}+\frac{\partial\tan\phi}{\partial z}\frac{\partial}{\partial\tan\phi}\\
+\nonumber=&\frac{z}{r}\frac{\partial}{\partial r}+\left(\frac{1}{r}-\frac{z^2}{r^3}\right)\frac{-1}{\sin\theta}\frac{\partial}{\partial\theta}\\
+\nonumber=&\cos\theta\frac{\partial}{\partial r}+\frac{1}{r}(1-\cos^2\theta)\frac{-1}{\sin\theta}\frac{\partial}{\theta}\\
+=&\cos\theta\frac{\partial}{\partial r}-\frac{1}{r}\sin\theta\frac{\partial}{\partial\theta}
+\end{align}
+The ladder operator
+\begin{align}
+\nonumber\hat{L}_{\pm}=&\hat{L}_x\pm i\hat{L}_y\\
+\nonumber=&\frac{\hbar}{i}\left[y\frac{\partial}{\partial z}-z\frac{\partial}{\partial y}\pm i\left(z\frac{\partial}{\partial x}-x\frac{\partial}{\partial z}\right)\right]\\
+\nonumber=&\hbar\left[\mp(x\pm iy)\frac{\partial}{\partial z}\pm z\left(\frac{\partial}{\partial x}\pm i\frac{\partial}{\partial y}\right)\right]\\
+\nonumber=&\hbar r\left[\mp\sin\theta e^{\pm i\phi}\frac{\partial}{\partial z}\pm\cos\theta\left(\frac{\partial}{\partial x}\pm i\frac{\partial}{\partial y}\right)\right]\\
+\nonumber=&\hbar\left[\mp\sin\theta e^{\pm i\phi}\left(r\cos\theta\frac{\partial}{\partial r}-\sin\theta\frac{\partial}{\partial\theta}\right)\right.\\
+\nonumber&\left.\pm\cos\theta\left(r\sin\theta e^{\pm i\phi}\frac{\partial}{\partial r}+\cos\theta e^{\pm i\phi}\frac{\partial}{\partial\theta}\pm\frac{ie^{\pm i\phi}}{\sin\theta}\frac{\partial}{\partial\phi}\right)\right]\\
+\nonumber=&\hbar e^{\pm i\phi}\left[\pm\sin^2\theta\frac{\partial}{\partial\theta}\pm\left(\cos^2\theta\frac{\partial}{\partial\theta}\pm\frac{i\cos\theta}{\sin\theta}\frac{\partial}{\partial\phi}\right)\right]\\
+=&\hbar e^{\pm i\phi}\left(\pm\frac{\partial}{\partial\theta}+i\cot\theta\frac{\partial}{\partial\phi}\right)
+\end{align}
+(b)
+\begin{align}
+\nonumber&\hat{L}_{\pm}Y_{lm}(\theta,\phi)\\
+\nonumber=&\hbar e^{\pm i\phi}\left(\pm\frac{\partial}{\partial\theta}+i\cot\theta\frac{\partial}{\partial\phi}\right)(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}P_l^m(\cos\theta)e^{im\phi}\\
+\nonumber=&\hbar e^{\pm i\phi}(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\left(\pm e^{im\phi}\frac{\partial}{\partial\theta}P_l^m(\cos\theta)+i\cot\theta P_l^m(\cos\theta)\frac{\partial}{\partial\phi}e^{im\phi}\right)\\
+\nonumber=&\hbar e^{\pm i\phi}(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\left(\pm e^{im\phi}\frac{\partial}{\partial\theta}P_l^m(\cos\theta)-m\cot\theta P_l^m(\cos\theta)e^{im\phi}\right)\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\left(\pm\frac{\partial}{\partial\theta}P_l^m(\cos\theta)-m\cot\theta P_l^m(\cos\theta)\right)e^{i(m\pm1)\phi}\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\left(\pm\frac{\partial\cos\theta}{\partial\theta}\frac{\partial}{\partial\cos\theta}P_l^m(\cos\theta)-m\cot\theta P_l^m(\cos\theta)\right)e^{i(m\pm1)\phi}\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\left(\mp\sin\theta\frac{\partial}{\partial\cos\theta}P_l^m(\cos\theta)-m\cot\theta P_l^m(\cos\theta)\right)e^{i(m\pm1)\phi}\\
+\nonumber&(\text{using the recursion formula }(2l+1)(1-x^2)\frac{dP_l^m(x)}{dx}=(l+1)(l+m)P_{l-1}^m(x)-l(l-m+1)P_{l+1}^m(x))\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\left\{\mp\frac{\sin\theta}{(2l+1)(1-\cos^2\theta)}[(l+1)(l+m)P_{l-1}^m(\cos\theta)\pm l(l-m+1)P_{l+1}^m(\cos\theta)]\right.\\
+\nonumber&\left.-m\cot\theta P_l^m(\cos\theta)\right\}e^{i(m\pm1)\phi}\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{1}{(2l+1)\sin\theta}[\mp(l+1)(l+m)P_{l-1}^m(\cos\theta)\pm l(l-m+1)P_{l+1}^m(\cos\theta)\\
+\nonumber&-m(2l+1)\cos\theta P_l^m(\cos\theta)]e^{i(m\pm1)\phi}\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{1}{(2l+1)\sin\theta}[\mp(l\pm m+1)(l+m)P_{l-1}^m(\cos\theta)\pm(l\mp m)(l-m+1)P_{l+1}^m(\cos\theta)\\
+\nonumber&+m(l+1-m)P_{l+1}^m(\cos\theta)-m(2l+1)\cos\theta P_l^m(\cos\theta)+m(l+m)P_{l-1}^m(\cos\theta)]e^{i(m\pm1)\phi}\\
+\nonumber&(\text{using the recursion formula }(l+1-m)P_{l+1}^m(x)-(2l+1)xP_l^m(x)+(l+m)P_{l-1}^m(x)=0)\\
+=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{e^{i(m\pm1)\phi}}{(2l+1)\sin\theta}[\mp(l\pm m+1)(l+m)P_{l-1}^m(\cos\theta)\pm(l\mp m)(l-m+1)P_{l+1}^m(\cos\theta)]
+\end{align}
+For raising operator, using the recursion formula $(2l+1)(1-x^2)^{\frac{1}{2}}P_l^m(x)=(l+m)(l+m-1)P_{l-1}^{m-1}(x)-(l-m+2)(l-m+1)P_{l+1}^{m-1}(x)$
+\begin{align}
+\nonumber&\hat{L}_+Y_{lm}(\theta,\phi)\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{e^{i(m+1)\phi}}{(2l+1)\sin\theta}[-(l+m+1)(l+m)P_{l-1}^m(\cos\theta)+(l-m)(l-m+1)P_{l+1}^m(\cos\theta)]\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{e^{i(m+1)\phi}}{(2l+1)\sin\theta}[(2l+1)(1-\cos^2\theta)^{\frac{1}{2}}P_l^{m+1}(\cos\theta)]\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}P_l^{m+1}(\cos\theta)e^{i(m+1)\phi}\\
+\nonumber=&\hbar(-1)^m\sqrt{(l-m)(l+m+1)}\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m-1)!}{(l+m+1)!}}P_l^{m+1}(\cos\theta)e^{i(m+1)\phi}\\
+\nonumber=&\hbar\sqrt{l(l+1)-m(m+1)}Y_{l,m+1}(\theta,\phi)
+\end{align}
+For raising operator, using the recursion formula $(2l+1)(1-x^2)^{\frac{1}{2}}P_l^m(x)=P_{l+1}^{m+1}(x)-P_{l-1}^{m+1}(x)$
+\begin{align}
+\nonumber&\hat{L}_-Y_{lm}(\theta,\phi)\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{e^{i(m-1)\phi}}{(2l+1)\sin\theta}[(l-m+1)(l+m)P_{l-1}^m(\cos\theta)-(l+m)(l-m+1)P_{l+1}^m(\cos\theta)]\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\frac{e^{i(m-1)\phi}}{(2l+1)\sin\theta}[(l-m+1)(l+m)(2l+1)(1-\cos^2\theta)^{\frac{1}{2}}P_l^{m-1}(\cos\theta)]\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}[(l-m+1)(l+m)P_l^{m-1}(\cos\theta)]e^{i(m-1)\phi}\\
+\nonumber=&\hbar(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m+1)!}{(l+m-1)!}}\sqrt{(l-m+1)(l+m)}P_l^{m-1}(\cos\theta)e^{i(m-1)\phi}\\
+=&\hbar\sqrt{l(l+1)-m(m-1)}Y_{l,m\pm1}(\theta,\phi)
+\end{align}
+(c)
+\begin{align}
+\nonumber&\left[\frac{(l+m)(l-m)}{(2l-1)(2l+1)}\right]^{\frac{1}{2}}Y_{l-1,m}+\left[\frac{(l+m+1)(l-m+1)}{(2l+1)(2l+3)}\right]^{\frac{1}{2}}Y_{l+1,m}\\
+\nonumber=&\left[\frac{(l+m)(l-m)}{(2l-1)(2l+1)}\right]^{\frac{1}{2}}(-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m-1)!}{(l+m-1)!}}P_{l-1}^m(\cos\theta)e^{im\phi}\\
+\nonumber&+\left[\frac{(l+m+1)(l-m+1)}{(2l+1)(2l+3)}\right]^{\frac{1}{2}}(-1)^m\sqrt{\frac{(2l+3)}{4\pi}\frac{(l-m+1)!}{(l+m+1)!}}P_{l+1}^m(\cos\theta)e^{im\phi}\\
+\nonumber=&(-1)^me^{im\phi}\sqrt{\frac{1}{4\pi(2l+1)}\frac{(l-m)!}{(l+m)!}}[(l+m)P_{l-1}^m(\cos\theta)+(l-m+1)P_{l+1}^m(\cos\theta)]\\
+\nonumber&(\text{using the recursion formula }(l+1-m)P_{l+1}^m(x)-(2l+1)xP_l^m(x)+(l+m)P_{l-1}^m(x)=0)\\
+\nonumber=&(-1)^me^{im\phi}\sqrt{\frac{1}{4\pi(2l+1)}\frac{(l-m)!}{(l+m)!}}(2l+1)\cos\theta P_l^m(\cos\theta)\\
+\nonumber=&(-1)^me^{im\phi}\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\cos\theta P_l^m(\cos\theta)\\
+=&\cos\theta Y_{lm}
+\end{align}
+\begin{align}
+\nonumber&\pm\left[\frac{(l\mp m)(l\mp m-1)}{(2l-1)(2l+1)}\right]^{1/2}Y_{l-1,m\pm1}\mp\left[\frac{(l\pm m+2)(l\pm m+1)}{(2l+1)(2l+3)}\right]^{1/2}Y_{l+1,m\pm1}\\
+\nonumber=&\pm\left[\frac{(l\mp m)(l\mp m-1)}{(2l-1)(2l+1)}\right]^{1/2}(-1)^{m\pm1}\sqrt{\frac{(2l-1)}{4\pi}\frac{(l-1-m\mp1)!}{(l-1+m\pm1)!}}P_{l-1}^{m\pm1}(\cos\theta)e^{i(m\pm1)\phi}\\
+\nonumber&\mp\left[\frac{(l\pm m+2)(l\pm m+1)}{(2l+1)(2l+3)}\right]^{1/2}(-1)^{m\pm1}\sqrt{\frac{(2l+3)}{4\pi}\frac{(l+1-m\mp1)!}{(l+1+m\pm1)!}}P_{l+1}^{m\pm1}(\cos\theta)e^{i(m\pm1)\phi}\\
+\nonumber=&(-1)^{m\pm1}\frac{e^{i(m\pm1)\phi}}{\sqrt{4\pi(2l+1)}}\pm\left[\sqrt{(l\mp m)(l\mp m-1)\frac{(l-1-m\mp1)!}{(l-1+m\pm1)!}}P_{l-1}^{m\pm1}(\cos\theta)\right.\\
+&\left.-\sqrt{(l\pm m+2)(l\pm m+1)\frac{(l+1-m\mp1)!}{(l+1+m\pm1)!}}P_{l+1}^{m\pm1}(\cos\theta)\right]
+\end{align}
+Then
+\begin{align}
+\nonumber&\left[\frac{(l-m)(l-m-1)}{(2l-1)(2l+1)}\right]^{1/2}Y_{l-1,m+1}-\left[\frac{(l+m+2)(l+m+1)}{(2l+1)(2l+3)}\right]^{1/2}Y_{l+1,m+1}\\
+\nonumber=&(-1)^{m+1}\frac{e^{i(m+1)\phi}}{\sqrt{4\pi(2l+1)}}\left[\sqrt{(l-m)(l-m-1)\frac{(l-1-m-1)!}{(l-1+m+1)!}}P_{l-1}^{m+1}(\cos\theta)\right.\\
+\nonumber&\left.-\sqrt{(l+m+2)(l+m+1)\frac{(l+1-m-1)!}{(l+1+m+1)!}}P_{l+1}^{m+1}(\cos\theta)\right]\\
+\nonumber=&(-1)^{m+1}e^{i(m+1)\phi}\sqrt{\frac{1}{4\pi(2l+1)}\frac{(l-m)!}{(l+m)!}}\left[P_{l-1}^{m+1}(\cos\theta)-P_{l+1}^{m+1}(\cos\theta)\right]\\
+\nonumber&(\text{using the recursion formula }(2l+1)(1-x^2)^{\frac{1}{2}}P_l^m(x)=P_{l+1}^{m+1}(x)-P_{l-1}^{m+1}(x))\\
+\nonumber=&(-1)^{m+1}e^{i(m+1)\phi}\sqrt{\frac{1}{4\pi(2l+1)}\frac{(l-m)!}{(l+m)!}}\left[(2l+1)(1-\cos^2\theta)^{\frac{1}{2}}P_{l+1}^m(\cos\theta)\right]\\
+\nonumber=&(-1)^{m+1}e^{i(m+1)\phi}\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\sin\theta P_{l+1}^m(\cos\theta)\\
+=&\sin\theta e^{i\phi}Y_{lm}
+\end{align}
+and
+\begin{align}
+\nonumber&-\left[\frac{(l+m)(l+m-1)}{(2l-1)(2l+1)}\right]^{1/2}Y_{l-1,m-1}+\left[\frac{(l-m+2)(l-m+1)}{(2l+1)(2l+3)}\right]^{1/2}Y_{l+1,m-1}\\
+\nonumber=&(-1)^{m-1}\frac{e^{i(m-1)\phi}}{\sqrt{4\pi(2l+1)}}-\left[\sqrt{(l+m)(l+m-1)\frac{(l-1-m+1)!}{(l-1+m-1)!}}P_{l-1}^{m-1}(\cos\theta)\right.\\
+\nonumber&\left.-\sqrt{(l-m+2)(l-m+1)\frac{(l+1-m+1)!}{(l+1+m-1)!}}P_{l+1}^{m-1}(\cos\theta)\right]\\
+\nonumber=&(-1)^me^{i(m-1)\phi}\sqrt{\frac{1}{4\pi(2l+1)}\frac{(l-m)!}{(l+m)!}}[(l+m)(l+m-1)P_{l-1}^{m-1}(\cos\theta)\\
+\nonumber&-(l-m+2)(l-m+1)P_{l+1}^{m-1}(\cos\theta)]\\
+\nonumber&(\text{using the recursion formula }(2l+1)(1-x^2)^{\frac{1}{2}}P_l^m(x)=(l+m)(l+m-1)P_{l-1}^{m-1}(x)\\
+\nonumber&\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad-(l-m+2)(l-m+1)P_{l+1}^{m-1}(x))\\
+\nonumber=&(-1)^me^{i(m-1)\phi}\sqrt{\frac{1}{4\pi(2l+1)}\frac{(l-m)!}{(l+m)!}}[(2l+1)(1-\cos^2\theta)^{\frac{1}{2}}P_l^m(\cos\theta)]\\
+\nonumber=&(-1)^me^{i(m-1)\phi}\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}}\sin\theta P_l^m(\cos\theta)\\
+\nonumber=&\sin\theta e^{-i\phi}Y_{lm}
+\end{align}
+Therefore,
+\begin{equation}
+\sin\theta e^{\pm i\phi}Y_{lm}=\pm\left[\frac{(l\mp m)(l\mp m-1)}{(2l-1)(2l+1)}\right]^{1/2}Y_{l-1,m\pm1}\mp\left[\frac{(l\pm m+2)(l\pm m+1)}{(2l+1)(2l+3)}\right]^{1/2}Y_{l+1,m\pm1}
+\end{equation}
+\end{sol}
+\end{document}

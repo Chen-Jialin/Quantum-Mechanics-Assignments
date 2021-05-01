@@ -1,0 +1,297 @@
+% !TEX program = pdflatex
+% Quantum Mechanics Homework_1
+\documentclass[12pt]{article}
+\usepackage[top=1in,bottom=1in,left=0.5in,right=0.5in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumitem,fancyhdr,color,comment,graphicx,environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+\usepackage[UTF8]{ctex}
+\lhead{Name: 陈稼霖\\ StudentID: 45875852}
+\rhead{PHYS1501 \\ Quantum Mechanics \\ Semester Fall 2019 \\ Assignment 01}
+\begin{document}
+\begin{problem}{1}
+The scattering of a photon by an energetic electron can result in a transfer of energy from the electron to the photon. When this is the case, the scattering process is known as the inverse Compton scattering. Assume that, before the scattering, the wavelength of the photon is $\lambda$ and the speed of the electron is $v$ that is a relativistic speed. Also assume that the momentum vectors of the electron and photon are all in the same plane before and after the scattering.\\
+(a) Find an expression for the wavelength shift of the photon in the inverse Compton scattering.\\
+(b) What is the condition under which the inverse Compton scattering occurs.
+\end{problem}
+\begin{sol}
+\\(a) Treat the scattering as an elastic collision. Define
+\begin{itemize}
+\item $\vec{p}$: the mementum of the photon before the collision
+\item $\vec{p}_e$: the momentum of the electron before the collision
+\item $E_e$: the energy of the electron before the collision
+\item $\theta$: the angle between $\vec{p}$ and $\vec{p}_e$
+\item $\vec{p}'$: the momentum of the photon after the collision
+\item $\lambda$: the wavelength of the photon after the collision
+\item $\vec{p}_e'$: the momentum of the electron after the collision
+\item $E_e'$: the energy of the electron after the collision
+\item $\theta_1$: the angle between $\vec{p}$ and $\vec{p}'$
+\item $\theta_2$: the angle between $\vec{p}$ and $\vec{p}_e'$
+\item $m_e$: the rest mass of the electron
+\end{itemize}
+Conservation of momentum
+\begin{equation}
+\label{conmom}
+\vec{p}+\vec{p}_e=\vec{p}'+\vec{p}_e'
+\end{equation}
+Conservation of energy
+\begin{equation}
+\label{conene}
+pc+E_e=p'c+E_e'
+\end{equation}
+A useful relation
+\begin{equation}
+\label{enetri}
+E_e'^2=(m_ec^2)^2+(p_e'c)^2
+\end{equation}
+Rewrite equ(\ref{conmom}) as
+\begin{equation}
+\label{conmom2}
+\vec{p}_e'=\vec{p}+\vec{p}_e-\vec{p}'
+\end{equation}
+Square equ(\ref{conmom2}) to get
+\begin{equation}
+\label{conmom3}
+p_e'^2=p^2+p_e^2+p'^2+2pp_e\cos\theta-2pp'\cos\theta_1-2p_ep'\cos(\theta_1-\theta)
+\end{equation}
+Rewrite equ(\ref{conene}) as
+\begin{equation}
+\label{conene2}
+E_e'=pc+E_e-p'c
+\end{equation}
+Square equ(\ref{conene2}) to get
+\begin{equation}
+\label{conene3}
+E_e'^2=p^2c^2+E_e^2+p'^2c^2+2pcE_e-2pp'c^2-2E_ep'c
+\end{equation}
+Subtract equ(\ref{enetri}) from equ(\ref{conene3}) to get
+\begin{equation}
+0=p^2c^2+E_e^2+p'^2c^2+2pcE_e-2pp'c^2-2E_ep'c-(m_ec^2)^2-(p_e'c)^2
+\end{equation}
+Replace $p_e'^2$ with equ(\ref{conmom3})
+\begin{equation}
+\label{final}
+0=2pcE_e+2pp'c^2(-1+\cos\theta_1)-2E_ep'c-2pp_ec^2\cos\theta+2p_ep'c^2\cos(\theta_1-\theta)
+\end{equation}
+Plug $p=\frac{h}{\lambda}$, $p_e=\frac{m_ev}{\sqrt{1-\frac{v^2}{c^2}}}$ and $E_e=\frac{m_ec^2}{\sqrt{1-\frac{v^2}{c^2}}}$ into equ(\ref{final}) to get
+\footnotesize\begin{gather}
+p'=p\frac{p_ec\cos\theta-E_e}{p_ec\cos(\theta_1-\theta)-E_e+pc(-1+\cos\theta_1)}=p\frac{\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}}(c-v\cos\theta)}{\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}}(c-v\cos(\theta_1-\theta))+\frac{2h}{\lambda}(1-\cos\theta_1)}\\
+\Longrightarrow\lambda'=\lambda\frac{\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}}(c-v\cos(\theta_1-\theta))+\frac{2h}{\lambda}(1-\cos\theta_1)}{\frac{m_e}{\sqrt{1-\frac{v^2}{c^2}}}(c-v\cos\theta)}=\lambda\frac{c-v\cos(\theta_1-\theta)}{c-v\cos\theta}+\frac{2h\sqrt{1-\frac{v^2}{c^2}}(1-\cos\theta_1)}{m_e(c-v\cos\theta)}
+\end{gather}\normalsize
+(b) Inverse Compton scattering requires
+\begin{gather}
+\lambda'=\lambda\frac{c-v\cos(\theta_1-\theta)}{c-v\cos\theta}+\frac{2h\sqrt{1-\frac{v^2}{c^2}}(1-\cos\theta_1)}{m_e(c-v\cos\theta)}<\lambda\\
+\Longrightarrow\left\{\begin{array}{l}
+\frac{c-v\cos(\theta_1-\theta)}{c-v\cos\theta}<1\\
+\lambda>-\{\frac{2h\sqrt{1-\frac{v^2}{c^2}}(1-\cos\theta_1)}{m_e(c-v\cos\theta)}\}/\{\frac{c-v\cos(\theta_1-\theta)}{c-v\cos\theta}-1\}
+\end{array}\right.\\
+\Longrightarrow\left\{\begin{array}{l}
+\theta_1<2\theta\\
+v>c/\sqrt{1+\frac{m_e^2c^2\lambda^2[\cos(\theta_1-\theta)-\cos\theta]^2}{h^2(1-\cos\theta_1)^2}}
+\end{array}\right.
+\end{gather}
+\footnotesize(Reference: 马银峰,于京生.产生逆康普顿散射的条件.河北机电学院学报,1997(03):52-54.)\normalsize
+\end{sol}
+
+\begin{problem}{2}
+The average energy of a mode in Planck’s quantized theory of radiation in a cavity is given by
+\[
+\bar{E}=\frac{\sum_{n=0}^{\infty}nh\nu e^{-nh\nu/k_BT}}{\sum_{n=0}^{\infty}e^{-nh\nu/k_BT}}
+\]
+(a) Calculate the value of the sum in the denominator by rewriting it as a geometric series of the form $\sum_{n=0}^{\infty}q^n$ for some value of $q$ (to be determined) and then evaluating the sum using the standard formula for an infinite geometric series.\\
+(b) Prove the identity
+\[
+\sum_{n=0}^{\infty}ne^{-nh\nu/k_BT}=-\frac{k_BT}{h}\frac{\partial}{\partial\nu}\sum_{n=0}^{\infty}e^{-nh\nu/k_BT}
+\]
+Using the answer to the previous part, further prove that
+\[
+\sum_{n=0}^{\infty}ne^{-nh\nu/k_BT}=\frac{e^{h\nu/k_BT}}{(e^{h\nu/k_BT}-1)^2}
+\]
+(c) Find an explicit expression for $\bar{E}$.\\
+(d) Find an expression for the spectral energy density $u_{\nu}$ with $u_{\nu}d\nu$ equal to the energy per unit volume in the frequency interval $(\nu,\nu+d\nu)$, given that the number of modes per unit volume in the frequency interval $(\nu,\nu+d\nu)$ is $D(\nu)d\nu=8\pi\nu^2d\nu/c^3$.\\
+(e) The relationship between the spectral irradiance $E_{\nu}$ and the spectral energy density $u_{\nu}$ is given by $E_{\nu}=cu_{\nu}/4$. Derive Planck's law expressed in terms of $E_{\nu}$.
+\end{problem}
+\begin{sol}
+\\(a)
+\begin{align}
+\nonumber\text{the sum in the denominator}=&\sum_{n=0}^{\infty}e^{-nh\nu/k_BT}\\
+\nonumber=&\sum_{n=0}^{\infty}(e^{-h\nu/k_BT})^n\\
+\nonumber=&\lim_{n\rightarrow\infty}\frac{1-e^{-nh\nu/k_BT}}{1-e^{-h\nu/k_BT}}\\
+=&\frac{1}{1-e^{-h\nu/k_BT}}
+\end{align}
+(b) proof:
+\begin{align}
+\nonumber-\frac{k_BT}{h}\frac{\partial}{\partial\nu}\sum_{n=0}^{\infty}e^{-nh\nu/k_BT}=&-\frac{k_BT}{h}\sum_{n=0}^{\infty}\frac{\partial}{\partial\nu}e^{-nh\nu/k_BT}\\
+\nonumber=&-\frac{k_BT}{h}\sum_{n=0}^{\infty}\frac{-nh\nu}{k_BT}e^{-nh\nu/k_BT}\\
+=&\sum_{n=0}^{\infty}ne^{-nh\nu/k_BT}
+\end{align}
+Then
+\begin{align}
+\nonumber\sum_{n=0}^{\infty}ne^{-nh\nu/k_BT}=&-\frac{k_BT}{h}\frac{\partial}{\partial\nu}\sum_{n=0}^{\infty}e^{-nh\nu/k_BT}\\
+\nonumber=&-\frac{k_BT}{h}\frac{\partial}{\partial\nu}(\frac{1}{1-e^{-h\nu/k_BT}})\\
+\nonumber=&\frac{e^{-h\nu/k_BT}}{(e^{-h\nu/k_BT}-1)^2}\\
+=&\frac{e^{h\nu/k_BT}}{(e^{h\nu/k_BT}-1)^2}
+\end{align}
+(c) The explicit expression for $\bar{E}$
+\begin{equation}
+\bar{E}=\frac{\sum_{n=0}^{\infty}nh\nu e^{-nh\nu/k_BT}}{\sum_{n=0}^{\infty}e^{-nh\nu/k_BT}}=\frac{h\nu e^{-h\nu/k_BT}}{1-e^{-h\nu/k_BT}}=\frac{h\nu}{e^{h\nu/k_BT}-1}
+\end{equation}
+(d) The spectral energy density
+\begin{equation}
+u_{\nu}=D(\nu)\bar{E}=\frac{8\pi h\nu^3}{c^3}\frac{1}{e^{h\nu/k_BT}-1}
+\end{equation}
+(e) Plank's law in terms of $E_{\nu}$
+\begin{equation}
+E_{\nu}=\frac{2\pi h\nu^3}{c^2}\frac{1}{e^{h\nu/k_BT}-1}
+\end{equation}
+\end{sol}
+
+\begin{problem}{3}
+A beam of neutrons of constant velocity, mass $M_n(M_n\approx1.67\times10^{-27}kg)$ and energy $E$, is incident on a linear chain of atomic nuclei, arranged in a regular fashion as shown in the figure (these nuclei could be, for example, those of a long linear molecule). We call $l$ the distance between two consecutive nuclei, and $d$, their size $(d\ll l)$. A neutron detector $D$ is placed far away, in a direction which makes an angle of $\theta$ with the direction of the incident neutrons.\\
+(a) Describe qualitatively the phenomena observed at D when the energy E of the incident neutrons is varied.\\
+(b)  The counting rate, as a function of $E$, presents a resonance about $E=E_1$. Knowing that there are no other resonances for $E<E_1$, show that one can determine $l$. Calculate $l$ for $\theta=30^{\circ}$ and $E_1=1.3\times10^{-20}J$.\\
+(c) At about what value of $E$ must we begin to take the finite size of the nuclei into account?
+\end{problem}
+\begin{sol}
+(a) As the energy of the incident neutrons varies, the intensity detected at $D$ increases at some time while decreases at other time (and the more energy each neutron have, the bigger the fluctuation magnitude of detected intensity is).\\
+(b) The wavelength of each neutrons
+\begin{equation}
+\lambda=\frac{h}{p}=\frac{h}{\sqrt{2M_nE_1}}=1.0\times10^{-10}m
+\end{equation}
+First minima is at $\theta$ when $E=E_1$
+\begin{gather}
+l\sin\theta=\frac{\lambda}{2}\\
+\Longrightarrow l=\frac{\lambda}{2\sin\theta}=1.0\times10^{-10}m
+\end{gather}
+(c) When the wavelength of each neutron is comparable to the size of the nuclei $d$ ($10^{-15}\sim10^{-14}m$), we must begin take the size of nuclei into account
+\begin{gather}
+\lambda=\frac{h}{\sqrt{2M_nE_1}}\approx d\\
+\Longrightarrow E\approx\frac{h^2}{2M_nd^2}=1.3\times10^{-12}J\approx8.2MeV
+\end{gather}
+\end{sol}
+
+\begin{problem}{4}
+Consider the motion of a particle of mass m in a one-dimensional harmonic potential $U(x)=m\omega^2x^2/2$. As an approximation, the momentum $p$ in the de Broglie relation $p=h/\lambda$ for the particle in the harmonic potential can be taken as $\sqrt{2m\bar{K}}$, where $\bar{K}$ is the average of the kinetic energy given by $\bar{K}=E/2$ with E the mechanical energy of the particle.\\
+(a) If the mechanical energy of the particle is $E$, what are the two extremal points that the particle can reach according to Newtonian mechanics?\\
+(b) From the condition that the matter wave of the particle must be fitted between the two extremal points, determine the allowed values of the energy of the particle. The numerical factor $4\sqrt{2}$ can be set approximately equal to $2\pi$ in the final result.
+\end{problem}
+\begin{sol}
+\\(a) Conservation of energy
+\begin{gather}
+E=U(x)=m\omega^2x^2/2\\
+x=\pm\sqrt{\frac{2E}{m}}/\omega
+\end{gather}
+The extremal points that the particle can reach is $\sqrt{\frac{2E}{m}}/\omega$ and $-\sqrt{\frac{2E}{m}}/\omega$.\\
+(b) Allowed value of the wavelength of the particle
+\begin{gather}
+2\sqrt{\frac{2E}{m}}/\omega=\frac{n}{2}\lambda\\
+\Longrightarrow\lambda=\frac{4}{n\omega}\sqrt{\frac{2E}{m}},\quad n=1,2,\cdots
+\end{gather}
+Allowed value of the wavelength of the particle
+\begin{gather}
+\lambda=\frac{h}{\sqrt{2m\frac{E}{2}}}=\frac{4}{n\omega}\sqrt{\frac{2E}{m}}\\
+\Longrightarrow E=\frac{nh\omega}{4\sqrt{2}}\approx\frac{nh\omega}{2\pi}=n\hbar\omega,\quad n=1,2,\cdots
+\end{gather}
+\end{sol}
+
+\begin{problem}{5}
+Consider two quantum states described by the following wave functions
+\begin{gather*}
+\psi_1(x,0)=(\frac{2}{\pi a^2})^{1/4}e^{-(x-a)^2/a^2}\\
+\psi_2(x,0)=(\frac{2}{\pi a^2})^{1/4}e^{-(x+a)^2/a^2}
+\end{gather*}
+Let the state of a free particle in one-dimensional space be given at time $t=0$ by
+\[
+\psi(x,0)=A[\psi_1(x,0)-\psi_2(x,0)]
+\]
+where $A$ is a normalization constant.\\
+(a) Without performing any calculation, deduce an exact value for the probability density $|\psi(0,t)|^2$ for finding the particle near $x=0$ at an arbitrary time $t$.\\
+(b) Find the value of the normalization constant $A$.\\
+(c) Without solving exactly for $\psi(x,t)$, find an exact expression for the probability density $|\psi(x,t)|^2$ for finding the particle near any point $x$ at an arbitrary time $t$.
+\end{problem}
+\begin{sol}
+\\(a) Since $\psi_1(x,0)$ and $\psi_2(x,0)$ are symmetric about $x=0$, $|\psi(0,t)|^2=0$.\\
+(b) Wave function of the free particle at time $t=0$
+\begin{equation}
+\psi(x,0)=A(\frac{2}{\pi a^2})^{1/4}[e^{-(x-a)^2/a^2}-e^{-(x+a)^2/a^2}]
+\end{equation}
+Normalization condition
+\begin{gather}
+\begin{align}
+\nonumber\int_{-\infty}^{+\infty}|\psi(x,0)|^2dx=&A^2\sqrt{\frac{2}{\pi a^2}}\int_{-\infty}^{+\infty}[e^{-(x-a)^2/a^2}-e^{-(x+a)^2/a^2}]^2dx\\
+\nonumber=&A^2\sqrt{\frac{2}{\pi a^2}}\int_{-\infty}^{+\infty}[e^{-2(x-a)^2/a^2}+2e^{-[(x-a)^2+(x+a)^2]/a^2}-e^{-2(x+a)^2/a^2}]dx\\
+\nonumber=&A^2\sqrt{\frac{1}{\pi}}[\int_{-\infty}^{+\infty}e^{-(\frac{\sqrt{2}x}{a}-\sqrt{2})^2}d(\frac{\sqrt{2}x}{a}-\sqrt{2})\\
+\nonumber&\quad-2\int_{-\infty}^{+\infty}e^{-(\frac{\sqrt{2}x}{a})^2-2}d(\frac{\sqrt{2}x}{a})\\
+\nonumber&\quad+\int_{-\infty}^{+\infty}e^{-(\frac{\sqrt{2}x}{a}+\sqrt{2})^2}d(\frac{\sqrt{2}x}{a}+\sqrt{2})]\\
+\nonumber=&A^2\sqrt{\frac{1}{\pi}}[\int_{-\infty}^{+\infty}e^{-\xi^2}d\xi-\frac{2}{e^2}\int_{-\infty}^{+\infty}e^{-\eta^2}d\eta+\int_{-\infty}^{+\infty}e^{-\zeta^2}d\zeta]\\
+\nonumber=&A^2\sqrt{\frac{1}{\pi}}[\sqrt{\pi}-\frac{2}{e^2}\sqrt{\pi}+\sqrt{\pi}]\\
+=&2(1-\frac{1}{e^2})A^2=1
+\end{align}\\
+\Longrightarrow A=\pm\frac{e}{\sqrt{2(e^2-1)}}
+\end{gather}
+(c) Transfer the wave function $\psi_1(x,0)$ into momentum space
+\begin{align}
+\nonumber g(k)=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}dx\psi(x,0)e^{-ikx}\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}(\frac{2}{\pi a^2})^{1/4}\int_{-\infty}^{+\infty}e^{-(x-a)^2/a^2}e^{-ikx}dx\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}(\frac{2}{\pi a^2})^{1/4}e^{-ika}\int_{-\infty}^{+\infty}e^{-(x-a)^2/a^2}e^{-ik(x-a)}d(x-a)\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}(\frac{2}{\pi a^2})^{1/4}e^{-ika}\int_{-\infty}^{+\infty}e^{-(x-a)^2/a^2}[\cos k(x-a)-i\sin k(x-a)]d(x-a)\\
+\nonumber&(\text{due to symmetry})\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}(\frac{2}{\pi a^2})^{1/4}e^{-ika}\int_{-\infty}^{+\infty}e^{-(x-a)^2/a^2}\cos k(x-a)d(x-a)\\
+\nonumber&(\text{let }\xi=x-a)\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}(\frac{2}{\pi a^2})^{1/4}e^{-ika}\int_{-\infty}^{+\infty}e^{-\xi^2/a^2}\cos k\xi d\xi\\
+\nonumber&(\text{making use of the integral formula }\int_{-\infty}^{+\infty}e^{-\alpha x^2}\cos(\beta x)dx=\sqrt{\frac{\pi}{\alpha}}e^{-\beta^2/4\alpha})\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}(\frac{2}{\pi a^2})^{1/4}e^{-ika}\sqrt{\pi a^2}e^{-k^2a^2/4}\\
+=&\frac{a}{\sqrt{2}}(\frac{2}{\pi a^2})^{1/4}e^{-(ika+k^2a^2/4)}
+\end{align}
+The dispersion relation for a free particle
+\begin{equation}
+\omega(k)=\frac{\hbar k^2}{2m}
+\end{equation}
+The wave function at an arbitrary time $t$
+\begin{align}
+\nonumber\psi_1(x,t)=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}dkg(k)e^{-i(kx-\omega(k)t)}\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}\frac{a}{\sqrt{2}}(\frac{2}{\pi a^2})^{1/4}\int_{-\infty}^{+\infty}e^{-(a^2/4+i\hbar t/2m)k^2}e^{ik(x-a)}dk\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}\frac{a}{\sqrt{2}}(\frac{2}{\pi a^2})^{1/4}\int_{-\infty}^{+\infty}e^{-(a^2/4+i\hbar t/2m)k^2}[\cos k(x-a)+i\sin k(x-a)]dk\\
+\nonumber&(\text{due to symmetry again})\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}\frac{a}{\sqrt{2}}(\frac{2}{\pi a^2})^{1/4}\int_{-\infty}^{+\infty}e^{-(a^2/4+i\hbar t/2m)k^2}\cos k(x-a)dk\\
+\nonumber&(\text{using the formula }\int_{-\infty}^{+\infty}e^{-\alpha x^2}\cos(\beta x)dx=\sqrt{\frac{\pi}{\alpha}}e^{-\beta^2/4\alpha}\text{ again})\\
+\nonumber=&\frac{1}{\sqrt{2\pi}}\frac{a}{\sqrt{2}}(\frac{2}{\pi a^2})^{1/4}2\sqrt{\frac{\pi}{a^2+2i\hbar t/m}}e^{-(x-a)^2/(a^2+2i\hbar t/m)}\\
+=&(\frac{2a^2}{\pi})^{1/4}\frac{e^{-(x-a)^2/(a^2+2i\hbar t/m)}}{(a^2+2i\hbar t/m)^{1/2}}
+\end{align}
+Similarly,
+\begin{equation}
+\psi_2(x,t)=(\frac{2a^2}{\pi})^{1/4}\frac{e^{-(x+a)^2/(a^2+2i\hbar t/m)}}{(a^2+2i\hbar t/m)^{1/2}}
+\end{equation}
+The probability density
+\small\begin{align}
+\nonumber|\psi(x,t)|^2=&A^2|\psi_1(x,t)-\psi_2(x,t)|^2\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a^2}{\pi})^{1/2}\frac{1}{[a^4+(2\hbar t/m)^2]^{1/2}}|e^{-(x-a)^2/(a^2+2i\hbar t/m)}-e^{-(x+a)^2/(a^2+2i\hbar t/m)}|^2\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a}{\pi})^{1/2}\frac{1}{[a^4+(2\hbar t/m)^2]^{1/2}}\\
+\nonumber&\times\left|\exp\left[\frac{-a^2(x-a)^2+2i\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}\right]-\exp\left[\frac{-a^2(x+a)^2+2i\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}\right]\right|^2\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a^2}{\pi})^{1/2}\frac{1}{[a^4+(2\hbar t/m)^2]^{1/2}}\\
+\nonumber&\times\left|\exp\left[\frac{-a^2(x-a)^2}{a^4+(2\hbar t/m)^2}\right]\times\left[\cos\frac{2\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}-i\sin\frac{2\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}\right]\right.\\
+\nonumber&-\left.\exp\left[\frac{-a^2(x+a)^2}{a^4+(2\hbar t/m)^2}\right]\times\left[\cos\frac{2\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}-i\sin\frac{2\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}\right]\right|^2\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a^2}{\pi})^{1/2}\frac{1}{[a^4+(2\hbar t/m)^2]^{1/2}}\\
+\nonumber&\times\left\{\left[\exp\left[\frac{-a^2(x-a)^2}{a^4+(2\hbar t/m)^2}\right]\times\cos\frac{2\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}-\exp\left[\frac{-a^2(x+a)^2}{a^4+(2\hbar t/m)^2}\right]\times\cos\frac{2\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}\right]^2\right.\\
+\nonumber&+\left.\left[-\exp\left[\frac{-a^2(x-a)^2}{a^4+(2\hbar t/m)^2}\right]\times\sin\frac{2\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}+\exp\left[\frac{-a^2(x+a)^2}{a^4+(2\hbar t/m)^2}\right]\times\sin\frac{2\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}\right]^2\right\}\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a^2}{\pi})^{1/2}\frac{1}{[a^4+(2\hbar t/m)^2]^{1/2}}\left\{\exp\left[\frac{-2a^2(x-a)^2}{a^4+(2\hbar t/m)^2}\right]+\exp\left[\frac{-2a^2(x+a)^2}{a^4+(2\hbar t/m)^2}\right]\right.\\
+\nonumber&\left.-2\exp\left[\frac{-2a^2(x^2+a^2)}{a^4+(2\hbar t/m)^2}\right]\left[\cos\frac{2\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}\cos\frac{2\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}+\sin\frac{2\hbar t(x-a)^2/m}{a^4+(2\hbar t/m)^2}\sin\frac{2\hbar t(x+a)^2/m}{a^4+(2\hbar t/m)^2}\right]\right\}\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a^2}{\pi})^{1/2}\frac{\exp\{-2a^2(x^2+a^2)/[a^4+(2\hbar t/m)^2]\}}{[a^4+(2\hbar t/m)^2]^{1/2}}\\
+\nonumber&\times\left\{\exp\left[\frac{4a^3x}{a^4+(2\hbar t/m)^2}\right]+\exp\left[\frac{-4a^3x}{a^4+(2\hbar t/m)^2}\right]-2\cos\frac{8\hbar tax/m}{a^4+(2\hbar t/m)^2}\right\}\\
+\nonumber=&\frac{e^2}{2(e^2-1)}(\frac{2a^2}{\pi})^{1/2}\frac{\exp\{-2a^2(x^2+a^2)/[a^4+(2\hbar t/m)^2]\}}{[a^4+(2\hbar t/m)^2]^{1/2}}\\
+\nonumber&\times\left\{\exp\left[\frac{4a^3x}{a^4+(2\hbar t/m)^2}\right]+\exp\left[\frac{-4a^3x}{a^4+(2\hbar t/m)^2}\right]-2+2(1-\cos\frac{8\hbar tax/m}{a^4+(2\hbar t/m)^2})\right\}\\
+=&\frac{2e^2}{e^2-1}(\frac{2a^2}{\pi})^{1/2}\frac{\exp\{-2a^2(x^2+a^2)/[a^4+(2\hbar t/m)^2]\}}{[a^4+(2\hbar t/m)^2]^{1/2}}\left\{\sinh^2\left[\frac{2a^3x}{a^4+(2\hbar t/m)^2}\right]+\sin^2\left[\frac{4\hbar tax/m}{a^4+(2\hbar t/m)^2}\right]\right\}
+\end{align}
+\footnotesize(Reference: Fuxiang Han. Problems and Solutions in University Physics: Optics, Thermal Physics, Modern Physics. World Scientific Publishing Company, 2017.)\normalsize
+\end{sol}
+\end{document}
